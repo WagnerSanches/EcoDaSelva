@@ -7,16 +7,62 @@
 #include <allegro5/drawing.h>
 #include <allegro5/bitmap_draw.h>
 #include <time.h>
+#include <Direcao.h>
+#include <eventos.h>
+#include <enum_estados.h>
+#include <animation.h>
+#include <Direcao.h>
+#include <player.h>
+#include <viewport.h>
+
+#define PIXEL_SIZE 64
 
 int main() {
 
-
 	ALLEGRO_DISPLAY* window = NULL;
 	ALLEGRO_EVENT_QUEUE* events_queue = NULL;
-	ALLEGRO_COLOR wall = al_map_rgb(255, 0, 0);
-	ALLEGRO_COLOR player = al_map_rgb(0, 255, 0);
+	ALLEGRO_KEYBOARD_STATE state;
+	ALLEGRO_BITMAP* background = NULL;
 
-	int PIXEL_MAP = 40;
+
+	enum Estados *estados = malloc(sizeof(enum Estados));
+	
+	if (estados == NULL) {
+		perror("Falha na alocação de memória");
+		return 1;
+	}
+	*estados = IDLE;
+
+	struct Direcao *direcao = malloc(sizeof(struct Direcao));
+
+	if (direcao == NULL) {
+		perror("Falha na alocação de memória");
+		return 1;
+	}
+	direcao->sentido = 0;
+	direcao->x = 0;
+	direcao->y = 0;
+
+	struct Player *player = malloc(sizeof(struct Player));
+
+	if (player == NULL) {
+		perror("Falha na alocação de memória");
+		return 1;
+	}
+
+	player->position_x = 12;
+	player->position_y = 7;
+
+	struct Viewport *viewport = malloc(sizeof(struct Viewport));
+
+	if (viewport == NULL) {
+		perror("Falha na alocação de memória");
+		return 1;
+	}
+
+	viewport->x = 0;
+	viewport->y = 0;
+
 
 	if (!al_init()) {
 		fprintf(stderr, "Falha");
@@ -27,14 +73,23 @@ int main() {
 	al_init_primitives_addon();
 	al_install_keyboard();
 
-	window = al_create_display(400, 400);
+
+	window = al_create_display(64 * 25, 64 * 15);
 
 	if (!window) {
 		fprintf(stderr, "Falha");
 		return -1;
 	}
 
-	al_set_window_title(window, "Teste de janela");
+	al_set_window_title(window, "Eco da Selva");
+
+
+	background = al_load_bitmap("C:\\Users\\wagne\\OneDrive\\Documents\\tiled maps\\mapaTeste.png");
+	if (!background)
+	{
+		fprintf(stderr, "failed to load background bitmap!\n");
+		return -1;
+	}
 
 	events_queue = al_create_event_queue();
 	if (!events_queue) {
@@ -44,110 +99,60 @@ int main() {
 		return -1;
 	}
 
-
-	int mapa[15][15] = {
-			{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-			{1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-			{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
-	};
-
-
-
-	int stopPlaying = 0;
-	int nextColumn, nextLine = 0;
-
-	ALLEGRO_KEYBOARD_STATE state;
-	
-	float personagem_posicao_x = 2 * 40;
-	float personagem_posicao_y = 2 * 40;
-
-	int action = 0;
-	int andando = 0; 
-
-	float x_destino = 0;
-	float y_destino = 0;
-
-	int frame = 1;
-	while (stopPlaying == 0) {
-
-		if(frame % 400 == 0) {
-
-			al_get_keyboard_state(&state);
-	
-			if (action == 1) {
-				if (andando == 1) {
-
-					printf("desitno %f\n", x_destino);
-					printf("personagem_posicao_x %f\n", personagem_posicao_x);
-
-					if (personagem_posicao_x != x_destino || personagem_posicao_y != y_destino) {
-
-						personagem_posicao_x = personagem_posicao_x - 1;
-						if (personagem_posicao_x >= 30 && personagem_posicao_x <= 31) {
-							printf("personagem_posicao_x %f\n", personagem_posicao_x);
-						}
-
-						al_draw_filled_rectangle(personagem_posicao_x, personagem_posicao_y, personagem_posicao_x + PIXEL_MAP, personagem_posicao_y + PIXEL_MAP, player, 0);
-					}
-				}
-			} else {
-
-				for (int linha = 0; linha < 10; linha++) {
-					for (int coluna = 0; coluna < 10; coluna++) {
-
-
-						if (mapa[linha][coluna] == 1) {
-
-							int y_position = linha * 40;
-							int x_position = coluna * 40;
-
-							al_draw_filled_rectangle(x_position, y_position, x_position + PIXEL_MAP, y_position + PIXEL_MAP, wall, 0);
-						}
-
-						if (mapa[linha][coluna] == 2) {
-
-							int y_position = linha * 40;
-							int x_position = coluna * 40;
-
-							al_draw_filled_rectangle(x_position, y_position, x_position + PIXEL_MAP, y_position + PIXEL_MAP, player, 0);
-						}
-
-					}
-				}
-
-
-				if (al_key_down(&state, ALLEGRO_KEY_UP)) {
-
-					mapa[2][2] = 0;
-					mapa[1][2] = 2;
-
-					action = 1;
-					andando = 1;
-			
-					x_destino = personagem_posicao_x - 40;
-					y_destino = personagem_posicao_y;
-
-				}
-			}
-
-			al_flip_display();
-			al_clear_to_color(al_map_rgb(0, 0, 0));
-		}
-		frame++;
+	ALLEGRO_TIMER* timer = al_create_timer(1.0 / 60.0);
+	if (!timer)
+	{
+		printf("couldn't initialize timer\n");
+		return 1;
 	}
 
+	al_register_event_source(events_queue, al_get_keyboard_event_source());
+	al_register_event_source(events_queue, al_get_timer_event_source(timer));
+	int pressed = 0;
+	int mexeu = 0;
+
+	al_start_timer(timer);
+	while (1) {
+
+		while (!al_is_event_queue_empty(events_queue)) {
+
+			ALLEGRO_EVENT event;
+			al_wait_for_event(events_queue, &event);
+			
+			if (*estados == IDLE) {
+				printa_mapa(background, viewport);
+				printa_personagem(player->position_x, player->position_y);
+				switch (event.type) {
+				case ALLEGRO_EVENT_KEY_DOWN:
+					botao_presionado(event.keyboard.keycode, direcao, estados, player);
+					pressed = 1;
+					break;
+				}
+			}
+			else {
+				switch (event.type) {
+				case ALLEGRO_EVENT_KEY_UP:
+					pressed = 0;
+					break;
+				}
+				switch (*estados) {
+				case ANDANDO:
+					andar(direcao, estados, player, pressed, background, viewport);
+					break;
+				}
+
+			}
+
+			al_flush_event_queue(events_queue);
+			al_flip_display();
+			al_clear_to_color(al_map_rgb(85, 173, 120));
+		}
+
+
+	}
+
+	al_destroy_timer(timer);
+	al_destroy_event_queue(events_queue);
 	return 0;
 
 }

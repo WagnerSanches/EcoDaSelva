@@ -13,13 +13,56 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\enums">
+      <UniqueIdentifier>{67dd82ad-efab-4e6c-88f4-b650d036666a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\imagens">
+      <UniqueIdentifier>{6a6079cf-0e12-4064-a4c3-a55871eb0220}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="estados.cpp">
+      <Filter>Source Files\enums</Filter>
+    </ClCompile>
+    <ClCompile Include="animation.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="eventos.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="player.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="viewport.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="animation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="eventos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="direcao.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="enum_estados.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="vila.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\tiled maps\mapaTeste.png">
+      <Filter>Source Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

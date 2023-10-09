@@ -1,6 +1,4 @@
-﻿  main.c
-C:\Users\wagne\OneDrive\Documents\Allegro\Projetos\EcoDaSelva\EcoDaSelva\main.c(102,152): warning C4020: 'al_draw_filled_rectangle': too many actual parameters
-C:\Users\wagne\OneDrive\Documents\Allegro\Projetos\EcoDaSelva\EcoDaSelva\main.c(116,111): warning C4020: 'al_draw_filled_rectangle': too many actual parameters
-C:\Users\wagne\OneDrive\Documents\Allegro\Projetos\EcoDaSelva\EcoDaSelva\main.c(124,113): warning C4020: 'al_draw_filled_rectangle': too many actual parameters
-C:\Users\wagne\OneDrive\Documents\Allegro\Projetos\EcoDaSelva\EcoDaSelva\main.c(69,6): warning C4101: 'nextColumn': unreferenced local variable
+﻿  animation.c
+C:\Users\wagne\OneDrive\Documents\Allegro\Projetos\EcoDaSelva\EcoDaSelva\animation.c(19,143): warning C4020: 'al_draw_filled_rectangle': too many actual parameters
+C:\Users\wagne\OneDrive\Documents\Allegro\Projetos\EcoDaSelva\EcoDaSelva\animation.c(58,2): warning C4013: 'printf' undefined; assuming extern returning int
   EcoDaSelva.vcxproj -> C:\Users\wagne\OneDrive\Documents\Allegro\Projetos\EcoDaSelva\x64\Debug\EcoDaSelva.exe

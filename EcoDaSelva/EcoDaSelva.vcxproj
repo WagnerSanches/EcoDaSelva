@@ -109,6 +109,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -132,10 +133,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="animation.c" />
+    <ClCompile Include="estados.cpp" />
+    <ClCompile Include="eventos.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="player.h" />
+    <ClCompile Include="viewport.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="animation.h" />
+    <ClInclude Include="direcao.h" />
+    <ClInclude Include="enum_estados.h" />
+    <ClInclude Include="eventos.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="vila.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\tiled maps\mapaTeste.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
