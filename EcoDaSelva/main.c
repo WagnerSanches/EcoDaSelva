@@ -15,7 +15,7 @@
 #include <player.h>
 #include <viewport.h>
 
-#define PIXEL_SIZE 64
+#define PIXEL_SIZE 32
 
 int main() {
 
@@ -74,7 +74,7 @@ int main() {
 	al_install_keyboard();
 
 
-	window = al_create_display(64 * 25, 64 * 15);
+	window = al_create_display(PIXEL_SIZE * 32, PIXEL_SIZE * 24);
 
 	if (!window) {
 		fprintf(stderr, "Falha");
@@ -84,7 +84,7 @@ int main() {
 	al_set_window_title(window, "Eco da Selva");
 
 
-	background = al_load_bitmap("C:\\Users\\wagne\\OneDrive\\Documents\\tiled maps\\mapaTeste.png");
+	background = al_load_bitmap("C:\\Users\\wagne\\OneDrive\\Documents\\tiled maps\\mapa32p.png");
 	if (!background)
 	{
 		fprintf(stderr, "failed to load background bitmap!\n");
@@ -140,7 +140,6 @@ int main() {
 					andar(direcao, estados, player, pressed, background, viewport);
 					break;
 				}
-
 			}
 
 			al_flush_event_queue(events_queue);

@@ -148,6 +148,7 @@
     <ClInclude Include="direcao.h" />
     <ClInclude Include="enum_estados.h" />
     <ClInclude Include="eventos.h" />
+    <ClInclude Include="mapa_vila.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="vila.txt" />

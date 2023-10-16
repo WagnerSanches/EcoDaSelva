@@ -6,8 +6,9 @@
 #include <player.h>
 #include <math.h>
 #include <viewport.h>
+#include <mapa_vila.h>
 
-#define PIXEL_SIZE 64
+#define PIXEL_SIZE 32
 #define SPEED 0.1
 
 
@@ -32,12 +33,11 @@ void andar_para_cima(struct Direcao* direcao, enum Estados* estados, struct Play
 		printa_mapa(background, viewport);
 		printa_personagem(player->position_x, player->position_y + direcao->y);
 		direcao->y -= SPEED;
-		viewport->y = viewport->y + (SPEED * PIXEL_SIZE);
 	}
 }
 
 void andar_para_baixo(struct Direcao* direcao, enum Estados* estados, struct Player* player, int pressed, ALLEGRO_BITMAP* background, struct Viewport* viewport) {
-	if (fabs(direcao->y - (1.0)) < 0.00001) {
+	if (fabs(direcao->y - (1)) < 0.00001) {
 		printa_mapa(background, viewport);
 		printa_personagem(player->position_x, player->position_y + direcao->y);
 		player->position_y++;
@@ -49,45 +49,60 @@ void andar_para_baixo(struct Direcao* direcao, enum Estados* estados, struct Pla
 		printa_mapa(background, viewport);
 		printa_personagem(player->position_x, player->position_y + direcao->y);
 		direcao->y += SPEED;
-		viewport->y = viewport->y - (SPEED * PIXEL_SIZE);
 	}
 }
 
 void andar_para_esquerda(struct Direcao* direcao, enum Estados* estados, struct Player* player, int pressed, ALLEGRO_BITMAP* background, struct Viewport* viewport) {
-
-	printf("Direcao X = %f, Player X = %f\n", direcao->x, player->position_x);
-
-	if (fabs((direcao->x + 0.5) - (player->position_x)) < 0.00001) {
+	if (fabs((direcao->x ) - (-1)) < 0.00001) {
 		printa_mapa(background, viewport);
-		printa_personagem(player->position_x, player->position_y);
+		printa_personagem(player->position_x + direcao->x, player->position_y);
+		player->position_x--;
 		direcao->x = 0;
 
-		*estados = IDLE;
+		if (pressed == 0) *estados = IDLE;
 	}
 	else {
-		player->position_x = player->position_x - SPEED;
-		viewport->x = viewport->x + (0.2 * PIXEL_SIZE);
-
 		printa_mapa(background, viewport);
-		printa_personagem(player->position_x, player->position_y);
+		printa_personagem(player->position_x + direcao->x, player->position_y);
+		direcao->x -= SPEED;
 	}
-}
+}	
 
 void andar_para_direita(struct Direcao* direcao, enum Estados* estados, struct Player* player, int pressed, ALLEGRO_BITMAP* background, struct Viewport* viewport) {
+	
+	if (player->position_x == 31) {
+		
+		if (map[(int)player->position_y][(int)player->position_x] == 3)
+			printf("Voce pode passar pro proximo mapa\n");
 
-	if (fabs((direcao->x - 0.5) - player->position_x) < 0.00001) {
+		printf("Chegou no final do mapa\n");
 		printa_mapa(background, viewport);
-		printa_personagem(player->position_x, player->position_y);
+		printa_personagem(player->position_x + direcao->x, player->position_y);
+		*estados = IDLE;
+		return;
+	}
+
+	if (map[(int)player->position_y][(int)player->position_x + 1] == 1) {
+		printf("Voce nao pode andar ai!\n");
+		printa_mapa(background, viewport);
+		printa_personagem(player->position_x + direcao->x, player->position_y);
+		*estados = IDLE;
+		return;
+	}
+
+	if (fabs((direcao->x ) - (1)) < 0.00001) {
+		printa_mapa(background, viewport);
+		printa_personagem(player->position_x + direcao->x, player->position_y);
+		player->position_x++;
 		direcao->x = 0;
 
-		*estados = IDLE;
+		if (pressed == 0) *estados = IDLE;
 	}
 	else {
-		player->position_x = player->position_x + SPEED;
-		viewport->x = viewport->x - (PIXEL_SIZE * 0.2);
+		direcao->x += SPEED;
 
 		printa_mapa(background, viewport);
-		printa_personagem(player->position_x , player->position_y);
+		printa_personagem(player->position_x + direcao->x, player->position_y);
 	}
 }
 

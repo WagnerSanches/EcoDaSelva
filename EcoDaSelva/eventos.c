@@ -16,11 +16,9 @@ void botao_presionado(int keycode, struct Direcao* direcao, enum Estados* estado
 		break;
 	case ALLEGRO_KEY_LEFT:
 		direcao->sentido = 3;
-		direcao->x = player->position_x - 1;
 		break;
 	case ALLEGRO_KEY_RIGHT:
 		direcao->sentido = 4;
-		direcao->x = player->position_x + 1;
 		break;
 	}
 
