@@ -14,6 +14,7 @@
 #include <Direcao.h>
 #include <player.h>
 #include <viewport.h>
+#include <enum_maps.h>
 
 #define PIXEL_SIZE 32
 
@@ -22,7 +23,15 @@ int main() {
 	ALLEGRO_DISPLAY* window = NULL;
 	ALLEGRO_EVENT_QUEUE* events_queue = NULL;
 	ALLEGRO_KEYBOARD_STATE state;
-	ALLEGRO_BITMAP* background = NULL;
+	ALLEGRO_BITMAP* backgrounds[2];
+
+	enum Mapas* mapa_indice = malloc(sizeof(enum Mapas));
+
+	if (mapa_indice == NULL) {
+		perror("Falha na alocação de memória");
+		return 1;
+	}
+	*mapa_indice = MAPA1;
 
 
 	enum Estados *estados = malloc(sizeof(enum Estados));
@@ -84,11 +93,14 @@ int main() {
 	al_set_window_title(window, "Eco da Selva");
 
 
-	background = al_load_bitmap("C:\\Users\\wagne\\OneDrive\\Documents\\tiled maps\\mapa32p.png");
-	if (!background)
-	{
-		fprintf(stderr, "failed to load background bitmap!\n");
-		return -1;
+	backgrounds[0] = al_load_bitmap("C:\\Users\\felipe.rvictor\\PI\\EcoDaSelva\\assets\\images\\mapa32p.png");
+	backgrounds[1] = al_load_bitmap("C:\\Users\\felipe.rvictor\\PI\\EcoDaSelva\\assets\\images\\mapa32p2.png");
+
+	for (int i = 0; i < 2; i++) {
+		if (!backgrounds[i]) {
+			fprintf(stderr, "failed to load background bitmap!\n");
+			return -1;
+		}
 	}
 
 	events_queue = al_create_event_queue();
@@ -118,9 +130,10 @@ int main() {
 
 			ALLEGRO_EVENT event;
 			al_wait_for_event(events_queue, &event);
+
+			printa_mapa(backgrounds[*mapa_indice], viewport);
 			
 			if (*estados == IDLE) {
-				printa_mapa(background, viewport);
 				printa_personagem(player->position_x, player->position_y);
 				switch (event.type) {
 				case ALLEGRO_EVENT_KEY_DOWN:
@@ -137,7 +150,7 @@ int main() {
 				}
 				switch (*estados) {
 				case ANDANDO:
-					andar(direcao, estados, player, pressed, background, viewport);
+					andar(direcao, estados, player, pressed, mapa_indice, viewport);
 					break;
 				}
 			}

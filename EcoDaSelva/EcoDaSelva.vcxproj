@@ -147,6 +147,7 @@
     <ClInclude Include="animation.h" />
     <ClInclude Include="direcao.h" />
     <ClInclude Include="enum_estados.h" />
+    <ClInclude Include="enum_maps.h" />
     <ClInclude Include="eventos.h" />
     <ClInclude Include="mapa_vila.h" />
   </ItemGroup>

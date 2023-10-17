@@ -6,19 +6,23 @@
 #include <player.h>
 
 void botao_presionado(int keycode, struct Direcao* direcao, enum Estados* estados, struct Player* player) {
-	*estados = ANDANDO;
+	
 	switch (keycode) {
 	case ALLEGRO_KEY_UP:
 		direcao->sentido = 1;
+		*estados = ANDANDO;
 		break;
 	case ALLEGRO_KEY_DOWN:
 		direcao->sentido = 2;
+		*estados = ANDANDO;
 		break;
 	case ALLEGRO_KEY_LEFT:
 		direcao->sentido = 3;
+		*estados = ANDANDO;
 		break;
 	case ALLEGRO_KEY_RIGHT:
 		direcao->sentido = 4;
+		*estados = ANDANDO;
 		break;
 	}
 
