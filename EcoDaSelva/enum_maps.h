@@ -1,4 +1,7 @@
 enum Mapas {
-	MAPA1,
-	MAPA2
+	CENTRO,
+	CIMA,
+	BAIXO,
+	ESQUERDA,
+	DIREITA
 };

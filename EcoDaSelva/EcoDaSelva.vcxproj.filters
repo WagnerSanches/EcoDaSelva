@@ -16,16 +16,22 @@
     <Filter Include="Source Files\enums">
       <UniqueIdentifier>{67dd82ad-efab-4e6c-88f4-b650d036666a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\imagens">
-      <UniqueIdentifier>{6a6079cf-0e12-4064-a4c3-a55871eb0220}</UniqueIdentifier>
+    <Filter Include="Header Files\mapas">
+      <UniqueIdentifier>{798bacd7-62eb-40ba-9880-bcb2c6254b96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\mapas">
+      <UniqueIdentifier>{190189cd-97a1-4162-94e4-ecbf3fb13bf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\jogo">
+      <UniqueIdentifier>{d55bec0e-1e68-4432-ac80-293fce18deca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\jogo">
+      <UniqueIdentifier>{3b908f8d-33c6-4adb-a004-0a72683ac861}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="estados.cpp">
-      <Filter>Source Files\enums</Filter>
     </ClCompile>
     <ClCompile Include="animation.c">
       <Filter>Source Files</Filter>
@@ -36,8 +42,32 @@
     <ClCompile Include="player.h">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="viewport.h">
+    <ClCompile Include="Mapa_item.h">
       <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="desenha_mapa.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MAPA_CENTRO.c">
+      <Filter>Source Files\mapas</Filter>
+    </ClCompile>
+    <ClCompile Include="MAPA.c">
+      <Filter>Source Files\mapas</Filter>
+    </ClCompile>
+    <ClCompile Include="REGRA.c">
+      <Filter>Source Files\jogo</Filter>
+    </ClCompile>
+    <ClCompile Include="MAPA_4.c">
+      <Filter>Source Files\mapas</Filter>
+    </ClCompile>
+    <ClCompile Include="MAPA_1.c">
+      <Filter>Source Files\mapas</Filter>
+    </ClCompile>
+    <ClCompile Include="MAPA_2.c">
+      <Filter>Source Files\mapas</Filter>
+    </ClCompile>
+    <ClCompile Include="MAPA_3.c">
+      <Filter>Source Files\mapas</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +91,57 @@
     </ClInclude>
     <ClInclude Include="enum_maps.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mapa_npc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="desenha_mapa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AL_MAPA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPA_CENTRO.h">
+      <Filter>Header Files\mapas</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPA.h">
+      <Filter>Header Files\mapas</Filter>
+    </ClInclude>
+    <ClInclude Include="REGRA.h">
+      <Filter>Header Files\jogo</Filter>
+    </ClInclude>
+    <ClInclude Include="SENTIDO.h">
+      <Filter>Header Files\jogo</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPA_4.h">
+      <Filter>Header Files\mapas</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPA_1.h">
+      <Filter>Header Files\mapas</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPA_2.h">
+      <Filter>Header Files\mapas</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPA_3.h">
+      <Filter>Header Files\mapas</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
