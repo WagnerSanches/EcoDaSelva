@@ -33,9 +33,6 @@
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="animation.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="eventos.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -69,27 +66,21 @@
     <ClCompile Include="MAPA_3.c">
       <Filter>Source Files\mapas</Filter>
     </ClCompile>
+    <ClCompile Include="animation.c">
+      <Filter>Source Files\jogo</Filter>
+    </ClCompile>
+    <ClCompile Include="ACTION.c">
+      <Filter>Source Files\jogo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="animation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="eventos.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="direcao.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="enum_estados.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="mapa_vila.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="enum_maps.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
@@ -142,6 +133,12 @@
     </ClInclude>
     <ClInclude Include="MAPA_3.h">
       <Filter>Header Files\mapas</Filter>
+    </ClInclude>
+    <ClInclude Include="animation.h">
+      <Filter>Header Files\jogo</Filter>
+    </ClInclude>
+    <ClInclude Include="ACTION.h">
+      <Filter>Header Files\jogo</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

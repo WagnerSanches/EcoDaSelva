@@ -10,11 +10,11 @@
 #include <MAPA_2.h>
 #include <MAPA_3.h>
 #include <MAPA_4.h>
+#include <player.h>
 
-void desenha_mapa(struct al_mapa* mapa) {
+void desenha_npc(struct al_mapa* mapa) {
 	for (int i = 0; i < mapa->quantidade_npc; i++)
-		al_draw_filled_rectangle(mapa->npc[i].x * PIXEL_SIZE, mapa->npc[i].y * PIXEL_SIZE, mapa->npc[i].x * PIXEL_SIZE + PIXEL_SIZE, mapa->npc[i].y * PIXEL_SIZE + PIXEL_SIZE, al_map_rgb(170, 50, 123), 0);
-
+		al_draw_scaled_bitmap(mapa->npc[i].image[mapa->npc[i].direcao], 0, 0, 16, 16, mapa->npc[i].x * PIXEL_SIZE, mapa->npc[i].y * PIXEL_SIZE, 32, 32, 0);
 }
 
 void carregar_mapa(struct al_mapa* mapa, int next_mapa) {
@@ -37,4 +37,12 @@ void carregar_mapa(struct al_mapa* mapa, int next_mapa) {
 		break;
 	}
 
+}
+
+void desenha_background(struct al_mapa* mapa) {
+	al_draw_bitmap(mapa->background, 0, 0, 0);
+}
+
+void desenha_personagem(struct Player* player, int sum_x_pixel, int sum_y_pixel) {
+	al_draw_scaled_bitmap(player->image, 0, 0, 16, 16, player->map_position_x + sum_x_pixel, player->map_position_y + sum_y_pixel, 32, 32, 0);
 }

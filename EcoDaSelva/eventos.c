@@ -1,29 +1,34 @@
 #include <allegro5/allegro5.h>
 #include <eventos.h>
-#include <direcao.h>
-#include <enum_estados.h>
 #include <stdlib.h>
 #include <player.h>
 #include <SENTIDO.h>
 
-void botao_presionado(int keycode, struct Direcao* direcao, enum Estados* estados, struct Player* player) {
+void botao_presionado(int keycode, struct Player* player) {
 	
 	switch (keycode) {
 	case ALLEGRO_KEY_UP:
-		direcao->sentido = PRA_CIMA;
-		*estados = ANDANDO;
+		player->direcao = PRA_CIMA;
+		player->image = player->animation[0][0];
+		player->status = ANDANDO;
 		break;
 	case ALLEGRO_KEY_DOWN:
-		direcao->sentido = PRA_BAIXO;
-		*estados = ANDANDO;
+		player->direcao = PRA_BAIXO;
+		player->image = player->animation[1][0];
+		player->status = ANDANDO;
 		break;
 	case ALLEGRO_KEY_LEFT:
-		direcao->sentido = PRA_ESQUERDA;
-		*estados = ANDANDO;
+		player->direcao = PRA_ESQUERDA;
+		player->image = player->animation[2][0];
+		player->status = ANDANDO;
 		break;
 	case ALLEGRO_KEY_RIGHT:
-		direcao->sentido = PRA_DIREITA;
-		*estados = ANDANDO;
+		player->direcao = PRA_DIREITA;
+		player->image = player->animation[3][0];
+		player->status = ANDANDO;
+		break;
+	case ALLEGRO_KEY_SPACE:
+		player->status = INTERAGINDO;
 		break;
 	}
 

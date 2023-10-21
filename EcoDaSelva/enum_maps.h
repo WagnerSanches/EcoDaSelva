@@ -1,7 +1,0 @@
-enum Mapas {
-	CENTRO,
-	CIMA,
-	BAIXO,
-	ESQUERDA,
-	DIREITA
-};

@@ -8,6 +8,8 @@
 struct NPC {
 	int x;
 	int y;
+	int direcao;
+	ALLEGRO_BITMAP* image[4];
 };
 
 struct al_next_mapa {
@@ -22,6 +24,7 @@ struct al_mapa {
 	ALLEGRO_BITMAP* background;
 	int quantidade_npc;
 	struct NPC npc[5];
+	ALLEGRO_BITMAP* NPC_IMAGES[7];
 	struct al_next_mapa next_mapa;
 }; 
 

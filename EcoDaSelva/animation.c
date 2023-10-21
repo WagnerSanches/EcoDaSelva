@@ -1,176 +1,228 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_color.h>
 #include <allegro5/allegro_primitives.h>
-#include <direcao.h>
-#include <enum_estados.h>
 #include <player.h>
 #include <math.h>
 #include <mapa_vila.h>
-#include <enum_maps.h>
 #include <config.h>
 #include <AL_MAPA.h>
 #include <stdbool.h>
 #include <REGRA.h>
 #include <MAPA.h>
+#include <SENTIDO.h>
 
-void printa_mapa(ALLEGRO_BITMAP* background) {
-	al_draw_bitmap(background, 0, 0, 0);
-}
+void andar_para_cima(struct Player* player, struct al_mapa* mapa) {
 
-void printa_personagem(float x, float y) {
-	al_draw_filled_rectangle(x * PIXEL_SIZE, y * PIXEL_SIZE, x * PIXEL_SIZE + PIXEL_SIZE, y * PIXEL_SIZE + PIXEL_SIZE, al_map_rgb(186, 181, 93), 0);
-}
-
-void andar_para_cima(struct Direcao* direcao, enum Estados* estados, struct Player* player, int pressed, struct al_mapa* mapa) {
-
-	if (colediu(direcao, player, mapa)) {
-		if (proximo_mapa(direcao, player, mapa)) {
+	if (colediu(player, mapa)) {
+		if (proximo_mapa(player, mapa)) {
 			carregar_mapa(mapa, mapa->next_mapa.pra_cima);
-			player->position_y = WINDOW_SIZE_Y - 1;
+			
+			player->matriz_position_y = WINDOW_SIZE_Y - 1;
+			player->map_position_y = player->matriz_position_y * PIXEL_SIZE;
+
 			return;
 		}
 		else {
-			*estados = IDLE;
+			player->status = PARADO;
 			return;
 		}
 	}
 
-	if (fabs(direcao->y - (-1.0)) < 0.00001) {
-		printa_personagem(player->position_x, player->position_y + direcao->y);
-		player->position_y--;
-		direcao->y = 0;
+	if (player->sum_y_pixel == -PIXEL_SIZE) {
+		
+		player->matriz_position_y--;
+		player->map_position_y = player->matriz_position_y * PIXEL_SIZE;
+		player->image = player->animation[0][0];
+		player->animation_next_image = 0;
 
-		if (pressed == 0) *estados = IDLE;
+		player->sum_y_pixel = 0;
+
+		if (player->pressing_key == 0) player->status =
+			PARADO;
+
+		return;
 	}
 	else {
-		printa_personagem(player->position_x, player->position_y + direcao->y);
-		direcao->y -= SPEED;
+
+		player->sum_y_pixel -= SPEED;
+	}
+
+	if (player->sum_y_pixel % -8 == 0) {
+
+		if (player->animation_next_image == 4) {
+			player->animation_next_image = 0;
+		}
+
+		player->image = player->animation[0][player->animation_next_image];
+		player->animation_next_image++;
 	}
 }
 
-void andar_para_baixo(struct Direcao* direcao, enum Estados* estados, struct Player* player, int pressed, struct al_mapa* mapa) {
+void andar_para_baixo(struct Player* player, struct al_mapa* mapa) {
 
-	if (colediu(direcao, player, mapa)) {
-		if (proximo_mapa(direcao, player, mapa)) {
+	if (colediu( player, mapa)) {
+		if (proximo_mapa(player, mapa)) {
 			carregar_mapa(mapa, mapa->next_mapa.pra_baixo);
-			player->position_y = 0;
+			player->matriz_position_y = 0;
+			player->map_position_y = player->matriz_position_y * PIXEL_SIZE;
 			return;
 		}
 		else {
-			*estados = IDLE;
+			player->status = PARADO;
 			return;
 		}
 	}
 
-	if (fabs(direcao->y - (1)) < 0.00001) {
-		printa_personagem(player->position_x, player->position_y + direcao->y);
-		player->position_y++;
-		direcao->y = 0;
+	if (player->sum_y_pixel == PIXEL_SIZE) {
 
-		if (pressed == 0) *estados = IDLE;
+		player->matriz_position_y++;
+		player->map_position_y = player->matriz_position_y * PIXEL_SIZE;
+		player->image = player->animation[1][0];
+		player->animation_next_image = 0;
+
+		player->sum_y_pixel = 0;
+
+		if (player->pressing_key == 0)
+			player->status = PARADO;
+
+		return;
 	}
 	else {
-		printa_personagem(player->position_x, player->position_y + direcao->y);
-		direcao->y += SPEED;
+
+		player->sum_y_pixel += SPEED;
+	}
+
+	if (player->sum_y_pixel % 8 == 0) {
+
+		if (player->animation_next_image == 4) {
+			player->animation_next_image = 0;
+		}
+
+		player->image = player->animation[1][player->animation_next_image];
+		player->animation_next_image++;
 	}
 }
 
-void andar_para_esquerda(struct Direcao* direcao, enum Estados* estados, struct Player* player, int pressed, struct al_mapa* mapa) {
-	
-	if (colediu(direcao, player, mapa)) {
-		if (proximo_mapa(direcao, player, mapa)) {
+void andar_para_esquerda(struct Player* player, struct al_mapa* mapa) {
+
+	if (colediu(player, mapa)) {
+		if (proximo_mapa(player, mapa)) {
 			carregar_mapa(mapa, mapa->next_mapa.pra_esquerda);
-			player->position_x = WINDOW_SIZE_X - 1;
+
+			player->matriz_position_x = WINDOW_SIZE_X - 1;
+			player->map_position_x = player->matriz_position_x * PIXEL_SIZE;
+
 			return;
 		}
 		else {
-			*estados = IDLE;
+			player->status = PARADO;
 			return;
 		}
 	}
 
-	if (fabs((direcao->x ) - (-1)) < 0.00001) {
-		printa_personagem(player->position_x + direcao->x, player->position_y);
-		player->position_x--;
-		direcao->x = 0;
+	if (player->sum_x_pixel == -PIXEL_SIZE) {
 
-		if (pressed == 0) *estados = IDLE;
+		player->matriz_position_x--;
+		player->map_position_x = player->matriz_position_x * PIXEL_SIZE;
+		player->image = player->animation[2][0];
+		player->animation_next_image = 0;
+
+		player->sum_x_pixel = 0;
+
+		if (player->pressing_key == 0) 
+			player->status = PARADO;
+
+		return;
 	}
 	else {
-		printa_personagem(player->position_x + direcao->x, player->position_y);
-		direcao->x -= SPEED;
+		player->sum_x_pixel -= SPEED;
+	}
+
+	if (player->sum_x_pixel % -8 == 0) {
+
+		if (player->animation_next_image == 4) {
+			player->animation_next_image = 0;
+		}
+
+		player->image = player->animation[2][player->animation_next_image];
+		player->animation_next_image++;
 	}
 }	
 
-void andar_para_direita(struct Direcao* direcao, enum Estados* estados, struct Player* player, int pressed, struct al_mapa* mapa) {
+void andar_para_direita(struct Player* player, struct al_mapa* mapa) {
 	
-	if (colediu(direcao, player, mapa)) {
-		if (proximo_mapa(direcao, player, mapa)) {
+	if (colediu(player, mapa)) {
+		if (proximo_mapa(player, mapa)) {
 			carregar_mapa(mapa, mapa->next_mapa.pra_direita);
-			player->position_x = 0;
+			
+			player->matriz_position_x = 0;
+			player->map_position_x = player->matriz_position_x * PIXEL_SIZE;
+			player->animation_next_image = 0;
+
 			return;
 		}
 		else {
-			*estados = IDLE;
+			player->status = PARADO;
 			return;
 		}
 	}
 
-	//if (player->position_x == 31) {
-	//	/*
-	//	if (map[(int)player->position_y][(int)player->position_x] == 3) {
-	//		*indice_mapa = DIREITA;
-	//		printf("Voce pode passar pro proximo mapa\n");
-	//		player->position_x = 0;
-	//	}
-	//	else {
-	//		*estados = IDLE;
-	//		return;
-	//	}*/
-	//	printf("Chegou no final do mapa\n");
-	//	printa_personagem(player->position_x + direcao->x, player->position_y);
-	//	//*estados = IDLE;
-	//}
+	if (player->sum_x_pixel == PIXEL_SIZE) {
 
-	////if (map[(int)player->position_y][(int)player->position_x + 1] == 1) {
-	////	printf("Voce nao pode andar ai!\n");
-	////	printa_personagem(player->position_x + direcao->x, player->position_y);
-	////	
-	////}
+		player->matriz_position_x++;
+		player->map_position_x = player->matriz_position_x * PIXEL_SIZE;
+		player->image = player->animation[3][0];
 
-	if (fabs((direcao->x ) - (1)) < 0.00001) {
-		printa_personagem(player->position_x + direcao->x, player->position_y);
-		player->position_x++;
-		direcao->x = 0;
+		player->sum_x_pixel = 0;
 
-		if (pressed == 0) *estados = IDLE;
+		if (!player->pressing_key) 
+			player->status = PARADO;
+
+		return;
 	}
 	else {
-		direcao->x += SPEED;
-		printa_personagem(player->position_x + direcao->x, player->position_y);
+		player->sum_x_pixel += SPEED;
 	}
-}
 
+	if (player->sum_x_pixel % 8 == 0) {
 
-void andar(struct Direcao* direcao, enum Estados* estados, struct Player* player, int pressed, struct al_mapa* mapa) {
+		if (player->animation_next_image == 4) {
+			player->animation_next_image = 0;
+		}
 
-	switch (direcao->sentido) {
-	case 1:
-		andar_para_cima(direcao, estados, player, pressed, mapa);
-		break;
-	case 2:
-		andar_para_baixo(direcao, estados, player, pressed, mapa);
-		break;
-	case 3:
-		andar_para_esquerda(direcao, estados, player, pressed, mapa);
-		break;
-	case 4:
-		andar_para_direita(direcao, estados, player, pressed, mapa);
-		break;
+		player->image = player->animation[3][player->animation_next_image];
+		player->animation_next_image++;
 	}
 
 }
 
-void meu_mapa(struct al_mapa* mapa) {
-	printf("meu_mapa = %p\n", mapa);
+int encontrar_npc(struct al_mapa* mapa, int x, int y) {
+	for (int i = 0; i < mapa->quantidade_npc; i++) {
+		if (mapa->npc[i].x == x && mapa->npc[i].y == y) {
+			return i;
+		}
+	}
+}
+
+void virar_npc(struct Player* player, struct al_mapa* mapa) {
+
+	int npc_position = 0;
+	switch (player->direcao) {
+	case PRA_CIMA:
+		npc_position = encontrar_npc(mapa, player->matriz_position_x, player->matriz_position_y - 1);
+		mapa->npc[npc_position].direcao = PRA_BAIXO - 1;
+		break;
+	case PRA_BAIXO:
+		npc_position = encontrar_npc(mapa, player->matriz_position_x, player->matriz_position_y + 1);
+		mapa->npc[npc_position].direcao = PRA_CIMA - 1;
+		break;
+	case PRA_ESQUERDA:
+		npc_position = encontrar_npc(mapa, player->matriz_position_x - 1, player->matriz_position_y);
+		mapa->npc[npc_position].direcao = PRA_DIREITA - 1;
+		break;
+	case PRA_DIREITA:
+		npc_position = encontrar_npc(mapa, player->matriz_position_x + 1, player->matriz_position_y);
+		mapa->npc[npc_position].direcao = PRA_ESQUERDA - 1;
+		break;
+	}
 }

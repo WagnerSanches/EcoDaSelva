@@ -1,9 +1,12 @@
 #include <AL_MAPA.h>
 #include <stdlib.h>
+#include <time.h>
 #include <allegro5/bitmap_draw.h>
 #include <allegro5/allegro.h>
 
 void carregar_mapa_centro(struct al_mapa *mapa) {
+	
+	srand(time(NULL));
 
 	for (int k = 0; k < WINDOW_SIZE_Y; k++) {
 		for (int j = 0; j < WINDOW_SIZE_X; j++) {
@@ -23,8 +26,20 @@ void carregar_mapa_centro(struct al_mapa *mapa) {
 	mapa->npc[2].y = 20;
 	mapa->npc[2].x = 6;
 
-	for(int i = 0; i < mapa->quantidade_npc; i ++)
+	int i_npc = 0;
+	for (int i = 0; i < mapa->quantidade_npc; i++) {
 		mapa->matriz[mapa->npc[i].y][mapa->npc[i].x] = 2;
+
+		mapa->npc[i].direcao = rand() % 4;
+		
+		i_npc = rand() % 7;
+		
+		mapa->npc[i].image[0] = al_create_sub_bitmap(mapa->NPC_IMAGES[i_npc], 4, 7 + 24 * 3, 16, 16);
+		mapa->npc[i].image[1] = al_create_sub_bitmap(mapa->NPC_IMAGES[i_npc], 4, 7, 16, 16);
+		mapa->npc[i].image[2] = al_create_sub_bitmap(mapa->NPC_IMAGES[i_npc], 4, 7 + 24, 16, 16);
+		mapa->npc[i].image[3] = al_create_sub_bitmap(mapa->NPC_IMAGES[i_npc], 4, 7 + 24 * 2, 16, 16);
+
+	}
 
 	mapa->matriz[11][WINDOW_SIZE_X - 1] = 3;
 	mapa->matriz[12][WINDOW_SIZE_X - 1] = 3;

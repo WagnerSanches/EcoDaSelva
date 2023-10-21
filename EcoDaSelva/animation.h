@@ -1,11 +1,8 @@
 #include <AL_MAPA.h>
 
 #pragma once
-void andar_para_cima(struct Direcao* direcao, enum Estados* estados, struct Player* player, int pressed, struct al_mapa* mapa);
-void andar_para_baixo(struct Direcao* direcao, enum Estados* estados, struct Player* player, int pressed, struct al_mapa* mapa);
-void andar_para_esquerda(struct Direcao* direcao, enum Estados* estados, struct Player* player, int pressed, struct al_mapa* mapa);
-void andar_para_direita(struct Direcao* direcao, enum Estados* estados, struct Player* player, int pressed, struct al_mapa* mapa);
-void printa_personagem(float x, float y);
-void andar(struct Direcao* direcao, enum Estados* estados, struct Player* player, int pressed, struct al_mapa* mapa);
-void printa_mapa(ALLEGRO_BITMAP* background);
-void meu_mapa(struct al_mapa* mapa);
+void andar_para_cima(struct Player* player, struct al_mapa* mapa);
+void andar_para_baixo(struct Player* player, struct al_mapa* mapa);
+void andar_para_esquerda(struct Player* player, struct al_mapa* mapa);
+void andar_para_direita(struct Player* player, struct al_mapa* mapa);
+void virar_npc(struct Player* player, struct al_mapa* mapa);

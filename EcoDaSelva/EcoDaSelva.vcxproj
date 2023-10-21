@@ -141,6 +141,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ACTION.c" />
     <ClCompile Include="animation.c" />
     <ClCompile Include="desenha_mapa.c" />
     <ClCompile Include="eventos.c" />
@@ -159,13 +160,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ACTION.h" />
     <ClInclude Include="AL_MAPA.h" />
     <ClInclude Include="animation.h" />
     <ClInclude Include="config.h" />
     <ClInclude Include="desenha_mapa.h" />
-    <ClInclude Include="direcao.h" />
-    <ClInclude Include="enum_estados.h" />
-    <ClInclude Include="enum_maps.h" />
     <ClInclude Include="eventos.h" />
     <ClInclude Include="MAPA.h" />
     <ClInclude Include="MAPA_1.h" />
