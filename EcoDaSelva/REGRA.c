@@ -73,6 +73,7 @@ bool npc(struct Player* player, struct al_mapa* mapa) {
 		if (mapa->matriz[player->matriz_position_y][player->matriz_position_x + 1] == 2) {
 			return true;
 		}
+
 		break;
 	}
 

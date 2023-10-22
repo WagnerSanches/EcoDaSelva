@@ -1,4 +1,4 @@
-﻿  AL_MAPA.c
-  MAPA_CENTRO.c
+﻿  animation.c
+  eventos.c
   Generating Code...
   EcoDaSelva.vcxproj -> C:\Users\wagne\OneDrive\Documents\Allegro\Projetos\EcoDaSelva\x64\Debug\EcoDaSelva.exe

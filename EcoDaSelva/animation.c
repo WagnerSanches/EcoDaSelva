@@ -23,6 +23,7 @@ void andar_para_cima(struct Player* player, struct al_mapa* mapa) {
 
 			player->sum_y_pixel = 0;
 			player->image = player->animation[0][0];
+			player->pressing_multiple_key = false;
 
 			return;
 		}
@@ -57,6 +58,7 @@ void andar_para_baixo(struct Player* player, struct al_mapa* mapa) {
 
 		player->image = player->animation[1][0];
 		player->status = PARADO;
+		player->pressing_multiple_key = false;
 
 		return;
 	}
@@ -101,6 +103,7 @@ void andar_para_esquerda(struct Player* player, struct al_mapa* mapa) {
 
 		player->image = player->animation[2][0];
 		player->status = PARADO;
+		player->pressing_multiple_key = false;
 
 		return;
 	}
@@ -151,7 +154,8 @@ void andar_para_direita(struct Player* player, struct al_mapa* mapa) {
 		player->image = player->animation[3][0];
 		player->animation_next_image = 1;
 		player->status = PARADO;
-		
+		player->pressing_multiple_key = false;
+
 		return;
 	} else {
 		player->sum_x_pixel += player->velocidade;

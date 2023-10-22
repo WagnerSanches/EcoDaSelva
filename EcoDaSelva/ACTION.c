@@ -11,6 +11,8 @@ void interagir(struct Player* player, struct al_mapa* mapa) {
 		virar_npc(player, mapa);
 	}
 
+	player->animation_next_image = 0;
+	player->pressing_key = false;
 	player->status = PARADO;
 }
 
