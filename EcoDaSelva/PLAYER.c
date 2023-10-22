@@ -14,7 +14,7 @@ void init_player(struct Player* player) {
 	player->sum_x_pixel = 0;
 	player->sum_y_pixel = 0;
 
-	ALLEGRO_BITMAP* walk = al_load_bitmap("C:\\Users\\wagne\\OneDrive\\Documents\\tiled maps\\walk\\16x16\\Character_007.png");
+	ALLEGRO_BITMAP* walk = al_load_bitmap("assets/personagem/player/Character_007.png");
 
 	player->animation[0][0] = al_create_sub_bitmap(walk, 4, 24 * 3 + 7, 16, 16);
 	player->animation[0][1] = al_create_sub_bitmap(walk, 24 + 4, 24 * 3 + 7, 16, 16);

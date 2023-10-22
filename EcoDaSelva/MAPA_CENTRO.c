@@ -13,7 +13,8 @@ void carregar_mapa_centro(struct al_mapa *mapa) {
 			mapa->matriz[k][j] = 0;
 		}
 	}
-	mapa->background = al_load_bitmap("C:\\Users\\wagne\\OneDrive\\Documents\\tiled maps\\centro.png");
+
+	mapa->background = al_load_bitmap("assets/mapa/centro.png");
 
 	mapa->quantidade_npc = 3;
 

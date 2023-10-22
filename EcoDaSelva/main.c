@@ -20,7 +20,7 @@
 #include <STATUS.h>
 
 int main() {
-
+	
 #pragma region "inicializacao allegro"
 	ALLEGRO_DISPLAY* window = NULL;
 	ALLEGRO_EVENT_QUEUE* events_queue = NULL;
@@ -73,12 +73,14 @@ int main() {
 		return 1;
 	}
 
+
 	struct Player* player = malloc(sizeof(struct Player));
 
 	if (player == NULL) {
 		perror("Falha na alocação de memória");
 		return 1;
 	}
+
 
 	init_player(player);
 	init_mapa(mapa);
@@ -89,7 +91,7 @@ int main() {
 		while (!al_is_event_queue_empty(events_queue)) {
 			ALLEGRO_EVENT event;
 			al_wait_for_event(events_queue, &event);
-
+		
 			switch (event.type) {
 			case ALLEGRO_EVENT_KEY_UP:
 				tecla_levantada(player, event.keyboard.keycode);
