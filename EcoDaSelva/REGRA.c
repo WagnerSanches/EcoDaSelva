@@ -4,71 +4,12 @@
 #include <SENTIDO.h>
 #include <config.h>
 
+enum Objeto {
+	CHAO = 0,
+	ITEM = 1,
+	NPC = 4
+};
 
-bool colediu(struct Player* player, struct al_mapa* mapa) {
-
-	switch (player->direcao) {
-	case PRA_CIMA:
-
-		if (player->matriz_position_y - 1 < 0) {
-			return true;
-		}
-
-		if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x] == 0 || mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x] == 3) {
-			return false;
-		}
-
-		break;
-	case PRA_BAIXO:
-
-		if (player->matriz_position_y + 1 == WINDOW_SIZE_PIXEL_Y) {
-			return true;
-		}
-
-		if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x] == 0 || mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x] == 3) {
-			return false;
-		}
-
-		break;
-	case PRA_ESQUERDA:
-
-		if (player->matriz_position_x == 0 && player->sum_x_pixel == 0) {
-			return true;
-		}
-
-		break;
-	case PRA_DIREITA:
-
-		// colisão com a parede
-		if (player->matriz_position_x == WINDOW_SIZE_PIXEL_X - 1) {
-
-			if (player->sum_x_pixel > 0)
-				player->sum_x_pixel = 0;
-
-			if(player->sum_x_pixel == 0)
-				return true;
-
-		}
-
-	/*	
-
-		if (player->map_position_x == (WINDOW_SIZE_PIXEL_X * PIXEL_SIZE) - PIXEL_SIZE) {
-			return true;
-		}
-
-		if (player->map_position_x + player->velocidade > (WINDOW_SIZE_PIXEL_X * PIXEL_SIZE) - PIXEL_SIZE) {
-			return true;
-		}
-
-		if (mapa->matriz[player->matriz_position_y][player->matriz_position_x + 1] == 0 || mapa->matriz[player->matriz_position_y][player->matriz_position_x + 1] == 3) {
-			return false;
-		}*/
-
-		break;
-	}
-
-	return false;
-}
 
 bool proximo_mapa(struct Player* player, struct al_mapa* mapa) {
 	switch (player->direcao) {
@@ -132,6 +73,165 @@ bool npc(struct Player* player, struct al_mapa* mapa) {
 		if (mapa->matriz[player->matriz_position_y][player->matriz_position_x + 1] == 2) {
 			return true;
 		}
+		break;
+	}
+
+	return false;
+}
+
+bool colediu(struct Player* player, struct al_mapa* mapa) {
+
+	switch (player->direcao) {
+	case PRA_CIMA:
+
+		// colisao com o objetos na frente
+		if (player->sum_x_pixel == 0 && player->sum_y_pixel <= 0) {
+			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x] != CHAO) {
+				return true;
+			}
+		}
+
+		// colisao com o objetos na frente ou em cima dele
+		// X < 0 o player esta mais para a esquerda de um bloco
+		// sum_y_pixel <= 0 se o player passou de um bloco
+		if (player->sum_x_pixel < 0 && player->sum_y_pixel <= 0) {
+			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x] != CHAO) {
+				return true;
+			}
+
+			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x - 1] != CHAO) {
+				return true;
+			}
+		}
+
+		// colisao com o objetos na frente ou em baixo dele
+		if (player->sum_x_pixel > 0 && player->sum_y_pixel <= 0) {
+			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x] != CHAO) {
+				return true;
+			}
+
+			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x + 1] != CHAO) {
+				return true;
+			}
+		}
+
+		// colisão com a parede
+		if (player->matriz_position_y == 0 && player->sum_y_pixel <= 0) {
+			return true;
+		}
+
+		break;
+	case PRA_BAIXO:
+
+		// colisao com o objetos na frente
+		if (player->sum_x_pixel == 0 && player->sum_y_pixel >= 0) {
+			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x] != CHAO) {
+				return true;
+			}
+		}
+
+		// colisao com o objetos na frente ou em cima dele
+		if (player->sum_x_pixel < 0 && player->sum_y_pixel >= 0) {
+			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x] != CHAO) {
+				return true;
+			}
+
+			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x - 1] != CHAO) {
+				return true;
+			}
+		}
+
+		// colisao com o objetos na frente ou em baixo dele
+		if (player->sum_x_pixel > 0 && player->sum_y_pixel >= 0) {
+			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x] != CHAO) {
+				return true;
+			}
+
+			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x + 1] != CHAO) {
+				return true;
+			}
+		}
+
+		// colisão com a parede
+		if (player->matriz_position_y == WINDOW_SIZE_PIXEL_Y - 1 && player->sum_y_pixel >= 0) {
+			return true;
+		}
+
+		break;
+	case PRA_ESQUERDA:
+
+		// colisao com o objetos na frente
+		if (player->sum_y_pixel == 0 && player->sum_x_pixel <= 0) {
+			if (mapa->matriz[player->matriz_position_y][player->matriz_position_x - 1] != CHAO) {
+				return true;
+			}
+		}
+
+		// colisao com o objetos na frente ou em cima dele
+		if (player->sum_y_pixel < 0 && player->sum_x_pixel <= 0) {
+			if (mapa->matriz[player->matriz_position_y][player->matriz_position_x - 1] != CHAO) {
+				return true;
+			}
+
+			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x - 1] != CHAO) {
+				return true;
+			}
+		}
+
+		// colisao com o objetos na frente ou em baixo dele
+		if (player->sum_y_pixel > 0 && player->sum_x_pixel <= 0) {
+			if (mapa->matriz[player->matriz_position_y][player->matriz_position_x - 1] != CHAO) {
+				return true;
+			}
+
+			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x - 1] != CHAO) {
+				return true;
+			}
+		}
+
+		// colisão com a parede
+		if (player->matriz_position_x == 0 && player->sum_x_pixel <= 0) {
+			return true;
+		}
+
+		break;
+	case PRA_DIREITA:
+
+
+		// colisao com o objetos na frente
+		if (player->sum_y_pixel == 0 && player->sum_x_pixel >= 0) {
+			if (mapa->matriz[player->matriz_position_y][player->matriz_position_x + 1] != CHAO) {
+				return true;
+			}
+		}
+
+		// colisao com o objetos na frente ou em cima dele
+		if (player->sum_y_pixel < 0 && player->sum_x_pixel >= 0) {
+			if (mapa->matriz[player->matriz_position_y][player->matriz_position_x + 1] != CHAO) {
+				return true;
+			}
+
+			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x + 1] != CHAO) {
+				return true;
+			}
+		}
+
+		// colisao com o objetos na frente ou em baixo dele
+		if (player->sum_y_pixel > 0 && player->sum_x_pixel >= 0) {
+			if (mapa->matriz[player->matriz_position_y][player->matriz_position_x + 1] != CHAO) {
+				return true;
+			}
+
+			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x + 1] != CHAO) {
+				return true;
+			}
+		}
+
+		// colisão com a parede
+		if (player->matriz_position_x == WINDOW_SIZE_PIXEL_X - 1 && player->sum_x_pixel >= 0) {
+			return true;
+		}
+
 		break;
 	}
 

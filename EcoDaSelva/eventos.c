@@ -52,11 +52,10 @@ void tecla_presionado(struct Player* player, int keycode) {
 		break;
 	case ALLEGRO_KEY_LSHIFT:
 		if (player->status == ANDANDO) {
-
 			player->velocidade = 4;
 			player->status = CORRENDO;
 			player->pressing_multiple_key = true;
-
+		
 		}
 		break;
 	}
