@@ -81,10 +81,10 @@ int main() {
 		return 1;
 	}
 
+#pragma endregion 
 
 	init_player(player);
 	init_mapa(mapa);
-#pragma endregion 
 
 	while (jogando) {
 
