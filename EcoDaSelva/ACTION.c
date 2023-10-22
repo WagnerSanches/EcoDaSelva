@@ -4,6 +4,7 @@
 #include <REGRA.h>
 #include <animation.h>
 
+
 void interagir(struct Player* player, struct al_mapa* mapa) {
 
 	if (npc(player, mapa)) {
@@ -29,3 +30,4 @@ void andar(struct Player* player, struct al_mapa* mapa) {
 		break;
 	}
 }
+

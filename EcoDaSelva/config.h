@@ -1,5 +1,5 @@
-#define PIXEL_SIZE 32.0
+#define PIXEL_SIZE 32
 #define FPS 30.0
-#define WINDOW_SIZE_X 32
-#define WINDOW_SIZE_Y 24
+#define WINDOW_SIZE_PIXEL_X 32
+#define WINDOW_SIZE_PIXEL_Y 24
 #define SPEED 2

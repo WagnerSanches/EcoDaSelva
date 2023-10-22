@@ -4,31 +4,91 @@
 #include <player.h>
 #include <SENTIDO.h>
 
-void botao_presionado(int keycode, struct Player* player) {
-	
+void tecla_presionado(struct Player* player, int keycode) {
+
 	switch (keycode) {
 	case ALLEGRO_KEY_UP:
+
+		if (player->pressing_key) player->pressing_multiple_key = true;
+
 		player->direcao = PRA_CIMA;
 		player->image = player->animation[0][0];
 		player->status = ANDANDO;
+		player->pressing_key = true;
+
 		break;
 	case ALLEGRO_KEY_DOWN:
+
+		if (player->pressing_key) player->pressing_multiple_key = true;
+
 		player->direcao = PRA_BAIXO;
 		player->image = player->animation[1][0];
 		player->status = ANDANDO;
+		player->pressing_key = true;
+
 		break;
 	case ALLEGRO_KEY_LEFT:
+
+		if (player->pressing_key) player->pressing_multiple_key = true;
+
 		player->direcao = PRA_ESQUERDA;
 		player->image = player->animation[2][0];
 		player->status = ANDANDO;
+		player->pressing_key = true;
+
 		break;
 	case ALLEGRO_KEY_RIGHT:
+
+		if (player->pressing_key) player->pressing_multiple_key = true;
+
 		player->direcao = PRA_DIREITA;
 		player->image = player->animation[3][0];
 		player->status = ANDANDO;
+		player->pressing_key = true;
+
 		break;
 	case ALLEGRO_KEY_SPACE:
 		player->status = INTERAGINDO;
+		break;
+	case ALLEGRO_KEY_LSHIFT:
+		if (player->status == ANDANDO) {
+
+			player->velocidade = 4;
+			player->status = CORRENDO;
+			player->pressing_multiple_key = true;
+
+		}
+		break;
+	}
+
+}
+
+void tecla_levantada(struct Player* player, int keycode) {
+
+	switch (keycode) {
+
+	case ALLEGRO_KEY_UP:
+	case ALLEGRO_KEY_DOWN:
+	case ALLEGRO_KEY_LEFT:
+	case ALLEGRO_KEY_RIGHT:
+
+		if (player->status == ANDANDO && player->pressing_multiple_key == false) {
+			player->pressing_key = false;
+		}
+		else {
+			player->pressing_multiple_key = false;
+		}
+
+		if (player->status == CORRENDO) {
+			player->pressing_key = false;
+			player->pressing_multiple_key = false;
+		}
+
+		break;
+	case ALLEGRO_KEY_LSHIFT:
+		player->status = ANDANDO;
+		player->velocidade = 2;
+		player->pressing_multiple_key = false;
 		break;
 	}
 

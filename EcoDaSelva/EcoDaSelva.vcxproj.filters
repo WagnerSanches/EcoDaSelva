@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\enums">
-      <UniqueIdentifier>{67dd82ad-efab-4e6c-88f4-b650d036666a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\mapas">
       <UniqueIdentifier>{798bacd7-62eb-40ba-9880-bcb2c6254b96}</UniqueIdentifier>
     </Filter>
@@ -28,21 +25,12 @@
     <Filter Include="Source Files\jogo">
       <UniqueIdentifier>{3b908f8d-33c6-4adb-a004-0a72683ac861}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\enum">
+      <UniqueIdentifier>{ed687d4c-a637-4dfa-b7ea-d8b06730a05e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="eventos.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="player.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Mapa_item.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="desenha_mapa.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MAPA_CENTRO.c">
@@ -72,42 +60,24 @@
     <ClCompile Include="ACTION.c">
       <Filter>Source Files\jogo</Filter>
     </ClCompile>
+    <ClCompile Include="PLAYER.h">
+      <Filter>Header Files\jogo</Filter>
+    </ClCompile>
+    <ClCompile Include="eventos.c">
+      <Filter>Source Files\jogo</Filter>
+    </ClCompile>
+    <ClCompile Include="PLAYER.c">
+      <Filter>Source Files\jogo</Filter>
+    </ClCompile>
+    <ClCompile Include="AL_MAPA.c">
+      <Filter>Source Files\mapas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="eventos.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mapa_vila.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="resource1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="resource2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="resource3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="resource4.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="config.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Mapa_npc.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="desenha_mapa.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AL_MAPA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MAPA_CENTRO.h">
@@ -117,9 +87,6 @@
       <Filter>Header Files\mapas</Filter>
     </ClInclude>
     <ClInclude Include="REGRA.h">
-      <Filter>Header Files\jogo</Filter>
-    </ClInclude>
-    <ClInclude Include="SENTIDO.h">
       <Filter>Header Files\jogo</Filter>
     </ClInclude>
     <ClInclude Include="MAPA_4.h">
@@ -140,13 +107,20 @@
     <ClInclude Include="ACTION.h">
       <Filter>Header Files\jogo</Filter>
     </ClInclude>
+    <ClInclude Include="AL_MAPA.h">
+      <Filter>Header Files\mapas</Filter>
+    </ClInclude>
+    <ClInclude Include="eventos.h">
+      <Filter>Header Files\jogo</Filter>
+    </ClInclude>
+    <ClInclude Include="SENTIDO.h">
+      <Filter>Header Files\enum</Filter>
+    </ClInclude>
+    <ClInclude Include="STATUS.h">
+      <Filter>Header Files\enum</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="vila.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\..\..\..\tiled maps\mapaTeste.png">
-      <Filter>Source Files</Filter>
-    </Image>
   </ItemGroup>
 </Project>
