@@ -43,4 +43,5 @@ void init_player(struct Player* player) {
 	player->pressing_multiple_key = false;
 
 	player->velocidade = 2;
+
 }

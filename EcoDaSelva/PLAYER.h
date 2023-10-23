@@ -30,4 +30,5 @@ struct Player {
 
 void init_player(struct Player* player);
 
+
 #endif

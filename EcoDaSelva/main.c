@@ -9,7 +9,7 @@
 #include <time.h>
 #include <eventos.h>
 #include <animation.h>
-#include <player.h>
+#include <PLAYER.h>
 #include <config.h>
 #include <string.h>
 #include <AL_MAPA.h>

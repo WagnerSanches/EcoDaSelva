@@ -56,17 +56,14 @@
     <ClCompile Include="ACTION.c">
       <Filter>Source Files\jogo</Filter>
     </ClCompile>
-    <ClCompile Include="PLAYER.h">
-      <Filter>Header Files\jogo</Filter>
-    </ClCompile>
     <ClCompile Include="eventos.c">
-      <Filter>Source Files\jogo</Filter>
-    </ClCompile>
-    <ClCompile Include="PLAYER.c">
       <Filter>Source Files\jogo</Filter>
     </ClCompile>
     <ClCompile Include="AL_MAPA.c">
       <Filter>Source Files\mapas</Filter>
+    </ClCompile>
+    <ClCompile Include="PLAYER.c">
+      <Filter>Source Files\jogo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +111,9 @@
     </ClInclude>
     <ClInclude Include="STATUS.h">
       <Filter>Header Files\enum</Filter>
+    </ClInclude>
+    <ClInclude Include="PLAYER.h">
+      <Filter>Header Files\jogo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
