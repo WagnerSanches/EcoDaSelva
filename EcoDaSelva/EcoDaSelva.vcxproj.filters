@@ -24,6 +24,18 @@
     <Filter Include="Header Files\enum">
       <UniqueIdentifier>{ed687d4c-a637-4dfa-b7ea-d8b06730a05e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\jogo\player">
+      <UniqueIdentifier>{a5880955-7ffa-465f-8a7c-3bf4f83ad684}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\jogo\eventos">
+      <UniqueIdentifier>{24f04f2e-e6a1-4204-bf5f-6a37b66dece8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\jogo\eventos">
+      <UniqueIdentifier>{b7bf0cdd-2533-4b43-ae0e-545dfa4909ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\jogo\player">
+      <UniqueIdentifier>{8e449210-a4ce-4a55-be5b-b1668ad3f5a2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -56,14 +68,26 @@
     <ClCompile Include="ACTION.c">
       <Filter>Source Files\jogo</Filter>
     </ClCompile>
-    <ClCompile Include="eventos.c">
-      <Filter>Source Files\jogo</Filter>
-    </ClCompile>
     <ClCompile Include="AL_MAPA.c">
       <Filter>Source Files\mapas</Filter>
     </ClCompile>
+    <ClCompile Include="eventos.c">
+      <Filter>Source Files\jogo\eventos</Filter>
+    </ClCompile>
+    <ClCompile Include="EVENTO_ANDAR.c">
+      <Filter>Source Files\jogo\eventos</Filter>
+    </ClCompile>
+    <ClCompile Include="EVENTO_FICHARIO.c">
+      <Filter>Source Files\jogo\eventos</Filter>
+    </ClCompile>
+    <ClCompile Include="EVENTO_INTERAGIR.c">
+      <Filter>Source Files\jogo\eventos</Filter>
+    </ClCompile>
     <ClCompile Include="PLAYER.c">
-      <Filter>Source Files\jogo</Filter>
+      <Filter>Source Files\jogo\player</Filter>
+    </ClCompile>
+    <ClCompile Include="FICHARIO.c">
+      <Filter>Source Files\jogo\player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -103,9 +127,6 @@
     <ClInclude Include="AL_MAPA.h">
       <Filter>Header Files\mapas</Filter>
     </ClInclude>
-    <ClInclude Include="eventos.h">
-      <Filter>Header Files\jogo</Filter>
-    </ClInclude>
     <ClInclude Include="SENTIDO.h">
       <Filter>Header Files\enum</Filter>
     </ClInclude>
@@ -113,7 +134,22 @@
       <Filter>Header Files\enum</Filter>
     </ClInclude>
     <ClInclude Include="PLAYER.h">
-      <Filter>Header Files\jogo</Filter>
+      <Filter>Header Files\jogo\player</Filter>
+    </ClInclude>
+    <ClInclude Include="FICHARIO.h">
+      <Filter>Header Files\jogo\player</Filter>
+    </ClInclude>
+    <ClInclude Include="eventos.h">
+      <Filter>Header Files\jogo\eventos</Filter>
+    </ClInclude>
+    <ClInclude Include="EVENTO_ANDAR.h">
+      <Filter>Header Files\jogo\eventos</Filter>
+    </ClInclude>
+    <ClInclude Include="EVENTO_FICHARIO.h">
+      <Filter>Header Files\jogo\eventos</Filter>
+    </ClInclude>
+    <ClInclude Include="EVENTO_INTERAGIR.h">
+      <Filter>Header Files\jogo\eventos</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

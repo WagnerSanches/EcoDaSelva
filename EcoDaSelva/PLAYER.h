@@ -2,6 +2,7 @@
 #define PLAYER_H
 #include <allegro5/allegro5.h>
 #include <STATUS.h>
+#include <FICHARIO.h>
 
 struct Player {
 	int map_position_x;
@@ -26,6 +27,10 @@ struct Player {
 	enum Status status;
 
 	int velocidade;
+
+	int animal_selecionado;
+	bool selecionou_outro;
+
 };
 
 void init_player(struct Player* player);

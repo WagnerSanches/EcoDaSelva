@@ -2,12 +2,8 @@
 #include <AL_MAPA.h>
 
 void carregar_mapa_centro_direita(struct al_mapa* mapa) {
-	for (int k = 0; k < WINDOW_SIZE_PIXEL_Y; k++) {
-		for (int j = 0; j < WINDOW_SIZE_PIXEL_X; j++) {
-			mapa->matriz[k][j] = 0;
-		}
-	}
-	mapa->background = al_load_bitmap("C:\\Users\\wagne\\OneDrive\\Documents\\tiled maps\\direita.png");
+
+	mapa->background = al_load_bitmap("assets/personagem/npc/direita.jpg");
 
 	mapa->quantidade_npc = 0;
 

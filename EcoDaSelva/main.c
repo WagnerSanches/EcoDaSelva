@@ -6,6 +6,7 @@
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/drawing.h>
 #include <allegro5/bitmap_draw.h>
+#include <allegro5/allegro_font.h>
 #include <time.h>
 #include <eventos.h>
 #include <animation.h>
@@ -18,6 +19,7 @@
 #include <stdbool.h>
 #include <ACTION.h>
 #include <STATUS.h>
+#include <FICHARIO.h>
 
 int main() {
 	
@@ -25,7 +27,7 @@ int main() {
 	ALLEGRO_DISPLAY* window = NULL;
 	ALLEGRO_EVENT_QUEUE* events_queue = NULL;
 	bool jogando = true;
-	bool redraw = true;
+	bool redraw = false;
 
 	if (!al_init()) {
 		fprintf(stderr, "Falha");
@@ -35,7 +37,9 @@ int main() {
 	al_init_image_addon();
 	al_init_primitives_addon();
 	al_install_keyboard();
-	al_install_mouse();
+	al_install_mouse();	
+	al_init_font_addon();
+	al_init_ttf_addon();
 
 	window = al_create_display(PIXEL_SIZE * WINDOW_SIZE_PIXEL_X, PIXEL_SIZE * WINDOW_SIZE_PIXEL_Y);
 
@@ -81,10 +85,18 @@ int main() {
 		return 1;
 	}
 
+	struct Fichario* fichario = malloc(sizeof(struct Fichario));
+
+	if (fichario == NULL) {
+		perror("Falha na alocação de memória");
+		return 1;
+	}
+
 #pragma endregion 
 
 	init_player(player);
 	init_mapa(mapa);
+	init_fichario(fichario);
 
 	while (jogando) {
 
@@ -92,6 +104,7 @@ int main() {
 			ALLEGRO_EVENT event;
 			al_wait_for_event(events_queue, &event);
 		
+
 			switch (event.type) {
 			case ALLEGRO_EVENT_KEY_UP:
 				tecla_levantada(player, event.keyboard.keycode);
@@ -111,6 +124,17 @@ int main() {
 				case INTERAGINDO:
 					interagir(player, mapa);
 					break;
+				case ABRIU_FICHARIO:
+					criar_fichario(fichario);
+					player->status = ACESSANDO;
+					break;
+				case ACESSANDO:
+					
+					break;
+				case FECHOU_FICHARIO:
+					destruir_fichario(fichario);
+					player->status = PARADO;
+					break;
 				}
 
 				redraw = true;
@@ -121,7 +145,7 @@ int main() {
 			}
 
 			if (redraw) {
-				desenha_jogo(player, mapa);
+				desenha_jogo(player, mapa, fichario);
 
 				al_flush_event_queue(events_queue);
 				al_flip_display();

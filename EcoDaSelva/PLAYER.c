@@ -1,6 +1,7 @@
 #include <PLAYER.h>
 #include <config.h>
 #include <allegro5/allegro.h>
+#include <string.h>
 
 void init_player(struct Player* player) {
 	player->matriz_position_x = 12;
@@ -37,11 +38,14 @@ void init_player(struct Player* player) {
 	player->animation[3][3] = al_create_sub_bitmap(walk, 4 + (24 * 3), 24 * 2 + 7, 16, 16);
 
 	player->image = player->animation[1][0];
+	player->direcao = 2;
 	player->animation_next_image = 0;
 
 	player->pressing_key = false;
 	player->pressing_multiple_key = false;
 
 	player->velocidade = 2;
+	player->animal_selecionado = 0;
+	player->selecionou_outro = false;
 
 }

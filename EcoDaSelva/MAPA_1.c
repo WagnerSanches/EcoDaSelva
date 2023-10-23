@@ -2,14 +2,9 @@
 #include <AL_MAPA.h>
 
 void carregar_mapa_centro_cima(struct al_mapa* mapa) {
-	for (int k = 0; k < WINDOW_SIZE_PIXEL_Y; k++) {
-		for (int j = 0; j < WINDOW_SIZE_PIXEL_X; j++) {
-			mapa->matriz[k][j] = 0;
-		}
-	}
-	mapa->background = al_load_bitmap("assets/mapa/cima.png");
+	mapa->background = al_load_bitmap("assets/mapa/cima.jpg");
 
-	mapa->matriz[WINDOW_SIZE_PIXEL_Y -1][11] = 3;
+	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 1][11] = 3;
 	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 1][12] = 3;
 	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 1][13] = 3;
 
@@ -28,7 +23,6 @@ void carregar_mapa_centro_cima(struct al_mapa* mapa) {
 	mapa->npc[2].matriz_position_y = 5;
 	mapa->npc[2].matriz_position_x = 11;
 
-
 	for (int i = 0; i < mapa->quantidade_npc; i++) {
 		mapa->matriz[mapa->npc[i].matriz_position_y][mapa->npc[i].matriz_position_x] = 2;
 
@@ -41,6 +35,7 @@ void carregar_mapa_centro_cima(struct al_mapa* mapa) {
 	}
 
 	mapa->next_mapa.pra_baixo = 0;
+	mapa->next_mapa.pra_cima = -1;
 
 	mapa->criado = true;
 }

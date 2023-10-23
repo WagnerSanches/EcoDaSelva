@@ -9,6 +9,7 @@
 #include <REGRA.h>
 #include <MAPA.h>
 #include <SENTIDO.h>
+#include <FICHARIO.h>
 
 void andar_para_cima(struct Player* player, struct al_mapa* mapa) {
 
@@ -188,14 +189,13 @@ void andar_para_direita(struct Player* player, struct al_mapa* mapa) {
 
 			player->sum_x_pixel = 0;
 			player->image = player->animation[3][0];
-
 			return;
 		}
 		
 		if (player->sum_x_pixel == PIXEL_SIZE) {
 
 			player->matriz_position_x++;
-			player->map_position_x += player->sum_x_pixel;
+			player->map_position_x = player->matriz_position_x * PIXEL_SIZE;
 			player->sum_x_pixel = 0;
 
 		}

@@ -5,15 +5,7 @@
 #include <allegro5/allegro.h>
 
 void carregar_mapa_centro(struct al_mapa *mapa) {
-	
 	srand(time(NULL));
-
-	for (int k = 0; k < WINDOW_SIZE_PIXEL_Y; k++) {
-		for (int j = 0; j < WINDOW_SIZE_PIXEL_X; j++) {
-			mapa->matriz[k][j] = 0;
-		}
-	}
-
 	mapa->background = al_load_bitmap("assets/mapa/centro.png");
 	mapa->NPC_IMAGES[0] = al_load_bitmap("assets/personagem/npc/Character_001.png");
 	mapa->NPC_IMAGES[1] = al_load_bitmap("assets/personagem/npc/Character_002.png");

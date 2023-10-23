@@ -14,28 +14,31 @@ bool proximo_mapa(struct Player* player, struct al_mapa* mapa) {
 	switch (player->direcao) {
 	case PRA_CIMA:
 
-		if (mapa->matriz[player->matriz_position_y][player->matriz_position_x] == 3) {
-			return true;
+		if (mapa->next_mapa.pra_cima >= 0) {
+			if (mapa->matriz[player->matriz_position_y][player->matriz_position_x] == CAMINHO) {
+				return true;
+			}
 		}
 
 		break;
 	case PRA_BAIXO:
+		if (mapa->next_mapa.pra_baixo >= 0) {
 
-		if (mapa->matriz[player->matriz_position_y][player->matriz_position_x] == 3) {
-			return true;
+			if (mapa->matriz[player->matriz_position_y][player->matriz_position_x] == CAMINHO) {
+				return true;
+			}
 		}
-
 		break;
 	case PRA_ESQUERDA:
 
-		if (mapa->matriz[player->matriz_position_y][player->matriz_position_x] == 3) {
+		if (mapa->matriz[player->matriz_position_y][player->matriz_position_x] == CAMINHO) {
 			return true;
 		}
 
 		break;
 	case PRA_DIREITA:
 
-		if (mapa->matriz[player->matriz_position_y][player->matriz_position_x] == 3) {
+		if (mapa->matriz[player->matriz_position_y][player->matriz_position_x] == CAMINHO) {
 			return true;
 		}
 		break;
@@ -47,7 +50,6 @@ bool proximo_mapa(struct Player* player, struct al_mapa* mapa) {
 bool npc(struct Player* player, struct al_mapa* mapa) {
 	switch (player->direcao) {
 	case PRA_CIMA:
-
 
 		if (player->sum_x_pixel < -16) {
 
@@ -70,6 +72,9 @@ bool npc(struct Player* player, struct al_mapa* mapa) {
 		}
 
 		if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x] == 2) {
+			mapa->npc_interacao.matriz_position_y = player->matriz_position_y - 1;
+			mapa->npc_interacao.matriz_position_x = player->matriz_position_x;
+
 			return true;
 		}
 
@@ -97,6 +102,8 @@ bool npc(struct Player* player, struct al_mapa* mapa) {
 		}
 
 		if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x] == 2) {
+			mapa->npc_interacao.matriz_position_y = player->matriz_position_y + 1;
+			mapa->npc_interacao.matriz_position_x = player->matriz_position_x; 
 			return true;
 		}
 
@@ -124,6 +131,9 @@ bool npc(struct Player* player, struct al_mapa* mapa) {
 		}
 
 		if (mapa->matriz[player->matriz_position_y][player->matriz_position_x - 1] == 2) {
+			mapa->npc_interacao.matriz_position_y = player->matriz_position_y;
+			mapa->npc_interacao.matriz_position_x = player->matriz_position_x - 1;
+
 			return true;
 		}
 
@@ -151,6 +161,10 @@ bool npc(struct Player* player, struct al_mapa* mapa) {
 		}
 
 		if (mapa->matriz[player->matriz_position_y][player->matriz_position_x + 1] == 2) {
+
+			mapa->npc_interacao.matriz_position_y = player->matriz_position_y;
+			mapa->npc_interacao.matriz_position_x = player->matriz_position_x + 1;
+
 			return true;
 		}
 
@@ -165,10 +179,6 @@ bool colediu(struct Player* player, struct al_mapa* mapa) {
 	switch (player->direcao) {
 	case PRA_CIMA:
 
-		// colisão com o inicio do mapa
-		if (player->matriz_position_y == 0 && player->sum_y_pixel <= 0) {
-			return true;
-		}
 
 		// colisao com o objetos na frente
 		if (player->sum_x_pixel == 0 && player->sum_y_pixel <= 0) {
@@ -184,6 +194,10 @@ bool colediu(struct Player* player, struct al_mapa* mapa) {
 		if (player->sum_x_pixel < 0 && player->sum_y_pixel <= 0) {
 			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x] != CHAO && 
 				mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x] != CAMINHO) {
+
+				printf("My = %d\n", mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x]);
+				printf("Py = %d\n", player->matriz_position_y);
+				printf("Nao entro aqui\n");
 				return true;
 			}
 
@@ -204,6 +218,11 @@ bool colediu(struct Player* player, struct al_mapa* mapa) {
 				mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x + 1] != CAMINHO) {
 				return true;
 			}
+		}
+
+		// colisão com o inicio do mapa
+		if (player->matriz_position_y == 0 && player->sum_y_pixel <= 0) {
+			return true;
 		}
 
 		break;
