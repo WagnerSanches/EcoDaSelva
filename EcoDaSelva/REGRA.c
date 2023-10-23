@@ -49,12 +49,53 @@ bool npc(struct Player* player, struct al_mapa* mapa) {
 	switch (player->direcao) {
 	case PRA_CIMA:
 
+
+		if (player->sum_x_pixel < -16) {
+
+			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x - 1] == 2) {
+				mapa->npc_interacao.matriz_position_y = player->matriz_position_y - 1;
+				mapa->npc_interacao.matriz_position_x = player->matriz_position_x - 1;
+
+				return true;
+			}
+		}
+
+		if (player->sum_x_pixel > 16) {
+
+			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x + 1] == 2) {
+				mapa->npc_interacao.matriz_position_y = player->matriz_position_y - 1;
+				mapa->npc_interacao.matriz_position_x = player->matriz_position_x + 1;
+
+				return true;
+			}
+		}
+
 		if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x] == 2) {
 			return true;
 		}
 
 		break;
 	case PRA_BAIXO:
+
+		if (player->sum_x_pixel < -16) {
+
+			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x - 1] == 2) {
+				mapa->npc_interacao.matriz_position_y = player->matriz_position_y + 1;
+				mapa->npc_interacao.matriz_position_x = player->matriz_position_x - 1;
+
+				return true;
+			}
+		}
+
+		if (player->sum_x_pixel > 16) {
+
+			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x + 1] == 2) {
+				mapa->npc_interacao.matriz_position_y = player->matriz_position_y + 1;
+				mapa->npc_interacao.matriz_position_x = player->matriz_position_x + 1;
+
+				return true;
+			}
+		}
 
 		if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x] == 2) {
 			return true;
@@ -63,12 +104,52 @@ bool npc(struct Player* player, struct al_mapa* mapa) {
 		break;
 	case PRA_ESQUERDA:
 
+		if (player->sum_y_pixel < -16) {
+
+			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x - 1] == 2) {
+				mapa->npc_interacao.matriz_position_y = player->matriz_position_y - 1;
+				mapa->npc_interacao.matriz_position_x = player->matriz_position_x - 1;
+
+				return true;
+			}
+		}
+
+		if (player->sum_y_pixel > 16) {
+
+			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x - 1] == 2) {
+				mapa->npc_interacao.matriz_position_y = player->matriz_position_y + 1;
+				mapa->npc_interacao.matriz_position_x = player->matriz_position_x - 1;
+
+				return true;
+			}
+		}
+
 		if (mapa->matriz[player->matriz_position_y][player->matriz_position_x - 1] == 2) {
 			return true;
 		}
 
 		break;
 	case PRA_DIREITA:
+
+		if (player->sum_y_pixel < -16) {
+
+			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x + 1] == 2) {
+				mapa->npc_interacao.matriz_position_y = player->matriz_position_y - 1;
+				mapa->npc_interacao.matriz_position_x = player->matriz_position_x + 1;
+
+				return true;
+			}
+		}
+
+		if (player->sum_y_pixel > 16) {
+
+			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x + 1] == 2) {
+				mapa->npc_interacao.matriz_position_y = player->matriz_position_y + 1;
+				mapa->npc_interacao.matriz_position_x = player->matriz_position_x + 1;
+
+				return true;
+			}
+		}
 
 		if (mapa->matriz[player->matriz_position_y][player->matriz_position_x + 1] == 2) {
 			return true;

@@ -8,6 +8,7 @@
 void interagir(struct Player* player, struct al_mapa* mapa) {
 
 	if (npc(player, mapa)) {
+		
 		virar_npc(player, mapa);
 	}
 

@@ -12,6 +12,11 @@ struct NPC {
 	ALLEGRO_BITMAP* image[4];
 };
 
+struct NPC_INTERACAO {
+	int matriz_position_x;
+	int matriz_position_y;
+};
+
 struct al_next_mapa {
 	int pra_cima;
 	int pra_baixo;
@@ -44,6 +49,8 @@ struct al_mapa {
 
 	int quantidade_item;
 	int quantidade_npc;
+
+	struct NPC_INTERACAO npc_interacao;
 
 }; 
 

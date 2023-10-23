@@ -23,7 +23,6 @@ void andar_para_cima(struct Player* player, struct al_mapa* mapa) {
 
 			player->sum_y_pixel = 0;
 			player->image = player->animation[0][0];
-			player->pressing_multiple_key = false;
 
 			return;
 		}
@@ -207,24 +206,26 @@ int encontrar_npc(struct al_mapa* mapa, int x, int y) {
 	return -1;
 }
 
+
+// uso o -1 por que o array de imagens dos npcs vao de 0 a 3 enquanto as direcoes estao programas para irem de 1 a 4
 void virar_npc(struct Player* player, struct al_mapa* mapa) {
 
 	int npc_position = 0;
 	switch (player->direcao) {
 	case PRA_CIMA:
-		npc_position = encontrar_npc(mapa, player->matriz_position_x, player->matriz_position_y - 1);
+		npc_position = encontrar_npc(mapa, mapa->npc_interacao.matriz_position_x, mapa->npc_interacao.matriz_position_y);
 		mapa->npc[npc_position].direcao = PRA_BAIXO - 1;
 		break;
 	case PRA_BAIXO:
-		npc_position = encontrar_npc(mapa, player->matriz_position_x, player->matriz_position_y + 1);
+		npc_position = encontrar_npc(mapa, mapa->npc_interacao.matriz_position_x, mapa->npc_interacao.matriz_position_y);
 		mapa->npc[npc_position].direcao = PRA_CIMA - 1;
 		break;
 	case PRA_ESQUERDA:
-		npc_position = encontrar_npc(mapa, player->matriz_position_x - 1, player->matriz_position_y);
+		npc_position = encontrar_npc(mapa, mapa->npc_interacao.matriz_position_x, mapa->npc_interacao.matriz_position_y);
 		mapa->npc[npc_position].direcao = PRA_DIREITA - 1;
 		break;
 	case PRA_DIREITA:
-		npc_position = encontrar_npc(mapa, player->matriz_position_x + 1, player->matriz_position_y);
+		npc_position = encontrar_npc(mapa, mapa->npc_interacao.matriz_position_x, mapa->npc_interacao.matriz_position_y);
 		mapa->npc[npc_position].direcao = PRA_ESQUERDA - 1;
 		break;
 	}

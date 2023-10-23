@@ -13,5 +13,8 @@ void init_mapa(struct al_mapa* mapa) {
 
 	mapa->ITEM_IMAGES[0] = al_load_bitmap("assets/objeto/arvore/Tree2.png");
 
+	mapa->npc_interacao.matriz_position_x = 0;
+	mapa->npc_interacao.matriz_position_y = 0;
+
 	carregar_mapa(mapa, 0);
 }
