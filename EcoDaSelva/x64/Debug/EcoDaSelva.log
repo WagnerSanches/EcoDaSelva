@@ -1,15 +1,10 @@
 ﻿  ACTION.c
-  AL_MAPA.c
   animation.c
   eventos.c
   main.c
   MAPA.c
-  MAPA_1.c
-  MAPA_2.c
-  MAPA_3.c
-  MAPA_4.c
-  MAPA_CENTRO.c
   PLAYER.c
   REGRA.c
   Generating Code...
+  LINK : C:\Users\wagne\OneDrive\Documents\Allegro\Projetos\EcoDaSelva\x64\Debug\EcoDaSelva.exe not found or not built by the last incremental link; performing full link
   EcoDaSelva.vcxproj -> C:\Users\wagne\OneDrive\Documents\Allegro\Projetos\EcoDaSelva\x64\Debug\EcoDaSelva.exe
