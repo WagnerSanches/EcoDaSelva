@@ -153,7 +153,6 @@
     <ClCompile Include="MAPA_4.c" />
     <ClCompile Include="MAPA_CENTRO.c" />
     <ClCompile Include="PLAYER.c" />
-    <ClCompile Include="PLAYER.h" />
     <ClCompile Include="REGRA.c" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +170,7 @@
     <ClInclude Include="MAPA_3.h" />
     <ClInclude Include="MAPA_4.h" />
     <ClInclude Include="MAPA_CENTRO.h" />
+    <ClInclude Include="PLAYER.h" />
     <ClInclude Include="REGRA.h" />
     <ClInclude Include="SENTIDO.h" />
     <ClInclude Include="STATUS.h" />
