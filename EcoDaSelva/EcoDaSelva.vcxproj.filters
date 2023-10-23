@@ -145,10 +145,13 @@
     <ClInclude Include="EVENTO_ANDAR.h">
       <Filter>Header Files\jogo\eventos</Filter>
     </ClInclude>
-    <ClInclude Include="EVENTO_FICHARIO.h">
+    <ClInclude Include="EVENTO_INTERAGIR.h">
       <Filter>Header Files\jogo\eventos</Filter>
     </ClInclude>
-    <ClInclude Include="EVENTO_INTERAGIR.h">
+    <ClInclude Include="FICHARIO_STATUS.h">
+      <Filter>Header Files\enum</Filter>
+    </ClInclude>
+    <ClInclude Include="EVENTO_FICHARIO.h">
       <Filter>Header Files\jogo\eventos</Filter>
     </ClInclude>
   </ItemGroup>

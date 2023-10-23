@@ -2,6 +2,7 @@
 #define FICHARIO_H
 #include <config.h>
 #include <allegro5/allegro5.h>
+#include <FICHARIO_STATUS.h>
 
 struct Animal {
 	char* nome;
@@ -15,6 +16,8 @@ struct Fichario {
 	struct ALLEGRO_FONT* descricao18;
 
 	int animal_selecionado;
+
+	enum Fichario_status status;
 };
 
 void init_fichario(struct Fichario* fichario);

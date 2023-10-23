@@ -6,14 +6,14 @@
 #include <EVENTO_ANDAR.h>
 #include <EVENTO_FICHARIO.h>
 
-void tecla_presionado(struct Player* player, int keycode) {
+void tecla_presionado(struct Player* player, struct al_mapa* mapa, struct Fichario* fichario, int keycode) {
 
 	switch (keycode) {
 	case ALLEGRO_KEY_UP:
 	case ALLEGRO_KEY_W:
 
-		if (player->status == ACESSANDO) {
-			evento_fichario_key_precionada(player, keycode);
+		if (player->status == FICHARIO) {
+			evento_fichario_key_precionada(player, fichario, keycode);
 		}
 		else {
 			evento_andar_key_precionada(player, keycode);
@@ -23,8 +23,8 @@ void tecla_presionado(struct Player* player, int keycode) {
 	case ALLEGRO_KEY_DOWN:
 	case ALLEGRO_KEY_S:
 
-		if (player->status == ACESSANDO) {
-			evento_fichario_key_precionada(player, keycode);
+		if (player->status == FICHARIO) {
+			evento_fichario_key_precionada(player, fichario, keycode);
 		}
 		else {
 			evento_andar_key_precionada(player, keycode);
@@ -34,8 +34,8 @@ void tecla_presionado(struct Player* player, int keycode) {
 	case ALLEGRO_KEY_LEFT:
 	case ALLEGRO_KEY_A:
 
-		if (player->status == ACESSANDO) {
-			evento_fichario_key_precionada(player, keycode);
+		if (player->status == FICHARIO) {
+			evento_fichario_key_precionada(player, fichario, keycode);
 		}
 		else {
 			evento_andar_key_precionada(player, keycode);
@@ -45,8 +45,8 @@ void tecla_presionado(struct Player* player, int keycode) {
 	case ALLEGRO_KEY_RIGHT:
 	case ALLEGRO_KEY_D:
 
-		if (player->status == ACESSANDO) {
-			evento_fichario_key_precionada(player, keycode);
+		if (player->status == FICHARIO) {
+			evento_fichario_key_precionada(player, fichario, keycode);
 		}
 		else {
 			evento_andar_key_precionada(player, keycode);
@@ -54,8 +54,8 @@ void tecla_presionado(struct Player* player, int keycode) {
 
 		break;
 	case ALLEGRO_KEY_LSHIFT:
-		if (player->status == ACESSANDO) {
-			evento_fichario_key_precionada(player, keycode);
+		if (player->status == FICHARIO) {
+			evento_fichario_key_precionada(player, fichario, keycode);
 
 		}
 		else {
@@ -68,13 +68,13 @@ void tecla_presionado(struct Player* player, int keycode) {
 		player->animation_next_image = 1;
 		break;
 	case ALLEGRO_KEY_ENTER:
-		evento_fichario_key_precionada(player, keycode);
+		evento_fichario_key_precionada(player, fichario, keycode);
 		break;
 	}
 
 }
 
-void tecla_levantada(struct Player* player, int keycode) {
+void tecla_levantada(struct Player* player, struct al_mapa* mapa, struct Fichario* fichario, int keycode) {
 
 	switch (keycode) {
 
@@ -87,14 +87,14 @@ void tecla_levantada(struct Player* player, int keycode) {
 	case ALLEGRO_KEY_A:
 	case ALLEGRO_KEY_D:
 
-		if (player->status != ACESSANDO) {
+		if (player->status != FICHARIO) {
 			evento_andar_key_levantada(player, keycode);
 		}
 
 		break;
 	case ALLEGRO_KEY_LSHIFT:
 		
-		if (player->status != ACESSANDO) {
+		if (player->status != FICHARIO) {
 			evento_andar_key_levantada(player, keycode);
 		}
 

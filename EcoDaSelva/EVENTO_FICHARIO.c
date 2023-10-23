@@ -2,8 +2,10 @@
 #include <PLAYER.h>
 #include <allegro5/allegro5.h>
 #include <allegro5/allegro_font.h>
+#include "EVENTO_FICHARIO.h"
 
-void evento_fichario_key_precionada(struct Player* player, int keycode) {
+
+void evento_fichario_key_precionada(struct Player* player, struct Fichario* fichario, int keycode) {
 	switch (keycode) {
 	case ALLEGRO_KEY_UP:
 	case ALLEGRO_KEY_W:
@@ -17,16 +19,20 @@ void evento_fichario_key_precionada(struct Player* player, int keycode) {
 	case ALLEGRO_KEY_LEFT:
 	case ALLEGRO_KEY_A:
 
-		if (player->animal_selecionado > 0) {
-			player->animal_selecionado--;
+		player->animal_selecionado--;
+
+		if (player->animal_selecionado <= -1) {
+			player->animal_selecionado = 2;
 		}
 
 		break;
 	case ALLEGRO_KEY_RIGHT:
 	case ALLEGRO_KEY_D:
 
-		if (player->animal_selecionado < NUMBER_OF_ANIMALS - 1) {
-			player->animal_selecionado++;
+		player->animal_selecionado++;
+
+		if (player->animal_selecionado >= NUMBER_OF_ANIMALS) {
+			player->animal_selecionado = 0;
 		}
 
 		break;
@@ -37,22 +43,26 @@ void evento_fichario_key_precionada(struct Player* player, int keycode) {
 		break;
 	case ALLEGRO_KEY_ENTER:
 
-		if (player->status == ACESSANDO) {
-			player->status = FECHOU_FICHARIO;
-		}
-		else {
-			player->status = ABRIU_FICHARIO;
+		switch (fichario->status) {
+		case FICHARIO_FECHADO:
+			fichario->status = ABRIR_FICHARIO;
+
+			player->status = FICHARIO;
 			player->animation_next_image = 0;
 			player->pressing_key = false;
 			player->pressing_multiple_key = false;
 			player->image = player->animation[player->direcao - 1][0];
 
+			break;
+		case FICHARIO_ABERTO:
+			fichario->status = FECHAR_FICHARIO;
 		}
 
 		break;
 	}
 }
-void evento_fichario_key_levantada(struct Player* player, int keycode) {
+
+void evento_fichario_key_levantada(struct Player* player, struct Fichario* fichario, int keycode) {
 
 	switch (keycode) {
 	case ALLEGRO_KEY_UP:

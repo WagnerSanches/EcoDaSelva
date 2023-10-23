@@ -77,7 +77,6 @@ int main() {
 		return 1;
 	}
 
-
 	struct Player* player = malloc(sizeof(struct Player));
 
 	if (player == NULL) {
@@ -103,14 +102,13 @@ int main() {
 		while (!al_is_event_queue_empty(events_queue)) {
 			ALLEGRO_EVENT event;
 			al_wait_for_event(events_queue, &event);
-		
 
 			switch (event.type) {
 			case ALLEGRO_EVENT_KEY_UP:
-				tecla_levantada(player, event.keyboard.keycode);
+				tecla_levantada(player, mapa, fichario, event.keyboard.keycode);
 				break;
 			case ALLEGRO_EVENT_KEY_DOWN:
-				tecla_presionado(player, event.keyboard.keycode);
+				tecla_presionado(player, mapa, fichario, event.keyboard.keycode);
 				break;
 			case ALLEGRO_EVENT_TIMER:
 
@@ -124,16 +122,8 @@ int main() {
 				case INTERAGINDO:
 					interagir(player, mapa);
 					break;
-				case ABRIU_FICHARIO:
-					criar_fichario(fichario);
-					player->status = ACESSANDO;
-					break;
-				case ACESSANDO:
-					
-					break;
-				case FECHOU_FICHARIO:
-					destruir_fichario(fichario);
-					player->status = PARADO;
+				case FICHARIO:
+					acessar(player, fichario);
 					break;
 				}
 

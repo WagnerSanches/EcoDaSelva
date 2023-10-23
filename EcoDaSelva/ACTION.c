@@ -42,6 +42,24 @@ void andar(struct Player* player, struct al_mapa* mapa) {
 	}
 }
 
-void accessar(struct Player* player, struct Fichario* fichario) {
-	criar_fichario(fichario);
+void acessar(struct Player* player, struct Fichario* fichario) {
+
+	switch (fichario->status) {
+	case ABRIR_FICHARIO:
+		criar_fichario(fichario);
+		break;
+	case FECHAR_FICHARIO:
+		printf("Aqui\n");
+
+		destruir_fichario(fichario);
+		player->status = PARADO;
+
+
+		fichario->status = FICHARIO_FECHADO;
+		break;
+	case FICHARIO_ABERTO:
+
+		break;
+	}
+
 }

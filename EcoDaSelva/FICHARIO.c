@@ -1,9 +1,10 @@
 #include <FICHARIO.h>
 #include <allegro5/allegro5.h>
 #include <allegro5/allegro_font.h>
+#include <FICHARIO_STATUS.h>
 
 void init_fichario(struct Fichario* fichario) {
-	
+	fichario->status = FICHARIO_FECHADO;
 }
 
 void criar_fichario(struct Fichario* fichario) {
@@ -26,6 +27,7 @@ void criar_fichario(struct Fichario* fichario) {
 	fichario->descricao18 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 18, 0);
 	fichario->animal_selecionado = 0;
 
+	fichario->status = FICHARIO_ABERTO;
 }
 
 void destruir_fichario(struct Fichario* fichario) {

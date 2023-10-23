@@ -156,7 +156,7 @@ void desenha_jogo(struct Player* player, struct al_mapa* mapa, struct Fichario* 
 		desenha_npc(mapa, layer);
 	}
 
-	if (player->status == ACESSANDO ) {
+	if (player->status == FICHARIO ) {
 		desenha_fichario(player, fichario);
 	}
 }

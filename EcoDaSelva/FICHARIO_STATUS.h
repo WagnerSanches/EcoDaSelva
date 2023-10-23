@@ -1,0 +1,11 @@
+#ifndef FICHARIO_STATUS_H
+#define FICHARIO_STATUS_H
+
+enum Fichario_status {
+	ABRIR_FICHARIO = 1,
+	FECHAR_FICHARIO = 2,
+	FICHARIO_ABERTO = 3,
+	FICHARIO_FECHADO = 4
+};
+
+#endif

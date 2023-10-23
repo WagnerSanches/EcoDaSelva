@@ -9,6 +9,6 @@ enum Status {
 	
 	ABRIU_FICHARIO = 4,
 	FECHOU_FICHARIO = 5,
-	ACESSANDO = 6
+	FICHARIO = 6
 };
 #endif

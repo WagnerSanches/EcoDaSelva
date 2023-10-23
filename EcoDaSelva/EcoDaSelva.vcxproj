@@ -172,6 +172,7 @@
     <ClInclude Include="EVENTO_FICHARIO.h" />
     <ClInclude Include="EVENTO_INTERAGIR.h" />
     <ClInclude Include="FICHARIO.h" />
+    <ClInclude Include="FICHARIO_STATUS.h" />
     <ClInclude Include="MAPA.h" />
     <ClInclude Include="MAPA_1.h" />
     <ClInclude Include="MAPA_2.h" />
