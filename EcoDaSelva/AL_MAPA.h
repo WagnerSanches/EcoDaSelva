@@ -37,6 +37,8 @@ struct Item {
 };
 
 struct al_mapa {
+	bool criado;
+
 	int matriz[WINDOW_SIZE_PIXEL_Y][WINDOW_SIZE_PIXEL_X];
 	ALLEGRO_BITMAP* background;
 	struct al_next_mapa next_mapa;

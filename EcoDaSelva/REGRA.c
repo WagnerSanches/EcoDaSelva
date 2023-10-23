@@ -6,8 +6,7 @@
 
 enum Objeto {
 	CHAO = 0,
-	ITEM = 1,
-	NPC = 4
+	CAMINHO = 3
 };
 
 
@@ -173,7 +172,8 @@ bool colediu(struct Player* player, struct al_mapa* mapa) {
 
 		// colisao com o objetos na frente
 		if (player->sum_x_pixel == 0 && player->sum_y_pixel <= 0) {
-			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x] != CHAO) {
+			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x] != CHAO &&
+				mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x] != CAMINHO) {
 				return true;
 			}
 		}
@@ -182,22 +182,26 @@ bool colediu(struct Player* player, struct al_mapa* mapa) {
 		// X < 0 o player esta mais para a esquerda de um bloco
 		// sum_y_pixel <= 0 se o player passou de um bloco
 		if (player->sum_x_pixel < 0 && player->sum_y_pixel <= 0) {
-			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x] != CHAO) {
+			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x] != CHAO && 
+				mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x] != CAMINHO) {
 				return true;
 			}
 
-			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x - 1] != CHAO) {
+			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x - 1] != CHAO &&
+				mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x - 1] != CAMINHO) {
 				return true;
 			}
 		}
 
 		// colisao com o objetos na frente ou em baixo dele
 		if (player->sum_x_pixel > 0 && player->sum_y_pixel <= 0) {
-			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x] != CHAO) {
+			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x] != CHAO && 
+				mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x] != CAMINHO) {
 				return true;
 			}
 
-			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x + 1] != CHAO) {
+			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x + 1] != CHAO &&
+				mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x + 1] != CAMINHO) {
 				return true;
 			}
 		}
@@ -212,29 +216,34 @@ bool colediu(struct Player* player, struct al_mapa* mapa) {
 
 		// colisao com o objetos na frente
 		if (player->sum_x_pixel == 0 && player->sum_y_pixel >= 0) {
-			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x] != CHAO) {
+			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x] != CHAO && 
+				mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x] != CAMINHO) {
 				return true;
 			}
 		}
 
 		// colisao com o objetos na frente ou em cima dele
 		if (player->sum_x_pixel < 0 && player->sum_y_pixel >= 0) {
-			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x] != CHAO) {
+			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x] != CHAO &&
+				mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x] != CAMINHO) {
 				return true;
 			}
 
-			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x - 1] != CHAO) {
+			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x - 1] != CHAO &&
+				mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x - 1] != CAMINHO) {
 				return true;
 			}
 		}
 
 		// colisao com o objetos na frente ou em baixo dele
 		if (player->sum_x_pixel > 0 && player->sum_y_pixel >= 0) {
-			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x] != CHAO) {
+			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x] != CHAO &&
+				mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x] != CAMINHO) {
 				return true;
 			}
 
-			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x + 1] != CHAO) {
+			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x + 1] != CHAO &&
+				mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x + 1] != CAMINHO) {
 				return true;
 			}
 		}
@@ -249,29 +258,34 @@ bool colediu(struct Player* player, struct al_mapa* mapa) {
 
 		// colisao com o objetos na frente
 		if (player->sum_y_pixel == 0 && player->sum_x_pixel <= 0) {
-			if (mapa->matriz[player->matriz_position_y][player->matriz_position_x - 1] != CHAO) {
+			if (mapa->matriz[player->matriz_position_y][player->matriz_position_x - 1] != CHAO &&
+				mapa->matriz[player->matriz_position_y][player->matriz_position_x - 1] != CAMINHO) {
 				return true;
 			}
 		}
 
 		// colisao com o objetos na frente ou em cima dele
 		if (player->sum_y_pixel < 0 && player->sum_x_pixel <= 0) {
-			if (mapa->matriz[player->matriz_position_y][player->matriz_position_x - 1] != CHAO) {
+			if (mapa->matriz[player->matriz_position_y][player->matriz_position_x - 1] != CHAO &&
+				mapa->matriz[player->matriz_position_y][player->matriz_position_x - 1] != CAMINHO) {
 				return true;
 			}
 
-			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x - 1] != CHAO) {
+			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x - 1] != CHAO &&
+				mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x - 1] != CAMINHO) {
 				return true;
 			}
 		}
 
 		// colisao com o objetos na frente ou em baixo dele
 		if (player->sum_y_pixel > 0 && player->sum_x_pixel <= 0) {
-			if (mapa->matriz[player->matriz_position_y][player->matriz_position_x - 1] != CHAO) {
+			if (mapa->matriz[player->matriz_position_y][player->matriz_position_x - 1] != CHAO &&
+				mapa->matriz[player->matriz_position_y][player->matriz_position_x - 1] != CAMINHO) {
 				return true;
 			}
 
-			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x - 1] != CHAO) {
+			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x - 1] != CHAO &&
+				mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x - 1] != CAMINHO) {
 				return true;
 			}
 		}
@@ -286,29 +300,34 @@ bool colediu(struct Player* player, struct al_mapa* mapa) {
 
 		// colisao com o objetos na frente
 		if (player->sum_y_pixel == 0 && player->sum_x_pixel >= 0) {
-			if (mapa->matriz[player->matriz_position_y][player->matriz_position_x + 1] != CHAO) {
+			if (mapa->matriz[player->matriz_position_y][player->matriz_position_x + 1] != CHAO && 
+				mapa->matriz[player->matriz_position_y][player->matriz_position_x + 1] != CAMINHO) {
 				return true;
 			}
 		}
 
 		// colisao com o objetos na frente ou em cima dele
 		if (player->sum_y_pixel < 0 && player->sum_x_pixel >= 0) {
-			if (mapa->matriz[player->matriz_position_y][player->matriz_position_x + 1] != CHAO) {
+			if (mapa->matriz[player->matriz_position_y][player->matriz_position_x + 1] != CHAO &&
+				mapa->matriz[player->matriz_position_y][player->matriz_position_x + 1] != CAMINHO) {
 				return true;
 			}
 
-			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x + 1] != CHAO) {
+			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x + 1] != CHAO &&
+				mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x + 1] != CAMINHO) {
 				return true;
 			}
 		}
 
 		// colisao com o objetos na frente ou em baixo dele
 		if (player->sum_y_pixel > 0 && player->sum_x_pixel >= 0) {
-			if (mapa->matriz[player->matriz_position_y][player->matriz_position_x + 1] != CHAO) {
+			if (mapa->matriz[player->matriz_position_y][player->matriz_position_x + 1] != CHAO &&
+				mapa->matriz[player->matriz_position_y][player->matriz_position_x + 1] != CAMINHO) {
 				return true;
 			}
 
-			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x + 1] != CHAO) {
+			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x + 1] != CHAO && 
+				mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x + 1] != CAMINHO) {
 				return true;
 			}
 		}

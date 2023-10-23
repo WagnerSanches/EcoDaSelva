@@ -12,7 +12,41 @@
 #include <MAPA_4.h>
 #include <player.h>
 
+void excluir_mapa(struct al_mapa* mapa) {
+	if(mapa->criado) {
+
+		al_destroy_bitmap(mapa->background);
+
+		for (int i = 0; i < mapa->quantidade_npc; i++) {
+			al_destroy_bitmap(mapa->NPC_IMAGES[i]);
+
+			al_destroy_bitmap(mapa->npc[i].image[0]);
+			al_destroy_bitmap(mapa->npc[i].image[1]);
+			al_destroy_bitmap(mapa->npc[i].image[2]);
+			al_destroy_bitmap(mapa->npc[i].image[3]);
+
+		}
+
+		// excluir os items
+		for (int i = 0; i < mapa->quantidade_item; i++) {
+
+		}
+
+		free(mapa);
+		
+		mapa = malloc(sizeof(struct al_mapa));
+
+		if (mapa == NULL) {
+			printf("Erro ao tentar\n");
+			return 1;
+		}
+	}
+}
+
 void carregar_mapa(struct al_mapa* mapa, int next_mapa) {
+
+	excluir_mapa(mapa);
+
 	switch (next_mapa) {
 	case 0:
 		carregar_mapa_centro(mapa);
