@@ -6,8 +6,8 @@
 #include <allegro5/allegro.h>
 
 struct NPC {
-	int x;
-	int y;
+	int matriz_position_x;
+	int matriz_position_y;
 	int direcao;
 	ALLEGRO_BITMAP* image[4];
 };
@@ -19,13 +19,34 @@ struct al_next_mapa {
 	int pra_direita;
 };
 
+struct Item {
+	int map_position_x;
+	int map_position_y;
+
+	int matriz_position_x;
+	int matriz_position_y;
+
+	int pixel_size_image;
+
+	ALLEGRO_BITMAP* image;
+};
+
 struct al_mapa {
-	int matriz[WINDOW_SIZE_Y][WINDOW_SIZE_X];
+	int matriz[WINDOW_SIZE_PIXEL_Y][WINDOW_SIZE_PIXEL_X];
 	ALLEGRO_BITMAP* background;
-	int quantidade_npc;
+	struct al_next_mapa next_mapa;
+
 	struct NPC npc[5];
 	ALLEGRO_BITMAP* NPC_IMAGES[7];
-	struct al_next_mapa next_mapa;
+
+	struct Item* items[20];
+	ALLEGRO_BITMAP* ITEM_IMAGES[10];
+
+	int quantidade_item;
+	int quantidade_npc;
+
 }; 
+
+void init_mapa(struct al_mapa* mapa);
 
 #endif // DIRECAO_H

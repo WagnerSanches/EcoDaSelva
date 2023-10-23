@@ -2,6 +2,7 @@
 #define EVENTOS_H
 #include <player.h>
 
-void botao_presionado(int keycode, struct Player *player);
+void tecla_presionado(struct Player* player, int keycode);
+void tecla_levantada(struct Player* player, int keycode);
 
 #endif

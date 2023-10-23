@@ -4,12 +4,15 @@
 #include <REGRA.h>
 #include <animation.h>
 
+
 void interagir(struct Player* player, struct al_mapa* mapa) {
 
 	if (npc(player, mapa)) {
 		virar_npc(player, mapa);
 	}
 
+	player->animation_next_image = 0;
+	player->pressing_key = false;
 	player->status = PARADO;
 }
 
@@ -29,3 +32,4 @@ void andar(struct Player* player, struct al_mapa* mapa) {
 		break;
 	}
 }
+

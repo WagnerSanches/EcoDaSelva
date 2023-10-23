@@ -1,12 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include <allegro5/allegro5.h>
-
-enum Status {
-	PARADO = 0,
-	ANDANDO = 1,
-	INTERAGINDO = 2
-};
+#include <STATUS.h>
 
 struct Player {
 	int map_position_x;
@@ -26,8 +21,13 @@ struct Player {
 	int sum_y_pixel;
 
 	bool pressing_key;
+	bool pressing_multiple_key;
 
 	enum Status status;
+
+	int velocidade;
 };
+
+void init_player(struct Player* player);
 
 #endif

@@ -142,8 +142,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ACTION.c" />
+    <ClCompile Include="AL_MAPA.c" />
     <ClCompile Include="animation.c" />
-    <ClCompile Include="desenha_mapa.c" />
     <ClCompile Include="eventos.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="MAPA.c" />
@@ -152,8 +152,8 @@
     <ClCompile Include="MAPA_3.c" />
     <ClCompile Include="MAPA_4.c" />
     <ClCompile Include="MAPA_CENTRO.c" />
-    <ClCompile Include="Mapa_item.h" />
-    <ClCompile Include="player.h" />
+    <ClCompile Include="PLAYER.c" />
+    <ClCompile Include="PLAYER.h" />
     <ClCompile Include="REGRA.c" />
   </ItemGroup>
   <ItemGroup>
@@ -164,7 +164,6 @@
     <ClInclude Include="AL_MAPA.h" />
     <ClInclude Include="animation.h" />
     <ClInclude Include="config.h" />
-    <ClInclude Include="desenha_mapa.h" />
     <ClInclude Include="eventos.h" />
     <ClInclude Include="MAPA.h" />
     <ClInclude Include="MAPA_1.h" />
@@ -172,21 +171,9 @@
     <ClInclude Include="MAPA_3.h" />
     <ClInclude Include="MAPA_4.h" />
     <ClInclude Include="MAPA_CENTRO.h" />
-    <ClInclude Include="Mapa_npc.h" />
-    <ClInclude Include="mapa_vila.h" />
     <ClInclude Include="REGRA.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="resource1.h" />
-    <ClInclude Include="resource2.h" />
-    <ClInclude Include="resource3.h" />
-    <ClInclude Include="resource4.h" />
     <ClInclude Include="SENTIDO.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="vila.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\..\..\..\tiled maps\mapaTeste.png" />
+    <ClInclude Include="STATUS.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
