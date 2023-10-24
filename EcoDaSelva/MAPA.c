@@ -253,27 +253,15 @@ void desenha_fichario(struct Player* player, struct Fichario* fichario) {
 	int x_subbox_button_option_initial = meio_subbox_options - (x_subbox_size_button_option / 2);
 	int x_subbox_button_option_final = x_subbox_button_option_initial + x_subbox_size_button_option;
 	int y_subbox_button_option_initial = y_subbox_options_initial + espacemento_y_inner_subbox_option;
-	/*int line_thickness_button_selected = 4;
-	int x_selected_option_initial = x_subbox_button_option_initial - line_thickness_button_selected;
-	int y_selected_option_initial = (y_subbox_options_initial + espacemento_y_inner_subbox_option) - line_thickness_button_selected + 2;
-	int x_selected_option_final = x_subbox_button_option_final + line_thickness_button_selected;
-	int y_selected_option_final = y_selected_option_initial + y_subbox_size_button_option + line_thickness_button_selected;
-	al_draw_rectangle(x_selected_option_initial, y_selected_option_initial, x_selected_option_final, y_selected_option_final, al_map_rgb(255, 255, 255), line_thickness_button_selected);*/
 
+	/* LINHAS BRANCA OPCAO */
 	int line_thickness_button_selected = 4;
 	int x_selected_option_initial = x_subbox_button_option_initial - line_thickness_button_selected;
-	
-	int option_selected = fichario->classe_selecionada;
-	
-	if(option_selected > 0)
-		printf("%d", option_selected);
-
-	int y_selected_option_initial = ((y_subbox_button_option_initial + (option_selected * (y_subbox_size_button_option + espacemento_y_subbox_option_option)) ) - (line_thickness_button_selected ) ) + 2;
-	
+	int y_selected_option_initial = ((y_subbox_button_option_initial + (fichario->classe_selecionada * (y_subbox_size_button_option + espacemento_y_subbox_option_option)) ) - (line_thickness_button_selected ) ) + 2;
 	int x_selected_option_final = x_subbox_button_option_final + line_thickness_button_selected;
 	int y_selected_option_final = y_selected_option_initial + y_subbox_size_button_option + line_thickness_button_selected;
 	al_draw_rectangle(x_selected_option_initial, y_selected_option_initial, x_selected_option_final, y_selected_option_final, al_map_rgb(255, 255, 255), line_thickness_button_selected);
-
+	/* FINAL - LINHAS BRANCA OPCAO */
 
 	/* OPCAO 1 */
 	int y_subbox_button_option_1_initial = y_subbox_button_option_initial;
