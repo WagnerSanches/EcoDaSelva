@@ -9,7 +9,7 @@ void init_fichario(struct Fichario* fichario) {
 
 void criar_fichario(struct Fichario* fichario) {
 
-	for (int i = 0; i < NUMBER_OF_ANIMALS; i++) {
+	for (int i = 0; i < NUMBER_OF_CLASSES; i++) {
 		fichario->animal[i].nome = (char*)malloc(sizeof(char) * 50);
 
 		if (fichario->animal[i].nome == NULL) {
@@ -25,7 +25,8 @@ void criar_fichario(struct Fichario* fichario) {
 	fichario->titulo28 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 28, 0);
 	fichario->subtitulo22 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 22, 0);
 	fichario->descricao18 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 18, 0);
-	fichario->animal_selecionado = 0;
+	fichario->tag16 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 16, 0);
+	fichario->classe_selecionada = 0;
 
 	fichario->status = FICHARIO_ABERTO;
 }
@@ -35,7 +36,7 @@ void destruir_fichario(struct Fichario* fichario) {
 	al_destroy_font(fichario->subtitulo22);
 	al_destroy_font(fichario->descricao18);
 
-	for (int i = 0; i < NUMBER_OF_ANIMALS; i++) {
+	for (int i = 0; i < NUMBER_OF_CLASSES; i++) {
 		free(fichario->animal[i].nome);
 	}
 }

@@ -9,37 +9,36 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
 	switch (keycode) {
 	case ALLEGRO_KEY_UP:
 	case ALLEGRO_KEY_W:
+		
+		fichario->classe_selecionada--;
+
+		if (fichario->classe_selecionada <= -1) {
+			fichario->classe_selecionada = NUMBER_OF_CLASSES - 1;
+		}
 
 		break;
 	case ALLEGRO_KEY_DOWN:
 	case ALLEGRO_KEY_S:
 
+		fichario->classe_selecionada++;
+
+		if (fichario->classe_selecionada >= NUMBER_OF_CLASSES) {
+			fichario->classe_selecionada = 0;
+		}
 
 		break;
 	case ALLEGRO_KEY_LEFT:
 	case ALLEGRO_KEY_A:
 
-		player->animal_selecionado--;
-
-		if (player->animal_selecionado <= -1) {
-			player->animal_selecionado = 2;
-		}
-
 		break;
 	case ALLEGRO_KEY_RIGHT:
 	case ALLEGRO_KEY_D:
 
-		player->animal_selecionado++;
-
-		if (player->animal_selecionado >= NUMBER_OF_ANIMALS) {
-			player->animal_selecionado = 0;
-		}
-
 		break;
 
 	case ALLEGRO_KEY_SPACE:
-		player->status = INTERAGINDO;
-		player->animation_next_image = 0;
+		printf("Selecionou o animal");
+
 		break;
 	case ALLEGRO_KEY_ENTER:
 

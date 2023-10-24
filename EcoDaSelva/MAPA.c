@@ -107,44 +107,208 @@ void desenha_fichario(struct Player* player, struct Fichario* fichario) {
 
 	int espacamento_fichario_fora = (PIXEL_SIZE * 2);
 	int espacamento_fichario_dentro = PIXEL_SIZE;
-	int tamanho_foto = (PIXEL_SIZE * 4);
-	int metade_x = (((WINDOW_SIZE_PIXEL_X * PIXEL_SIZE) - espacamento_fichario_fora) + espacamento_fichario_fora) / 2;
-
-	al_draw_filled_rectangle(espacamento_fichario_fora, espacamento_fichario_fora, (WINDOW_SIZE_PIXEL_X * PIXEL_SIZE) - espacamento_fichario_fora, (WINDOW_SIZE_PIXEL_Y * PIXEL_SIZE) - espacamento_fichario_fora, al_map_rgb(186, 181, 93), 0);
-	al_draw_line(metade_x, espacamento_fichario_fora, metade_x, (WINDOW_SIZE_PIXEL_Y * PIXEL_SIZE) - espacamento_fichario_fora, al_map_rgb(50, 50, 50), 1);
-
-	int grossura_borda = 10;
-	int animal_selecionado = ((tamanho_foto + espacamento_fichario_dentro) * player->animal_selecionado);
-	al_draw_rectangle(
-		espacamento_fichario_fora + (espacamento_fichario_dentro / 2 + grossura_borda) + animal_selecionado,
-		espacamento_fichario_fora + (espacamento_fichario_dentro / 2 + grossura_borda),
-		tamanho_foto + espacamento_fichario_fora + (espacamento_fichario_dentro + (espacamento_fichario_dentro / 2) - grossura_borda) + animal_selecionado,
-		tamanho_foto + espacamento_fichario_fora + (espacamento_fichario_dentro + (espacamento_fichario_dentro / 2) - grossura_borda),
-			al_map_rgb(255, 255, 255), grossura_borda);
-
-	int titulo_y = espacamento_fichario_fora + espacamento_fichario_dentro + tamanho_foto + espacamento_fichario_dentro;
-	al_draw_text(fichario->titulo28, al_map_rgb(50, 50, 50), metade_x/2 + PIXEL_SIZE, titulo_y, ALLEGRO_ALIGN_CENTER, fichario->animal[player->animal_selecionado].nome);
-
-	for (int i = 0; i < NUMBER_OF_ANIMALS; i++) {
-
-		int next_image = i * (tamanho_foto + espacamento_fichario_dentro);
-
-		al_draw_filled_rectangle(
-			espacamento_fichario_fora + espacamento_fichario_dentro + next_image,
-			espacamento_fichario_fora + espacamento_fichario_dentro,
-			tamanho_foto + espacamento_fichario_fora + espacamento_fichario_dentro + next_image,
-			tamanho_foto + espacamento_fichario_fora + espacamento_fichario_dentro,
-			al_map_rgb(161, 128, 58), 0);
-
-		al_draw_text(fichario->subtitulo22, al_map_rgb(50, 50, 50), espacamento_fichario_fora + espacamento_fichario_dentro, titulo_y + espacamento_fichario_dentro, 0, "Familia : ");
-		al_draw_text(fichario->subtitulo22, al_map_rgb(50, 50, 50), espacamento_fichario_fora + espacamento_fichario_dentro, titulo_y + espacamento_fichario_dentro * 2, 0, "Reino : ");
-		al_draw_text(fichario->subtitulo22, al_map_rgb(50, 50, 50), espacamento_fichario_fora + espacamento_fichario_dentro, titulo_y + espacamento_fichario_dentro * 3, 0, "Etc : ");
-
-	}
-
+	int size_font_titulo = 28;
+	int size_font_subtitulo = 22;
+	int size_font_description = 18;
+	int size_font_tag = 16;
 
 	
+	int x_box_final = (WINDOW_SIZE_PIXEL_X * PIXEL_SIZE) - espacamento_fichario_fora;
+	int y_box_final = (WINDOW_SIZE_PIXEL_Y * PIXEL_SIZE) - espacamento_fichario_fora;
+	al_draw_filled_rectangle(espacamento_fichario_fora, espacamento_fichario_fora, x_box_final, y_box_final, al_map_rgb(186, 181, 93));
+
+	int x_box_title = (x_box_final / 2) + espacamento_fichario_dentro;
+	int y_box_title =espacamento_fichario_fora + espacamento_fichario_dentro;
+	al_draw_text(fichario->titulo28, al_map_rgb(135, 121, 55), x_box_title, y_box_title, ALLEGRO_ALIGN_CENTER, "Fichario");
+
+	int x_box_subtitle = (x_box_final / 2) + espacamento_fichario_dentro;
+	int y_box_subtitle = espacamento_fichario_fora + espacamento_fichario_dentro + (30) /*espacamento entre as letras*/;
+	al_draw_text(fichario->descricao18, al_map_rgb(145, 135, 86), x_box_subtitle, y_box_subtitle, ALLEGRO_ALIGN_CENTER, "Classifique o animal desconhecido com base nas informacoes.");
+
+	int x_box_line_initial = espacamento_fichario_fora + espacamento_fichario_dentro * 3;
+	int x_box_line_final = x_box_final - espacamento_fichario_dentro * 3;
+	int y_box_line = y_box_subtitle + espacamento_fichario_dentro;
+	al_draw_line(x_box_line_initial, y_box_line, x_box_line_final, y_box_line, al_map_rgb(145, 135, 50), 1);
+
+	/* SUBBOX */
+	int x_subbox_initial = x_box_line_initial;
+	int y_subbox_initial = y_box_line;
+	int x_subbox_final = x_box_line_final;
+	int y_subbox_final = y_box_final - espacamento_fichario_dentro;
+	//al_draw_filled_rectangle(x_subbox_initial, y_subbox_initial, x_subbox_final, y_subbox_final, al_map_rgb(67, 161, 53));
+
+	/*tamanho da tela: 1088*/
+
+	/* SUBBOX INFO */
+	int x_subbox_info_size = 352;
+	int x_subbox_info_initial = x_subbox_initial;
+	int x_subbox_info_final = x_subbox_info_initial + x_subbox_info_size;
+	int meio_subbox_info = x_subbox_info_initial + (x_subbox_info_final - x_subbox_info_initial) / 2;
+	//al_draw_filled_rectangle(x_subbox_info_initial, y_subbox_initial, x_subbox_info_final, y_subbox_final, al_map_rgb(161, 53, 80));
+
+	int box_size_image = 128;
+	int x_box_image_initial = meio_subbox_info - (box_size_image / 2);
+	//int x_box_image_initial = x_box_line_initial + espacamento_fichario_dentro;
+	int x_box_image_final = x_box_image_initial + box_size_image;
+	int y_box_image_initial = y_box_line + espacamento_fichario_dentro * 2;
+	int y_box_image_final = y_box_image_initial + box_size_image;
+	al_draw_filled_rectangle(x_box_image_initial, y_box_image_initial, x_box_image_final, y_box_image_final, al_map_rgb(170, 170, 170));
+
+	/* INICIO CLASSIFICACAO */
+
+	/*		Classificao 1		*/	
+
+	int x_box_1_class_title = x_box_image_initial + box_size_image / 2;
+	int y_box_1_class_title = y_box_image_final + espacamento_fichario_dentro;
+	al_draw_text(fichario->descricao18, al_map_rgb(145, 135, 86), x_box_1_class_title, y_box_1_class_title, ALLEGRO_ALIGN_CENTER, "Ordem");
 	
+	int x_box_size_tag = 224;
+	int y_box_size_tag = size_font_tag + 4;
+	int espacamento_text_tag = 25;
+	int x_box_1_class_tag_initial = x_box_1_class_title - x_box_size_tag / 2;
+	int y_box_1_class_tag_initial = y_box_1_class_title + espacamento_text_tag;
+	int x_box_1_class_tag_final = x_box_1_class_tag_initial + x_box_size_tag;
+	int y_box_1_class_tag_final = y_box_1_class_tag_initial + y_box_size_tag;
+	al_draw_filled_rectangle(x_box_1_class_tag_initial, y_box_1_class_tag_initial, x_box_1_class_tag_final, y_box_1_class_tag_final, al_map_rgb(170, 170, 170));
+
+	// verificacao se o usuario ja nao colocou alguma classificacao
+	int x_box_1_class_text = x_box_1_class_title;
+	int y_box_1_class_text = y_box_1_class_title + espacamento_text_tag + (y_box_size_tag - size_font_tag) / 4;
+	al_draw_text(fichario->tag16, al_map_rgb(255, 255, 255), x_box_1_class_text, y_box_1_class_text, ALLEGRO_ALIGN_CENTER, "Nao classificado");
+
+	/*		Classificao 2		*/
+
+	int espacamento_class_class = 20;
+
+	int x_box_2_class_title = x_box_image_initial + box_size_image / 2;
+	int y_box_2_class_title = y_box_1_class_tag_final + espacamento_class_class;
+	al_draw_text(fichario->descricao18, al_map_rgb(145, 135, 86), x_box_2_class_title, y_box_2_class_title, ALLEGRO_ALIGN_CENTER, "Familia");
+
+	int x_box_2_class_tag_initial = x_box_2_class_title - x_box_size_tag / 2;
+	int y_box_2_class_tag_initial = y_box_2_class_title + espacamento_text_tag;
+	int x_box_2_class_tag_final = x_box_2_class_tag_initial + x_box_size_tag;
+	int y_box_2_class_tag_final = y_box_2_class_tag_initial + y_box_size_tag;
+	al_draw_filled_rectangle(x_box_2_class_tag_initial, y_box_2_class_tag_initial, x_box_2_class_tag_final, y_box_2_class_tag_final, al_map_rgb(170, 170, 170));
+
+	// verificacao se o usuario ja nao colocou alguma classificacao
+	int x_box_2_class_text = x_box_2_class_title;
+	int y_box_2_class_text = y_box_2_class_title + espacamento_text_tag + (y_box_size_tag - size_font_tag) / 4;
+	al_draw_text(fichario->tag16, al_map_rgb(255, 255, 255), x_box_2_class_text, y_box_2_class_text, ALLEGRO_ALIGN_CENTER, "Nao classificado");
+
+	/*		Classificao 3		*/
+
+	int x_box_3_class_title = x_box_image_initial + box_size_image / 2;
+	int y_box_3_class_title = y_box_2_class_tag_final + espacamento_class_class;
+	al_draw_text(fichario->descricao18, al_map_rgb(145, 135, 86), x_box_3_class_title, y_box_3_class_title, ALLEGRO_ALIGN_CENTER, "Genero");
+
+	int x_box_3_class_tag_initial = x_box_3_class_title - x_box_size_tag / 2;
+	int y_box_3_class_tag_initial = y_box_3_class_title + espacamento_text_tag;
+	int x_box_3_class_tag_final = x_box_3_class_tag_initial + x_box_size_tag;
+	int y_box_3_class_tag_final = y_box_3_class_tag_initial + y_box_size_tag;
+	al_draw_filled_rectangle(x_box_3_class_tag_initial, y_box_3_class_tag_initial, x_box_3_class_tag_final, y_box_3_class_tag_final, al_map_rgb(170, 170, 170));
+
+	// verificacao se o usuario ja nao colocou alguma classificacao
+	int x_box_3_class_text = x_box_3_class_title;
+	int y_box_3_class_text = y_box_3_class_title + espacamento_text_tag + (y_box_size_tag - size_font_tag) / 4;
+	al_draw_text(fichario->tag16, al_map_rgb(255, 255, 255), x_box_3_class_text, y_box_3_class_text, ALLEGRO_ALIGN_CENTER, "Nao classificado");
+
+	/*		Classificao 4		*/
+
+	int x_box_4_class_title = x_box_image_initial + box_size_image / 2;
+	int y_box_4_class_title = y_box_3_class_tag_final + espacamento_class_class;
+	al_draw_text(fichario->descricao18, al_map_rgb(145, 135, 86), x_box_4_class_title, y_box_4_class_title, ALLEGRO_ALIGN_CENTER, "Especie");
+
+	int x_box_4_class_tag_initial = x_box_4_class_title - x_box_size_tag / 2;
+	int y_box_4_class_tag_initial = y_box_4_class_title + espacamento_text_tag;
+	int x_box_4_class_tag_final = x_box_4_class_tag_initial + x_box_size_tag;
+	int y_box_4_class_tag_final = y_box_4_class_tag_initial + y_box_size_tag;
+	al_draw_filled_rectangle(x_box_4_class_tag_initial, y_box_4_class_tag_initial, x_box_4_class_tag_final, y_box_4_class_tag_final, al_map_rgb(170, 170, 170));
+
+	// verificacao se o usuario ja nao colocou alguma classificacao
+	int x_box_4_class_text = x_box_4_class_title;
+	int y_box_4_class_text = y_box_4_class_title + espacamento_text_tag + (y_box_size_tag - size_font_tag) / 4;
+	al_draw_text(fichario->tag16, al_map_rgb(255, 255, 255), x_box_4_class_text, y_box_4_class_text, ALLEGRO_ALIGN_CENTER, "Nao classificado");
+
+	/* FINAL CLASSIFICACAO */
+
+
+	/* INICIO OPCOES */
+
+	int x_subbox_options_initial = x_subbox_info_final;
+	int y_subbox_options_initial = y_subbox_initial;
+	int x_subbox_options_final = x_subbox_final;
+	int y_subbox_options_final = y_subbox_final;
+	int meio_subbox_options = (x_subbox_options_initial + (x_subbox_options_final - x_subbox_options_initial) / 2);
+
+	al_draw_filled_rectangle(x_subbox_options_initial, y_subbox_options_initial, x_subbox_options_final, y_subbox_options_final, /*al_map_rgb(190, 170, 80)*/ al_map_rgb(186, 181, 93));
+
+	/*	CAIXA DE OPCOES	 */
+	
+	int espacemento_y_inner_subbox_option = espacamento_fichario_dentro * 3;
+	int espacemento_y_subbox_option_option = espacamento_fichario_dentro;
+
+	int x_subbox_size_button_option = 384;
+	int y_subbox_size_button_option = size_font_subtitulo + 24;
+	
+	int x_subbox_button_option_initial = meio_subbox_options - (x_subbox_size_button_option / 2);
+	int x_subbox_button_option_final = x_subbox_button_option_initial + x_subbox_size_button_option;
+	int y_subbox_button_option_initial = y_subbox_options_initial + espacemento_y_inner_subbox_option;
+	/*int line_thickness_button_selected = 4;
+	int x_selected_option_initial = x_subbox_button_option_initial - line_thickness_button_selected;
+	int y_selected_option_initial = (y_subbox_options_initial + espacemento_y_inner_subbox_option) - line_thickness_button_selected + 2;
+	int x_selected_option_final = x_subbox_button_option_final + line_thickness_button_selected;
+	int y_selected_option_final = y_selected_option_initial + y_subbox_size_button_option + line_thickness_button_selected;
+	al_draw_rectangle(x_selected_option_initial, y_selected_option_initial, x_selected_option_final, y_selected_option_final, al_map_rgb(255, 255, 255), line_thickness_button_selected);*/
+
+	int line_thickness_button_selected = 4;
+	int x_selected_option_initial = x_subbox_button_option_initial - line_thickness_button_selected;
+	
+	int option_selected = fichario->classe_selecionada;
+	
+	if(option_selected > 0)
+		printf("%d", option_selected);
+
+	int y_selected_option_initial = ((y_subbox_button_option_initial + (option_selected * (y_subbox_size_button_option + espacemento_y_subbox_option_option)) ) - (line_thickness_button_selected ) ) + 2;
+	
+	int x_selected_option_final = x_subbox_button_option_final + line_thickness_button_selected;
+	int y_selected_option_final = y_selected_option_initial + y_subbox_size_button_option + line_thickness_button_selected;
+	al_draw_rectangle(x_selected_option_initial, y_selected_option_initial, x_selected_option_final, y_selected_option_final, al_map_rgb(255, 255, 255), line_thickness_button_selected);
+
+
+	/* OPCAO 1 */
+	int y_subbox_button_option_1_initial = y_subbox_button_option_initial;
+	int y_subbox_button_option_1_final = y_subbox_button_option_1_initial + y_subbox_size_button_option;
+	al_draw_filled_rectangle(x_subbox_button_option_initial, y_subbox_button_option_1_initial, x_subbox_button_option_final, y_subbox_button_option_1_final, al_map_rgb(161, 127, 53));
+
+	int y_subbox_1_option_text = y_subbox_button_option_1_initial + (y_subbox_size_button_option / 4);
+	al_draw_text(fichario->subtitulo22, al_map_rgb(255, 255, 255), meio_subbox_options, y_subbox_1_option_text, ALLEGRO_ALIGN_CENTER, "Classificar Ordem");
+
+	/* OPCAO 2 */
+	int y_subbox_button_option_2_initial = y_subbox_button_option_1_final + espacemento_y_subbox_option_option;
+	int y_subbox_button_option_2_final = y_subbox_button_option_2_initial + y_subbox_size_button_option;
+	al_draw_filled_rectangle(x_subbox_button_option_initial, y_subbox_button_option_2_initial, x_subbox_button_option_final, y_subbox_button_option_2_final, al_map_rgb(161, 127, 53));
+
+	int y_subbox_2_option_text = y_subbox_button_option_2_initial + (y_subbox_size_button_option / 4);
+	al_draw_text(fichario->subtitulo22, al_map_rgb(255, 255, 255), meio_subbox_options, y_subbox_2_option_text, ALLEGRO_ALIGN_CENTER, "Classificar Familia");
+
+	/* OPCAO 3 */
+	int y_subbox_button_option_3_initial = y_subbox_button_option_2_final + espacemento_y_subbox_option_option;
+	int y_subbox_button_option_3_final = y_subbox_button_option_3_initial + y_subbox_size_button_option;
+	al_draw_filled_rectangle(x_subbox_button_option_initial, y_subbox_button_option_3_initial, x_subbox_button_option_final, y_subbox_button_option_3_final, al_map_rgb(161, 127, 53));
+
+	int y_subbox_3_option_text = y_subbox_button_option_3_initial + (y_subbox_size_button_option / 4);
+	al_draw_text(fichario->subtitulo22, al_map_rgb(255, 255, 255), meio_subbox_options, y_subbox_3_option_text, ALLEGRO_ALIGN_CENTER, "Classificar Familia");
+
+	/* OPCAO 4 */
+	int y_subbox_button_option_4_initial = y_subbox_button_option_3_final + espacemento_y_subbox_option_option;
+	int y_subbox_button_option_4_final = y_subbox_button_option_4_initial + y_subbox_size_button_option;
+	al_draw_filled_rectangle(x_subbox_button_option_initial, y_subbox_button_option_4_initial, x_subbox_button_option_final, y_subbox_button_option_4_final, al_map_rgb(161, 127, 53));
+
+	int y_subbox_4_option_text = y_subbox_button_option_4_initial + (y_subbox_size_button_option / 4);
+	al_draw_text(fichario->subtitulo22, al_map_rgb(255, 255, 255), meio_subbox_options, y_subbox_4_option_text, ALLEGRO_ALIGN_CENTER, "Classificar Familia");
+
+
+	/* FINAL OPCOES */
 }
 
 void desenha_jogo(struct Player* player, struct al_mapa* mapa, struct Fichario* fichario) {

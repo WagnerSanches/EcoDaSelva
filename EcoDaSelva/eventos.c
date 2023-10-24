@@ -63,9 +63,15 @@ void tecla_presionado(struct Player* player, struct al_mapa* mapa, struct Fichar
 		}
 		break;
 	case ALLEGRO_KEY_SPACE:
-		player->status = INTERAGINDO;
-		player->image = player->animation[player->direcao - 1][0];
-		player->animation_next_image = 1;
+
+		if (player->status == FICHARIO) {
+			evento_fichario_key_precionada(player, fichario, keycode);
+		}
+		else {
+			player->status = INTERAGINDO;
+			player->image = player->animation[player->direcao - 1][0];
+			player->animation_next_image = 1;
+		}
 		break;
 	case ALLEGRO_KEY_ENTER:
 		evento_fichario_key_precionada(player, fichario, keycode);

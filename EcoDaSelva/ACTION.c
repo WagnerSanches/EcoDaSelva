@@ -6,8 +6,7 @@
 #include <FICHARIO.h>
 
 void interagir(struct Player* player, struct al_mapa* mapa) {
-
-
+	
 	if (npc(player, mapa)) {
 
 		printf("Px = %d\n", player->matriz_position_x);

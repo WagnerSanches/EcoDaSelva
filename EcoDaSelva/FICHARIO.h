@@ -9,13 +9,14 @@ struct Animal {
 };
 
 struct Fichario {
-	struct Animal animal[NUMBER_OF_ANIMALS];
+	struct Animal animal[NUMBER_OF_CLASSES];
 
 	struct ALLEGRO_FONT* titulo28;
 	struct ALLEGRO_FONT* subtitulo22;
 	struct ALLEGRO_FONT* descricao18;
+	struct ALLEGRO_FONT* tag16;
 
-	int animal_selecionado;
+	int classe_selecionada;
 
 	enum Fichario_status status;
 };
