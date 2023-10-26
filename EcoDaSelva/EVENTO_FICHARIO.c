@@ -9,21 +9,37 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
 	switch (keycode) {
 	case ALLEGRO_KEY_UP:
 	case ALLEGRO_KEY_W:
-		
-		fichario->classe_selecionada--;
+		if (fichario->selecao.grupo_selecionado == false) {
+			fichario->selecao.classe--;
 
-		if (fichario->classe_selecionada <= -1) {
-			fichario->classe_selecionada = NUMBER_OF_CLASSES - 1;
+			if (fichario->selecao.classe <= -1) {
+				fichario->selecao.classe = NUMBER_OF_CLASSES - 1;
+			}
 		}
+		else {
+			fichario->selecao.grupo--;
 
+			if (fichario->selecao.grupo <= -1) {
+				fichario->selecao.grupo = NUMBER_OF_GROUP_OF_CLASSES - 1;
+			}
+		}
 		break;
 	case ALLEGRO_KEY_DOWN:
 	case ALLEGRO_KEY_S:
 
-		fichario->classe_selecionada++;
+		if (fichario->selecao.grupo_selecionado == false) {
+			fichario->selecao.classe++;
 
-		if (fichario->classe_selecionada >= NUMBER_OF_CLASSES) {
-			fichario->classe_selecionada = 0;
+			if (fichario->selecao.classe >= NUMBER_OF_CLASSES) {
+				fichario->selecao.classe = 0;
+			}
+		}
+		else {
+			fichario->selecao.grupo++;
+
+			if (fichario->selecao.grupo >= NUMBER_OF_GROUP_OF_CLASSES) {
+				fichario->selecao.grupo = NUMBER_OF_GROUP_OF_CLASSES - 1;
+			}
 		}
 
 		break;
@@ -37,7 +53,18 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
 		break;
 
 	case ALLEGRO_KEY_SPACE:
-		printf("Selecionou o animal");
+		if (fichario->selecao.grupo_selecionado) {
+
+			player->respostas[fichario->selecao.classe].selecionado = true;
+			strcpy(
+				player->respostas[fichario->selecao.classe].grupo, 
+				fichario->classe[fichario->selecao.classe].groupo[fichario->selecao.grupo].titulo
+			);
+			fichario->selecao.grupo_selecionado = false;
+		}
+		else {
+			fichario->selecao.grupo_selecionado = true;
+		}
 
 		break;
 	case ALLEGRO_KEY_ENTER:

@@ -45,7 +45,17 @@ void init_player(struct Player* player) {
 	player->pressing_multiple_key = false;
 
 	player->velocidade = 2;
-	player->animal_selecionado = 0;
-	player->selecionou_outro = false;
+
+	for (int i = 0; i < NUMBER_OF_CLASSES; i++) {
+		player->respostas[i].grupo = (char*) malloc(sizeof(char) * 30);
+		if (player->respostas[i].grupo == NULL) {
+			printf("Falha na alocação de memória resposta.\n");
+			return 1;
+		}
+
+		strcpy(player->respostas[i].grupo, "Nao classificado");
+
+		player->respostas[i].selecionado = false;
+	}
 
 }

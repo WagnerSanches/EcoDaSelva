@@ -18,7 +18,6 @@
 #include <MAPA.h>
 #include <stdbool.h>
 #include <ACTION.h>
-#include <STATUS.h>
 #include <FICHARIO.h>
 
 int main() {

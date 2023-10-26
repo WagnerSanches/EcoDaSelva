@@ -144,6 +144,9 @@
     <ClCompile Include="ACTION.c" />
     <ClCompile Include="AL_MAPA.c" />
     <ClCompile Include="animation.c" />
+    <ClCompile Include="DESENHAR_FICHARIO_INFO.c" />
+    <ClCompile Include="DESENHA_FICHARIO.c" />
+    <ClCompile Include="DESENHA_FICHARIO_OPCOES.c" />
     <ClCompile Include="eventos.c" />
     <ClCompile Include="EVENTO_ANDAR.c" />
     <ClCompile Include="EVENTO_FICHARIO.c" />
@@ -167,12 +170,14 @@
     <ClInclude Include="AL_MAPA.h" />
     <ClInclude Include="animation.h" />
     <ClInclude Include="config.h" />
+    <ClInclude Include="DESENHA_FICHARIO.h" />
+    <ClInclude Include="DESENHA_FICHARIO_INFO.h" />
+    <ClInclude Include="DESENHA_FICHARIO_OPCOES.h" />
     <ClInclude Include="eventos.h" />
     <ClInclude Include="EVENTO_ANDAR.h" />
     <ClInclude Include="EVENTO_FICHARIO.h" />
     <ClInclude Include="EVENTO_INTERAGIR.h" />
     <ClInclude Include="FICHARIO.h" />
-    <ClInclude Include="FICHARIO_STATUS.h" />
     <ClInclude Include="MAPA.h" />
     <ClInclude Include="MAPA_1.h" />
     <ClInclude Include="MAPA_2.h" />
@@ -180,9 +185,9 @@
     <ClInclude Include="MAPA_4.h" />
     <ClInclude Include="MAPA_CENTRO.h" />
     <ClInclude Include="PLAYER.h" />
+    <ClInclude Include="POSICOES_BOX.h" />
     <ClInclude Include="REGRA.h" />
     <ClInclude Include="SENTIDO.h" />
-    <ClInclude Include="STATUS.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

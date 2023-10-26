@@ -36,15 +36,24 @@
     <Filter Include="Source Files\jogo\player">
       <UniqueIdentifier>{8e449210-a4ce-4a55-be5b-b1668ad3f5a2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\desenho">
+      <UniqueIdentifier>{652d33a8-26dd-4a96-964f-e832d24bcbdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\desenho">
+      <UniqueIdentifier>{4d57582b-4ca7-4af9-8590-7a36ba649de8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\desenho\fichario">
+      <UniqueIdentifier>{f7d52069-ccb5-46d7-8ce8-65b4249c2b50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\desenho\fichario">
+      <UniqueIdentifier>{fbecbf9e-7bdc-49eb-acdd-8c7339320cce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MAPA_CENTRO.c">
-      <Filter>Source Files\mapas</Filter>
-    </ClCompile>
-    <ClCompile Include="MAPA.c">
       <Filter>Source Files\mapas</Filter>
     </ClCompile>
     <ClCompile Include="REGRA.c">
@@ -89,6 +98,18 @@
     <ClCompile Include="FICHARIO.c">
       <Filter>Source Files\jogo\player</Filter>
     </ClCompile>
+    <ClCompile Include="MAPA.c">
+      <Filter>Source Files\desenho</Filter>
+    </ClCompile>
+    <ClCompile Include="DESENHA_FICHARIO_OPCOES.c">
+      <Filter>Source Files\desenho\fichario</Filter>
+    </ClCompile>
+    <ClCompile Include="DESENHA_FICHARIO.c">
+      <Filter>Source Files\desenho\fichario</Filter>
+    </ClCompile>
+    <ClCompile Include="DESENHAR_FICHARIO_INFO.c">
+      <Filter>Source Files\desenho\fichario</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -98,9 +119,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MAPA_CENTRO.h">
-      <Filter>Header Files\mapas</Filter>
-    </ClInclude>
-    <ClInclude Include="MAPA.h">
       <Filter>Header Files\mapas</Filter>
     </ClInclude>
     <ClInclude Include="REGRA.h">
@@ -130,9 +148,6 @@
     <ClInclude Include="SENTIDO.h">
       <Filter>Header Files\enum</Filter>
     </ClInclude>
-    <ClInclude Include="STATUS.h">
-      <Filter>Header Files\enum</Filter>
-    </ClInclude>
     <ClInclude Include="PLAYER.h">
       <Filter>Header Files\jogo\player</Filter>
     </ClInclude>
@@ -148,11 +163,23 @@
     <ClInclude Include="EVENTO_INTERAGIR.h">
       <Filter>Header Files\jogo\eventos</Filter>
     </ClInclude>
-    <ClInclude Include="FICHARIO_STATUS.h">
-      <Filter>Header Files\enum</Filter>
-    </ClInclude>
     <ClInclude Include="EVENTO_FICHARIO.h">
       <Filter>Header Files\jogo\eventos</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPA.h">
+      <Filter>Header Files\desenho</Filter>
+    </ClInclude>
+    <ClInclude Include="DESENHA_FICHARIO.h">
+      <Filter>Header Files\desenho\fichario</Filter>
+    </ClInclude>
+    <ClInclude Include="DESENHA_FICHARIO_OPCOES.h">
+      <Filter>Header Files\desenho\fichario</Filter>
+    </ClInclude>
+    <ClInclude Include="DESENHA_FICHARIO_INFO.h">
+      <Filter>Header Files\desenho\fichario</Filter>
+    </ClInclude>
+    <ClInclude Include="POSICOES_BOX.h">
+      <Filter>Header Files\desenho\fichario</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

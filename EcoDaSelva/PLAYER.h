@@ -1,8 +1,20 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include <allegro5/allegro5.h>
-#include <STATUS.h>
 #include <FICHARIO.h>
+
+enum Status {
+	PARADO = 0,
+	ANDANDO = 1,
+	INTERAGINDO = 2,
+	CORRENDO = 3,
+	FICHARIO = 4
+};
+
+struct Resposta {
+	char* grupo;
+	bool selecionado;
+};
 
 struct Player {
 	int map_position_x;
@@ -28,9 +40,7 @@ struct Player {
 
 	int velocidade;
 
-	int animal_selecionado;
-	bool selecionou_outro;
-
+	struct Resposta respostas[4];
 };
 
 void init_player(struct Player* player);

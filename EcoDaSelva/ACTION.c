@@ -48,11 +48,9 @@ void acessar(struct Player* player, struct Fichario* fichario) {
 		criar_fichario(fichario);
 		break;
 	case FECHAR_FICHARIO:
-		printf("Aqui\n");
 
 		destruir_fichario(fichario);
 		player->status = PARADO;
-
 
 		fichario->status = FICHARIO_FECHADO;
 		break;
