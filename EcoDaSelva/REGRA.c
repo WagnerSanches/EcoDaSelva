@@ -195,9 +195,6 @@ bool colediu(struct Player* player, struct al_mapa* mapa) {
 			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x] != CHAO && 
 				mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x] != CAMINHO) {
 
-				printf("My = %d\n", mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x]);
-				printf("Py = %d\n", player->matriz_position_y);
-				printf("Nao entro aqui\n");
 				return true;
 			}
 

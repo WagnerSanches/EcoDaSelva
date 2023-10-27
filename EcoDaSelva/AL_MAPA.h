@@ -2,15 +2,9 @@
 #define AL_MAPA_H
 
 #include <config.h>
-#include <allegro5/bitmap_draw.h>
 #include <allegro5/allegro.h>
-
-struct NPC {
-	int matriz_position_x;
-	int matriz_position_y;
-	int direcao;
-	ALLEGRO_BITMAP* image[4];
-};
+#include <NPC.h>
+#include <allegro5/allegro_font.h>
 
 struct NPC_INTERACAO {
 	int matriz_position_x;
@@ -45,6 +39,7 @@ struct al_mapa {
 
 	struct NPC npc[5];
 	ALLEGRO_BITMAP* NPC_IMAGES[7];
+	ALLEGRO_FONT* dialogue16;
 
 	struct Item* items[20];
 	ALLEGRO_BITMAP* ITEM_IMAGES[10];

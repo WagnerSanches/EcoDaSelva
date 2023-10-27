@@ -3,6 +3,7 @@
 #include <time.h>
 #include <allegro5/bitmap_draw.h>
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_font.h>
 
 void carregar_mapa_centro(struct al_mapa *mapa) {
 	srand(time(NULL));
@@ -15,6 +16,25 @@ void carregar_mapa_centro(struct al_mapa *mapa) {
 
 	mapa->npc[0].matriz_position_y = 14;
 	mapa->npc[0].matriz_position_x = 22;
+
+	mapa->npc->nome = (char*)malloc(sizeof(char) * 30);
+	if (mapa->npc[0].dialogo == NULL)
+		return -1;
+
+	mapa->npc[0].dialogo = malloc(sizeof(struct Dialogo));
+	if (mapa->npc[0].dialogo == NULL)
+		return -1;
+
+	mapa->npc[0].dialogo->texto = (char*) malloc(sizeof(char) * 30);
+	if (mapa->npc[0].dialogo->texto == NULL)
+		return -1;
+
+	mapa->dialogue16 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 16, 0);
+
+	strcpy(mapa->npc[0].nome, "Caramuru");
+	strcpy(mapa->npc[0].dialogo->texto, "Ola aventureiro!");
+	mapa->npc[0].dialogo->linhas_texto = 1;
+	mapa->npc[0].foto = al_load_bitmap("assets/npc/foto/mapa_centro/npc_um_resize.jpg");
 
 	mapa->npc[1].matriz_position_y = 8;
 	mapa->npc[1].matriz_position_x = 17;

@@ -147,6 +147,7 @@
     <ClCompile Include="DESENHAR_FICHARIO_INFO.c" />
     <ClCompile Include="DESENHA_FICHARIO.c" />
     <ClCompile Include="DESENHA_FICHARIO_OPCOES.c" />
+    <ClCompile Include="DIALOGO.c" />
     <ClCompile Include="eventos.c" />
     <ClCompile Include="EVENTO_ANDAR.c" />
     <ClCompile Include="EVENTO_FICHARIO.c" />
@@ -173,6 +174,7 @@
     <ClInclude Include="DESENHA_FICHARIO.h" />
     <ClInclude Include="DESENHA_FICHARIO_INFO.h" />
     <ClInclude Include="DESENHA_FICHARIO_OPCOES.h" />
+    <ClInclude Include="DIALOGO.h" />
     <ClInclude Include="eventos.h" />
     <ClInclude Include="EVENTO_ANDAR.h" />
     <ClInclude Include="EVENTO_FICHARIO.h" />
@@ -184,6 +186,7 @@
     <ClInclude Include="MAPA_3.h" />
     <ClInclude Include="MAPA_4.h" />
     <ClInclude Include="MAPA_CENTRO.h" />
+    <ClInclude Include="NPC.h" />
     <ClInclude Include="PLAYER.h" />
     <ClInclude Include="POSICOES_BOX.h" />
     <ClInclude Include="REGRA.h" />

@@ -60,6 +60,9 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
 				player->respostas[fichario->selecao.classe].grupo, 
 				fichario->classe[fichario->selecao.classe].groupo[fichario->selecao.grupo].titulo
 			);
+
+
+
 			fichario->selecao.grupo_selecionado = false;
 		}
 		else {

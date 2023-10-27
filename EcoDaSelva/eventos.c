@@ -12,11 +12,12 @@ void tecla_presionado(struct Player* player, struct al_mapa* mapa, struct Fichar
 	case ALLEGRO_KEY_UP:
 	case ALLEGRO_KEY_W:
 
-		if (player->status == FICHARIO) {
+		if (player == FICHARIO) {
 			evento_fichario_key_precionada(player, fichario, keycode);
 		}
 		else {
-			evento_andar_key_precionada(player, keycode);
+			if (player->status != CONVERSANDO)
+				evento_andar_key_precionada(player, keycode);
 		}
 
 		break;
@@ -27,7 +28,8 @@ void tecla_presionado(struct Player* player, struct al_mapa* mapa, struct Fichar
 			evento_fichario_key_precionada(player, fichario, keycode);
 		}
 		else {
-			evento_andar_key_precionada(player, keycode);
+			if (player->status != CONVERSANDO)
+				evento_andar_key_precionada(player, keycode);
 		}
 
 		break;
@@ -38,7 +40,8 @@ void tecla_presionado(struct Player* player, struct al_mapa* mapa, struct Fichar
 			evento_fichario_key_precionada(player, fichario, keycode);
 		}
 		else {
-			evento_andar_key_precionada(player, keycode);
+			if (player->status != CONVERSANDO)
+				evento_andar_key_precionada(player, keycode);
 		}
 
 		break;
@@ -49,7 +52,8 @@ void tecla_presionado(struct Player* player, struct al_mapa* mapa, struct Fichar
 			evento_fichario_key_precionada(player, fichario, keycode);
 		}
 		else {
-			evento_andar_key_precionada(player, keycode);
+			if (player->status != CONVERSANDO)
+				evento_andar_key_precionada(player, keycode);
 		}
 
 		break;
@@ -59,13 +63,17 @@ void tecla_presionado(struct Player* player, struct al_mapa* mapa, struct Fichar
 
 		}
 		else {
-			evento_andar_key_precionada(player, keycode);
+			if (player->status != CONVERSANDO)
+				evento_andar_key_precionada(player, keycode);
 		}
 		break;
 	case ALLEGRO_KEY_SPACE:
 
 		if (player->status == FICHARIO) {
 			evento_fichario_key_precionada(player, fichario, keycode);
+		}
+		else if (player->status == CONVERSANDO) {
+			player->status = PARADO;
 		}
 		else {
 			player->status = INTERAGINDO;
@@ -94,14 +102,16 @@ void tecla_levantada(struct Player* player, struct al_mapa* mapa, struct Fichari
 	case ALLEGRO_KEY_D:
 
 		if (player->status != FICHARIO) {
-			evento_andar_key_levantada(player, keycode);
+			if (player->status != CONVERSANDO)
+				evento_andar_key_levantada(player, keycode);
 		}
 
 		break;
 	case ALLEGRO_KEY_LSHIFT:
-		
+
 		if (player->status != FICHARIO) {
-			evento_andar_key_levantada(player, keycode);
+			if (player->status != CONVERSANDO)
+				evento_andar_key_levantada(player, keycode);
 		}
 
 		break;

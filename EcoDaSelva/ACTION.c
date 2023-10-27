@@ -9,19 +9,19 @@ void interagir(struct Player* player, struct al_mapa* mapa) {
 	
 	if (npc(player, mapa)) {
 
-		printf("Px = %d\n", player->matriz_position_x);
-		printf("Py = %d\n\n", player->matriz_position_y);
-
 		virar_npc(player, mapa);
 		mapa->npc_interacao.matriz_position_x = -1;
 		mapa->npc_interacao.matriz_position_y = -1;
+	
+		player->status = CONVERSANDO;
+	}
+	else {
+		player->status = PARADO;
 	}
 
 	player->animation_next_image = 0;
 	player->pressing_key = false;
 	player->pressing_multiple_key = false;
-
-	player->status = PARADO;
 }
 
 void andar(struct Player* player, struct al_mapa* mapa) {
@@ -58,5 +58,9 @@ void acessar(struct Player* player, struct Fichario* fichario) {
 
 		break;
 	}
+
+}
+
+void conversar(struct Player* player, struct al_mapa* mapa) {
 
 }

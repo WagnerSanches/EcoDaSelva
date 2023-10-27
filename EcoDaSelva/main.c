@@ -115,7 +115,8 @@ int main() {
 				case PARADO:
 					// menu
 					break;
-				case ANDANDO: case CORRENDO:
+				case ANDANDO: 
+				case CORRENDO:
 					andar(player, mapa);
 					break;
 				case INTERAGINDO:
@@ -123,6 +124,9 @@ int main() {
 					break;
 				case FICHARIO:
 					acessar(player, fichario);
+					break;
+				case CONVERSANDO:
+					conversar(player, mapa);
 					break;
 				}
 

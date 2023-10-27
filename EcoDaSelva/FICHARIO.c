@@ -75,5 +75,4 @@ void destruir_fichario(struct Fichario* fichario) {
 		free(fichario->classe[i].titulo);
 	}
 
-	free(fichario->posicoes);
 }

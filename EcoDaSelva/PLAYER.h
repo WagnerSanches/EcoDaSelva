@@ -8,7 +8,8 @@ enum Status {
 	ANDANDO = 1,
 	INTERAGINDO = 2,
 	CORRENDO = 3,
-	FICHARIO = 4
+	FICHARIO = 4,
+	CONVERSANDO = 5
 };
 
 struct Resposta {

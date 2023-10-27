@@ -24,17 +24,11 @@
     <Filter Include="Header Files\enum">
       <UniqueIdentifier>{ed687d4c-a637-4dfa-b7ea-d8b06730a05e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\jogo\player">
-      <UniqueIdentifier>{a5880955-7ffa-465f-8a7c-3bf4f83ad684}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\jogo\eventos">
       <UniqueIdentifier>{24f04f2e-e6a1-4204-bf5f-6a37b66dece8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\jogo\eventos">
       <UniqueIdentifier>{b7bf0cdd-2533-4b43-ae0e-545dfa4909ed}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\jogo\player">
-      <UniqueIdentifier>{8e449210-a4ce-4a55-be5b-b1668ad3f5a2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\desenho">
       <UniqueIdentifier>{652d33a8-26dd-4a96-964f-e832d24bcbdb}</UniqueIdentifier>
@@ -47,6 +41,12 @@
     </Filter>
     <Filter Include="Header Files\desenho\fichario">
       <UniqueIdentifier>{fbecbf9e-7bdc-49eb-acdd-8c7339320cce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\jogo\componentes">
+      <UniqueIdentifier>{a5880955-7ffa-465f-8a7c-3bf4f83ad684}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\jogo\componentes">
+      <UniqueIdentifier>{8e449210-a4ce-4a55-be5b-b1668ad3f5a2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -77,9 +77,6 @@
     <ClCompile Include="ACTION.c">
       <Filter>Source Files\jogo</Filter>
     </ClCompile>
-    <ClCompile Include="AL_MAPA.c">
-      <Filter>Source Files\mapas</Filter>
-    </ClCompile>
     <ClCompile Include="eventos.c">
       <Filter>Source Files\jogo\eventos</Filter>
     </ClCompile>
@@ -93,10 +90,10 @@
       <Filter>Source Files\jogo\eventos</Filter>
     </ClCompile>
     <ClCompile Include="PLAYER.c">
-      <Filter>Source Files\jogo\player</Filter>
+      <Filter>Source Files\jogo\componentes</Filter>
     </ClCompile>
     <ClCompile Include="FICHARIO.c">
-      <Filter>Source Files\jogo\player</Filter>
+      <Filter>Source Files\jogo\componentes</Filter>
     </ClCompile>
     <ClCompile Include="MAPA.c">
       <Filter>Source Files\desenho</Filter>
@@ -109,6 +106,12 @@
     </ClCompile>
     <ClCompile Include="DESENHAR_FICHARIO_INFO.c">
       <Filter>Source Files\desenho\fichario</Filter>
+    </ClCompile>
+    <ClCompile Include="AL_MAPA.c">
+      <Filter>Source Files\jogo\componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="DIALOGO.c">
+      <Filter>Source Files\jogo\componentes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -142,17 +145,14 @@
     <ClInclude Include="ACTION.h">
       <Filter>Header Files\jogo</Filter>
     </ClInclude>
-    <ClInclude Include="AL_MAPA.h">
-      <Filter>Header Files\mapas</Filter>
-    </ClInclude>
     <ClInclude Include="SENTIDO.h">
       <Filter>Header Files\enum</Filter>
     </ClInclude>
     <ClInclude Include="PLAYER.h">
-      <Filter>Header Files\jogo\player</Filter>
+      <Filter>Header Files\jogo\componentes</Filter>
     </ClInclude>
     <ClInclude Include="FICHARIO.h">
-      <Filter>Header Files\jogo\player</Filter>
+      <Filter>Header Files\jogo\componentes</Filter>
     </ClInclude>
     <ClInclude Include="eventos.h">
       <Filter>Header Files\jogo\eventos</Filter>
@@ -180,6 +180,15 @@
     </ClInclude>
     <ClInclude Include="POSICOES_BOX.h">
       <Filter>Header Files\desenho\fichario</Filter>
+    </ClInclude>
+    <ClInclude Include="DIALOGO.h">
+      <Filter>Header Files\jogo\componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="AL_MAPA.h">
+      <Filter>Header Files\jogo\componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="NPC.h">
+      <Filter>Header Files\jogo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

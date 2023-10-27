@@ -112,6 +112,69 @@ void desenha_fichario(struct Player* player, struct Fichario* fichario) {
 	desenhar_opcoes(fichario);
 }
 
+void desenha_caixa_dialogo(struct Player* player, struct al_mapa* mapa) {
+
+	int meio_tela = (WINDOW_SIZE_PIXEL_X * PIXEL_SIZE) / 2;
+
+	int dialogue_box_size = meio_tela;
+	int inner_dialogue_spacing = PIXEL_SIZE;
+	
+	int x_dialogue_box_initial = meio_tela - (dialogue_box_size / 2);
+	int y_dialogue_box_initial = PIXEL_SIZE * 3;
+	int x_dialogue_box_final = x_dialogue_box_initial + dialogue_box_size;
+
+	int dialogue_text_size = 16;
+	int spacing_between_text = dialogue_text_size + 8;
+
+	int y_dialogue_box_final = y_dialogue_box_initial
+		+ spacing_between_text * mapa->npc[0].dialogo->linhas_texto 
+		+ inner_dialogue_spacing * 2;
+
+	al_draw_filled_rectangle(
+		x_dialogue_box_initial,
+		y_dialogue_box_initial,
+		x_dialogue_box_final,
+		y_dialogue_box_final,
+		al_map_rgb(255, 255, 255)
+	);
+
+
+	int x_dialogue_name = x_dialogue_box_initial + inner_dialogue_spacing - PIXEL_SIZE / 2;
+	int y_dialogue_name = y_dialogue_box_initial + inner_dialogue_spacing - PIXEL_SIZE ;
+	al_draw_text(
+		mapa->dialogue16,
+		al_map_rgb(0, 0, 0),
+		x_dialogue_name,
+		y_dialogue_name,
+		0,
+		mapa->npc[0].nome
+	);
+
+	int x_dialogue_text = x_dialogue_box_initial + inner_dialogue_spacing;
+	int y_dialogue_text = y_dialogue_box_initial + inner_dialogue_spacing;
+	al_draw_text(
+		mapa->dialogue16,
+		al_map_rgb(0,0,0),
+		x_dialogue_text,
+		y_dialogue_text,
+		0,
+		mapa->npc[0].dialogo->texto
+	);
+
+	int image_dialogue_size = PIXEL_SIZE * 4;
+
+	int x_image_dialogue_initial = x_dialogue_box_final - (image_dialogue_size / 2);
+	int y_image_dialogue_initial = y_dialogue_box_initial + PIXEL_SIZE;
+
+	al_draw_bitmap(
+		mapa->npc[0].foto,
+		x_image_dialogue_initial,
+		y_image_dialogue_initial,
+		0
+	);
+
+}
+
 void desenha_jogo(struct Player* player, struct al_mapa* mapa, struct Fichario* fichario) {
 	desenha_background(mapa);
 
@@ -121,7 +184,13 @@ void desenha_jogo(struct Player* player, struct al_mapa* mapa, struct Fichario* 
 		desenha_npc(mapa, layer);
 	}
 
-	if (player->status == FICHARIO ) {
+	switch(player->status){
+	case FICHARIO:
 		desenha_fichario(player, fichario);
+		break;
+	case CONVERSANDO:
+		desenha_caixa_dialogo(player, mapa);
+		break;
 	}
+
 }
