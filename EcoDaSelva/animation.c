@@ -23,7 +23,7 @@ void andar_para_cima(struct Player* player, struct al_mapa* mapa) {
 		if (colediu(player, mapa)) {
 
 			if (proximo_mapa(player, mapa)) {
-				carregar_mapa(mapa, mapa->next_mapa.pra_cima);
+				carregar_mapa(mapa, mapa->next_mapa->pra_cima);
 				player->matriz_position_y = WINDOW_SIZE_PIXEL_Y - 1;
 				player->map_position_y = player->matriz_position_y * PIXEL_SIZE;
 			}
@@ -75,7 +75,7 @@ void andar_para_baixo(struct Player* player, struct al_mapa* mapa) {
 		if (colediu(player, mapa)) {
 
 			if (proximo_mapa(player, mapa)) {
-				carregar_mapa(mapa, mapa->next_mapa.pra_baixo);
+				carregar_mapa(mapa, mapa->next_mapa->pra_baixo);
 				player->matriz_position_y = 0;
 				player->map_position_y = player->matriz_position_y * PIXEL_SIZE;
 			}
@@ -126,7 +126,7 @@ void andar_para_esquerda(struct Player* player, struct al_mapa* mapa) {
 		if (colediu(player, mapa)) {
 
 			if (proximo_mapa(player, mapa)) {
-				carregar_mapa(mapa, mapa->next_mapa.pra_esquerda);
+				carregar_mapa(mapa, mapa->next_mapa->pra_esquerda);
 				player->matriz_position_x = WINDOW_SIZE_PIXEL_X - 1;
 				player->map_position_x = player->matriz_position_x * PIXEL_SIZE;
 			}
@@ -182,7 +182,7 @@ void andar_para_direita(struct Player* player, struct al_mapa* mapa) {
 		if (colediu(player, mapa)) {
 			
 			if (proximo_mapa(player, mapa)) {
-				carregar_mapa(mapa, mapa->next_mapa.pra_direita);
+				carregar_mapa(mapa, mapa->next_mapa->pra_direita);
 				player->matriz_position_x = 0;
 				player->map_position_x = player->matriz_position_x * PIXEL_SIZE;
 			}
@@ -223,7 +223,7 @@ void andar_para_direita(struct Player* player, struct al_mapa* mapa) {
 
 int encontrar_npc(struct al_mapa* mapa, int x, int y) {
 	for (int i = 0; i < mapa->quantidade_npc; i++) {
-		if (mapa->npc[i].matriz_position_x == x && mapa->npc[i].matriz_position_y == y) {
+		if (mapa->npc[i]->matriz_position_x == x && mapa->npc[i]->matriz_position_y == y) {
 			return i;
 		}
 	}
@@ -238,20 +238,21 @@ void virar_npc(struct Player* player, struct al_mapa* mapa) {
 	int npc_position = 0;
 	switch (player->direcao) {
 	case PRA_CIMA:
-		npc_position = encontrar_npc(mapa, mapa->npc_interacao.matriz_position_x, mapa->npc_interacao.matriz_position_y);
-		mapa->npc[npc_position].direcao = PRA_BAIXO - 1;
+		npc_position = encontrar_npc(mapa, mapa->npc_interacao->matriz_position_x, mapa->npc_interacao->matriz_position_y);
+		mapa->npc[npc_position]->direcao = PRA_BAIXO - 1;
 		break;
 	case PRA_BAIXO:
-		npc_position = encontrar_npc(mapa, mapa->npc_interacao.matriz_position_x, mapa->npc_interacao.matriz_position_y);
-		mapa->npc[npc_position].direcao = PRA_CIMA - 1;
+		npc_position = encontrar_npc(mapa, mapa->npc_interacao->matriz_position_x, mapa->npc_interacao->matriz_position_y);
+		mapa->npc[npc_position]->direcao = PRA_CIMA - 1;
 		break;
 	case PRA_ESQUERDA:
-		npc_position = encontrar_npc(mapa, mapa->npc_interacao.matriz_position_x, mapa->npc_interacao.matriz_position_y);
-		mapa->npc[npc_position].direcao = PRA_DIREITA - 1;
+		npc_position = encontrar_npc(mapa, mapa->npc_interacao->matriz_position_x, mapa->npc_interacao->matriz_position_y);
+		mapa->npc[npc_position]->direcao = PRA_DIREITA - 1;
 		break;
 	case PRA_DIREITA:
-		npc_position = encontrar_npc(mapa, mapa->npc_interacao.matriz_position_x, mapa->npc_interacao.matriz_position_y);
-		mapa->npc[npc_position].direcao = PRA_ESQUERDA - 1;
+		npc_position = encontrar_npc(mapa, mapa->npc_interacao->matriz_position_x, mapa->npc_interacao->matriz_position_y);
+		mapa->npc[npc_position]->direcao = PRA_ESQUERDA - 1;
 		break;
 	}
+	player->indice_bot_conversando = npc_position;
 }

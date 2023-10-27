@@ -48,6 +48,12 @@
     <Filter Include="Source Files\jogo\componentes">
       <UniqueIdentifier>{8e449210-a4ce-4a55-be5b-b1668ad3f5a2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\desenho\dialogo">
+      <UniqueIdentifier>{b0b4f1d3-dbfd-40c7-8210-569694ff2ba5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\desenho\dialogo">
+      <UniqueIdentifier>{ce6ea33d-e588-4b25-9ee4-388104439f6e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -112,6 +118,12 @@
     </ClCompile>
     <ClCompile Include="DIALOGO.c">
       <Filter>Source Files\jogo\componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="DESENHA_DIALOGO_NPC.c">
+      <Filter>Source Files\desenho\dialogo</Filter>
+    </ClCompile>
+    <ClCompile Include="EVENTO_CONVERSAR.c">
+      <Filter>Source Files\jogo\eventos</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +201,12 @@
     </ClInclude>
     <ClInclude Include="NPC.h">
       <Filter>Header Files\jogo</Filter>
+    </ClInclude>
+    <ClInclude Include="DESENHA_DIALOGO_NPC.h">
+      <Filter>Header Files\desenho\dialogo</Filter>
+    </ClInclude>
+    <ClInclude Include="EVENTO_CONVERSAR.h">
+      <Filter>Header Files\jogo\eventos</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

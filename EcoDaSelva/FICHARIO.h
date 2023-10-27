@@ -19,14 +19,14 @@ enum Fichario_status {
 struct Group {
 	char* titulo;
 	char* descricao;
-	char* image[2];
+	//ALLEGRO_BITMAP* image[2];
 };
 
 struct Classe {
 	char* titulo;
 	char* descricao;
 
-	struct Group groupo[3];
+	struct Group* groupo[3];
 };
 
 struct Selecao {
@@ -37,13 +37,13 @@ struct Selecao {
 };
 
 struct Fichario {
-	struct Classe classe[4];
-	struct Selecao selecao;
+	struct Classe* classe[4];
+	struct Selecao* selecao;
 	enum Fichario_status status;
 	struct Posicoes_fichario_box* posicoes;
 };
 
-void init_fichario(struct Fichario* fichario);
+
 void criar_fichario(struct Fichario* fichario);
 void destruir_fichario(struct Fichario* fichario);
 

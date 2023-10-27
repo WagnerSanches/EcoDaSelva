@@ -45,7 +45,7 @@ void desenhar_informacoes(struct Fichario* fichario, struct Player* player) {
 			al_map_rgb(145, 135, 86),
 			x_box_class_title, y_box_class_title,
 			ALLEGRO_ALIGN_CENTER,
-			fichario->classe[i].titulo
+			fichario->classe[i]->titulo
 		);
 
 		int x_box_class_tag_initial = x_box_class_title - x_box_size_tag / 2;
@@ -57,7 +57,7 @@ void desenhar_informacoes(struct Fichario* fichario, struct Player* player) {
 		int x_box_class_text = x_box_class_title;
 		int y_box_class_text = y_box_class_title + espacamento_text_tag + (y_box_size_tag - fichario->posicoes->size_font_tag) / 4;
 		
-		if (player->respostas[i].selecionado) {
+		if (player->respostas[i]->selecionado) {
 			al_draw_filled_rectangle(
 				x_box_class_tag_initial,
 				y_box_class_tag_initial,
@@ -82,7 +82,7 @@ void desenhar_informacoes(struct Fichario* fichario, struct Player* player) {
 			x_box_class_text,
 			y_box_class_text,
 			ALLEGRO_ALIGN_CENTER,
-			player->respostas[i].grupo);
+			player->respostas[i]->grupo);
 	}
 	
 }

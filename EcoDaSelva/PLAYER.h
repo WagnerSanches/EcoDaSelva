@@ -17,6 +17,11 @@ struct Resposta {
 	bool selecionado;
 };
 
+struct Mission {
+	int indice_npc_guest;
+	bool fazendo_mission;
+};
+
 struct Player {
 	int map_position_x;
 	int map_position_y;
@@ -41,7 +46,10 @@ struct Player {
 
 	int velocidade;
 
-	struct Resposta respostas[4];
+	int indice_bot_conversando;
+
+	struct Resposta* respostas[4];
+	struct Mission* missao;
 };
 
 void init_player(struct Player* player);

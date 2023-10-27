@@ -4,16 +4,6 @@
 #include <string.h>
 
 void init_player(struct Player* player) {
-	player->matriz_position_x = 12;
-	player->matriz_position_y = 7;
-
-	player->map_position_x = player->matriz_position_x * PIXEL_SIZE;
-	player->map_position_y = player->matriz_position_y * PIXEL_SIZE;
-
-	player->status = PARADO;
-
-	player->sum_x_pixel = 0;
-	player->sum_y_pixel = 0;
 
 	ALLEGRO_BITMAP* walk = al_load_bitmap("assets/personagem/player/Character_007.png");
 
@@ -37,6 +27,42 @@ void init_player(struct Player* player) {
 	player->animation[3][2] = al_create_sub_bitmap(walk, 4 + (24 * 2), 24 * 2 + 7, 16, 16);
 	player->animation[3][3] = al_create_sub_bitmap(walk, 4 + (24 * 3), 24 * 2 + 7, 16, 16);
 
+	for (int i = 0; i < NUMBER_OF_CLASSES; i++) {
+
+		player->respostas[i] = malloc(sizeof(struct Resposta));
+		if (player->respostas[i] == NULL) {
+			printf("Falha na alocação de memória resposta.\n");
+			return 1;
+		}
+
+		player->respostas[i]->grupo = (char*)malloc(sizeof(char) * 30);
+		if (player->respostas[i]->grupo == NULL) {
+			printf("Falha na alocação de memória resposta grupo.\n");
+			return 1;
+		}
+
+		strcpy(player->respostas[i]->grupo, "Nao classificado");
+
+		player->respostas[i]->selecionado = false;
+	}
+
+	player->missao = malloc(sizeof(struct Mission));
+	if (player->missao == NULL) {
+		printf("Falha na alocação de memória quest.\n");
+		return 1;
+	}
+
+	player->matriz_position_x = 12;
+	player->matriz_position_y = 7;
+
+	player->map_position_x = player->matriz_position_x * PIXEL_SIZE;
+	player->map_position_y = player->matriz_position_y * PIXEL_SIZE;
+
+	player->status = PARADO;
+
+	player->sum_x_pixel = 0;
+	player->sum_y_pixel = 0;
+
 	player->image = player->animation[1][0];
 	player->direcao = 2;
 	player->animation_next_image = 0;
@@ -45,17 +71,4 @@ void init_player(struct Player* player) {
 	player->pressing_multiple_key = false;
 
 	player->velocidade = 2;
-
-	for (int i = 0; i < NUMBER_OF_CLASSES; i++) {
-		player->respostas[i].grupo = (char*) malloc(sizeof(char) * 30);
-		if (player->respostas[i].grupo == NULL) {
-			printf("Falha na alocação de memória resposta.\n");
-			return 1;
-		}
-
-		strcpy(player->respostas[i].grupo, "Nao classificado");
-
-		player->respostas[i].selecionado = false;
-	}
-
 }

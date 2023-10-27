@@ -5,6 +5,7 @@
 #include <SENTIDO.h>
 #include <EVENTO_ANDAR.h>
 #include <EVENTO_FICHARIO.h>
+#include <EVENTO_CONVERSAR.h>
 
 void tecla_presionado(struct Player* player, struct al_mapa* mapa, struct Fichario* fichario, int keycode) {
 
@@ -12,7 +13,7 @@ void tecla_presionado(struct Player* player, struct al_mapa* mapa, struct Fichar
 	case ALLEGRO_KEY_UP:
 	case ALLEGRO_KEY_W:
 
-		if (player == FICHARIO) {
+		if (player->status == FICHARIO) {
 			evento_fichario_key_precionada(player, fichario, keycode);
 		}
 		else {
@@ -73,7 +74,7 @@ void tecla_presionado(struct Player* player, struct al_mapa* mapa, struct Fichar
 			evento_fichario_key_precionada(player, fichario, keycode);
 		}
 		else if (player->status == CONVERSANDO) {
-			player->status = PARADO;
+			evento_conversar_key_precionada(player, mapa, keycode);
 		}
 		else {
 			player->status = INTERAGINDO;
@@ -82,7 +83,11 @@ void tecla_presionado(struct Player* player, struct al_mapa* mapa, struct Fichar
 		}
 		break;
 	case ALLEGRO_KEY_ENTER:
-		evento_fichario_key_precionada(player, fichario, keycode);
+
+		if (player->status != CONVERSANDO) {
+			evento_fichario_key_precionada(player, fichario, keycode);
+		}
+
 		break;
 	}
 

@@ -21,7 +21,7 @@ void desenhar_opcoes(struct Fichario* fichario) {
 
 	int y_subbox_option_title = y_subbox_options_initial + fichario->posicoes->espacamento_fichario_dentro * 2;
 
-	if(fichario->selecao.grupo_selecionado)
+	if(fichario->selecao->grupo_selecionado)
 		al_draw_text(
 			fichario->posicoes->titulo28,
 			al_map_rgb(100, 100, 100),
@@ -56,10 +56,10 @@ void desenhar_opcoes(struct Fichario* fichario) {
 	int line_thickness_button_selected = 4;
 	int x_selected_option_initial = x_subbox_button_option_initial - line_thickness_button_selected;
 	
-	int y_selected_option_initial = ((y_subbox_button_option_initial + (fichario->selecao.classe * (y_subbox_size_button_option + espacemento_y_subbox_option_option))) - (line_thickness_button_selected)) + 2;
-	if (fichario->selecao.grupo_selecionado) {
+	int y_selected_option_initial = ((y_subbox_button_option_initial + (fichario->selecao->classe * (y_subbox_size_button_option + espacemento_y_subbox_option_option))) - (line_thickness_button_selected)) + 2;
+	if (fichario->selecao->grupo_selecionado) {
 		y_selected_option_initial = ((y_subbox_button_option_initial + 
-			(fichario->selecao.grupo * (y_subbox_size_button_option + espacemento_y_subbox_option_option))) - 
+			(fichario->selecao->grupo * (y_subbox_size_button_option + espacemento_y_subbox_option_option))) -
 			(line_thickness_button_selected)) + 2 + fichario->posicoes->espacamento_fichario_dentro;
 
 	}
@@ -69,7 +69,7 @@ void desenhar_opcoes(struct Fichario* fichario) {
 	al_draw_rectangle(x_selected_option_initial, y_selected_option_initial, x_selected_option_final, y_selected_option_final, al_map_rgb(255, 255, 255), line_thickness_button_selected);
 	/* FINAL - LINHAS BRANCA DE SELECIONAR OPCAO */
 
-	if(fichario->selecao.grupo_selecionado == false){
+	if(fichario->selecao->grupo_selecionado == false){
 		for (int i = 0; i < 4; i++) {
 			int y_subbox_button_option = y_subbox_button_option_initial + 
 				((y_subbox_size_button_option + espacemento_y_subbox_option_option) * i);
@@ -78,7 +78,7 @@ void desenhar_opcoes(struct Fichario* fichario) {
 			al_draw_filled_rectangle(x_subbox_button_option_initial, y_subbox_button_option, x_subbox_button_option_final, y_subbox_button_option_final, al_map_rgb(161, 127, 53));
 
 			int y_subbox_option_text = y_subbox_button_option + (y_subbox_size_button_option / 4);
-			al_draw_text(fichario->posicoes->subtitulo22, al_map_rgb(255, 255, 255), meio_subbox_options, y_subbox_option_text, ALLEGRO_ALIGN_CENTER, fichario->classe[i].titulo);
+			al_draw_text(fichario->posicoes->subtitulo22, al_map_rgb(255, 255, 255), meio_subbox_options, y_subbox_option_text, ALLEGRO_ALIGN_CENTER, fichario->classe[i]->titulo);
 		}
 	}
 	else {
@@ -96,7 +96,7 @@ void desenhar_opcoes(struct Fichario* fichario) {
 				meio_subbox_options, 
 				y_subbox_option_text, 
 				ALLEGRO_ALIGN_CENTER, 
-				fichario->classe[fichario->selecao.classe].groupo[i].titulo);
+				fichario->classe[fichario->selecao->classe]->groupo[i]->titulo);
 		}
 
 	}

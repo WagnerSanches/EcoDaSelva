@@ -9,12 +9,11 @@ enum Objeto {
 	CAMINHO = 3
 };
 
-
 bool proximo_mapa(struct Player* player, struct al_mapa* mapa) {
 	switch (player->direcao) {
 	case PRA_CIMA:
 
-		if (mapa->next_mapa.pra_cima >= 0) {
+		if (mapa->next_mapa->pra_cima >= 0) {
 			if (mapa->matriz[player->matriz_position_y][player->matriz_position_x] == CAMINHO) {
 				return true;
 			}
@@ -22,7 +21,7 @@ bool proximo_mapa(struct Player* player, struct al_mapa* mapa) {
 
 		break;
 	case PRA_BAIXO:
-		if (mapa->next_mapa.pra_baixo >= 0) {
+		if (mapa->next_mapa->pra_baixo >= 0) {
 
 			if (mapa->matriz[player->matriz_position_y][player->matriz_position_x] == CAMINHO) {
 				return true;
@@ -54,8 +53,8 @@ bool npc(struct Player* player, struct al_mapa* mapa) {
 		if (player->sum_x_pixel < -16) {
 
 			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x - 1] == 2) {
-				mapa->npc_interacao.matriz_position_y = player->matriz_position_y - 1;
-				mapa->npc_interacao.matriz_position_x = player->matriz_position_x - 1;
+				mapa->npc_interacao->matriz_position_y = player->matriz_position_y - 1;
+				mapa->npc_interacao->matriz_position_x = player->matriz_position_x - 1;
 
 				return true;
 			}
@@ -64,16 +63,16 @@ bool npc(struct Player* player, struct al_mapa* mapa) {
 		if (player->sum_x_pixel > 16) {
 
 			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x + 1] == 2) {
-				mapa->npc_interacao.matriz_position_y = player->matriz_position_y - 1;
-				mapa->npc_interacao.matriz_position_x = player->matriz_position_x + 1;
+				mapa->npc_interacao->matriz_position_y = player->matriz_position_y - 1;
+				mapa->npc_interacao->matriz_position_x = player->matriz_position_x + 1;
 
 				return true;
 			}
 		}
 
 		if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x] == 2) {
-			mapa->npc_interacao.matriz_position_y = player->matriz_position_y - 1;
-			mapa->npc_interacao.matriz_position_x = player->matriz_position_x;
+			mapa->npc_interacao->matriz_position_y = player->matriz_position_y - 1;
+			mapa->npc_interacao->matriz_position_x = player->matriz_position_x;
 
 			return true;
 		}
@@ -84,8 +83,8 @@ bool npc(struct Player* player, struct al_mapa* mapa) {
 		if (player->sum_x_pixel < -16) {
 
 			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x - 1] == 2) {
-				mapa->npc_interacao.matriz_position_y = player->matriz_position_y + 1;
-				mapa->npc_interacao.matriz_position_x = player->matriz_position_x - 1;
+				mapa->npc_interacao->matriz_position_y = player->matriz_position_y + 1;
+				mapa->npc_interacao->matriz_position_x = player->matriz_position_x - 1;
 
 				return true;
 			}
@@ -94,16 +93,16 @@ bool npc(struct Player* player, struct al_mapa* mapa) {
 		if (player->sum_x_pixel > 16) {
 
 			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x + 1] == 2) {
-				mapa->npc_interacao.matriz_position_y = player->matriz_position_y + 1;
-				mapa->npc_interacao.matriz_position_x = player->matriz_position_x + 1;
+				mapa->npc_interacao->matriz_position_y = player->matriz_position_y + 1;
+				mapa->npc_interacao->matriz_position_x = player->matriz_position_x + 1;
 
 				return true;
 			}
 		}
 
 		if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x] == 2) {
-			mapa->npc_interacao.matriz_position_y = player->matriz_position_y + 1;
-			mapa->npc_interacao.matriz_position_x = player->matriz_position_x; 
+			mapa->npc_interacao->matriz_position_y = player->matriz_position_y + 1;
+			mapa->npc_interacao->matriz_position_x = player->matriz_position_x; 
 			return true;
 		}
 
@@ -113,8 +112,8 @@ bool npc(struct Player* player, struct al_mapa* mapa) {
 		if (player->sum_y_pixel < -16) {
 
 			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x - 1] == 2) {
-				mapa->npc_interacao.matriz_position_y = player->matriz_position_y - 1;
-				mapa->npc_interacao.matriz_position_x = player->matriz_position_x - 1;
+				mapa->npc_interacao->matriz_position_y = player->matriz_position_y - 1;
+				mapa->npc_interacao->matriz_position_x = player->matriz_position_x - 1;
 
 				return true;
 			}
@@ -123,16 +122,16 @@ bool npc(struct Player* player, struct al_mapa* mapa) {
 		if (player->sum_y_pixel > 16) {
 
 			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x - 1] == 2) {
-				mapa->npc_interacao.matriz_position_y = player->matriz_position_y + 1;
-				mapa->npc_interacao.matriz_position_x = player->matriz_position_x - 1;
+				mapa->npc_interacao->matriz_position_y = player->matriz_position_y + 1;
+				mapa->npc_interacao->matriz_position_x = player->matriz_position_x - 1;
 
 				return true;
 			}
 		}
 
 		if (mapa->matriz[player->matriz_position_y][player->matriz_position_x - 1] == 2) {
-			mapa->npc_interacao.matriz_position_y = player->matriz_position_y;
-			mapa->npc_interacao.matriz_position_x = player->matriz_position_x - 1;
+			mapa->npc_interacao->matriz_position_y = player->matriz_position_y;
+			mapa->npc_interacao->matriz_position_x = player->matriz_position_x - 1;
 
 			return true;
 		}
@@ -143,8 +142,8 @@ bool npc(struct Player* player, struct al_mapa* mapa) {
 		if (player->sum_y_pixel < -16) {
 
 			if (mapa->matriz[player->matriz_position_y - 1][player->matriz_position_x + 1] == 2) {
-				mapa->npc_interacao.matriz_position_y = player->matriz_position_y - 1;
-				mapa->npc_interacao.matriz_position_x = player->matriz_position_x + 1;
+				mapa->npc_interacao->matriz_position_y = player->matriz_position_y - 1;
+				mapa->npc_interacao->matriz_position_x = player->matriz_position_x + 1;
 
 				return true;
 			}
@@ -153,8 +152,8 @@ bool npc(struct Player* player, struct al_mapa* mapa) {
 		if (player->sum_y_pixel > 16) {
 
 			if (mapa->matriz[player->matriz_position_y + 1][player->matriz_position_x + 1] == 2) {
-				mapa->npc_interacao.matriz_position_y = player->matriz_position_y + 1;
-				mapa->npc_interacao.matriz_position_x = player->matriz_position_x + 1;
+				mapa->npc_interacao->matriz_position_y = player->matriz_position_y + 1;
+				mapa->npc_interacao->matriz_position_x = player->matriz_position_x + 1;
 
 				return true;
 			}
@@ -162,8 +161,8 @@ bool npc(struct Player* player, struct al_mapa* mapa) {
 
 		if (mapa->matriz[player->matriz_position_y][player->matriz_position_x + 1] == 2) {
 
-			mapa->npc_interacao.matriz_position_y = player->matriz_position_y;
-			mapa->npc_interacao.matriz_position_x = player->matriz_position_x + 1;
+			mapa->npc_interacao->matriz_position_y = player->matriz_position_y;
+			mapa->npc_interacao->matriz_position_x = player->matriz_position_x + 1;
 
 			return true;
 		}

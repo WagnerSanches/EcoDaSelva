@@ -16,54 +16,110 @@
 #include <DESENHA_FICHARIO.h>
 #include <DESENHA_FICHARIO_INFO.h>
 #include <DESENHA_FICHARIO_OPCOES.h>
+#include <DESENHA_DIALOGO_NPC.h>
+#include <string.h>
 
 void excluir_mapa(struct al_mapa* mapa) {
-	if(mapa->criado) {
-
+	if (mapa->criado) {
 		al_destroy_bitmap(mapa->background);
+		al_destroy_font(mapa->dialogue16);
 
-		for (int i = 0; i < mapa->quantidade_npc; i++) {
-			al_destroy_bitmap(mapa->NPC_IMAGES[i]);
+		free(mapa->next_mapa);
 
-			al_destroy_bitmap(mapa->npc[i].image[0]);
-			al_destroy_bitmap(mapa->npc[i].image[1]);
-			al_destroy_bitmap(mapa->npc[i].image[2]);
-			al_destroy_bitmap(mapa->npc[i].image[3]);
+		for (int i = 0; i < MAX_NPC_PER_MAP; i++) {
+			if (mapa->npc[i] != NULL) {
+				/*al_destroy_bitmap(mapa->NPC_IMAGES[i]);
 
-		}
+				al_destroy_bitmap(mapa->npc[i]->image[0]);
+				al_destroy_bitmap(mapa->npc[i]->image[1]);
+				al_destroy_bitmap(mapa->npc[i]->image[2]);
+				al_destroy_bitmap(mapa->npc[i]->image[3]);
 
-		// excluir os items
-		for (int i = 0; i < mapa->quantidade_item; i++) {
+				al_destroy_bitmap(mapa->npc[i]->foto);
 
-		}
-
-		free(mapa);
-		
-		mapa = malloc(sizeof(struct al_mapa));
-
-		if (mapa == NULL) {
-			printf("Erro ao tentar\n");
-			return 1;
-		}
-
-		for (int k = 0; k < WINDOW_SIZE_PIXEL_Y; k++) {
-			for (int j = 0; j < WINDOW_SIZE_PIXEL_X; j++) {
-				mapa->matriz[k][j] = 0;
+				free(mapa->npc[i]->dialogo->texto);
+				free(mapa->npc[i]->dialogo);
+				free(mapa->npc[i]->nome);
+				free(mapa->npc[i]);*/
 			}
 		}
 
-		mapa->next_mapa.pra_cima = 0;
-		mapa->next_mapa.pra_baixo = 0;
-		mapa->next_mapa.pra_esquerda = 0;
-		mapa->next_mapa.pra_direita = 0;
+		// excluir os items
+		for (int i = 0; i < MAX_ITEM_PER_MAP; i++) {
+			if (mapa->item[i] != NULL) {
+
+			}
+		}
 
 		mapa->criado = false;
 	}
 }
 
+void criar_mapa(struct al_mapa* mapa) {
+	for (int k = 0; k < WINDOW_SIZE_PIXEL_Y; k++) {
+		for (int j = 0; j < WINDOW_SIZE_PIXEL_X; j++) {
+			mapa->matriz[k][j] = 0;
+		}
+	}
+
+	mapa->npc_interacao = malloc(sizeof(struct NPC_INTERACAO));
+	if (mapa->npc_interacao == NULL) {
+		printf("Falha na alocação de memória npc interacao.\n");
+		return 1;
+	}
+
+	mapa->next_mapa = malloc(sizeof(struct al_next_mapa));
+	if (mapa->next_mapa == NULL) {
+		printf("Falha na alocação de memória next mapa.\n");
+		return 1;
+	}
+	
+	mapa->next_mapa->pra_cima = 0;
+	mapa->next_mapa->pra_baixo = 0;
+	mapa->next_mapa->pra_esquerda = 0;
+	mapa->next_mapa->pra_direita = 0;
+	mapa->npc_interacao->matriz_position_x = 0;
+	mapa->npc_interacao->matriz_position_y = 0;
+	mapa->quantidade_item = 0;
+	mapa->quantidade_npc = 0;
+
+	for (int i = 0; i < MAX_NPC_PER_MAP; i++) {
+		mapa->npc[i] = malloc(sizeof(struct NPC));
+
+		if (mapa->npc[i] == NULL) {
+			printf("Falha na alocação de memória npc.\n");
+			return -1;
+		}
+
+		mapa->npc[i]->nome = (char*)malloc(sizeof(char) * 30);
+		if (mapa->npc[i]->nome == NULL) {
+			printf("Falha na alocação de memória npc nome.\n");
+			return -1;
+		}
+
+		for (int j = 0; j < 3; j++) {
+			mapa->npc[i]->dialogo[j] = malloc(sizeof(struct Dialogo));
+			if (mapa->npc[i]->dialogo[j] == NULL) {
+				printf("Falha na alocação de memória dialogo.\n");
+				return -1;
+			}
+
+			mapa->npc[i]->dialogo[j]->texto = (char*)malloc(sizeof(char) * 600);
+			if (mapa->npc[i]->dialogo[j]->texto == NULL) {
+				printf("Falha na alocação de memória dialogo texto.\n");
+				return -1;
+			}
+		}
+
+	}
+
+	mapa->criado = true;
+}
+
 void carregar_mapa(struct al_mapa* mapa, int next_mapa) {
 
 	excluir_mapa(mapa);
+	criar_mapa(mapa);
 
 	switch (next_mapa) {
 	case 0:
@@ -90,11 +146,12 @@ void desenha_background(struct al_mapa* mapa) {
 
 void desenha_npc(struct al_mapa* mapa, int layer) {
 	for (int i = 0; i < mapa->quantidade_npc; i++) {
-		if (mapa->npc[i].matriz_position_y == layer) {
-			al_draw_scaled_bitmap(mapa->npc[i].image[mapa->npc[i].direcao], 0, 0, 16, 16, mapa->npc[i].matriz_position_x * PIXEL_SIZE, mapa->npc[i].matriz_position_y * PIXEL_SIZE, 32, 32, 0);
-			al_draw_rectangle(mapa->npc[i].matriz_position_x * PIXEL_SIZE, mapa->npc[i].matriz_position_y * PIXEL_SIZE, mapa->npc[i].matriz_position_x * PIXEL_SIZE + PIXEL_SIZE, mapa->npc[i].matriz_position_y * PIXEL_SIZE + PIXEL_SIZE, al_map_rgb(186, 181, 93),0);
+		if (mapa->npc[i]->matriz_position_y == layer) {
+			al_draw_scaled_bitmap(mapa->npc[i]->image[mapa->npc[i]->direcao], 0, 0, 16, 16, mapa->npc[i]->matriz_position_x * PIXEL_SIZE, mapa->npc[i]->matriz_position_y * PIXEL_SIZE, 32, 32, 0);
+			//al_draw_rectangle(mapa->npc[i]->matriz_position_x * PIXEL_SIZE, mapa->npc[i]->matriz_position_y * PIXEL_SIZE, mapa->npc[i]->matriz_position_x * PIXEL_SIZE + PIXEL_SIZE, mapa->npc[i]->matriz_position_y * PIXEL_SIZE + PIXEL_SIZE, al_map_rgb(186, 181, 93),0);
 		}
 	}
+
 }
 
 void desenha_personagem(struct Player* player, int layer) {
@@ -113,66 +170,7 @@ void desenha_fichario(struct Player* player, struct Fichario* fichario) {
 }
 
 void desenha_caixa_dialogo(struct Player* player, struct al_mapa* mapa) {
-
-	int meio_tela = (WINDOW_SIZE_PIXEL_X * PIXEL_SIZE) / 2;
-
-	int dialogue_box_size = meio_tela;
-	int inner_dialogue_spacing = PIXEL_SIZE;
-	
-	int x_dialogue_box_initial = meio_tela - (dialogue_box_size / 2);
-	int y_dialogue_box_initial = PIXEL_SIZE * 3;
-	int x_dialogue_box_final = x_dialogue_box_initial + dialogue_box_size;
-
-	int dialogue_text_size = 16;
-	int spacing_between_text = dialogue_text_size + 8;
-
-	int y_dialogue_box_final = y_dialogue_box_initial
-		+ spacing_between_text * mapa->npc[0].dialogo->linhas_texto 
-		+ inner_dialogue_spacing * 2;
-
-	al_draw_filled_rectangle(
-		x_dialogue_box_initial,
-		y_dialogue_box_initial,
-		x_dialogue_box_final,
-		y_dialogue_box_final,
-		al_map_rgb(255, 255, 255)
-	);
-
-
-	int x_dialogue_name = x_dialogue_box_initial + inner_dialogue_spacing - PIXEL_SIZE / 2;
-	int y_dialogue_name = y_dialogue_box_initial + inner_dialogue_spacing - PIXEL_SIZE ;
-	al_draw_text(
-		mapa->dialogue16,
-		al_map_rgb(0, 0, 0),
-		x_dialogue_name,
-		y_dialogue_name,
-		0,
-		mapa->npc[0].nome
-	);
-
-	int x_dialogue_text = x_dialogue_box_initial + inner_dialogue_spacing;
-	int y_dialogue_text = y_dialogue_box_initial + inner_dialogue_spacing;
-	al_draw_text(
-		mapa->dialogue16,
-		al_map_rgb(0,0,0),
-		x_dialogue_text,
-		y_dialogue_text,
-		0,
-		mapa->npc[0].dialogo->texto
-	);
-
-	int image_dialogue_size = PIXEL_SIZE * 4;
-
-	int x_image_dialogue_initial = x_dialogue_box_final - (image_dialogue_size / 2);
-	int y_image_dialogue_initial = y_dialogue_box_initial + PIXEL_SIZE;
-
-	al_draw_bitmap(
-		mapa->npc[0].foto,
-		x_image_dialogue_initial,
-		y_image_dialogue_initial,
-		0
-	);
-
+	desenhar_dialogo_npc(player, mapa);
 }
 
 void desenha_jogo(struct Player* player, struct al_mapa* mapa, struct Fichario* fichario) {

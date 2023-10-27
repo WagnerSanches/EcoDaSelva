@@ -35,19 +35,20 @@ struct al_mapa {
 
 	int matriz[WINDOW_SIZE_PIXEL_Y][WINDOW_SIZE_PIXEL_X];
 	ALLEGRO_BITMAP* background;
-	struct al_next_mapa next_mapa;
+	struct al_next_mapa* next_mapa;
 
-	struct NPC npc[5];
-	ALLEGRO_BITMAP* NPC_IMAGES[7];
+	struct NPC* npc[MAX_NPC_PER_MAP];
+	ALLEGRO_BITMAP* NPC_IMAGES[MAX_NPC_PER_MAP];
 	ALLEGRO_FONT* dialogue16;
 
-	struct Item* items[20];
-	ALLEGRO_BITMAP* ITEM_IMAGES[10];
+	struct Item* item[MAX_ITEM_PER_MAP];
+	ALLEGRO_BITMAP* ITEM_IMAGES[MAX_ITEM_PER_MAP];
 
 	int quantidade_item;
 	int quantidade_npc;
+	int quantidade_npc_quest;
 
-	struct NPC_INTERACAO npc_interacao;
+	struct NPC_INTERACAO* npc_interacao;
 
 }; 
 

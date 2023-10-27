@@ -3,6 +3,5 @@
 
 struct Dialogo {
 	char* texto;
-	int linhas_texto;
 };
 #endif

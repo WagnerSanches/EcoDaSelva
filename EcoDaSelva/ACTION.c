@@ -10,8 +10,8 @@ void interagir(struct Player* player, struct al_mapa* mapa) {
 	if (npc(player, mapa)) {
 
 		virar_npc(player, mapa);
-		mapa->npc_interacao.matriz_position_x = -1;
-		mapa->npc_interacao.matriz_position_y = -1;
+		mapa->npc_interacao->matriz_position_x = -1;
+		mapa->npc_interacao->matriz_position_y = -1;
 	
 		player->status = CONVERSANDO;
 	}
@@ -48,11 +48,10 @@ void acessar(struct Player* player, struct Fichario* fichario) {
 		criar_fichario(fichario);
 		break;
 	case FECHAR_FICHARIO:
-
 		destruir_fichario(fichario);
+		fichario->status = FICHARIO_FECHADO;
 		player->status = PARADO;
 
-		fichario->status = FICHARIO_FECHADO;
 		break;
 	case FICHARIO_ABERTO:
 
