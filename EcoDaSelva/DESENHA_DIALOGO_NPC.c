@@ -5,6 +5,9 @@
 
 void desenhar_dialogo_npc(struct Player* player, struct al_mapa* mapa) {
 
+	bool teste = false;
+
+
 	int meio_tela = (WINDOW_SIZE_PIXEL_X * PIXEL_SIZE) / 2;
 
 	int dialogue_box_size = meio_tela;
@@ -20,7 +23,7 @@ void desenhar_dialogo_npc(struct Player* player, struct al_mapa* mapa) {
 	int indice_bot = player->indice_bot_conversando;
 
 	int spacing = 3;
-	if (true)
+	if (teste)
 		spacing = 7;
 
 	int y_dialogue_box_final = y_dialogue_box_initial
@@ -74,7 +77,7 @@ void desenhar_dialogo_npc(struct Player* player, struct al_mapa* mapa) {
 	);
 
 
-	if (false) {
+	if (!teste) {
 		int y_press_key = y_dialogue_box_final - spacing_between_text;
 		al_draw_text(
 			mapa->dialogue16,
