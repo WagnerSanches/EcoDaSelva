@@ -125,6 +125,9 @@
     <ClCompile Include="EVENTO_CONVERSAR.c">
       <Filter>Source Files\jogo\eventos</Filter>
     </ClCompile>
+    <ClCompile Include="DESENHA_AJUDANTE.c">
+      <Filter>Source Files\desenho\dialogo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -207,6 +210,12 @@
     </ClInclude>
     <ClInclude Include="EVENTO_CONVERSAR.h">
       <Filter>Header Files\jogo\eventos</Filter>
+    </ClInclude>
+    <ClInclude Include="AJUDANTE.h">
+      <Filter>Header Files\jogo\componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="DESENHA_AJUDANTE.H">
+      <Filter>Header Files\desenho\dialogo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

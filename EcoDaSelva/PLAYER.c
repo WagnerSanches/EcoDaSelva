@@ -2,6 +2,7 @@
 #include <config.h>
 #include <allegro5/allegro.h>
 #include <string.h>
+#include <AJUDANTE.h>
 
 void init_player(struct Player* player) {
 
@@ -52,6 +53,19 @@ void init_player(struct Player* player) {
 		return 1;
 	}
 
+	player->ajudante = malloc(sizeof(struct Ajudante));
+	if (player->ajudante == NULL) {
+		printf("Falha na alocação de memória ajudante.\n");
+		return 1;
+	}
+
+	player->ajudante->texto = (char*) malloc(sizeof(char) * 600);
+	if (player->ajudante->texto == NULL) {
+		printf("Falha na alocação de memória ajudante texto.\n");
+		return 1;
+	}
+
+
 	player->matriz_position_x = 12;
 	player->matriz_position_y = 7;
 
@@ -69,6 +83,11 @@ void init_player(struct Player* player) {
 
 	player->pressing_key = false;
 	player->pressing_multiple_key = false;
+	player->missao->quest_aceita = false;
+	player->missao->concluida = false;
+
+	player->ajudante->ajudou = false;
+	strcpy(player->ajudante->texto, "Ola aventureiro! Seja bemvindo a Oiapoque Voce deve estar estranhando o clima quente mas logo se acostuma Irei te ajudar durante sua pesquisa aqui na vila, soube que esta em busca de informacoes sobre a fauna entao por que nao se enturmar e aprender um pouco com os moradores do vilarejo. Talvez eles tenham informacoes que possam te ajudar.");
 
 	player->velocidade = 2;
 }

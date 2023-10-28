@@ -3,5 +3,6 @@
 
 struct Dialogo {
 	char* texto;
+	int opcao_selecionada;
 };
 #endif

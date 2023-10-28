@@ -9,7 +9,8 @@ enum Status {
 	INTERAGINDO = 2,
 	CORRENDO = 3,
 	FICHARIO = 4,
-	CONVERSANDO = 5
+	CONVERSANDO = 5,
+	AJUDANTE = 6
 };
 
 struct Resposta {
@@ -18,8 +19,9 @@ struct Resposta {
 };
 
 struct Mission {
-	int indice_npc_guest;
-	bool fazendo_mission;
+	int indice_npc_guest_aceita;
+	bool quest_aceita;
+	bool concluida;
 };
 
 struct Player {
@@ -50,6 +52,8 @@ struct Player {
 
 	struct Resposta* respostas[4];
 	struct Mission* missao;
+
+	struct Ajudante* ajudante;
 };
 
 void init_player(struct Player* player);
