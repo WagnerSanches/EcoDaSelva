@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <allegro5/allegro5.h>
 #include <POSICOES_BOX.h>
+#include <AJUDANTE.h>
 
 enum Selecao_groupo {
 	NAO_SELECIONADO = 0,
@@ -18,14 +19,12 @@ enum Fichario_status {
 
 struct Group {
 	char* titulo;
-	char* descricao;
-	//ALLEGRO_BITMAP* image[2];
+	struct Ajudante* ajudante;
+	bool mostrar_opcoes;
 };
 
 struct Classe {
 	char* titulo;
-	char* descricao;
-
 	struct Group* groupo[3];
 };
 
@@ -41,9 +40,10 @@ struct Fichario {
 	struct Selecao* selecao;
 	enum Fichario_status status;
 	struct Posicoes_fichario_box* posicoes;
+	struct Ajudante* ajudante;
 };
 
-
+void init_fichario(struct Fichario* fichario);
 void criar_fichario(struct Fichario* fichario);
 void destruir_fichario(struct Fichario* fichario);
 

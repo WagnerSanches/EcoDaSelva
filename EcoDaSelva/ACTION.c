@@ -4,16 +4,30 @@
 #include <REGRA.h>
 #include <animation.h>
 #include <FICHARIO.h>
+#include <OBJETO.h>
 
 void interagir(struct Player* player, struct al_mapa* mapa) {
 	
-	if (npc(player, mapa)) {
+	if (interagiu(player, mapa, NPC)) {
 
 		virar_npc(player, mapa);
-		mapa->npc_interacao->matriz_position_x = -1;
-		mapa->npc_interacao->matriz_position_y = -1;
+		mapa->objeto_interacao->matriz_position_x = -1;
+		mapa->objeto_interacao->matriz_position_y = -1;
 	
 		player->status = CONVERSANDO;
+	}
+	else if (interagiu(player, mapa, ITEM)) {
+
+		for (int i = 0; i < mapa->quantidade_npc; i++) {
+			if (mapa->item[i]->matriz_position_x == mapa->objeto_interacao->matriz_position_x && mapa->item[i]->matriz_position_y == mapa->objeto_interacao->matriz_position_y) {
+				player->indice_objeto_interacao = i;
+				return;
+			}
+		}
+
+		mapa->objeto_interacao->matriz_position_x = -1;
+		mapa->objeto_interacao->matriz_position_y = -1;
+
 	}
 	else {
 		player->status = PARADO;

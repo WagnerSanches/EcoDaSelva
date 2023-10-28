@@ -48,7 +48,7 @@ struct Player {
 
 	int velocidade;
 
-	int indice_bot_conversando;
+	int indice_objeto_interacao;
 
 	struct Resposta* respostas[4];
 	struct Mission* missao;

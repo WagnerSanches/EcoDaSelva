@@ -6,7 +6,7 @@
 #include <NPC.h>
 #include <allegro5/allegro_font.h>
 
-struct NPC_INTERACAO {
+struct OBJETO_INTERACAO {
 	int matriz_position_x;
 	int matriz_position_y;
 };
@@ -19,14 +19,10 @@ struct al_next_mapa {
 };
 
 struct Item {
-	int map_position_x;
-	int map_position_y;
-
 	int matriz_position_x;
 	int matriz_position_y;
-
-	int pixel_size_image;
-
+	struct Ajudante* ajudante;
+	bool item_missao;
 	ALLEGRO_BITMAP* image;
 };
 
@@ -42,16 +38,15 @@ struct al_mapa {
 	ALLEGRO_FONT* dialogue16;
 
 	struct Item* item[MAX_ITEM_PER_MAP];
-	ALLEGRO_BITMAP* ITEM_IMAGES[MAX_ITEM_PER_MAP];
 
 	int quantidade_item;
 	int quantidade_npc;
 	int quantidade_npc_quest;
 
-	struct NPC_INTERACAO* npc_interacao;
+	struct OBJETO_INTERACAO* objeto_interacao;
 
 }; 
 
 void init_mapa(struct al_mapa* mapa);
-
+void carregar_mapa(struct al_mapa* mapa, int next_mapa);
 #endif // DIRECAO_H

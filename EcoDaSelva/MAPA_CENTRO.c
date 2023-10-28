@@ -69,6 +69,13 @@ void carregar_mapa_centro(struct al_mapa *mapa) {
 	strcpy(mapa->npc[4]->dialogo[1]->texto, "Venha, permita-me mostrar os movimentos tradicionais de nossa danca, uma experiencia unica que voce jamais esquecera");
 	strcpy(mapa->npc[4]->dialogo[2]->texto, "Nossas dancas contam historias ancestrais e celebram nossa conexao com a natureza. Voce encontrara beleza e significado em cada movimento.");
 
+	mapa->quantidade_item = 1;
+	mapa->item[0]->matriz_position_x = 2;
+	mapa->item[0]->matriz_position_y = 2;
+	mapa->item[0]->image = al_load_bitmap("assets/objeto/arvore/Palm_tree1_3.png");
+
+	for(int i = 0; i < mapa->quantidade_item; i++) 
+		mapa->matriz[mapa->item[i]->matriz_position_y][mapa->item[i]->matriz_position_x] = 5;
 
 	mapa->matriz[11][WINDOW_SIZE_PIXEL_X - 1] = 3;
 	mapa->matriz[12][WINDOW_SIZE_PIXEL_X - 1] = 3;
@@ -100,7 +107,6 @@ void carregar_mapa_centro(struct al_mapa *mapa) {
 	mapa->items[0]->matriz_position_y = 10;
 	mapa->items[0]->map_position_x = mapa->items[0]->matriz_position_x * PIXEL_SIZE;
 	mapa->items[0]->map_position_y = (mapa->items[0]->matriz_position_y - 1) * PIXEL_SIZE;
-
 
 	for (int i = 0; i < mapa->quantidade_item; i++) {
 		mapa->matriz[mapa->items[i]->matriz_position_y][mapa->items[i]->matriz_position_x] = 1;

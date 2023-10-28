@@ -9,6 +9,9 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
 	switch (keycode) {
 	case ALLEGRO_KEY_UP:
 	case ALLEGRO_KEY_W:
+
+		if (fichario->ajudante->ajudou == false) return;
+
  		if (fichario->selecao->grupo_selecionado == false) {
 			fichario->selecao->classe--;
 
@@ -17,15 +20,27 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
 			}
 		}
 		else {
-			fichario->selecao->grupo--;
 
-			if (fichario->selecao->grupo <= -1) {
-				fichario->selecao->grupo = NUMBER_OF_GROUP_OF_CLASSES - 1;
+			if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->mostrar_opcoes) {
+
+				if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada - 1 == 0) {
+					fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada--;
+				}
+
+			}
+			else {
+				fichario->selecao->grupo--;
+
+				if (fichario->selecao->grupo <= -1) {
+					fichario->selecao->grupo = NUMBER_OF_GROUP_OF_CLASSES - 1;
+				}
 			}
 		}
 		break;
 	case ALLEGRO_KEY_DOWN:
 	case ALLEGRO_KEY_S:
+
+		if (fichario->ajudante->ajudou == false) return;
 
 		if (fichario->selecao->grupo_selecionado == false) {
 			fichario->selecao->classe++;
@@ -35,11 +50,22 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
 			}
 		}
 		else {
-			fichario->selecao->grupo++;
 
-			if (fichario->selecao->grupo >= NUMBER_OF_GROUP_OF_CLASSES) {
-				fichario->selecao->grupo = NUMBER_OF_GROUP_OF_CLASSES - 1;
+			if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->mostrar_opcoes) {
+
+				if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada + 1 == 1) {
+					fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada++;
+				}
+
 			}
+			else {
+				fichario->selecao->grupo++;
+
+				if (fichario->selecao->grupo >= NUMBER_OF_GROUP_OF_CLASSES) {
+					fichario->selecao->grupo = NUMBER_OF_GROUP_OF_CLASSES - 1;
+				}
+			}
+
 		}
 
 		break;
@@ -53,15 +79,34 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
 		break;
 
 	case ALLEGRO_KEY_SPACE:
+
+		if (fichario->ajudante->ajudou == false) {
+			fichario->ajudante->ajudou = true;
+			return;
+		} 
+
 		if (fichario->selecao->grupo_selecionado) {
 
-			player->respostas[fichario->selecao->classe]->selecionado = true;
-			strcpy(
-				player->respostas[fichario->selecao->classe]->grupo,
-				fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->titulo
-			);
+			if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->mostrar_opcoes == false) {
+				fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->mostrar_opcoes = true;
+			}
+			else {
 
-			fichario->selecao->grupo_selecionado = false;
+				if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada == 0) {
+					player->respostas[fichario->selecao->classe]->selecionado = true;
+					strcpy(
+						player->respostas[fichario->selecao->classe]->grupo,
+						fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->titulo
+					);
+					fichario->selecao->grupo_selecionado = false;
+					fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->mostrar_opcoes = false;
+				}
+				else {
+					fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->mostrar_opcoes = false;
+					fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada = 0;
+				}
+			}
+			
 		}
 		else {
 			fichario->selecao->grupo_selecionado = true;
@@ -82,7 +127,14 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
 
 			break;
 		case FICHARIO_ABERTO:
-			fichario->status = FECHAR_FICHARIO;
+			if (fichario->ajudante->ajudou == true) {
+				if (fichario->selecao->grupo_selecionado) {
+					fichario->selecao->grupo_selecionado = false;
+				}
+				else {
+					fichario->status = FECHAR_FICHARIO;
+				}
+			}
 		}
 
 	}

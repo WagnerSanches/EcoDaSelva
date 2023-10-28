@@ -8,6 +8,8 @@
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_font.h>
 #include <FICHARIO.h>
+#include <AJUDANTE.h>
+#include <DESENHA_AJUDANTE.H>
 
 void desenhar_opcoes(struct Fichario* fichario) {
 	/* INICIO OPCOES */
@@ -21,7 +23,7 @@ void desenhar_opcoes(struct Fichario* fichario) {
 
 	int y_subbox_option_title = y_subbox_options_initial + fichario->posicoes->espacamento_fichario_dentro * 2;
 
-	if(fichario->selecao->grupo_selecionado)
+	if (fichario->selecao->grupo_selecionado)
 		al_draw_text(
 			fichario->posicoes->titulo28,
 			al_map_rgb(100, 100, 100),
@@ -30,7 +32,7 @@ void desenhar_opcoes(struct Fichario* fichario) {
 			ALLEGRO_ALIGN_CENTER,
 			"Selecione um grupo"
 		);
-	else 
+	else
 		al_draw_text(
 			fichario->posicoes->titulo28,
 			al_map_rgb(100, 100, 100),
@@ -55,10 +57,10 @@ void desenhar_opcoes(struct Fichario* fichario) {
 	/* LINHAS BRANCA DE SELECIONAR OPCAO */
 	int line_thickness_button_selected = 4;
 	int x_selected_option_initial = x_subbox_button_option_initial - line_thickness_button_selected;
-	
+
 	int y_selected_option_initial = ((y_subbox_button_option_initial + (fichario->selecao->classe * (y_subbox_size_button_option + espacemento_y_subbox_option_option))) - (line_thickness_button_selected)) + 2;
 	if (fichario->selecao->grupo_selecionado) {
-		y_selected_option_initial = ((y_subbox_button_option_initial + 
+		y_selected_option_initial = ((y_subbox_button_option_initial +
 			(fichario->selecao->grupo * (y_subbox_size_button_option + espacemento_y_subbox_option_option))) -
 			(line_thickness_button_selected)) + 2 + fichario->posicoes->espacamento_fichario_dentro;
 
@@ -69,9 +71,9 @@ void desenhar_opcoes(struct Fichario* fichario) {
 	al_draw_rectangle(x_selected_option_initial, y_selected_option_initial, x_selected_option_final, y_selected_option_final, al_map_rgb(255, 255, 255), line_thickness_button_selected);
 	/* FINAL - LINHAS BRANCA DE SELECIONAR OPCAO */
 
-	if(fichario->selecao->grupo_selecionado == false){
+	if (fichario->selecao->grupo_selecionado == false) {
 		for (int i = 0; i < 4; i++) {
-			int y_subbox_button_option = y_subbox_button_option_initial + 
+			int y_subbox_button_option = y_subbox_button_option_initial +
 				((y_subbox_size_button_option + espacemento_y_subbox_option_option) * i);
 
 			int y_subbox_button_option_final = y_subbox_button_option + y_subbox_size_button_option;
@@ -82,23 +84,29 @@ void desenhar_opcoes(struct Fichario* fichario) {
 		}
 	}
 	else {
-		y_subbox_button_option_initial = y_subbox_button_option_initial + fichario->posicoes->espacamento_fichario_dentro;
-		for (int i = 0; i < 3; i++) {
-			int y_subbox_button_option = y_subbox_button_option_initial +
-				((y_subbox_size_button_option + espacemento_y_subbox_option_option) * i);
 
-			int y_subbox_button_option_final = y_subbox_button_option + y_subbox_size_button_option;
-			al_draw_filled_rectangle(x_subbox_button_option_initial, y_subbox_button_option, x_subbox_button_option_final, y_subbox_button_option_final, al_map_rgb(161, 127, 53));
+			y_subbox_button_option_initial = y_subbox_button_option_initial + fichario->posicoes->espacamento_fichario_dentro;
+			for (int i = 0; i < 3; i++) {
+				int y_subbox_button_option = y_subbox_button_option_initial +
+					((y_subbox_size_button_option + espacemento_y_subbox_option_option) * i);
 
-			int y_subbox_option_text = y_subbox_button_option + (y_subbox_size_button_option / 4);
-			al_draw_text(fichario->posicoes->subtitulo22, 
-				al_map_rgb(255, 255, 255), 
-				meio_subbox_options, 
-				y_subbox_option_text, 
-				ALLEGRO_ALIGN_CENTER, 
-				fichario->classe[fichario->selecao->classe]->groupo[i]->titulo);
-		}
+				int y_subbox_button_option_final = y_subbox_button_option + y_subbox_size_button_option;
+				al_draw_filled_rectangle(x_subbox_button_option_initial, y_subbox_button_option, x_subbox_button_option_final, y_subbox_button_option_final, al_map_rgb(161, 127, 53));
+
+				int y_subbox_option_text = y_subbox_button_option + (y_subbox_size_button_option / 4);
+				al_draw_text(fichario->posicoes->subtitulo22,
+					al_map_rgb(255, 255, 255),
+					meio_subbox_options,
+					y_subbox_option_text,
+					ALLEGRO_ALIGN_CENTER,
+					fichario->classe[fichario->selecao->classe]->groupo[i]->titulo);
+
+			}
+			
+			if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->mostrar_opcoes) {
+				desenhar_ajudante(fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante);
+			}
 
 	}
-		
+
 }

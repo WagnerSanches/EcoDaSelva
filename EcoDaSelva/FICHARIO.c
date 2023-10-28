@@ -2,7 +2,24 @@
 #include <allegro5/allegro5.h>
 #include <allegro5/allegro_font.h>
 
-void criar_fichario(struct Fichario* fichario) {
+void init_fichario(struct Fichario* fichario) {
+	fichario->status = FICHARIO_FECHADO;
+
+	fichario->ajudante = malloc(sizeof(struct Ajudante));
+	if (fichario->ajudante == NULL) {
+		printf("Falha na alocação de memória classe ajudante.\n");
+		return;
+	}
+	fichario->ajudante->texto = (char*)malloc(sizeof(char) * 600);
+	if (fichario->ajudante->texto == NULL) {
+		printf("Falha na alocação de memória classe descricao.\n");
+		return;
+	}
+	fichario->ajudante->ajudou = false;
+	fichario->ajudante->quantiade_imagem = 1;
+	fichario->ajudante->image[0] = al_load_bitmap("assets/personagem/ajudante/informacoes/taxonomia.jpg");
+
+
 
 	for (int i = 0; i < NUMBER_OF_CLASSES; i++) {
 
@@ -12,25 +29,20 @@ void criar_fichario(struct Fichario* fichario) {
 			return;
 		}
 
-		fichario->classe[i]->titulo = (char*) malloc(sizeof(char) * 30);
+		fichario->classe[i]->titulo = (char*)malloc(sizeof(char) * 30);
 		if (fichario->classe[i]->titulo == NULL) {
 			printf("Falha na alocação de memória classe titulo.\n");
 			return;
 		}
 
-		fichario->classe[i]->descricao = (char*)malloc(sizeof(char) * 80);
-		if (fichario->classe[i]->descricao == NULL) {
-			printf("Falha na alocação de memória classe descricao.\n");
-			return;
-		}
-
 		for (int j = 0; j < NUMBER_OF_GROUP_OF_CLASSES; j++) {
-			
+
 			fichario->classe[i]->groupo[j] = malloc(sizeof(struct Group));
 			if (fichario->classe[i]->groupo[j] == NULL) {
 				printf("Falha na alocação de memória classe groupo.\n");
 				return 1;
 			}
+			fichario->classe[i]->groupo[j]->mostrar_opcoes = false;
 
 			fichario->classe[i]->groupo[j]->titulo = (char*)malloc(sizeof(char) * 30);
 			if (fichario->classe[i]->groupo[j]->titulo == NULL) {
@@ -38,13 +50,26 @@ void criar_fichario(struct Fichario* fichario) {
 				return 1;
 			}
 
-			fichario->classe[i]->groupo[j]->descricao = (char*)malloc(sizeof(char) * 80);
-			if (fichario->classe[i]->groupo[j]->descricao == NULL) {
-				printf("Falha na alocação de memória classe grupo descricao.\n");
+			fichario->classe[i]->groupo[j]->ajudante = malloc(sizeof(struct Ajudante));
+			if (fichario->classe[i]->groupo[j]->ajudante == NULL) {
+				printf("Falha na alocação de memória classe ajudante.\n");
 				return;
 			}
+			fichario->classe[i]->groupo[j]->ajudante->texto = (char*)malloc(sizeof(char) * 600);
+			if (fichario->classe[i]->groupo[j]->ajudante->texto == NULL) {
+				printf("Falha na alocação de memória classe descricao.\n");
+				return;
+			}
+
+			fichario->classe[i]->groupo[j]->ajudante->tipo_ensino = ENSINAR_INFORMACAO;
+			fichario->classe[i]->groupo[j]->ajudante->opcao = true;
+			fichario->classe[i]->groupo[j]->ajudante->opcao_selecionada = 0;
 		}
 	}
+}
+
+void criar_fichario(struct Fichario* fichario) {
+
 
 	fichario->posicoes = malloc(sizeof(struct Posicoes_fichario_box));
 	if (fichario->posicoes == NULL) {
@@ -63,15 +88,44 @@ void criar_fichario(struct Fichario* fichario) {
 	fichario->posicoes->descricao18 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 18, 0);
 	fichario->posicoes->tag16 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 16, 0);
 
+	strcpy(
+		fichario->ajudante->texto,
+		"A taxonomia e a ciencia que classifica e organiza seres vivos em grupos com base em caracteristicas compartilhadas, incluindo reino, filo, classe, ordem, familia, genero e especie, para entender suas relacoes e diversidade. Em biologia, esses sao os principais niveis de classificacao, usados na taxonomia. Essa hierarquia taxonomica ajuda a organizar a diversidade da vida em grupos com base em suas caracteristicas compartilhadas e relacoes evolutivas."
+	);
+
 	strcpy(fichario->classe[0]->titulo, "Ordem");
 	strcpy(fichario->classe[0]->groupo[0]->titulo, "Rodentia");
+	strcpy(
+		fichario->classe[0]->groupo[0]->ajudante->texto, 
+		"Rodentia e a ordem de mamiferos caracterizada por animais com incisivos afiados em constante crescimento, incluindo ratos, esquilos e porquinhos-da-india. Eles sao encontrados em todo o mundo e tem um papel ecologico significativo."
+	);
 	strcpy(fichario->classe[0]->groupo[1]->titulo, "Carnivora");
+	strcpy(
+		fichario->classe[0]->groupo[1]->ajudante->texto,
+		"Carnivora e a ordem de mamiferos que inclui uma variedade de animais carnivoros, como leoes, tigres, lobos e ursos. Eles sao conhecidos por seus dentes afiados e adaptacoes para a caca. Os carnivoros sao encontrados em varias partes do mundo e desempenham papeis importantes nos ecossistemas como predadores."
+	);
 	strcpy(fichario->classe[0]->groupo[2]->titulo, "Lepidoptera");
+	strcpy(
+		fichario->classe[0]->groupo[2]->ajudante->texto,
+		"Lepidoptera e a ordem de insetos que inclui borboletas e mariposas, conhecidos por suas asas com escamas e por passar por metamorfose completa.Eles sao importantes polinizadores e sao encontrados em habitats variados ao redor do mundo."
+	);
 
 	strcpy(fichario->classe[1]->titulo, "Familia");
 	strcpy(fichario->classe[1]->groupo[0]->titulo, "Dendrobatidae");
+	strcpy(
+		fichario->classe[1]->groupo[0]->ajudante->texto,
+		"Rodentia e a ordem de mamiferos caracterizada por animais com incisivos afiados em constante crescimento, incluindo ratos, esquilos e porquinhos-da-india. Eles sao encontrados em todo o mundo e tem um papel ecologico significativo."
+	);
 	strcpy(fichario->classe[1]->groupo[1]->titulo, "Carcharhinidae");
+	strcpy(
+		fichario->classe[1]->groupo[1]->ajudante->texto,
+		"Rodentia e a ordem de mamiferos caracterizada por animais com incisivos afiados em constante crescimento, incluindo ratos, esquilos e porquinhos-da-india. Eles sao encontrados em todo o mundo e tem um papel ecologico significativo."
+	);
 	strcpy(fichario->classe[1]->groupo[2]->titulo, "Labridae");
+	strcpy(
+		fichario->classe[1]->groupo[2]->ajudante->texto,
+		"Rodentia e a ordem de mamiferos caracterizada por animais com incisivos afiados em constante crescimento, incluindo ratos, esquilos e porquinhos-da-india. Eles sao encontrados em todo o mundo e tem um papel ecologico significativo."
+	);
 
 	strcpy(fichario->classe[2]->titulo, "Genero");
 	strcpy(fichario->classe[2]->groupo[0]->titulo, "Phyllobates");
@@ -88,20 +142,11 @@ void criar_fichario(struct Fichario* fichario) {
 
 	fichario->status = FICHARIO_ABERTO;
 	fichario->selecao->grupo_selecionado = false;
-
+	fichario->ajudante->opcao = false;
+	fichario->ajudante->opcao_selecionada = 0;
 }
 
 void destruir_fichario(struct Fichario* fichario) {
-	for (int i = 0; i < NUMBER_OF_CLASSES; i++) {
-		for (int j = 0; j < NUMBER_OF_GROUP_OF_CLASSES; j++) {
-			free(fichario->classe[i]->groupo[j]->descricao);
-			free(fichario->classe[i]->groupo[j]->titulo);
-		}
-
-		free(fichario->classe[i]->titulo);
-		free(fichario->classe[i]->descricao);
-	}
-	
 	free(fichario->selecao);
 
 	al_destroy_font(fichario->posicoes->titulo28);

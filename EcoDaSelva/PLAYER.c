@@ -87,6 +87,9 @@ void init_player(struct Player* player) {
 	player->missao->concluida = false;
 
 	player->ajudante->ajudou = false;
+	player->ajudante->quantiade_imagem = 0;
+	player->ajudante->opcao = false;
+	player->ajudante->tipo_ensino = ENSINAR_INFORMACAO;
 	strcpy(player->ajudante->texto, "Ola aventureiro! Seja bemvindo a Oiapoque Voce deve estar estranhando o clima quente mas logo se acostuma Irei te ajudar durante sua pesquisa aqui na vila, soube que esta em busca de informacoes sobre a fauna entao por que nao se enturmar e aprender um pouco com os moradores do vilarejo. Talvez eles tenham informacoes que possam te ajudar.");
 
 	player->velocidade = 2;

@@ -3,12 +3,20 @@
 #include <PLAYER.h>
 #include <AL_MAPA.h>
 
-void desenhar_dialogo_npc(struct Player* player, struct al_mapa* mapa) {
+void desenhar_caixa_dialogo(struct Player* player, struct al_mapa* mapa) {
 
-	int indice_bot = player->indice_bot_conversando;
+	al_draw_filled_rectangle(
+		0,
+		0,
+		WINDOW_SIZE_PIXEL_X * PIXEL_SIZE,
+		WINDOW_SIZE_PIXEL_Y * PIXEL_SIZE,
+		al_map_rgba_f(0, 0, 0, 0.5)
+	);
+
+	int indice_bot = player->indice_objeto_interacao;
 	
-	bool caixa_opcoes = mapa->npc[player->indice_bot_conversando]->npc_quest 
-		&& mapa->npc[player->indice_bot_conversando]->dialogo_lido == 1
+	bool caixa_opcoes = mapa->npc[player->indice_objeto_interacao]->npc_quest 
+		&& mapa->npc[player->indice_objeto_interacao]->dialogo_lido == 1
 		&& player->missao->quest_aceita == false;
 
 	int meio_tela = (WINDOW_SIZE_PIXEL_X * PIXEL_SIZE) / 2;
@@ -29,12 +37,12 @@ void desenhar_dialogo_npc(struct Player* player, struct al_mapa* mapa) {
 
 
 	char* texto = mapa->npc[indice_bot]->dialogo[mapa->npc[indice_bot]->dialogo_lido]->texto;
-	if (mapa->npc[player->indice_bot_conversando]->npc_quest 
+	if (mapa->npc[player->indice_objeto_interacao]->npc_quest 
 		&& player->missao->quest_aceita
-		&& player->missao->indice_npc_guest_aceita == player->indice_bot_conversando) {
+		&& player->missao->indice_npc_guest_aceita == player->indice_objeto_interacao) {
 		strcpy(texto, "Obrigado por estar me ajudando, termine minha tarefa que te darei uma informacao.");
 	}
-	else if (mapa->npc[player->indice_bot_conversando]->npc_quest
+	else if (mapa->npc[player->indice_objeto_interacao]->npc_quest
 		&& player->missao->quest_aceita) {
 		strcpy(texto, "Quando terminar sua tarefa venha falar comigo.");
 	}
@@ -78,7 +86,7 @@ void desenhar_dialogo_npc(struct Player* player, struct al_mapa* mapa) {
 		mapa->npc[indice_bot]->nome
 	);
 
-	int x_dialogue_text = x_dialogue_box_initial + inner_dialogue_spacing;
+	int x_dialogue_text = x_dialogue_box_initial + inner_dialogue_spacing ;
 	int y_dialogue_text = y_dialogue_box_initial + inner_dialogue_spacing;
 	int x_dialogue_text_final = dialogue_box_size - inner_dialogue_spacing * 4;
 
@@ -107,7 +115,7 @@ void desenhar_dialogo_npc(struct Player* player, struct al_mapa* mapa) {
 
 	if (caixa_opcoes) {
 
-		int selecionado = mapa->npc[player->indice_bot_conversando]->dialogo[mapa->npc[player->indice_bot_conversando]->dialogo_lido]->opcao_selecionada;
+		int selecionado = mapa->npc[player->indice_objeto_interacao]->dialogo[mapa->npc[player->indice_objeto_interacao]->dialogo_lido]->opcao_selecionada;
 
 		int raio = dialogue_text_size / 2;
 		int x_press_key_circle = x_dialogue_box_initial + inner_dialogue_spacing * 2;

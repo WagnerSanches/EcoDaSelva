@@ -15,7 +15,7 @@
 #include <string.h>
 #include <AL_MAPA.h>
 #include <MAPA_CENTRO.h>
-#include <MAPA.h>
+#include <DESENHA_JOGO.h>
 #include <stdbool.h>
 #include <ACTION.h>
 #include <FICHARIO.h>
@@ -88,12 +88,12 @@ int main() {
 		printf("Falha na alocação de fichario.\n");
 		return 1;
 	}
-	fichario->status = FICHARIO_FECHADO;
 
 #pragma endregion 
 
 	init_player(player);
 	init_mapa(mapa);
+	init_fichario(fichario);
 
 	while (jogando) {
 
@@ -137,7 +137,7 @@ int main() {
 			}
 
 			if (redraw) {
-				desenha_jogo(player, mapa, fichario);
+				desenhar_jogo(player, mapa, fichario);
 
 				al_flush_event_queue(events_queue);
 				al_flip_display();
