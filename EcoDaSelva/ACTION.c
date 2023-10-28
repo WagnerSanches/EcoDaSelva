@@ -21,12 +21,11 @@ void interagir(struct Player* player, struct al_mapa* mapa) {
 		for (int i = 0; i < mapa->quantidade_npc; i++) {
 			if (mapa->item[i]->matriz_position_x == mapa->objeto_interacao->matriz_position_x && mapa->item[i]->matriz_position_y == mapa->objeto_interacao->matriz_position_y) {
 				player->indice_objeto_interacao = i;
+				mapa->objeto_interacao->matriz_position_x = -1;
+				mapa->objeto_interacao->matriz_position_y = -1;
 				return;
 			}
 		}
-
-		mapa->objeto_interacao->matriz_position_x = -1;
-		mapa->objeto_interacao->matriz_position_y = -1;
 
 	}
 	else {

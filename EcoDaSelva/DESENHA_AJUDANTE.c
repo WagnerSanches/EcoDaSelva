@@ -22,7 +22,7 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 	int spacing_between_text = dialogue_text_size + 6;
 
 	int spacing = 4;
-	if(ajudante->opcao)
+	if (ajudante->opcao)
 		spacing = 7;
 
 	int dialogue_box_size = meio_tela;
@@ -101,7 +101,7 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 
 
 	int image_size = 256;
-	int x_info_image_1 = x_dialogue_box_initial - image_size / 2 - PIXEL_SIZE *1.5  ;
+	int x_info_image_1 = x_dialogue_box_initial - image_size / 2 - PIXEL_SIZE * 1.5;
 	int y_info_image_1 = y_dialogue_box_initial + PIXEL_SIZE * 2;
 
 	int x_info_image_2 = x_dialogue_box_final - PIXEL_SIZE * 3;
@@ -114,28 +114,40 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 			y_info_image_1,
 			0
 		);
-		
+
 	}
 
 	if (ajudante->opcao) {
 
-	
+
+
 		int selecionado = ajudante->opcao_selecionada;
 		int raio = dialogue_text_size / 2;
 		int x_press_key_circle = x_dialogue_box_initial + inner_dialogue_spacing * 3;
 		int y_press_key_circle = y_dialogue_box_final + raio - (inner_dialogue_spacing * 3);
 
-
-		int y_press_key_question = y_press_key_circle - PIXEL_SIZE - PIXEL_SIZE / 4 ;
-		al_draw_text(
-			dialogue16,
-			al_map_rgb(0, 0, 0),
-			x_press_key_circle - raio * 2,
-			y_press_key_question,
-			0,
-			"Selecionar categoria ?"
-		);
-
+		if (ajudante->tipo_pergunta == PERGUNTA_INFORMACAO) {
+			int y_press_key_question = y_press_key_circle - PIXEL_SIZE - PIXEL_SIZE / 4;
+			al_draw_text(
+				dialogue16,
+				al_map_rgb(0, 0, 0),
+				x_press_key_circle - raio * 2,
+				y_press_key_question,
+				0,
+				"Selecionar categoria ?"
+			);
+		}
+		else {
+			int y_press_key_question = y_press_key_circle - PIXEL_SIZE - PIXEL_SIZE / 4;
+			al_draw_text(
+				dialogue16,
+				al_map_rgb(0, 0, 0),
+				x_press_key_circle - raio * 2,
+				y_press_key_question,
+				0,
+				"Pegar item ?"
+			);
+		}
 
 		al_draw_filled_circle(
 			x_press_key_circle,
@@ -172,6 +184,7 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 			0,
 			"Mao."
 		);
+
 	}
 	else {
 		int y_press_key = y_dialogue_box_final - spacing_between_text - PIXEL_SIZE / 2;

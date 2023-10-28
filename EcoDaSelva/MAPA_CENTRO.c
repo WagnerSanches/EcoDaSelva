@@ -3,6 +3,7 @@
 #include <allegro5/bitmap_draw.h>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_font.h>
+#include <AJUDANTE.h>
 
 void carregar_mapa_centro(struct al_mapa *mapa) {
 
@@ -64,15 +65,23 @@ void carregar_mapa_centro(struct al_mapa *mapa) {
 	strcpy(mapa->npc[3]->dialogo[2]->texto, "Nossas dancas contam historias ancestrais e celebram nossa conexao com a natureza. Voce encontrara beleza e significado em cada movimento.");
 
 	strcpy(mapa->npc[4]->nome, "Pataxo");
+	strcpy(mapa->npc[4]->nome_item_quest, "CARNAUBA");
 	mapa->npc[4]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
 	strcpy(mapa->npc[4]->dialogo[0]->texto, "A musica e a danca desempenham um papel importante em nossas celebracoes. Gostaria de aprender alguns passos de danca conosco?");
 	strcpy(mapa->npc[4]->dialogo[1]->texto, "Venha, permita-me mostrar os movimentos tradicionais de nossa danca, uma experiencia unica que voce jamais esquecera");
 	strcpy(mapa->npc[4]->dialogo[2]->texto, "Nossas dancas contam historias ancestrais e celebram nossa conexao com a natureza. Voce encontrara beleza e significado em cada movimento.");
 
 	mapa->quantidade_item = 1;
+	strcpy(mapa->item[0]->nome, "CARNAUBA");
 	mapa->item[0]->matriz_position_x = 2;
 	mapa->item[0]->matriz_position_y = 2;
 	mapa->item[0]->image = al_load_bitmap("assets/objeto/arvore/Palm_tree1_3.png");
+	mapa->item[0]->item_missao = true;
+	mapa->item[0]->ajudante->quantiade_imagem = 0;
+	mapa->item[0]->ajudante->opcao = true;
+	mapa->item[0]->ajudante->opcao_selecionada = 0;
+	mapa->item[0]->ajudante->tipo_pergunta = PERGUNTA_ITEM;
+	strcpy(mapa->item[0]->ajudante->texto, "Voce encontrou uma carnauba! A carnauba, ou Copernicia prunifera, e uma palmeira do Cerrado cujas folhas sao essenciais para a sobrevivencia de animais como o soldadinho-do-araripe, que constroi ninhos com elas. Alem disso, a cera de carnauba e usada em diversos produtos.");
 
 	for(int i = 0; i < mapa->quantidade_item; i++) 
 		mapa->matriz[mapa->item[i]->matriz_position_y][mapa->item[i]->matriz_position_x] = 5;

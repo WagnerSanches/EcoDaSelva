@@ -1,5 +1,7 @@
 #include <allegro5/allegro5.h>
 #include <AL_MAPA.h>
+#include <AJUDANTE.h>
+#include <MAPA_CENTRO.h>
 
 void init_mapa(struct al_mapa* mapa) {
 	mapa->criado = false;
@@ -83,6 +85,12 @@ void criar_mapa(struct al_mapa* mapa) {
 			return -1;
 		}
 
+		mapa->npc[i]->nome_item_quest = (char*)malloc(sizeof(char) * 30);
+		if (mapa->npc[i]->nome_item_quest == NULL) {
+			printf("Falha na alocação de memória npc nome_item_quest.\n");
+			return -1;
+		}
+
 		for (int j = 0; j < 3; j++) {
 			mapa->npc[i]->dialogo[j] = malloc(sizeof(struct Dialogo));
 			if (mapa->npc[i]->dialogo[j] == NULL) {
@@ -107,6 +115,24 @@ void criar_mapa(struct al_mapa* mapa) {
 		if (mapa->item[i] == NULL) {
 			printf("Falha na alocação de memória item.\n");
 			return -1;
+		}
+
+		mapa->item[i]->nome = (char*) malloc(sizeof(char) * 30);
+		if (mapa->item[i]->nome == NULL) {
+			printf("Falha na alocação de memória item.\n");
+			return -1;
+		}
+
+		mapa->item[i]->ajudante = malloc(sizeof(struct Ajudante));
+		if (mapa->item[i]->ajudante == NULL) {
+			printf("Falha na alocação de memória ajudante.\n");
+			return 1;
+		}
+
+		mapa->item[i]->ajudante->texto = (char*)malloc(sizeof(char) * 600);
+		if (mapa->item[i]->ajudante->texto == NULL) {
+			printf("Falha na alocação de memória ajudante texto.\n");
+			return 1;
 		}
 
 	}

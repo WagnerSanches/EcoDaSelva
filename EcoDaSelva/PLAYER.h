@@ -54,6 +54,9 @@ struct Player {
 	struct Mission* missao;
 
 	struct Ajudante* ajudante;
+
+	int quantidade_itens_pegados;
+	char* itens_pegados[MAX_ITEM_QUEST];
 };
 
 void init_player(struct Player* player);

@@ -61,7 +61,7 @@ void init_fichario(struct Fichario* fichario) {
 				return;
 			}
 
-			fichario->classe[i]->groupo[j]->ajudante->tipo_ensino = ENSINAR_INFORMACAO;
+			fichario->classe[i]->groupo[j]->ajudante->tipo_pergunta = PERGUNTA_INFORMACAO;
 			fichario->classe[i]->groupo[j]->ajudante->opcao = true;
 			fichario->classe[i]->groupo[j]->ajudante->opcao_selecionada = 0;
 		}

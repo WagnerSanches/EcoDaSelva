@@ -78,8 +78,7 @@ void desenhar_jogo(struct Player* player, struct al_mapa* mapa, struct Fichario*
 		desenhar_caixa_dialogo(player, mapa);
 		break;
 	case INTERAGINDO:
-		player->status = PARADO;
-
+		desenhar_ajudante(mapa->item[player->indice_objeto_interacao]->ajudante);
 		break;
 	case PARADO:
 		if (player->ajudante->ajudou == false) {

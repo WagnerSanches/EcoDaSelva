@@ -19,6 +19,7 @@ struct al_next_mapa {
 };
 
 struct Item {
+	char* nome;
 	int matriz_position_x;
 	int matriz_position_y;
 	struct Ajudante* ajudante;

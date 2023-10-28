@@ -7,3 +7,4 @@
 #define NUMBER_OF_GROUP_OF_CLASSES 3
 #define MAX_NPC_PER_MAP 6
 #define MAX_ITEM_PER_MAP 10
+#define MAX_ITEM_QUEST 4

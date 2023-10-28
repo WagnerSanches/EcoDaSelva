@@ -47,9 +47,17 @@ void init_player(struct Player* player) {
 		player->respostas[i]->selecionado = false;
 	}
 
+	for (int i = 0; i < MAX_ITEM_QUEST; i++) {
+		player->itens_pegados[i] = (char*) malloc(sizeof(char) * 20);
+		if (player->itens_pegados[i] == NULL) {
+			printf("Falha na alocação de memória itens_pegados.\n");
+			return 1;
+		}
+	}
+
 	player->missao = malloc(sizeof(struct Mission));
 	if (player->missao == NULL) {
-		printf("Falha na alocação de memória quest.\n");
+		printf("Falha na alocação de memória missao.\n");
 		return 1;
 	}
 
@@ -64,7 +72,6 @@ void init_player(struct Player* player) {
 		printf("Falha na alocação de memória ajudante texto.\n");
 		return 1;
 	}
-
 
 	player->matriz_position_x = 12;
 	player->matriz_position_y = 7;
@@ -84,13 +91,13 @@ void init_player(struct Player* player) {
 	player->pressing_key = false;
 	player->pressing_multiple_key = false;
 	player->missao->quest_aceita = false;
-	player->missao->concluida = false;
 
 	player->ajudante->ajudou = false;
 	player->ajudante->quantiade_imagem = 0;
 	player->ajudante->opcao = false;
-	player->ajudante->tipo_ensino = ENSINAR_INFORMACAO;
+	player->ajudante->tipo_pergunta = PERGUNTA_INFORMACAO;
 	strcpy(player->ajudante->texto, "Ola aventureiro! Seja bemvindo a Oiapoque Voce deve estar estranhando o clima quente mas logo se acostuma Irei te ajudar durante sua pesquisa aqui na vila, soube que esta em busca de informacoes sobre a fauna entao por que nao se enturmar e aprender um pouco com os moradores do vilarejo. Talvez eles tenham informacoes que possam te ajudar.");
-
+	
+	player->quantidade_itens_pegados = 0;
 	player->velocidade = 2;
 }

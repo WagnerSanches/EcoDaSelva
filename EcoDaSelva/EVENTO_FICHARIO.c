@@ -15,25 +15,20 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
  		if (fichario->selecao->grupo_selecionado == false) {
 			fichario->selecao->classe--;
 
-			if (fichario->selecao->classe <= -1) {
+			if (fichario->selecao->classe <= -1)
 				fichario->selecao->classe = NUMBER_OF_CLASSES - 1;
-			}
 		}
 		else {
 
 			if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->mostrar_opcoes) {
-
-				if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada - 1 == 0) {
+				if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada - 1 == 0) 
 					fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada--;
-				}
-
 			}
 			else {
 				fichario->selecao->grupo--;
 
-				if (fichario->selecao->grupo <= -1) {
+				if (fichario->selecao->grupo <= -1) 
 					fichario->selecao->grupo = NUMBER_OF_GROUP_OF_CLASSES - 1;
-				}
 			}
 		}
 		break;
@@ -45,25 +40,22 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
 		if (fichario->selecao->grupo_selecionado == false) {
 			fichario->selecao->classe++;
 
-			if (fichario->selecao->classe >= NUMBER_OF_CLASSES) {
+			if (fichario->selecao->classe >= NUMBER_OF_CLASSES)
 				fichario->selecao->classe = 0;
-			}
+
 		}
 		else {
 
 			if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->mostrar_opcoes) {
-
-				if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada + 1 == 1) {
+				if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada + 1 == 1) 
 					fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada++;
-				}
 
 			}
 			else {
 				fichario->selecao->grupo++;
 
-				if (fichario->selecao->grupo >= NUMBER_OF_GROUP_OF_CLASSES) {
+				if (fichario->selecao->grupo >= NUMBER_OF_GROUP_OF_CLASSES) 
 					fichario->selecao->grupo = NUMBER_OF_GROUP_OF_CLASSES - 1;
-				}
 			}
 
 		}

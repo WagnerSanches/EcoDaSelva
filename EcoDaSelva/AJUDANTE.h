@@ -2,9 +2,9 @@
 #define AJUDANTE_H
 #include <allegro5/allegro5.h>
 
-enum Ensinar  {
-	ENSINAR_INFORMACAO = 0,
-	ENSINAR_ITEM = 2
+enum Pergunta  {
+	PERGUNTA_INFORMACAO = 0,
+	PERGUNTA_ITEM = 1
 };
 
 struct Ajudante {
@@ -14,7 +14,7 @@ struct Ajudante {
 	bool ajudou;
 	bool opcao;
 	int opcao_selecionada;
-	enum Ensinar tipo_ensino;
+	enum Pergunta tipo_pergunta;
 };
 
 #endif
