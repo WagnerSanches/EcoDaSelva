@@ -24,6 +24,7 @@ struct Item {
 	int matriz_position_y;
 	struct Ajudante* ajudante;
 	bool item_missao;
+	bool item_pegado;
 	ALLEGRO_BITMAP* image;
 };
 

@@ -34,6 +34,8 @@ void evento_interagir_key_precionada(struct Player* player, struct al_mapa* mapa
 				player->status = PARADO;
 				player->quantidade_itens_pegados++;
 				mapa->item[player->indice_objeto_interacao]->ajudante->opcao = false;
+				mapa->item[player->indice_objeto_interacao]->item_pegado = true;
+				mapa->matriz[mapa->item[player->indice_objeto_interacao]->matriz_position_y][mapa->item[player->indice_objeto_interacao]->matriz_position_x] = 0;
 			}
 			else {
 				mapa->item[player->indice_objeto_interacao]->ajudante->opcao_selecionada = 0;

@@ -3,7 +3,7 @@
 
 void carregar_mapa_centro_direita(struct al_mapa* mapa) {
 
-	mapa->background = al_load_bitmap("assets/personagem/npc/direita->jpg");
+	mapa->background = al_load_bitmap("assets/mapa/direita.jpg");
 
 	mapa->quantidade_npc = 0;
 
@@ -11,11 +11,11 @@ void carregar_mapa_centro_direita(struct al_mapa* mapa) {
 	mapa->matriz[12][0] = 3;
 	mapa->matriz[13][0] = 3;
 
-	mapa->NPC_IMAGES[0] = al_load_bitmap("assets/personagem/npc/Character_001->png");
-	mapa->NPC_IMAGES[1] = al_load_bitmap("assets/personagem/npc/Character_002->png");
-	mapa->NPC_IMAGES[2] = al_load_bitmap("assets/personagem/npc/Character_003->png");
-	mapa->NPC_IMAGES[3] = al_load_bitmap("assets/personagem/npc/Character_004->png");
-	mapa->NPC_IMAGES[4] = al_load_bitmap("assets/personagem/npc/Character_005->png");
+	mapa->NPC_IMAGES[0] = al_load_bitmap("assets/personagem/npc/Character_001.png");
+	mapa->NPC_IMAGES[1] = al_load_bitmap("assets/personagem/npc/Character_002.png");
+	mapa->NPC_IMAGES[2] = al_load_bitmap("assets/personagem/npc/Character_003.png");
+	mapa->NPC_IMAGES[3] = al_load_bitmap("assets/personagem/npc/Character_004.png");
+	mapa->NPC_IMAGES[4] = al_load_bitmap("assets/personagem/npc/Character_005.png");
 
 	mapa->quantidade_npc = 5;
 
@@ -44,6 +44,13 @@ void carregar_mapa_centro_direita(struct al_mapa* mapa) {
 		mapa->npc[i]->image[2] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24, 16, 16);
 		mapa->npc[i]->image[3] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24 * 2, 16, 16);
 	}
+
+	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	mapa->npc[1]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	mapa->npc[2]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	mapa->npc[3]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	mapa->npc[4]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+
 
 	mapa->next_mapa->pra_esquerda = 0;
 

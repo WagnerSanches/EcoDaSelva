@@ -45,7 +45,8 @@ void desenha_personagem(struct Player* player, int layer) {
 void desenha_items(struct al_mapa* mapa, int layer) {
 	for (int i = 0; i < mapa->quantidade_item; i++) {
 		if (mapa->item[i]->matriz_position_y == layer) {
-			al_draw_scaled_bitmap(mapa->item[i]->image, 0, 0, 64, 64, mapa->item[i]->matriz_position_x * PIXEL_SIZE - PIXEL_SIZE / 2, mapa->item[i]->matriz_position_y * PIXEL_SIZE - PIXEL_SIZE / 2 , 64, 64, 0);
+			if (mapa->item[i]->item_pegado == false)
+				al_draw_scaled_bitmap(mapa->item[i]->image, 0, 0, 64, 64, mapa->item[i]->matriz_position_x * PIXEL_SIZE - PIXEL_SIZE / 2, mapa->item[i]->matriz_position_y * PIXEL_SIZE - PIXEL_SIZE / 2 , 64, 64, 0);
 		}
 	}
 }

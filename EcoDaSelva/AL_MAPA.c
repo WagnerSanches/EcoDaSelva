@@ -13,11 +13,10 @@ void init_mapa(struct al_mapa* mapa) {
 void excluir_mapa(struct al_mapa* mapa) {
 	if (mapa->criado) {
 		al_destroy_bitmap(mapa->background);
-		al_destroy_font(mapa->dialogue16);
 
 		free(mapa->next_mapa);
 
-		for (int i = 0; i < MAX_NPC_PER_MAP; i++) {
+		for (int i = 0; i < mapa->quantidade_npc; i++) {
 			al_destroy_bitmap(mapa->NPC_IMAGES[i]);
 
 			al_destroy_bitmap(mapa->npc[i]->image[0]);
@@ -27,14 +26,16 @@ void excluir_mapa(struct al_mapa* mapa) {
 
 			al_destroy_bitmap(mapa->npc[i]->foto);
 
-			/*	free(mapa->npc[i]->dialogo->texto);
-				free(mapa->npc[i]->dialogo);
+			if (mapa->npc[i]->npc_quest == false) {
+				free(mapa->npc[i]->dialogo[0]->texto);
 				free(mapa->npc[i]->nome);
-				free(mapa->npc[i]); */
+				free(mapa->npc[i]);
+			}
+
 		}
 
 		// excluir os items
-		for (int i = 0; i < MAX_ITEM_PER_MAP; i++) {
+		for (int i = 0; i < mapa->quantidade_item; i++) {
 			al_destroy_bitmap(mapa->item[i]->image);
 			free(mapa->item[i]);
 		}
@@ -123,6 +124,8 @@ void criar_mapa(struct al_mapa* mapa) {
 			return -1;
 		}
 
+		mapa->item[i]->item_pegado = false;
+
 		mapa->item[i]->ajudante = malloc(sizeof(struct Ajudante));
 		if (mapa->item[i]->ajudante == NULL) {
 			printf("Falha na alocação de memória ajudante.\n");
@@ -137,6 +140,8 @@ void criar_mapa(struct al_mapa* mapa) {
 
 	}
 
+	mapa->quantidade_npc = 0;
+	mapa->quantidade_item = 0;
 	mapa->criado = true;
 }
 

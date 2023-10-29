@@ -53,7 +53,7 @@ void evento_andar_key_precionada(struct Player* player, int keycode) {
 		break;
 	case ALLEGRO_KEY_LSHIFT:
 		if (player->status == ANDANDO || player->status == PARADO) {
-			player->velocidade = 4;
+			player->velocidade = 8;
 			player->status = CORRENDO;
 			player->pressing_multiple_key = true;
 		}
@@ -88,7 +88,7 @@ void evento_andar_key_levantada(struct Player* player, int keycode) {
 		break;
 	case ALLEGRO_KEY_LSHIFT:
 		player->status = ANDANDO;
-		player->velocidade = 2;
+		player->velocidade = 4;
 		player->pressing_multiple_key = false;
 		break;
 	}
