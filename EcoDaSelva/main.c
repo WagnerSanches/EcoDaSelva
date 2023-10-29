@@ -6,6 +6,7 @@
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/drawing.h>
 #include <allegro5/bitmap_draw.h>
+#include <allegro5/allegro_font.h>
 #include <time.h>
 #include <eventos.h>
 #include <animation.h>
@@ -14,10 +15,10 @@
 #include <string.h>
 #include <AL_MAPA.h>
 #include <MAPA_CENTRO.h>
-#include <MAPA.h>
+#include <DESENHA_JOGO.h>
 #include <stdbool.h>
 #include <ACTION.h>
-#include <STATUS.h>
+#include <FICHARIO.h>
 
 int main() {
 	
@@ -25,7 +26,7 @@ int main() {
 	ALLEGRO_DISPLAY* window = NULL;
 	ALLEGRO_EVENT_QUEUE* events_queue = NULL;
 	bool jogando = true;
-	bool redraw = true;
+	bool redraw = false;
 
 	if (!al_init()) {
 		fprintf(stderr, "Falha");
@@ -35,7 +36,9 @@ int main() {
 	al_init_image_addon();
 	al_init_primitives_addon();
 	al_install_keyboard();
-	al_install_mouse();
+	al_install_mouse();	
+	al_init_font_addon();
+	al_init_ttf_addon();
 
 	window = al_create_display(PIXEL_SIZE * WINDOW_SIZE_PIXEL_X, PIXEL_SIZE * WINDOW_SIZE_PIXEL_Y);
 
@@ -73,11 +76,16 @@ int main() {
 		return 1;
 	}
 
-
 	struct Player* player = malloc(sizeof(struct Player));
 
 	if (player == NULL) {
-		perror("Falha na alocação de memória");
+		perror("Falha na alocação de player");
+		return 1;
+	}
+
+	struct Fichario* fichario = malloc(sizeof(struct Fichario));
+	if (fichario == NULL) {
+		printf("Falha na alocação de fichario.\n");
 		return 1;
 	}
 
@@ -85,19 +93,20 @@ int main() {
 
 	init_player(player);
 	init_mapa(mapa);
+	init_fichario(fichario);
 
 	while (jogando) {
 
 		while (!al_is_event_queue_empty(events_queue)) {
 			ALLEGRO_EVENT event;
 			al_wait_for_event(events_queue, &event);
-		
+
 			switch (event.type) {
 			case ALLEGRO_EVENT_KEY_UP:
-				tecla_levantada(player, event.keyboard.keycode);
+				tecla_levantada(player, mapa, fichario, event.keyboard.keycode);
 				break;
 			case ALLEGRO_EVENT_KEY_DOWN:
-				tecla_presionado(player, event.keyboard.keycode);
+				tecla_presionado(player, mapa, fichario, event.keyboard.keycode);
 				break;
 			case ALLEGRO_EVENT_TIMER:
 
@@ -105,11 +114,18 @@ int main() {
 				case PARADO:
 					// menu
 					break;
-				case ANDANDO: case CORRENDO:
+				case ANDANDO: 
+				case CORRENDO:
 					andar(player, mapa);
 					break;
 				case INTERAGINDO:
 					interagir(player, mapa);
+					break;
+				case FICHARIO:
+					acessar(player, fichario);
+					break;
+				case CONVERSANDO:
+					conversar(player, mapa);
 					break;
 				}
 
@@ -121,7 +137,7 @@ int main() {
 			}
 
 			if (redraw) {
-				desenha_jogo(player, mapa);
+				desenhar_jogo(player, mapa, fichario);
 
 				al_flush_event_queue(events_queue);
 				al_flip_display();

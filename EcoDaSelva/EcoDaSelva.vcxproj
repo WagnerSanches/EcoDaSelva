@@ -115,7 +115,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -143,10 +143,20 @@
   <ItemGroup>
     <ClCompile Include="ACTION.c" />
     <ClCompile Include="AL_MAPA.c" />
-    <ClCompile Include="animation.c" />
-    <ClCompile Include="eventos.c" />
+    <ClCompile Include="ANIMATION.c" />
+    <ClCompile Include="DESENHAR_FICHARIO_INFO.c" />
+    <ClCompile Include="DESENHA_AJUDANTE.c" />
+    <ClCompile Include="DESENHA_DIALOGO_NPC.c" />
+    <ClCompile Include="DESENHA_FICHARIO.c" />
+    <ClCompile Include="DESENHA_FICHARIO_OPCOES.c" />
+    <ClCompile Include="EVENTOS.c" />
+    <ClCompile Include="EVENTO_ANDAR.c" />
+    <ClCompile Include="EVENTO_CONVERSAR.c" />
+    <ClCompile Include="EVENTO_FICHARIO.c" />
+    <ClCompile Include="EVENTO_INTERAGIR.c" />
+    <ClCompile Include="FICHARIO.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="MAPA.c" />
+    <ClCompile Include="DESENHA_JOGO.c" />
     <ClCompile Include="MAPA_1.c" />
     <ClCompile Include="MAPA_2.c" />
     <ClCompile Include="MAPA_3.c" />
@@ -160,20 +170,34 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ACTION.h" />
+    <ClInclude Include="AJUDANTE.h" />
     <ClInclude Include="AL_MAPA.h" />
-    <ClInclude Include="animation.h" />
+    <ClInclude Include="ANIMATION.h" />
     <ClInclude Include="config.h" />
-    <ClInclude Include="eventos.h" />
-    <ClInclude Include="MAPA.h" />
+    <ClInclude Include="DESENHA_AJUDANTE.H" />
+    <ClInclude Include="DESENHA_DIALOGO_NPC.h" />
+    <ClInclude Include="DESENHA_FICHARIO.h" />
+    <ClInclude Include="DESENHA_FICHARIO_INFO.h" />
+    <ClInclude Include="DESENHA_FICHARIO_OPCOES.h" />
+    <ClInclude Include="DIALOGO.h" />
+    <ClInclude Include="EVENTOS.h" />
+    <ClInclude Include="EVENTO_ANDAR.h" />
+    <ClInclude Include="EVENTO_CONVERSAR.h" />
+    <ClInclude Include="EVENTO_FICHARIO.h" />
+    <ClInclude Include="EVENTO_INTERAGIR.h" />
+    <ClInclude Include="FICHARIO.h" />
+    <ClInclude Include="DESENHA_JOGO.h" />
     <ClInclude Include="MAPA_1.h" />
     <ClInclude Include="MAPA_2.h" />
     <ClInclude Include="MAPA_3.h" />
     <ClInclude Include="MAPA_4.h" />
     <ClInclude Include="MAPA_CENTRO.h" />
+    <ClInclude Include="NPC.h" />
+    <ClInclude Include="OBJETO.h" />
     <ClInclude Include="PLAYER.h" />
+    <ClInclude Include="POSICOES_BOX.h" />
     <ClInclude Include="REGRA.h" />
     <ClInclude Include="SENTIDO.h" />
-    <ClInclude Include="STATUS.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

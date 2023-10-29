@@ -2,14 +2,13 @@
 #define AL_MAPA_H
 
 #include <config.h>
-#include <allegro5/bitmap_draw.h>
 #include <allegro5/allegro.h>
+#include <NPC.h>
+#include <allegro5/allegro_font.h>
 
-struct NPC {
+struct OBJETO_INTERACAO {
 	int matriz_position_x;
 	int matriz_position_y;
-	int direcao;
-	ALLEGRO_BITMAP* image[4];
 };
 
 struct al_next_mapa {
@@ -20,33 +19,36 @@ struct al_next_mapa {
 };
 
 struct Item {
-	int map_position_x;
-	int map_position_y;
-
+	char* nome;
 	int matriz_position_x;
 	int matriz_position_y;
-
-	int pixel_size_image;
-
+	struct Ajudante* ajudante;
+	bool item_missao;
+	bool item_pegado;
 	ALLEGRO_BITMAP* image;
 };
 
 struct al_mapa {
+	bool criado;
+
 	int matriz[WINDOW_SIZE_PIXEL_Y][WINDOW_SIZE_PIXEL_X];
 	ALLEGRO_BITMAP* background;
-	struct al_next_mapa next_mapa;
+	struct al_next_mapa* next_mapa;
 
-	struct NPC npc[5];
-	ALLEGRO_BITMAP* NPC_IMAGES[7];
+	struct NPC* npc[MAX_NPC_PER_MAP];
+	ALLEGRO_BITMAP* NPC_IMAGES[MAX_NPC_PER_MAP];
+	ALLEGRO_FONT* dialogue16;
 
-	struct Item* items[20];
-	ALLEGRO_BITMAP* ITEM_IMAGES[10];
+	struct Item* item[MAX_ITEM_PER_MAP];
 
 	int quantidade_item;
 	int quantidade_npc;
+	int quantidade_npc_quest;
+
+	struct OBJETO_INTERACAO* objeto_interacao;
 
 }; 
 
 void init_mapa(struct al_mapa* mapa);
-
+void carregar_mapa(struct al_mapa* mapa, int next_mapa);
 #endif // DIRECAO_H

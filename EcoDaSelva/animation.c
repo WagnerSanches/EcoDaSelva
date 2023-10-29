@@ -7,8 +7,8 @@
 #include <AL_MAPA.h>
 #include <stdbool.h>
 #include <REGRA.h>
-#include <MAPA.h>
 #include <SENTIDO.h>
+#include <FICHARIO.h>
 
 void andar_para_cima(struct Player* player, struct al_mapa* mapa) {
 
@@ -21,9 +21,15 @@ void andar_para_cima(struct Player* player, struct al_mapa* mapa) {
 
 		if (colediu(player, mapa)) {
 
+			if (proximo_mapa(player, mapa)) {
+				carregar_mapa(mapa, mapa->next_mapa->pra_cima);
+				player->matriz_position_y = WINDOW_SIZE_PIXEL_Y - 1;
+				player->map_position_y = player->matriz_position_y * PIXEL_SIZE;
+			}
+
 			player->sum_y_pixel = 0;
 			player->image = player->animation[0][0];
-			player->pressing_multiple_key = false;
+			
 
 			return;
 		}
@@ -66,6 +72,12 @@ void andar_para_baixo(struct Player* player, struct al_mapa* mapa) {
 		player->sum_y_pixel += player->velocidade;
 
 		if (colediu(player, mapa)) {
+
+			if (proximo_mapa(player, mapa)) {
+				carregar_mapa(mapa, mapa->next_mapa->pra_baixo);
+				player->matriz_position_y = 0;
+				player->map_position_y = player->matriz_position_y * PIXEL_SIZE;
+			}
 
 			player->sum_y_pixel = 0;
 			player->image = player->animation[1][0];
@@ -111,6 +123,12 @@ void andar_para_esquerda(struct Player* player, struct al_mapa* mapa) {
 		player->sum_x_pixel -= player->velocidade;
 
 		if (colediu(player, mapa)) {
+
+			if (proximo_mapa(player, mapa)) {
+				carregar_mapa(mapa, mapa->next_mapa->pra_esquerda);
+				player->matriz_position_x = WINDOW_SIZE_PIXEL_X - 1;
+				player->map_position_x = player->matriz_position_x * PIXEL_SIZE;
+			}
 
 			player->sum_x_pixel = 0;
 			player->image = player->animation[2][0];
@@ -162,16 +180,21 @@ void andar_para_direita(struct Player* player, struct al_mapa* mapa) {
 
 		if (colediu(player, mapa)) {
 			
+			if (proximo_mapa(player, mapa)) {
+				carregar_mapa(mapa, mapa->next_mapa->pra_direita);
+				player->matriz_position_x = 0;
+				player->map_position_x = player->matriz_position_x * PIXEL_SIZE;
+			}
+
 			player->sum_x_pixel = 0;
 			player->image = player->animation[3][0];
-
 			return;
 		}
 		
 		if (player->sum_x_pixel == PIXEL_SIZE) {
 
 			player->matriz_position_x++;
-			player->map_position_x += player->sum_x_pixel;
+			player->map_position_x = player->matriz_position_x * PIXEL_SIZE;
 			player->sum_x_pixel = 0;
 
 		}
@@ -199,7 +222,7 @@ void andar_para_direita(struct Player* player, struct al_mapa* mapa) {
 
 int encontrar_npc(struct al_mapa* mapa, int x, int y) {
 	for (int i = 0; i < mapa->quantidade_npc; i++) {
-		if (mapa->npc[i].matriz_position_x == x && mapa->npc[i].matriz_position_y == y) {
+		if (mapa->npc[i]->matriz_position_x == x && mapa->npc[i]->matriz_position_y == y) {
 			return i;
 		}
 	}
@@ -207,25 +230,27 @@ int encontrar_npc(struct al_mapa* mapa, int x, int y) {
 	return -1;
 }
 
+// uso o -1 por que o array de imagens dos npcs vao de 0 a 3 enquanto as direcoes estao programas para irem de 1 a 4
 void virar_npc(struct Player* player, struct al_mapa* mapa) {
 
 	int npc_position = 0;
 	switch (player->direcao) {
 	case PRA_CIMA:
-		npc_position = encontrar_npc(mapa, player->matriz_position_x, player->matriz_position_y - 1);
-		mapa->npc[npc_position].direcao = PRA_BAIXO - 1;
+		npc_position = encontrar_npc(mapa, mapa->objeto_interacao->matriz_position_x, mapa->objeto_interacao->matriz_position_y);
+		mapa->npc[npc_position]->direcao = PRA_BAIXO - 1;
 		break;
 	case PRA_BAIXO:
-		npc_position = encontrar_npc(mapa, player->matriz_position_x, player->matriz_position_y + 1);
-		mapa->npc[npc_position].direcao = PRA_CIMA - 1;
+		npc_position = encontrar_npc(mapa, mapa->objeto_interacao->matriz_position_x, mapa->objeto_interacao->matriz_position_y);
+		mapa->npc[npc_position]->direcao = PRA_CIMA - 1;
 		break;
 	case PRA_ESQUERDA:
-		npc_position = encontrar_npc(mapa, player->matriz_position_x - 1, player->matriz_position_y);
-		mapa->npc[npc_position].direcao = PRA_DIREITA - 1;
+		npc_position = encontrar_npc(mapa, mapa->objeto_interacao->matriz_position_x, mapa->objeto_interacao->matriz_position_y);
+		mapa->npc[npc_position]->direcao = PRA_DIREITA - 1;
 		break;
 	case PRA_DIREITA:
-		npc_position = encontrar_npc(mapa, player->matriz_position_x + 1, player->matriz_position_y);
-		mapa->npc[npc_position].direcao = PRA_ESQUERDA - 1;
+		npc_position = encontrar_npc(mapa, mapa->objeto_interacao->matriz_position_x, mapa->objeto_interacao->matriz_position_y);
+		mapa->npc[npc_position]->direcao = PRA_ESQUERDA - 1;
 		break;
 	}
+	player->indice_objeto_interacao = npc_position;
 }

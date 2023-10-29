@@ -24,15 +24,42 @@
     <Filter Include="Header Files\enum">
       <UniqueIdentifier>{ed687d4c-a637-4dfa-b7ea-d8b06730a05e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\jogo\eventos">
+      <UniqueIdentifier>{24f04f2e-e6a1-4204-bf5f-6a37b66dece8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\jogo\eventos">
+      <UniqueIdentifier>{b7bf0cdd-2533-4b43-ae0e-545dfa4909ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\desenho">
+      <UniqueIdentifier>{652d33a8-26dd-4a96-964f-e832d24bcbdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\desenho">
+      <UniqueIdentifier>{4d57582b-4ca7-4af9-8590-7a36ba649de8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\desenho\fichario">
+      <UniqueIdentifier>{f7d52069-ccb5-46d7-8ce8-65b4249c2b50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\desenho\fichario">
+      <UniqueIdentifier>{fbecbf9e-7bdc-49eb-acdd-8c7339320cce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\jogo\componentes">
+      <UniqueIdentifier>{a5880955-7ffa-465f-8a7c-3bf4f83ad684}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\jogo\componentes">
+      <UniqueIdentifier>{8e449210-a4ce-4a55-be5b-b1668ad3f5a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\desenho\dialogo">
+      <UniqueIdentifier>{b0b4f1d3-dbfd-40c7-8210-569694ff2ba5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\desenho\dialogo">
+      <UniqueIdentifier>{ce6ea33d-e588-4b25-9ee4-388104439f6e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MAPA_CENTRO.c">
-      <Filter>Source Files\mapas</Filter>
-    </ClCompile>
-    <ClCompile Include="MAPA.c">
       <Filter>Source Files\mapas</Filter>
     </ClCompile>
     <ClCompile Include="REGRA.c">
@@ -50,20 +77,53 @@
     <ClCompile Include="MAPA_3.c">
       <Filter>Source Files\mapas</Filter>
     </ClCompile>
-    <ClCompile Include="animation.c">
+    <ClCompile Include="ANIMATION.c">
       <Filter>Source Files\jogo</Filter>
     </ClCompile>
     <ClCompile Include="ACTION.c">
       <Filter>Source Files\jogo</Filter>
     </ClCompile>
-    <ClCompile Include="eventos.c">
-      <Filter>Source Files\jogo</Filter>
+    <ClCompile Include="EVENTOS.c">
+      <Filter>Source Files\jogo\eventos</Filter>
     </ClCompile>
-    <ClCompile Include="AL_MAPA.c">
-      <Filter>Source Files\mapas</Filter>
+    <ClCompile Include="EVENTO_ANDAR.c">
+      <Filter>Source Files\jogo\eventos</Filter>
+    </ClCompile>
+    <ClCompile Include="EVENTO_FICHARIO.c">
+      <Filter>Source Files\jogo\eventos</Filter>
     </ClCompile>
     <ClCompile Include="PLAYER.c">
-      <Filter>Source Files\jogo</Filter>
+      <Filter>Source Files\jogo\componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="FICHARIO.c">
+      <Filter>Source Files\jogo\componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="DESENHA_JOGO.c">
+      <Filter>Source Files\desenho</Filter>
+    </ClCompile>
+    <ClCompile Include="DESENHA_FICHARIO_OPCOES.c">
+      <Filter>Source Files\desenho\fichario</Filter>
+    </ClCompile>
+    <ClCompile Include="DESENHA_FICHARIO.c">
+      <Filter>Source Files\desenho\fichario</Filter>
+    </ClCompile>
+    <ClCompile Include="DESENHAR_FICHARIO_INFO.c">
+      <Filter>Source Files\desenho\fichario</Filter>
+    </ClCompile>
+    <ClCompile Include="AL_MAPA.c">
+      <Filter>Source Files\jogo\componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="DESENHA_DIALOGO_NPC.c">
+      <Filter>Source Files\desenho\dialogo</Filter>
+    </ClCompile>
+    <ClCompile Include="EVENTO_CONVERSAR.c">
+      <Filter>Source Files\jogo\eventos</Filter>
+    </ClCompile>
+    <ClCompile Include="DESENHA_AJUDANTE.c">
+      <Filter>Source Files\desenho\dialogo</Filter>
+    </ClCompile>
+    <ClCompile Include="EVENTO_INTERAGIR.c">
+      <Filter>Source Files\jogo\eventos</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -74,9 +134,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MAPA_CENTRO.h">
-      <Filter>Header Files\mapas</Filter>
-    </ClInclude>
-    <ClInclude Include="MAPA.h">
       <Filter>Header Files\mapas</Filter>
     </ClInclude>
     <ClInclude Include="REGRA.h">
@@ -94,26 +151,71 @@
     <ClInclude Include="MAPA_3.h">
       <Filter>Header Files\mapas</Filter>
     </ClInclude>
-    <ClInclude Include="animation.h">
+    <ClInclude Include="ANIMATION.h">
       <Filter>Header Files\jogo</Filter>
     </ClInclude>
     <ClInclude Include="ACTION.h">
       <Filter>Header Files\jogo</Filter>
     </ClInclude>
-    <ClInclude Include="AL_MAPA.h">
-      <Filter>Header Files\mapas</Filter>
-    </ClInclude>
-    <ClInclude Include="eventos.h">
-      <Filter>Header Files\jogo</Filter>
-    </ClInclude>
     <ClInclude Include="SENTIDO.h">
       <Filter>Header Files\enum</Filter>
     </ClInclude>
-    <ClInclude Include="STATUS.h">
+    <ClInclude Include="PLAYER.h">
+      <Filter>Header Files\jogo\componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="FICHARIO.h">
+      <Filter>Header Files\jogo\componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="EVENTOS.h">
+      <Filter>Header Files\jogo\eventos</Filter>
+    </ClInclude>
+    <ClInclude Include="EVENTO_ANDAR.h">
+      <Filter>Header Files\jogo\eventos</Filter>
+    </ClInclude>
+    <ClInclude Include="EVENTO_FICHARIO.h">
+      <Filter>Header Files\jogo\eventos</Filter>
+    </ClInclude>
+    <ClInclude Include="DESENHA_JOGO.h">
+      <Filter>Header Files\desenho</Filter>
+    </ClInclude>
+    <ClInclude Include="DESENHA_FICHARIO.h">
+      <Filter>Header Files\desenho\fichario</Filter>
+    </ClInclude>
+    <ClInclude Include="DESENHA_FICHARIO_OPCOES.h">
+      <Filter>Header Files\desenho\fichario</Filter>
+    </ClInclude>
+    <ClInclude Include="DESENHA_FICHARIO_INFO.h">
+      <Filter>Header Files\desenho\fichario</Filter>
+    </ClInclude>
+    <ClInclude Include="POSICOES_BOX.h">
+      <Filter>Header Files\desenho\fichario</Filter>
+    </ClInclude>
+    <ClInclude Include="DIALOGO.h">
+      <Filter>Header Files\jogo\componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="AL_MAPA.h">
+      <Filter>Header Files\jogo\componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="DESENHA_DIALOGO_NPC.h">
+      <Filter>Header Files\desenho\dialogo</Filter>
+    </ClInclude>
+    <ClInclude Include="EVENTO_CONVERSAR.h">
+      <Filter>Header Files\jogo\eventos</Filter>
+    </ClInclude>
+    <ClInclude Include="AJUDANTE.h">
+      <Filter>Header Files\jogo\componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="DESENHA_AJUDANTE.H">
+      <Filter>Header Files\desenho\dialogo</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJETO.h">
       <Filter>Header Files\enum</Filter>
     </ClInclude>
-    <ClInclude Include="PLAYER.h">
-      <Filter>Header Files\jogo</Filter>
+    <ClInclude Include="NPC.h">
+      <Filter>Header Files\jogo\componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="EVENTO_INTERAGIR.h">
+      <Filter>Header Files\jogo\eventos</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,7 +1,28 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include <allegro5/allegro5.h>
-#include <STATUS.h>
+#include <FICHARIO.h>
+
+enum Status {
+	PARADO = 0,
+	ANDANDO = 1,
+	INTERAGINDO = 2,
+	CORRENDO = 3,
+	FICHARIO = 4,
+	CONVERSANDO = 5,
+	AJUDANTE = 6
+};
+
+struct Resposta {
+	char* grupo;
+	bool selecionado;
+};
+
+struct Mission {
+	int indice_npc_guest_aceita;
+	bool quest_aceita;
+	bool concluida;
+};
 
 struct Player {
 	int map_position_x;
@@ -26,6 +47,16 @@ struct Player {
 	enum Status status;
 
 	int velocidade;
+
+	int indice_objeto_interacao;
+
+	struct Resposta* respostas[4];
+	struct Mission* missao;
+
+	struct Ajudante* ajudante;
+
+	int quantidade_itens_pegados;
+	char* itens_pegados[MAX_ITEM_QUEST];
 };
 
 void init_player(struct Player* player);
