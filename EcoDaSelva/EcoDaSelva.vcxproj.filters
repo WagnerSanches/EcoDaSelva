@@ -125,6 +125,18 @@
     <ClCompile Include="EVENTO_INTERAGIR.c">
       <Filter>Source Files\jogo\eventos</Filter>
     </ClCompile>
+    <ClCompile Include="DESENHA_MENU_INICIAL.c">
+      <Filter>Source Files\desenho</Filter>
+    </ClCompile>
+    <ClCompile Include="EVENTO_MENU.c">
+      <Filter>Source Files\jogo\eventos</Filter>
+    </ClCompile>
+    <ClCompile Include="EVENTO_PAUSA.c">
+      <Filter>Source Files\jogo\eventos</Filter>
+    </ClCompile>
+    <ClCompile Include="DESENHA_PAUSA.c">
+      <Filter>Source Files\desenho</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -216,6 +228,21 @@
     </ClInclude>
     <ClInclude Include="EVENTO_INTERAGIR.h">
       <Filter>Header Files\jogo\eventos</Filter>
+    </ClInclude>
+    <ClInclude Include="DESENHA_MENU_INICIAL.h">
+      <Filter>Header Files\desenho</Filter>
+    </ClInclude>
+    <ClInclude Include="EVENTO_MENU.h">
+      <Filter>Header Files\jogo\eventos</Filter>
+    </ClInclude>
+    <ClInclude Include="EVENTO_PAUSA.h">
+      <Filter>Header Files\jogo\eventos</Filter>
+    </ClInclude>
+    <ClInclude Include="PAUSA.h">
+      <Filter>Header Files\jogo\componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="DESENHA_PAUSA.h">
+      <Filter>Header Files\desenho</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

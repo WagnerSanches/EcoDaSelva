@@ -10,7 +10,14 @@ enum Status {
 	CORRENDO = 3,
 	FICHARIO = 4,
 	CONVERSANDO = 5,
-	AJUDANTE = 6
+	AJUDANTE = 6,
+	MENU = 7
+};
+
+struct Menu {
+	bool ativo;
+	bool encerrar;
+	int opcao;
 };
 
 struct Resposta {
@@ -57,6 +64,8 @@ struct Player {
 
 	int quantidade_itens_pegados;
 	char* itens_pegados[MAX_ITEM_QUEST];
+
+	struct Menu* menu;
 };
 
 void init_player(struct Player* player);

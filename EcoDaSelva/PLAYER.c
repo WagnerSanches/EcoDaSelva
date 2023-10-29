@@ -3,6 +3,7 @@
 #include <allegro5/allegro.h>
 #include <string.h>
 #include <AJUDANTE.h>
+#include <PAUSA.h>
 
 void init_player(struct Player* player) {
 
@@ -73,13 +74,23 @@ void init_player(struct Player* player) {
 		return 1;
 	}
 
+	player->menu = malloc(sizeof(struct Menu));
+	if (player->menu == NULL) {
+		printf("Falanha na alocação de menu,\n");
+		return -1;
+	}
+
+	player->menu->opcao = 0;
+	player->menu->encerrar = false;
+	player->menu->ativo = true;
+
 	player->matriz_position_x = 12;
 	player->matriz_position_y = 7;
 
 	player->map_position_x = player->matriz_position_x * PIXEL_SIZE;
 	player->map_position_y = player->matriz_position_y * PIXEL_SIZE;
 
-	player->status = PARADO;
+	player->status = MENU;
 
 	player->sum_x_pixel = 0;
 	player->sum_y_pixel = 0;
@@ -99,5 +110,5 @@ void init_player(struct Player* player) {
 	strcpy(player->ajudante->texto, "Ola aventureiro! Seja bemvindo a Oiapoque Voce deve estar estranhando o clima quente mas logo se acostuma Irei te ajudar durante sua pesquisa aqui na vila, soube que esta em busca de informacoes sobre a fauna entao por que nao se enturmar e aprender um pouco com os moradores do vilarejo. Talvez eles tenham informacoes que possam te ajudar.");
 	
 	player->quantidade_itens_pegados = 0;
-	player->velocidade = 4;
+	player->velocidade = WALKING;
 }

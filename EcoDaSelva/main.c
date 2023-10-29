@@ -19,9 +19,11 @@
 #include <stdbool.h>
 #include <ACTION.h>
 #include <FICHARIO.h>
+#include <DESENHA_MENU_INICIAL.h>
+#include <PAUSA.h>
 
 int main() {
-	
+
 #pragma region "inicializacao allegro"
 	ALLEGRO_DISPLAY* window = NULL;
 	ALLEGRO_EVENT_QUEUE* events_queue = NULL;
@@ -39,12 +41,43 @@ int main() {
 	al_install_mouse();	
 	al_init_font_addon();
 	al_init_ttf_addon();
+	
+	bool fullscreen = true;
 
-	window = al_create_display(PIXEL_SIZE * WINDOW_SIZE_PIXEL_X, PIXEL_SIZE * WINDOW_SIZE_PIXEL_Y);
+	if (fullscreen) {
 
-	if (!window) {
-		fprintf(stderr, "Falha");
-		return -1;
+		ALLEGRO_MONITOR_INFO monitor_info;
+		int screen_res_x, screen_res_y;
+		al_get_monitor_info(0, &monitor_info);
+
+		screen_res_x = monitor_info.x2 - monitor_info.x1;
+		screen_res_y = monitor_info.y2 - monitor_info.y1;
+
+		al_set_new_display_flags(ALLEGRO_FULLSCREEN_WINDOW);
+		window = al_create_display(screen_res_x, screen_res_y);
+
+		if (!window) {
+			fprintf(stderr, "Falha");
+			return -1;
+		}
+
+		float rx = screen_res_x / (float)(WINDOW_SIZE_PIXEL_X * PIXEL_SIZE);
+		float ry = screen_res_y / (float)(WINDOW_SIZE_PIXEL_Y * PIXEL_SIZE);
+
+		ALLEGRO_TRANSFORM transformar;
+		al_identity_transform(&transformar);
+		al_scale_transform(&transformar, rx, ry);
+		al_use_transform(&transformar);
+	}
+	else {
+		window = al_create_display(
+			(WINDOW_SIZE_PIXEL_X * PIXEL_SIZE) - PIXEL_SIZE * 4,
+			(WINDOW_SIZE_PIXEL_Y * PIXEL_SIZE) - PIXEL_SIZE * 4
+		);
+		if (!window) {
+			fprintf(stderr, "Falha");
+			return -1;
+		}
 	}
 
 	al_set_window_title(window, "Eco da Selva");
@@ -71,23 +104,29 @@ int main() {
 	al_start_timer(timer);
 
 	struct al_mapa* mapa = malloc(sizeof(struct al_mapa));
-
 	if (mapa == NULL) {
-		return 1;
+		return -1;
 	}
 
 	struct Player* player = malloc(sizeof(struct Player));
-
 	if (player == NULL) {
 		perror("Falha na alocação de player");
-		return 1;
+		return -1;
 	}
 
 	struct Fichario* fichario = malloc(sizeof(struct Fichario));
 	if (fichario == NULL) {
 		printf("Falha na alocação de fichario.\n");
-		return 1;
+		return -1;
 	}
+
+	struct Pausa* pausa = malloc(sizeof(struct Pausa));
+	if (pausa == NULL) {
+		printf("Falha na alocação de pausa.\n");
+		return -1;
+	}
+	pausa->opcao = 0;
+	pausa->pausado = false;
 
 #pragma endregion 
 
@@ -103,10 +142,10 @@ int main() {
 
 			switch (event.type) {
 			case ALLEGRO_EVENT_KEY_UP:
-				tecla_levantada(player, mapa, fichario, event.keyboard.keycode);
+				tecla_levantada(player, mapa, fichario, pausa, event.keyboard.keycode);
 				break;
 			case ALLEGRO_EVENT_KEY_DOWN:
-				tecla_presionado(player, mapa, fichario, event.keyboard.keycode);
+				tecla_presionado(player, mapa, fichario, pausa, event.keyboard.keycode);
 				break;
 			case ALLEGRO_EVENT_TIMER:
 
@@ -127,6 +166,10 @@ int main() {
 				case CONVERSANDO:
 					conversar(player, mapa);
 					break;
+				case MENU:
+					if(player->menu->encerrar)
+						jogando = false;
+					break;
 				}
 
 				redraw = true;
@@ -137,7 +180,12 @@ int main() {
 			}
 
 			if (redraw) {
-				desenhar_jogo(player, mapa, fichario);
+
+				if (player->menu->ativo)
+					desenhar_menu_inicial(player->menu);
+				else 
+					desenhar_jogo(player, mapa, fichario, pausa);
+				
 
 				al_flush_event_queue(events_queue);
 				al_flip_display();

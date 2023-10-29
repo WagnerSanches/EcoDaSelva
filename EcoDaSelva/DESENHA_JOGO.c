@@ -20,6 +20,8 @@
 #include <string.h>
 #include <AJUDANTE.h>
 #include <DESENHA_AJUDANTE.H>
+#include <PAUSA.h>
+#include <DESENHA_PAUSA.h>
 
 void desenha_background(struct al_mapa* mapa) {
 	al_draw_bitmap(mapa->background, 0, 0, 0);
@@ -61,7 +63,7 @@ void desenha_fichario(struct Player* player, struct Fichario* fichario) {
 	}
 }
 
-void desenhar_jogo(struct Player* player, struct al_mapa* mapa, struct Fichario* fichario) {
+void desenhar_jogo(struct Player* player, struct al_mapa* mapa, struct Fichario* fichario, struct Pausa* pausa) {
 	desenha_background(mapa);
 
 	// layers
@@ -86,6 +88,10 @@ void desenhar_jogo(struct Player* player, struct al_mapa* mapa, struct Fichario*
 			desenhar_ajudante(player->ajudante);
 		}
 		break;
+	}
+
+	if (pausa->pausado) {
+		desenhar_pausa(pausa);
 	}
 
 }

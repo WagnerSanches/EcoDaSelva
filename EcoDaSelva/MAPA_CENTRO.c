@@ -90,9 +90,9 @@ void carregar_mapa_centro(struct al_mapa *mapa) {
 	mapa->matriz[12][WINDOW_SIZE_PIXEL_X - 1] = 3;
 	mapa->matriz[13][WINDOW_SIZE_PIXEL_X - 1] = 3;
 
-	mapa->matriz[0][11] = 3;
-	mapa->matriz[0][12] = 3;
-	mapa->matriz[0][13] = 3;
+	for (int i = 0; i < WINDOW_SIZE_PIXEL_X; i++) {
+		mapa->matriz[0][i] = 3;
+	}
 
 	mapa->matriz[11][0] = 3;
 	mapa->matriz[12][0] = 3;

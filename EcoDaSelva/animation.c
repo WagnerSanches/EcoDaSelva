@@ -43,9 +43,9 @@ void andar_para_cima(struct Player* player, struct al_mapa* mapa) {
 	}
 
 	// ajusta a velocidade
-	if (player->velocidade == 4)
-		if (player->sum_y_pixel % player->velocidade == -2)
-			player->sum_y_pixel += 2;
+	if (player->velocidade == RUNNING)
+		if (player->sum_y_pixel % player->velocidade == -WALKING)
+			player->sum_y_pixel += WALKING;
 
 	if (player->sum_y_pixel % (player->velocidade * 4) == 0) {
 
@@ -94,9 +94,9 @@ void andar_para_baixo(struct Player* player, struct al_mapa* mapa) {
 	}
 
 	// ajusta a velocidade
-	if (player->velocidade == 4)
-		if (player->sum_y_pixel % player->velocidade == 2)
-			player->sum_y_pixel -= 2;
+	if (player->velocidade == RUNNING)
+		if (player->sum_y_pixel % player->velocidade == WALKING)
+			player->sum_y_pixel -= WALKING;
 
 	if (player->sum_y_pixel % (player->velocidade * 4) == 0) {
 
@@ -147,9 +147,9 @@ void andar_para_esquerda(struct Player* player, struct al_mapa* mapa) {
 	}
 
 	// ajusta a velocidade
-	if (player->velocidade == 4)
-		if (player->sum_x_pixel % player->velocidade == -2)
-			player->sum_x_pixel += 2;
+	if (player->velocidade == RUNNING)
+		if (player->sum_x_pixel % player->velocidade == -WALKING)
+			player->sum_x_pixel += WALKING;
 
 	if (player->sum_x_pixel % (player->velocidade * 4) == 0) {
 
@@ -200,13 +200,10 @@ void andar_para_direita(struct Player* player, struct al_mapa* mapa) {
 		}
 	}
 
-	// ajusta a velocidade
-	// se o player estava na casa sum_x_pixel = 2 e precionou pra correr, fazendo com que fique sum_x_pixel = 6
-	// entao subtrai 2 para que que fique sum_x_pixel = 4, fazendo a corrida ficar mais smooth
-	// se adicionar 2 para que que fique sum_x_pixel = 8, o persongem fica com um efeito de pulo na tela
-	if (player->velocidade == 4)
-		if (player->sum_x_pixel % player->velocidade == 2 || player->sum_x_pixel % player->velocidade == -2)
-			player->sum_x_pixel -= 2;
+	// ajusta a velocidade para nao ter animacao de avanco na tela
+	if (player->velocidade == RUNNING)
+		if (player->sum_x_pixel % player->velocidade == WALKING)
+			player->sum_x_pixel -= WALKING;
 
 	// troca o slide de animacao do player andando
 	if (player->sum_x_pixel % (player->velocidade * 4) == 0 /*|| player->sum_x_pixel % (player->velocidade * 4) == 2*/) {
