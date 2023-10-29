@@ -143,8 +143,27 @@ int main() {
 			al_wait_for_event(events_queue, &event);
 
 			if (pausa->encerrar) {
+				init_player(player);
+				init_mapa(mapa);
+				init_fichario(fichario);
+
 				player->menu->ativo = true;
+				player->status = MENU;
 				pausa->encerrar = false;
+				pausa->pausado = false;
+				continue;
+			}
+
+			if (pausa->reiniciar) {
+				init_player(player);
+				init_mapa(mapa);
+				init_fichario(fichario);
+
+				player->status = MENU;
+				pausa->reiniciar = false;
+				player->menu->ativo = false;
+				pausa->pausado = false;
+
 				continue;
 			}
 
