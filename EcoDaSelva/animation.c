@@ -17,6 +17,12 @@ void andar_para_cima(struct Player* player, struct al_mapa* mapa) {
 		player->status = PARADO;
 		return;
 	} else {
+
+		// ajusta a velocidade
+		if (player->velocidade == RUNNING)
+			if (player->sum_y_pixel % player->velocidade == -WALKING)
+				player->sum_y_pixel += WALKING;
+
 		player->sum_y_pixel -= player->velocidade;
 
 		if (colediu(player, mapa)) {
@@ -45,11 +51,7 @@ void andar_para_cima(struct Player* player, struct al_mapa* mapa) {
 			player->sum_y_pixel = 0;
 		}
 
-		// ajusta a velocidade
-		if (player->velocidade == RUNNING)
-			if (player->sum_y_pixel % player->velocidade == -WALKING)
-				player->sum_y_pixel += WALKING;
-
+		
 		if (player->sum_y_pixel % (player->velocidade * 4) == 0) {
 
 			if (player->animation_next_image == 4) {
@@ -73,6 +75,11 @@ void andar_para_baixo(struct Player* player, struct al_mapa* mapa) {
 		return;
 	}
 	else {
+		// ajusta a velocidade
+		if (player->velocidade == RUNNING)
+			if (player->sum_y_pixel % player->velocidade == WALKING)
+				player->sum_y_pixel -= WALKING;
+
 		player->sum_y_pixel += player->velocidade;
 
 		if (colediu(player, mapa)) {
@@ -100,10 +107,7 @@ void andar_para_baixo(struct Player* player, struct al_mapa* mapa) {
 			player->sum_y_pixel = 0;
 		}
 
-		// ajusta a velocidade
-		if (player->velocidade == RUNNING)
-			if (player->sum_y_pixel % player->velocidade == WALKING)
-				player->sum_y_pixel -= WALKING;
+
 
 		if (player->sum_y_pixel % (player->velocidade * 4) == 0) {
 
@@ -129,6 +133,11 @@ void andar_para_esquerda(struct Player* player, struct al_mapa* mapa) {
 		return;
 	}
 	else {
+		// ajusta a velocidade
+		if (player->velocidade == RUNNING)
+			if (player->sum_x_pixel % player->velocidade == -WALKING)
+				player->sum_x_pixel += WALKING;
+
 		player->sum_x_pixel -= player->velocidade;
 
 		if (colediu(player, mapa)) {
@@ -157,11 +166,6 @@ void andar_para_esquerda(struct Player* player, struct al_mapa* mapa) {
 
 		}
 
-		// ajusta a velocidade
-		if (player->velocidade == RUNNING)
-			if (player->sum_x_pixel % player->velocidade == -WALKING)
-				player->sum_x_pixel += WALKING;
-
 		if (player->sum_x_pixel % (player->velocidade * 4) == 0) {
 
 			if (player->animation_next_image == 4) {
@@ -189,6 +193,12 @@ void andar_para_direita(struct Player* player, struct al_mapa* mapa) {
 
 		return;
 	} else {
+		
+		if (player->velocidade == RUNNING) {
+			if (player->sum_x_pixel % player->velocidade == WALKING)
+				player->sum_x_pixel -= WALKING;
+		}
+
 		player->sum_x_pixel += player->velocidade;
 
 		if (colediu(player, mapa)) {
@@ -204,7 +214,6 @@ void andar_para_direita(struct Player* player, struct al_mapa* mapa) {
 			}
 
 			player->sum_x_pixel = 0;
-			player->image = player->animation[3][0];
 			return;
 		}
 		
@@ -216,10 +225,10 @@ void andar_para_direita(struct Player* player, struct al_mapa* mapa) {
 
 		}
 
-		// ajusta a velocidade para nao ter animacao de avanco na tela
-		if (player->velocidade == RUNNING)
-			if (player->sum_x_pixel % player->velocidade == WALKING)
-				player->sum_x_pixel -= WALKING;
+		//// ajusta a velocidade para nao ter animacao de avanco na tela
+		//if (player->velocidade == RUNNING)
+		//	if (player->sum_x_pixel % player->velocidade == WALKING)
+		//		player->sum_x_pixel -= WALKING;
 
 		// troca o slide de animacao do player andando
 		if (player->sum_x_pixel % (player->velocidade * 4) == 0 /*|| player->sum_x_pixel % (player->velocidade * 4) == 2*/) {
