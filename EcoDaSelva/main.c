@@ -163,7 +163,6 @@ int main() {
 				pausa->reiniciar = false;
 				player->menu->ativo = false;
 				pausa->pausado = false;
-
 				continue;
 			}
 
