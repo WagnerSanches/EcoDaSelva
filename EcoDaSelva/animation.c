@@ -32,14 +32,9 @@ void andar_para_cima(struct Player* player, struct al_mapa* mapa) {
 				player->matriz_position_y = WINDOW_SIZE_PIXEL_Y - 1;
 				player->map_position_y = player->matriz_position_y * PIXEL_SIZE;
 			}
-			else {
-				player->pressing_key = false;
-				player->animation_next_image = 0;
-			}
 
 			player->sum_y_pixel = 0;
-			player->image = player->animation[0][0];
-			
+			player->animation_next_image = 0;
 
 			return;
 		}
@@ -89,13 +84,9 @@ void andar_para_baixo(struct Player* player, struct al_mapa* mapa) {
 				player->matriz_position_y = 0;
 				player->map_position_y = player->matriz_position_y * PIXEL_SIZE;
 			}
-			else {
-				player->pressing_key = false;
-				player->animation_next_image = 0;
-			}
-
+			
 			player->sum_y_pixel = 0;
-			player->image = player->animation[1][0];
+			player->animation_next_image = 0;
 
 			return;
 		}
@@ -147,13 +138,9 @@ void andar_para_esquerda(struct Player* player, struct al_mapa* mapa) {
 				player->matriz_position_x = WINDOW_SIZE_PIXEL_X - 1;
 				player->map_position_x = player->matriz_position_x * PIXEL_SIZE;
 			}
-			else {
-				player->pressing_key = false;
-				player->animation_next_image = 0;
-			}
 
 			player->sum_x_pixel = 0;
-			player->image = player->animation[2][0];
+			player->animation_next_image = 0;
 
 			return;
 		}
@@ -208,11 +195,8 @@ void andar_para_direita(struct Player* player, struct al_mapa* mapa) {
 				player->matriz_position_x = 0;
 				player->map_position_x = player->matriz_position_x * PIXEL_SIZE;
 			}
-			else {
-				player->pressing_key = false;
-				player->animation_next_image = 0;
-			}
 
+			player->animation_next_image = 0;
 			player->sum_x_pixel = 0;
 			return;
 		}
