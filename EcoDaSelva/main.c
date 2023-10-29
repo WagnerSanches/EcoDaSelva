@@ -127,6 +127,8 @@ int main() {
 	}
 	pausa->opcao = 0;
 	pausa->pausado = false;
+	pausa->reiniciar = false;
+	pausa->encerrar = false;
 
 #pragma endregion 
 
@@ -139,6 +141,12 @@ int main() {
 		while (!al_is_event_queue_empty(events_queue)) {
 			ALLEGRO_EVENT event;
 			al_wait_for_event(events_queue, &event);
+
+			if (pausa->encerrar) {
+				player->menu->ativo = true;
+				pausa->encerrar = false;
+				continue;
+			}
 
 			switch (event.type) {
 			case ALLEGRO_EVENT_KEY_UP:

@@ -19,13 +19,15 @@ void evento_pausa_key_precionada(struct Pausa* pausa, int keycode) {
 		break;
 	case ALLEGRO_KEY_SPACE:
 
-		/*if (pausa->opcao == 0) {
-			pausa->ativo = false;
-			player->status = PARADO;
+		if (pausa->opcao == 0) {
+			pausa->pausado = false;
 		}
-		else if (pausa->selecionado == 2) {
-			menu->encerrar = true;
-		}*/
+		else if (pausa->opcao == 1) {
+			pausa->reiniciar = true;
+		}
+		else if (pausa->opcao == 2) {
+			pausa->encerrar = true;
+		}
 
 		break;
 	case ALLEGRO_KEY_ESCAPE:

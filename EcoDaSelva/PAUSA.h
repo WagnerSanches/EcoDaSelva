@@ -4,8 +4,10 @@
 #include <stdbool.h>
 
 struct Pausa {
-	bool pausado;
 	int opcao;
+	bool pausado;
+	bool encerrar;
+	bool reiniciar;
 };
 
 #endif
