@@ -51,36 +51,7 @@ void evento_conversar_key_precionada(struct Player* player, struct al_mapa* mapa
 					player->status = PARADO;
 					printf("Recusou a missao\n");
 				}
-			}
-			else if (player->indice_objeto_interacao == player->missao->indice_npc_guest_aceita) {
-
-				bool item_pegado = false;
-				for (int i = 0; i < player->quantidade_itens_pegados; i++) {
-					printf("R = %d\n", strcmp(player->itens_pegados[i], mapa->npc[player->indice_objeto_interacao]->nome_item_quest));
-					int r = strcmp(player->itens_pegados[i], mapa->npc[player->indice_objeto_interacao]->nome_item_quest);
-					if (r == 0)
-						item_pegado = true;
-				}
-
-				if (item_pegado) {
-					mapa->npc[player->indice_objeto_interacao]->dialogo_lido++;
-					printf("Concluiu a missao\n");
-
-					mapa->npc[player->indice_objeto_interacao]->quest_terminada = true;
-					player->missao->indice_npc_guest_aceita = 0;
-					player->missao->quest_aceita = false;
-					player->status = PARADO;
-				}
-				else if (mapa->npc[player->indice_objeto_interacao]->quest_terminada) {
-					printf("Missao ja terminada\n");
-					player->status = PARADO;
-				}
-				else {
-					printf("Fazendo a missao\n");
-					player->status = PARADO;
-				}
-			}
-			else {
+			} else {
 				printf("Fazendo outra missao\n");
 				player->status = PARADO;
 			}
