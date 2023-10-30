@@ -9,16 +9,17 @@ void carregar_mapa_centro(struct al_mapa *mapa) {
 
 	mapa->quantidade_npc = 5;
 
-	mapa->background = al_load_bitmap("assets/mapa/centro.png");
+	mapa->background = al_load_bitmap("assets/mapa/centro2.png");
 	mapa->NPC_IMAGES[0] = al_load_bitmap("assets/personagem/npc/Character_001.png");
 	mapa->NPC_IMAGES[1] = al_load_bitmap("assets/personagem/npc/Character_002.png");
 	mapa->NPC_IMAGES[2] = al_load_bitmap("assets/personagem/npc/Character_003.png");
 	mapa->NPC_IMAGES[3] = al_load_bitmap("assets/personagem/npc/Character_004.png");
 	mapa->NPC_IMAGES[4] = al_load_bitmap("assets/personagem/npc/Character_005.png");
 
+
 	for (int i = 0; i < mapa->quantidade_npc; i++) {
 		mapa->npc[i]->npc_quest = false;
-		mapa->npc[i]->direcao = 2;
+		mapa->npc[i]->direcao = 1;
 		mapa->npc[i]->dialogo_lido = 0;
 		mapa->npc[i]->image[0] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24 * 3, 16, 16);
 		mapa->npc[i]->image[1] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7, 16, 16);
@@ -71,10 +72,12 @@ void carregar_mapa_centro(struct al_mapa *mapa) {
 	strcpy(mapa->npc[4]->dialogo[1]->texto, "Venha, permita-me mostrar os movimentos tradicionais de nossa danca, uma experiencia unica que voce jamais esquecera");
 	strcpy(mapa->npc[4]->dialogo[2]->texto, "Nossas dancas contam historias ancestrais e celebram nossa conexao com a natureza. Voce encontrara beleza e significado em cada movimento.");
 
+
 	mapa->quantidade_item = 1;
+
 	strcpy(mapa->item[0]->nome, "CARNAUBA");
-	mapa->item[0]->matriz_position_x = 2;
-	mapa->item[0]->matriz_position_y = 2;
+	mapa->item[0]->matriz_position_x = 12;
+	mapa->item[0]->matriz_position_y = 12;
 	mapa->item[0]->image = al_load_bitmap("assets/objeto/arvore/Palm_tree1_3.png");
 	mapa->item[0]->item_missao = true;
 	mapa->item[0]->ajudante->quantiade_imagem = 0;
@@ -82,7 +85,7 @@ void carregar_mapa_centro(struct al_mapa *mapa) {
 	mapa->item[0]->ajudante->opcao_selecionada = 0;
 	mapa->item[0]->ajudante->tipo_pergunta = PERGUNTA_ITEM;
 	strcpy(mapa->item[0]->ajudante->texto, "Voce encontrou uma carnauba! A carnauba, ou Copernicia prunifera, e uma palmeira do Cerrado cujas folhas sao essenciais para a sobrevivencia de animais como o soldadinho-do-araripe, que constroi ninhos com elas. Alem disso, a cera de carnauba e usada em diversos produtos.");
-
+	
 	for(int i = 0; i < mapa->quantidade_item; i++) 
 		mapa->matriz[mapa->item[i]->matriz_position_y][mapa->item[i]->matriz_position_x] = 5;
 
@@ -90,9 +93,41 @@ void carregar_mapa_centro(struct al_mapa *mapa) {
 	mapa->matriz[12][WINDOW_SIZE_PIXEL_X - 1] = 3;
 	mapa->matriz[13][WINDOW_SIZE_PIXEL_X - 1] = 3;
 
-	for (int i = 0; i < WINDOW_SIZE_PIXEL_X; i++) {
+	for (int i = 12; i < WINDOW_SIZE_PIXEL_X - 6; i++) {
 		mapa->matriz[0][i] = 3;
 	}
+
+#pragma region Colisoes
+
+	int max_colisao = 12;
+	for (int i = 0; i < 7; i++) {
+		if (i == 4) max_colisao = 9;
+		if (i == 5) max_colisao = 6;
+		for (int j = 0; j < max_colisao; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	max_colisao = WINDOW_SIZE_PIXEL_X - 6;
+	for (int i = 0; i < 3; i++) {
+		if (i == 2) max_colisao = WINDOW_SIZE_PIXEL_X - 3;
+		for (int j = max_colisao; j < WINDOW_SIZE_PIXEL_X; j++) {
+			mapa->matriz[i][j] = 1;
+		}
+	}
+
+	// 4 arvrinha
+	mapa->matriz[5][WINDOW_SIZE_PIXEL_X - 7] = 1;
+	mapa->matriz[5][WINDOW_SIZE_PIXEL_X - 8] = 1;
+	mapa->matriz[6][WINDOW_SIZE_PIXEL_X - 7] = 1;
+	mapa->matriz[6][WINDOW_SIZE_PIXEL_X - 8] = 1;
+
+	// pedra
+	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 4][WINDOW_SIZE_PIXEL_X - 3] = 1;
+
+	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 3][3] = 1;
+
+
+#pragma endregion
 
 	mapa->matriz[11][0] = 3;
 	mapa->matriz[12][0] = 3;
@@ -107,19 +142,8 @@ void carregar_mapa_centro(struct al_mapa *mapa) {
 	mapa->next_mapa->pra_esquerda = 3;
 	mapa->next_mapa->pra_direita = 4;
 
-	/*mapa->quantidade_item = 1;
+	
 
-	mapa->items[0]->pixel_size_image = 64;
-	mapa->items[0]->image = al_create_sub_bitmap(mapa->ITEM_IMAGES[0], 0, 0, 16, 16);
-
-	mapa->items[0]->matriz_position_x = 10;
-	mapa->items[0]->matriz_position_y = 10;
-	mapa->items[0]->map_position_x = mapa->items[0]->matriz_position_x * PIXEL_SIZE;
-	mapa->items[0]->map_position_y = (mapa->items[0]->matriz_position_y - 1) * PIXEL_SIZE;
-
-	for (int i = 0; i < mapa->quantidade_item; i++) {
-		mapa->matriz[mapa->items[i]->matriz_position_y][mapa->items[i]->matriz_position_x] = 1;
-	}*/
 
 }
 

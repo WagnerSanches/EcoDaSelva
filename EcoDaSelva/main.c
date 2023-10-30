@@ -189,9 +189,9 @@ int main() {
 				case FICHARIO:
 					acessar(player, fichario);
 					break;
-				case CONVERSANDO:
-					conversar(player, mapa);
-					break;
+				//case CONVERSANDO:
+				//	conversar(player, mapa);
+				//	break;
 				case MENU:
 					if(player->menu->encerrar)
 						jogando = false;

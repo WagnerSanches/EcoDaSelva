@@ -62,6 +62,14 @@ void init_player(struct Player* player) {
 		return 1;
 	}
 
+	for (int i = 0; i < MAX_NPC_QUEST; i++) {
+		player->missao->missoes_concluidas[i] = (char*)malloc(sizeof(char) * 20);
+		if (player->missao->missoes_concluidas[i] == NULL) {
+			printf("Falha na alocação de memória missoes_concluidas.\n");
+			return 1;
+		}
+	}
+
 	player->ajudante = malloc(sizeof(struct Ajudante));
 	if (player->ajudante == NULL) {
 		printf("Falha na alocação de memória ajudante.\n");
@@ -101,7 +109,10 @@ void init_player(struct Player* player) {
 
 	player->pressing_key = false;
 	player->pressing_multiple_key = false;
+
 	player->missao->quest_aceita = false;
+	player->missao->indice_npc_guest_aceita = 0;
+	player->missao->quantidade_missoes_concluidas = 0;
 
 	player->ajudante->ajudou = false;
 	player->ajudante->quantiade_imagem = 0;

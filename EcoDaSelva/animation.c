@@ -29,6 +29,7 @@ void andar_para_cima(struct Player* player, struct al_mapa* mapa) {
 
 			if (proximo_mapa(player, mapa)) {
 				carregar_mapa(mapa, mapa->next_mapa->pra_cima);
+				validar_mapa(player, mapa);
 				player->matriz_position_y = WINDOW_SIZE_PIXEL_Y - 1;
 				player->map_position_y = player->matriz_position_y * PIXEL_SIZE;
 			}
@@ -81,6 +82,7 @@ void andar_para_baixo(struct Player* player, struct al_mapa* mapa) {
 
 			if (proximo_mapa(player, mapa)) {
 				carregar_mapa(mapa, mapa->next_mapa->pra_baixo);
+				validar_mapa(player, mapa);
 				player->matriz_position_y = 0;
 				player->map_position_y = player->matriz_position_y * PIXEL_SIZE;
 			}
@@ -135,6 +137,7 @@ void andar_para_esquerda(struct Player* player, struct al_mapa* mapa) {
 
 			if (proximo_mapa(player, mapa)) {
 				carregar_mapa(mapa, mapa->next_mapa->pra_esquerda);
+				validar_mapa(player, mapa);
 				player->matriz_position_x = WINDOW_SIZE_PIXEL_X - 1;
 				player->map_position_x = player->matriz_position_x * PIXEL_SIZE;
 			}
@@ -192,6 +195,7 @@ void andar_para_direita(struct Player* player, struct al_mapa* mapa) {
 
 			if (proximo_mapa(player, mapa)) {
 				carregar_mapa(mapa, mapa->next_mapa->pra_direita);
+				validar_mapa(player, mapa);
 				player->matriz_position_x = 0;
 				player->map_position_x = player->matriz_position_x * PIXEL_SIZE;
 			}

@@ -2,6 +2,7 @@
 #include <AL_MAPA.h>
 #include <AJUDANTE.h>
 #include <MAPA_CENTRO.h>
+#include <PLAYER.h>
 
 void init_mapa(struct al_mapa* mapa) {
 	mapa->criado = false;
@@ -167,4 +168,30 @@ void carregar_mapa(struct al_mapa* mapa, int next_mapa) {
 		carregar_mapa_centro_direita(mapa);
 		break;
 	}
+}
+
+void validar_mapa(struct Player* player, struct al_mapa* mapa) {
+
+	for (int i = 0; i < mapa->quantidade_item; i++) {
+		if (mapa->item[i]->item_missao) {
+			for (int j = 0; j < player->quantidade_itens_pegados; j++) {
+				if (strcmp(player->itens_pegados[j], mapa->item[i]->nome) == 0) {
+					mapa->item[i]->item_pegado = true;
+					mapa->item[i]->ajudante->opcao = false;
+					mapa->matriz[mapa->item[i]->matriz_position_y ][mapa->item[i]->matriz_position_x] = 0;
+				}
+			}
+		}
+	}
+
+	printf("player->missao->quantiade_missoes_concluidas = %d\n\n", player->missao->quantidade_missoes_concluidas);
+	for (int i = 0; i < mapa->quantidade_npc; i++) {
+		for (int j = 0; j < player->missao->quantidade_missoes_concluidas; j++) {
+			if (strcmp(player->missao->missoes_concluidas[j], mapa->npc[i]->nome_item_quest) == 0) {
+				mapa->npc[i]->quest_terminada = true;
+				mapa->npc[i]->dialogo_lido = 2;
+			}
+		}
+	}
+
 }

@@ -43,12 +43,11 @@ struct al_mapa {
 
 	int quantidade_item;
 	int quantidade_npc;
-	int quantidade_npc_quest;
 
 	struct OBJETO_INTERACAO* objeto_interacao;
-
 }; 
 
 void init_mapa(struct al_mapa* mapa);
 void carregar_mapa(struct al_mapa* mapa, int next_mapa);
+void validar_mapa(struct Player* player, struct al_mapa* mapa);
 #endif // DIRECAO_H

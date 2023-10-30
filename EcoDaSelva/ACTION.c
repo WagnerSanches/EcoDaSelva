@@ -30,6 +30,8 @@ void interagir(struct Player* player, struct al_mapa* mapa) {
 				mapa->npc[player->indice_objeto_interacao]->quest_terminada = true;
 				player->missao->indice_npc_guest_aceita = 0;
 				player->missao->quest_aceita = false;
+				strcpy(player->missao->missoes_concluidas[player->missao->quantidade_missoes_concluidas], mapa->npc[player->indice_objeto_interacao]->nome_item_quest);
+				player->missao->quantidade_missoes_concluidas++;
 				player->status = PARADO;
 			}
 			else if (mapa->npc[player->indice_objeto_interacao]->quest_terminada) {
@@ -99,6 +101,3 @@ void acessar(struct Player* player, struct Fichario* fichario) {
 
 }
 
-void conversar(struct Player* player, struct al_mapa* mapa) {
-
-}

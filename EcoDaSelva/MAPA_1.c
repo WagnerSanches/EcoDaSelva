@@ -14,7 +14,7 @@ void carregar_mapa_centro_cima(struct al_mapa* mapa) {
 
 	mapa->quantidade_npc = 3;
 
-	mapa->npc[0]->matriz_position_y = 19;
+	mapa->npc[0]->matriz_position_y = 17;
 	mapa->npc[0]->matriz_position_x = 3;
 
 	mapa->npc[1]->matriz_position_y = 1;
@@ -26,7 +26,7 @@ void carregar_mapa_centro_cima(struct al_mapa* mapa) {
 	for (int i = 0; i < mapa->quantidade_npc; i++) {
 		mapa->matriz[mapa->npc[i]->matriz_position_y][mapa->npc[i]->matriz_position_x] = 2;
 
-		mapa->npc[i]->direcao = 2;
+		mapa->npc[i]->direcao = 1;
 
 		mapa->npc[i]->image[0] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24 * 3, 16, 16);
 		mapa->npc[i]->image[1] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7, 16, 16);

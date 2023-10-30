@@ -5,7 +5,8 @@ enum Objeto {
 	ITEM = 5,
 	NPC = 2,
 	CHAO = 0,
-	CAMINHO = 3
+	CAMINHO = 3,
+	PAREDE = 1
 };
 
 #endif

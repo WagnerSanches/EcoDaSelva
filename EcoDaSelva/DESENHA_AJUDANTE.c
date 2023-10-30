@@ -182,7 +182,7 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 			x_press_key_text,
 			y_press_key_text_2,
 			0,
-			"Mao."
+			"Nao."
 		);
 
 	}

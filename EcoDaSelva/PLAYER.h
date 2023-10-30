@@ -29,6 +29,8 @@ struct Mission {
 	int indice_npc_guest_aceita;
 	bool quest_aceita;
 	bool concluida;
+	int quantidade_missoes_concluidas;
+	char* missoes_concluidas[MAX_NPC_QUEST];
 };
 
 struct Player {
