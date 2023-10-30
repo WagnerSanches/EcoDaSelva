@@ -159,7 +159,7 @@ int main() {
 				init_mapa(mapa);
 				init_fichario(fichario);
 
-				player->status = MENU;
+				player->status = PARADO;
 				pausa->reiniciar = false;
 				player->menu->ativo = false;
 				pausa->pausado = false;

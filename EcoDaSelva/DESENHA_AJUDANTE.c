@@ -14,7 +14,7 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 		al_map_rgba_f(0, 0, 0, 0.5)
 	);
 
-	ALLEGRO_FONT* dialogue16 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 16, 0);
+	ALLEGRO_FONT* dialogue16 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 12, 0);
 	ALLEGRO_BITMAP* imagem_doutura = al_load_bitmap("assets/personagem/ajudante/doutora_resize.jpg");
 
 	int meio_tela = (WINDOW_SIZE_PIXEL_X * PIXEL_SIZE) / 2;
