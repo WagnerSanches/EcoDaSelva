@@ -25,7 +25,7 @@ void desenhar_opcoes(struct Fichario* fichario) {
 
 	if (fichario->selecao->grupo_selecionado)
 		al_draw_text(
-			fichario->posicoes->titulo28,
+			fichario->posicoes->titulo,
 			al_map_rgb(100, 100, 100),
 			meio_subbox_options,
 			y_subbox_option_title,
@@ -34,7 +34,7 @@ void desenhar_opcoes(struct Fichario* fichario) {
 		);
 	else
 		al_draw_text(
-			fichario->posicoes->titulo28,
+			fichario->posicoes->titulo,
 			al_map_rgb(100, 100, 100),
 			meio_subbox_options,
 			y_subbox_option_title,
@@ -80,7 +80,7 @@ void desenhar_opcoes(struct Fichario* fichario) {
 			al_draw_filled_rectangle(x_subbox_button_option_initial, y_subbox_button_option, x_subbox_button_option_final, y_subbox_button_option_final, al_map_rgb(161, 127, 53));
 
 			int y_subbox_option_text = y_subbox_button_option + (y_subbox_size_button_option / 4);
-			al_draw_text(fichario->posicoes->subtitulo22, al_map_rgb(255, 255, 255), meio_subbox_options, y_subbox_option_text, ALLEGRO_ALIGN_CENTER, fichario->classe[i]->titulo);
+			al_draw_text(fichario->posicoes->subtitulo, al_map_rgb(255, 255, 255), meio_subbox_options, y_subbox_option_text, ALLEGRO_ALIGN_CENTER, fichario->classe[i]->titulo);
 		}
 	}
 	else {
@@ -94,7 +94,7 @@ void desenhar_opcoes(struct Fichario* fichario) {
 				al_draw_filled_rectangle(x_subbox_button_option_initial, y_subbox_button_option, x_subbox_button_option_final, y_subbox_button_option_final, al_map_rgb(161, 127, 53));
 
 				int y_subbox_option_text = y_subbox_button_option + (y_subbox_size_button_option / 4);
-				al_draw_text(fichario->posicoes->subtitulo22,
+				al_draw_text(fichario->posicoes->subtitulo,
 					al_map_rgb(255, 255, 255),
 					meio_subbox_options,
 					y_subbox_option_text,

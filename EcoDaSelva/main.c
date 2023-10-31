@@ -150,6 +150,7 @@ int main() {
 				player->menu->ativo = true;
 				player->status = MENU;
 				pausa->encerrar = false;
+				pausa->opcao = 0;
 				pausa->pausado = false;
 				continue;
 			}
@@ -161,6 +162,7 @@ int main() {
 
 				player->status = PARADO;
 				pausa->reiniciar = false;
+				pausa->opcao = 0;
 				player->menu->ativo = false;
 				pausa->pausado = false;
 				continue;

@@ -19,8 +19,6 @@ void init_fichario(struct Fichario* fichario) {
 	fichario->ajudante->quantiade_imagem = 1;
 	fichario->ajudante->image[0] = al_load_bitmap("assets/personagem/ajudante/informacoes/taxonomia.jpg");
 
-
-
 	for (int i = 0; i < NUMBER_OF_CLASSES; i++) {
 
 		fichario->classe[i] = malloc(sizeof(struct Classe));
@@ -83,10 +81,18 @@ void criar_fichario(struct Fichario* fichario) {
 		return 1;
 	}
 
-	fichario->posicoes->titulo28 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 28, 0);
-	fichario->posicoes->subtitulo22 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 22, 0);
-	fichario->posicoes->descricao18 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 18, 0);
-	fichario->posicoes->tag16 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 16, 0);
+
+	fichario->posicoes->espacamento_fichario_fora = (PIXEL_SIZE * 2);
+	fichario->posicoes->espacamento_fichario_dentro = PIXEL_SIZE;
+	fichario->posicoes->size_font_titulo = 18;
+	fichario->posicoes->size_font_subtitulo = 14;
+	fichario->posicoes->size_font_description = 12;
+	fichario->posicoes->size_font_tag = 12;
+
+	fichario->posicoes->titulo = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", fichario->posicoes->size_font_titulo, 0);
+	fichario->posicoes->subtitulo = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", fichario->posicoes->size_font_subtitulo, 0);
+	fichario->posicoes->descricao = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", fichario->posicoes->size_font_description, 0);
+	fichario->posicoes->tag = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", fichario->posicoes->size_font_tag, 0);
 
 	strcpy(
 		fichario->ajudante->texto,
@@ -149,10 +155,10 @@ void criar_fichario(struct Fichario* fichario) {
 void destruir_fichario(struct Fichario* fichario) {
 	free(fichario->selecao);
 
-	al_destroy_font(fichario->posicoes->titulo28);
-	al_destroy_font(fichario->posicoes->subtitulo22);
-	al_destroy_font(fichario->posicoes->descricao18);
-	al_destroy_font(fichario->posicoes->tag16);
+	al_destroy_font(fichario->posicoes->titulo);
+	al_destroy_font(fichario->posicoes->subtitulo);
+	al_destroy_font(fichario->posicoes->descricao);
+	al_destroy_font(fichario->posicoes->tag);
 	free(fichario->posicoes);
 
 }

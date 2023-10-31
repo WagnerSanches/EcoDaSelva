@@ -37,7 +37,6 @@ struct al_mapa {
 
 	struct NPC* npc[MAX_NPC_PER_MAP];
 	ALLEGRO_BITMAP* NPC_IMAGES[MAX_NPC_PER_MAP];
-	ALLEGRO_FONT* dialogue16;
 
 	struct Item* item[MAX_ITEM_PER_MAP];
 

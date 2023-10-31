@@ -3,10 +3,10 @@
 
 struct Posicoes_fichario_box {
 
-	struct ALLEGRO_FONT* titulo28;
-	struct ALLEGRO_FONT* subtitulo22;
-	struct ALLEGRO_FONT* descricao18;
-	struct ALLEGRO_FONT* tag16;
+	struct ALLEGRO_FONT* titulo;
+	struct ALLEGRO_FONT* subtitulo;
+	struct ALLEGRO_FONT* descricao;
+	struct ALLEGRO_FONT* tag;
 
 	int espacamento_fichario_fora;
 	int espacamento_fichario_dentro;

@@ -18,8 +18,8 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 	ALLEGRO_BITMAP* imagem_doutura = al_load_bitmap("assets/personagem/ajudante/doutora_resize.jpg");
 
 	int meio_tela = (WINDOW_SIZE_PIXEL_X * PIXEL_SIZE) / 2;
-	int dialogue_text_size = 16;
-	int spacing_between_text = dialogue_text_size + 6;
+	int dialogue_text_size = 12;
+	int spacing_between_text = dialogue_text_size + 10;
 
 	int spacing = 4;
 	if (ajudante->opcao)
@@ -83,7 +83,7 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 		y_dialogue_text,
 		x_dialogue_text_final,
 		spacing_between_text,
-		0,
+		ALLEGRO_ALIGN_INTEGER,
 		ajudante->texto
 	);
 
