@@ -47,7 +47,7 @@ void desenhar_informacoes(struct Fichario* fichario, struct Player* player) {
 		al_map_rgb(143, 69, 255),
 		al_map_rgb(233, 69, 255)
 	};
-
+	
 	char* textos[7] = {
 		"Reino",
 		"Filo",

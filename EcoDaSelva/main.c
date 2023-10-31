@@ -135,6 +135,13 @@ int main() {
 	init_player(player);
 	init_mapa(mapa);
 	init_fichario(fichario);
+	
+
+//	config para ediar o fichario
+	player->menu->ativo = false;
+	player->ajudante->ajudou = true;
+	fichario->ajudante->ajudou = true;
+	player->status = PARADO;
 
 	while (jogando) {
 
