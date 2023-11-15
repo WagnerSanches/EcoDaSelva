@@ -40,7 +40,7 @@ void carregar_mapa_centro(struct al_mapa *mapa) {
 	mapa->npc[3]->matriz_position_x = 10;
 	mapa->npc[3]->npc_quest = true;
 
-	mapa->npc[4]->matriz_position_y = 5;
+	mapa->npc[4]->matriz_position_y = 7;
 	mapa->npc[4]->matriz_position_x = 11;
 	mapa->npc[4]->npc_quest = true;
 
@@ -99,32 +99,90 @@ void carregar_mapa_centro(struct al_mapa *mapa) {
 
 #pragma region Colisoes
 
+	//arvores
+
 	int max_colisao = 12;
-	for (int i = 0; i < 7; i++) {
-		if (i == 4) max_colisao = 9;
-		if (i == 5) max_colisao = 6;
+	for (int i = 0; i < 6; i++) {
 		for (int j = 0; j < max_colisao; j++)
 			mapa->matriz[i][j] = 1;
 	}
 
-	max_colisao = WINDOW_SIZE_PIXEL_X - 6;
-	for (int i = 0; i < 3; i++) {
-		if (i == 2) max_colisao = WINDOW_SIZE_PIXEL_X - 3;
+	max_colisao = 12;
+	for (int i = 0; i < 15; i++) {
+		if (i == 0) max_colisao = 4;
+		if (i == 0) max_colisao = 1;
+		for (int j = 0; j < max_colisao; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	max_colisao = WINDOW_SIZE_PIXEL_X - 12;
+	for (int i = 0; i < 6; i++) {
 		for (int j = max_colisao; j < WINDOW_SIZE_PIXEL_X; j++) {
 			mapa->matriz[i][j] = 1;
 		}
 	}
 
-	// 4 arvrinha
-	mapa->matriz[5][WINDOW_SIZE_PIXEL_X - 7] = 1;
-	mapa->matriz[5][WINDOW_SIZE_PIXEL_X - 8] = 1;
-	mapa->matriz[6][WINDOW_SIZE_PIXEL_X - 7] = 1;
-	mapa->matriz[6][WINDOW_SIZE_PIXEL_X - 8] = 1;
+	max_colisao = WINDOW_SIZE_PIXEL_X - 1;
+	for (int i = 0; i < 15; i++) {
+		if (i == 8) max_colisao = WINDOW_SIZE_PIXEL_X - 1;
+		for (int j = max_colisao; j < WINDOW_SIZE_PIXEL_X; j++) {
+			mapa->matriz[i][j] = 1;
+		}
+	}
+
 
 	// pedra
 	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 4][WINDOW_SIZE_PIXEL_X - 3] = 1;
+	mapa->matriz[7][WINDOW_SIZE_PIXEL_X - 2] = 1;
 
+	mapa->matriz[16][WINDOW_SIZE_PIXEL_X - 2] = 1;
+	mapa->matriz[16][WINDOW_SIZE_PIXEL_X - 1] = 1;
+	mapa->matriz[17][WINDOW_SIZE_PIXEL_X - 2] = 1;
+
+	mapa->matriz[16][WINDOW_SIZE_PIXEL_X - 15] = 1;
+	mapa->matriz[13][WINDOW_SIZE_PIXEL_X - 11] = 1;
+
+	mapa->matriz[6][1] = 1;
+	mapa->matriz[16][0] = 1;
+	mapa->matriz[6][14] = 1;
 	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 3][3] = 1;
+
+	//mar
+
+	for (int i = 18; i < 24; i++) {
+		for (int j = 7; j < WINDOW_SIZE_PIXEL_X; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 16; i < 18; i++) {
+		for (int j = 15; j < 26; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 17; i < 21; i++) {
+		for (int j = 7; j < 26; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 21; i < 24; i++) {
+		for (int j = 0; j < WINDOW_SIZE_PIXEL_X; j++)
+			mapa->matriz[i][j] = 1;
+	}	
+
+	for (int i = 18; i < 22; i++) {
+		for (int j = 0; j < 3; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	mapa->matriz[17][WINDOW_SIZE_PIXEL_X - 14] = 1;
+	mapa->matriz[17][WINDOW_SIZE_PIXEL_X - 12] = 1;
+	mapa->matriz[17][WINDOW_SIZE_PIXEL_X - 13] = 1;
+
+	//madeiras
+
+	mapa->matriz[0][23] = 1;
+	mapa->matriz[19][5] = 1;
+
 
 
 #pragma endregion
