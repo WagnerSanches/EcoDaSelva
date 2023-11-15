@@ -132,6 +132,17 @@ void carregar_mapa_centro(struct al_mapa *mapa) {
 
 
 	// pedra
+
+	for (int i = 12; i < 16; i++) {
+		for (int j = 15; j <= 15 ; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 12; i < 16; i++) {
+		for (int j = 25; j <= 25; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
 	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 4][WINDOW_SIZE_PIXEL_X - 3] = 1;
 	mapa->matriz[7][WINDOW_SIZE_PIXEL_X - 2] = 1;
 
