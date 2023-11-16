@@ -2,7 +2,7 @@
 #include <AL_MAPA.h>
 
 void carregar_mapa_centro_cima(struct al_mapa* mapa) {
-	mapa->background = al_load_bitmap("assets/mapa/cima.jpg");
+	mapa->background = al_load_bitmap("assets/mapa/cima.png");
 
 	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 1][11] = 3;
 	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 1][12] = 3;

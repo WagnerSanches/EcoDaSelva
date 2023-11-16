@@ -130,7 +130,6 @@ void carregar_mapa_centro(struct al_mapa *mapa) {
 		}
 	}
 
-
 	// pedra
 
 	for (int i = 12; i < 16; i++) {
@@ -202,9 +201,13 @@ void carregar_mapa_centro(struct al_mapa *mapa) {
 	mapa->matriz[12][0] = 3;
 	mapa->matriz[13][0] = 3;
 
-	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 1][11] = 3;
-	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 1][12] = 3;
-	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 1][13] = 3;
+	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 1][11] = 2;
+	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 1][12] = 2;
+	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 1][13] = 2;
+
+	mapa->matriz[(WINDOW_SIZE_PIXEL_Y - 1) / 2][WINDOW_SIZE_PIXEL_X - 1] = 3;
+	mapa->matriz[(WINDOW_SIZE_PIXEL_Y - 2) / 2][WINDOW_SIZE_PIXEL_X - 1] = 3;
+	mapa->matriz[(WINDOW_SIZE_PIXEL_Y - 3) / 2][WINDOW_SIZE_PIXEL_X - 1] = 3;
 
 	mapa->next_mapa->pra_cima = 1;
 	mapa->next_mapa->pra_baixo = 2;
