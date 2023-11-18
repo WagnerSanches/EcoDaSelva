@@ -42,4 +42,56 @@ void carregar_mapa_centro_cima(struct al_mapa* mapa) {
 	mapa->next_mapa->pra_baixo = 0;
 	mapa->next_mapa->pra_cima = -1;
 
+#pragma region Colisoes
+
+	//pedras
+
+	mapa->matriz[0][4] = 1;
+	mapa->matriz[0][7] = 1;
+	mapa->matriz[1][0] = 1;
+	mapa->matriz[1][1] = 1;
+	mapa->matriz[1][2] = 1;
+	mapa->matriz[1][3] = 1;
+	mapa->matriz[1][5] = 1;
+	mapa->matriz[1][6] = 1;
+
+	//cercas
+
+	for (int i = 2; i <= 2; i++) {
+		for (int j = 1; j < 7; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 2; i < 7; i++) {
+		for (int j = 6; j <= 6; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 2; i < 7; i++) {
+		for (int j = 8; j <= 8; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 2; i <= 2; i++) {
+		for (int j = 8; j < 15; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 2; i < 7; i++) {
+		for (int j = 15; j <= 15; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 2; i < 7; i++) {
+		for (int j = 1; j <= 1; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	mapa->matriz[6][2] = 1;
+	mapa->matriz[6][5] = 1;
+
+	mapa->matriz[5][3] = 1;
+	mapa->matriz[5][4] = 1;
+
+
 }

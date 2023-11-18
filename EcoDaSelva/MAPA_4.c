@@ -105,11 +105,40 @@ void carregar_mapa_centro_direita(struct al_mapa* mapa) {
 			mapa->matriz[i][j] = 1;
 	}
 
+	for (int i = WINDOW_SIZE_PIXEL_Y - 10; i <= WINDOW_SIZE_PIXEL_Y - 9; i++) {
+		for (int j = WINDOW_SIZE_PIXEL_X - 9; j <= WINDOW_SIZE_PIXEL_X - 8; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = WINDOW_SIZE_PIXEL_Y - 7; i <= WINDOW_SIZE_PIXEL_Y - 6; i++) {
+		for (int j = WINDOW_SIZE_PIXEL_X - 15; j <= WINDOW_SIZE_PIXEL_X - 14; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = WINDOW_SIZE_PIXEL_Y - 12; i <= WINDOW_SIZE_PIXEL_Y - 11; i++) {
+		for (int j = WINDOW_SIZE_PIXEL_X - 20; j <= WINDOW_SIZE_PIXEL_X - 19; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = WINDOW_SIZE_PIXEL_Y - 7; i <= WINDOW_SIZE_PIXEL_Y - 6; i++) {
+		for (int j = WINDOW_SIZE_PIXEL_X - 20; j <= WINDOW_SIZE_PIXEL_X - 19; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = WINDOW_SIZE_PIXEL_Y - 7; i <= WINDOW_SIZE_PIXEL_Y - 6; i++) {
+		for (int j = WINDOW_SIZE_PIXEL_X - 22; j <= WINDOW_SIZE_PIXEL_X - 21; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = WINDOW_SIZE_PIXEL_Y - 8; i <= WINDOW_SIZE_PIXEL_Y - 7; i++) {
+		for (int j = WINDOW_SIZE_PIXEL_X - 17; j <= WINDOW_SIZE_PIXEL_X - 16; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
 	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 4][WINDOW_SIZE_PIXEL_X - 10] = 1;
 	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 4][WINDOW_SIZE_PIXEL_X - 9] = 1;
 
 	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 3][WINDOW_SIZE_PIXEL_X - 6] = 1;
-
 
 	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 7][WINDOW_SIZE_PIXEL_X - 5] = 1;
 	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 8][WINDOW_SIZE_PIXEL_X - 5] = 1;
