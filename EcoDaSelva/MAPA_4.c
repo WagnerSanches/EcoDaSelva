@@ -1,5 +1,6 @@
 #include <config.h>
 #include <AL_MAPA.h>
+#include <AJUDANTE.h>
 
 void carregar_mapa_centro_direita(struct al_mapa* mapa) {
 
@@ -51,6 +52,29 @@ void carregar_mapa_centro_direita(struct al_mapa* mapa) {
 	mapa->npc[3]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
 	mapa->npc[4]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
 
+	mapa->quantidade_item = 1;
+
+	strcpy(mapa->item[0]->nome, "AMORA");
+	mapa->item[0]->matriz_position_x =	WINDOW_SIZE_PIXEL_X - 5;
+	mapa->item[0]->matriz_position_y = WINDOW_SIZE_PIXEL_Y - 5;
+	mapa->item[0]->image = al_load_bitmap("assets/objeto/fruta/amora.png");
+	mapa->item[0]->item_missao = true;
+	mapa->item[0]->ajudante->quantiade_imagem = 0;
+	mapa->item[0]->ajudante->opcao = true;
+	mapa->item[0]->ajudante->opcao_selecionada = 0;
+	mapa->item[0]->ajudante->tipo_pergunta = PERGUNTA_ITEM;
+	strcpy(mapa->item[0]->ajudante->texto, "Voce encontrou uma carnauba! A carnauba, ou Copernicia prunifera, e uma palmeira do Cerrado cujas folhas sao essenciais para a sobrevivencia de animais como o soldadinho-do-araripe, que constroi ninhos com elas. Alem disso, a cera de carnauba e usada em diversos produtos.");
+
+	for (int i = 0; i < mapa->quantidade_item; i++)
+		mapa->matriz[mapa->item[i]->matriz_position_y][mapa->item[i]->matriz_position_x] = 5;
+
+	mapa->matriz[11][WINDOW_SIZE_PIXEL_X - 1] = 3;
+	mapa->matriz[12][WINDOW_SIZE_PIXEL_X - 1] = 3;
+	mapa->matriz[13][WINDOW_SIZE_PIXEL_X - 1] = 3;
+
+	for (int i = 12; i < WINDOW_SIZE_PIXEL_X - 6; i++) {
+		mapa->matriz[0][i] = 3;
+	}
 
 #pragma region colisões 
 
@@ -75,6 +99,23 @@ void carregar_mapa_centro_direita(struct al_mapa* mapa) {
 		for (int j = 2; j < 7; j++)
 			mapa->matriz[i][j] = 1;
 	}
+
+	for (int i = 14; i < 15; i++) {
+		for (int j = 18; j < 20; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 4][WINDOW_SIZE_PIXEL_X - 10] = 1;
+	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 4][WINDOW_SIZE_PIXEL_X - 9] = 1;
+
+	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 3][WINDOW_SIZE_PIXEL_X - 6] = 1;
+
+
+	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 7][WINDOW_SIZE_PIXEL_X - 5] = 1;
+	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 8][WINDOW_SIZE_PIXEL_X - 5] = 1;
+	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 7][WINDOW_SIZE_PIXEL_X - 6] = 1;
+	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 8][WINDOW_SIZE_PIXEL_X - 6] = 1;
+
 
 	//relevo
 
@@ -106,12 +147,16 @@ void carregar_mapa_centro_direita(struct al_mapa* mapa) {
 		}
 	}
 
+
+
 	//pedras
 
 	mapa->matriz[11][2] = 1;
 	mapa->matriz[9][4] = 1;
 	mapa->matriz[3][12] = 1;
 	mapa->matriz[4][21] = 1;
+	mapa->matriz[16][16] = 1;
+	mapa->matriz[0][27] = 1;
 
 	//moitas
 
@@ -123,6 +168,14 @@ void carregar_mapa_centro_direita(struct al_mapa* mapa) {
 	mapa->matriz[8][9] = 1;
 	mapa->matriz[7][7] = 1;
 	mapa->matriz[6][11] = 1;
+	mapa->matriz[17][15] = 1;
+	mapa->matriz[11][20] = 1;
+	mapa->matriz[11][32] = 1;
+	mapa->matriz[7][31] = 1;
+	mapa->matriz[14][16] = 1;
+	mapa->matriz[17][18] = 1;
+	mapa->matriz[16][22] = 1;
+	mapa->matriz[15][24] = 1;
 
 	//mar 
 
