@@ -54,6 +54,9 @@ void carregar_mapa_centro_cima(struct al_mapa* mapa) {
 	mapa->matriz[1][3] = 1;
 	mapa->matriz[1][5] = 1;
 	mapa->matriz[1][6] = 1;
+	mapa->matriz[7][16] = 1;
+	mapa->matriz[21][1] = 1;
+
 
 	//cercas
 
@@ -78,7 +81,7 @@ void carregar_mapa_centro_cima(struct al_mapa* mapa) {
 	}
 
 	for (int i = 2; i < 7; i++) {
-		for (int j = 15; j <= 15; j++)
+		for (int j = 14; j <= 14; j++)
 			mapa->matriz[i][j] = 1;
 	}
 
@@ -93,5 +96,112 @@ void carregar_mapa_centro_cima(struct al_mapa* mapa) {
 	mapa->matriz[5][3] = 1;
 	mapa->matriz[5][4] = 1;
 
+
+	mapa->matriz[6][13] = 1;
+	mapa->matriz[6][12] = 1;
+	mapa->matriz[6][10] = 1;
+	mapa->matriz[6][9] = 1;
+
+	for (int i = 15; i <= 21; i++) {
+		for (int j = 1; j <= 1; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 15; i <= 15; i++) {
+		for (int j = 1; j <= 5; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 15; i <= 19; i++) {
+		for (int j = 5; j <= 5; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	mapa->matriz[19][4] = 1;
+	mapa->matriz[19][2] = 1;
+	mapa->matriz[18][4] = 1;
+	mapa->matriz[18][2] = 1;
+
+	for (int i = 15; i <= 19; i++) {
+		for (int j = 8; j <= 8; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 15; i <= 15; i++) {
+		for (int j = 8; j <= 14; j++)
+			mapa->matriz[i][j] = 1;
+	}
+	
+	for (int i = 15; i <= 19; i++) {
+		for (int j = 14; j <= 14; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	mapa->matriz[19][13] = 1;
+	mapa->matriz[19][12] = 1;
+	mapa->matriz[18][11] = 1;
+	mapa->matriz[19][10] = 1;
+	mapa->matriz[19][9] = 1;
+
+	for (int i = 3; i <= 3; i++) {
+		for (int j = 26; j <= 35; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 3; i <= 7; i++) {
+		for (int j = 35; j <= 35; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 3; i <= 7; i++) {
+		for (int j = 27; j <= 27; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	mapa->matriz[6][30] = 1;
+	mapa->matriz[6][31] = 1;
+	mapa->matriz[6][32] = 1;
+	mapa->matriz[7][33] = 1;
+	mapa->matriz[7][34] = 1;
+	mapa->matriz[7][29] = 1;
+	mapa->matriz[7][28] = 1;
+
+
+	//Arvores
+
+	for (int i = 23; i <= 23; i++) {
+		for (int j = 0; j <= 11; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = WINDOW_SIZE_PIXEL_Y - 8; i <= WINDOW_SIZE_PIXEL_Y - 7; i++) {
+		for (int j = 15; j <= 16; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 7; i <= 8; i++) {
+		for (int j = 18; j <= 19; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 3; i <= 4; i++) {
+		for (int j = 16; j <= 17; j++)
+			mapa->matriz[i][j] = 1;
+ 	}
+
+
+	for (int i = 2; i <= 3; i++) {
+		for (int j = 25; j <= 26; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+
+	//Moitas
+
+	mapa->matriz[22][0] = 1;
+
+	//placa
+
+	mapa->matriz[0][23] = 1;
 
 }
