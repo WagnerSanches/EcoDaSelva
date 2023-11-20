@@ -166,6 +166,45 @@ void carregar_mapa_centro_cima(struct al_mapa* mapa) {
 	mapa->matriz[7][29] = 1;
 	mapa->matriz[7][28] = 1;
 
+	for (int i = WINDOW_SIZE_PIXEL_Y - 4; i <= WINDOW_SIZE_PIXEL_Y - 4; i++) {
+		for (int j = WINDOW_SIZE_PIXEL_X - 19; j <= WINDOW_SIZE_PIXEL_X - 14; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = WINDOW_SIZE_PIXEL_Y - 4; i <= WINDOW_SIZE_PIXEL_Y - 4; i++) {
+		for (int j = WINDOW_SIZE_PIXEL_X - 7; j <= WINDOW_SIZE_PIXEL_X - 3; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = WINDOW_SIZE_PIXEL_Y - 9; i <= WINDOW_SIZE_PIXEL_Y - 4; i++) {
+		for (int j = WINDOW_SIZE_PIXEL_X - 19; j <= WINDOW_SIZE_PIXEL_X - 19; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = WINDOW_SIZE_PIXEL_Y - 9; i <= WINDOW_SIZE_PIXEL_Y - 9; i++) {
+		for (int j = WINDOW_SIZE_PIXEL_X - 19; j <= WINDOW_SIZE_PIXEL_X - 3; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = WINDOW_SIZE_PIXEL_Y - 9; i <= WINDOW_SIZE_PIXEL_Y - 4; i++) {
+		for (int j = WINDOW_SIZE_PIXEL_X - 3; j <= WINDOW_SIZE_PIXEL_X - 3; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = WINDOW_SIZE_PIXEL_Y - 8; i <= WINDOW_SIZE_PIXEL_Y - 6 ; i++) {
+		for (int j = WINDOW_SIZE_PIXEL_X - 12; j <= WINDOW_SIZE_PIXEL_X - 8; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = WINDOW_SIZE_PIXEL_Y - 8; i <= WINDOW_SIZE_PIXEL_Y - 6; i++) {
+		for (int j = WINDOW_SIZE_PIXEL_X - 18; j <= WINDOW_SIZE_PIXEL_X - 14; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = WINDOW_SIZE_PIXEL_Y - 8; i <= WINDOW_SIZE_PIXEL_Y - 6; i++) {
+		for (int j = WINDOW_SIZE_PIXEL_X - 6; j <= WINDOW_SIZE_PIXEL_X - 3; j++)
+			mapa->matriz[i][j] = 1;
+	}
 
 	//Arvores
 
@@ -195,13 +234,64 @@ void carregar_mapa_centro_cima(struct al_mapa* mapa) {
 			mapa->matriz[i][j] = 1;
 	}
 
+	for (int i = 1; i <= 2; i++) {
+		for (int j = WINDOW_SIZE_PIXEL_X - 5; j <= WINDOW_SIZE_PIXEL_X - 2; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 4; i <= 5; i++) {
+		for (int j = WINDOW_SIZE_PIXEL_X - 2; j <= WINDOW_SIZE_PIXEL_X; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 6; i <= 6; i++) {
+		for (int j = WINDOW_SIZE_PIXEL_X - 6; j <= WINDOW_SIZE_PIXEL_X - 5; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 13; i <= 14; i++) {
+		for (int j = WINDOW_SIZE_PIXEL_X - 5; j <= WINDOW_SIZE_PIXEL_X - 4; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = WINDOW_SIZE_PIXEL_Y - 6; i <= WINDOW_SIZE_PIXEL_Y - 5; i++) {
+		for (int j = WINDOW_SIZE_PIXEL_X - 2; j <= WINDOW_SIZE_PIXEL_X - 1; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = WINDOW_SIZE_PIXEL_Y - 1; i <= WINDOW_SIZE_PIXEL_Y - 1; i++) {
+		for (int j = WINDOW_SIZE_PIXEL_X - 12; j <= WINDOW_SIZE_PIXEL_X; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 13; i <= 14; i++) {
+		for (int j = 4; j <= 5; j++)
+			mapa->matriz[i][j] = 1;
+	}
 
 	//Moitas
 
 	mapa->matriz[22][0] = 1;
+	mapa->matriz[0][WINDOW_SIZE_PIXEL_X - 8] = 1;
+	mapa->matriz[1][WINDOW_SIZE_PIXEL_X - 10] = 1;
+	mapa->matriz[1][WINDOW_SIZE_PIXEL_X - 7] = 1;
+	mapa->matriz[0][WINDOW_SIZE_PIXEL_X - 1] = 1;
+	mapa->matriz[3][WINDOW_SIZE_PIXEL_X - 4] = 1;
+	mapa->matriz[1][WINDOW_SIZE_PIXEL_X - 1] = 1;
+	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 3][WINDOW_SIZE_PIXEL_X - 1] = 1;
+	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 2][WINDOW_SIZE_PIXEL_X - 1] = 1;
+	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 2][WINDOW_SIZE_PIXEL_X - 2] = 1;
 
 	//placa
 
 	mapa->matriz[0][23] = 1;
+	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 1][23] = 1;
+	mapa->matriz[8][0] = 1;
+	mapa->matriz[8][WINDOW_SIZE_PIXEL_X - 1] = 1;
+
+	//Estatua
+
+	mapa->matriz[WINDOW_SIZE_PIXEL_Y / 2][23] = 1;
+	mapa->matriz[(WINDOW_SIZE_PIXEL_Y / 2) - 1][23] = 1;
 
 }
