@@ -240,6 +240,6 @@ void carregar_mapa_centro_direita(struct al_mapa* mapa) {
 	mapa->matriz[(WINDOW_SIZE_PIXEL_Y - 3) / 2][0] = 3;
 
 
-	mapa->next_mapa->pra_esquerda = 0;
+	mapa->next_mapa->pra_esquerda = 2;
 
 }

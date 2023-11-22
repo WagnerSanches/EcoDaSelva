@@ -7,7 +7,7 @@
 void init_mapa(struct al_mapa* mapa) {
 	mapa->criado = false;
 
-	carregar_mapa(mapa, 0);
+	carregar_mapa(mapa, 2);
 }
 
 void excluir_mapa(struct al_mapa* mapa) {
