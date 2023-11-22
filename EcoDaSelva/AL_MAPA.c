@@ -152,19 +152,25 @@ void carregar_mapa(struct al_mapa* mapa, int next_mapa) {
 
 	switch (next_mapa) {
 	case 0:
-		carregar_mapa_centro(mapa);
+		carregar_mapa_vila(mapa);
 		break;
 	case 1:
 		carregar_mapa_centro_cima(mapa);
 		break;
 	case 2:
-		carregar_mapa_centro_baixo(mapa);
+		carregar_mapa_praia(mapa);
 		break;
 	case 3:
-		carregar_mapa_centro_esquerda(mapa);
+		carregar_mapa_praia_esquerda(mapa);
 		break;
 	case 4:
-		carregar_mapa_centro_direita(mapa);
+		carregar_mapa_praia_direita(mapa);
+		break;
+	case 5:
+		carregar_mapa_direita_vila(mapa);
+		break;
+	case 6:
+		carregar_mapa_esquerda_vila(mapa);
 		break;
 	}
 }

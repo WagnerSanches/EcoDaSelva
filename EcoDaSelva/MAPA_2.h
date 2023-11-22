@@ -1,3 +1,3 @@
 
-void carregar_mapa_centro_baixo(struct al_mapa* mapa);
+void carregar_mapa_praia(struct al_mapa* mapa);
 

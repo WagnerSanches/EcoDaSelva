@@ -165,6 +165,8 @@
     <ClCompile Include="MAPA_2.c" />
     <ClCompile Include="MAPA_3.c" />
     <ClCompile Include="MAPA_4.c" />
+    <ClCompile Include="MAPA_5.c" />
+    <ClCompile Include="MAPA_6.c" />
     <ClCompile Include="MAPA_CENTRO.c" />
     <ClCompile Include="PLAYER.c" />
     <ClCompile Include="REGRA.c" />
@@ -177,6 +179,7 @@
     <ClInclude Include="AJUDANTE.h" />
     <ClInclude Include="AL_MAPA.h" />
     <ClInclude Include="ANIMATION.h" />
+    <ClInclude Include="MAPA_5.h" />
     <ClInclude Include="config.h" />
     <ClInclude Include="DESENHA_AJUDANTE.H" />
     <ClInclude Include="DESENHA_DIALOGO_NPC.h" />
@@ -199,6 +202,7 @@
     <ClInclude Include="MAPA_2.h" />
     <ClInclude Include="MAPA_3.h" />
     <ClInclude Include="MAPA_4.h" />
+    <ClInclude Include="MAPA_6.h" />
     <ClInclude Include="MAPA_CENTRO.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="OBJETO.h" />

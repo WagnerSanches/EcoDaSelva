@@ -1,7 +1,7 @@
 #include <config.h>
 #include <AL_MAPA.h>
 
-void carregar_mapa_centro_baixo(struct al_mapa* mapa) {
+void carregar_mapa_praia(struct al_mapa* mapa) {
 	mapa->background = al_load_bitmap("assets/mapa/centro2.png");
 
 	mapa->matriz[0][17] = 3;

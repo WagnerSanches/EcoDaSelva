@@ -137,6 +137,12 @@
     <ClCompile Include="DESENHA_PAUSA.c">
       <Filter>Source Files\desenho</Filter>
     </ClCompile>
+    <ClCompile Include="MAPA_5.c">
+      <Filter>Source Files\mapas</Filter>
+    </ClCompile>
+    <ClCompile Include="MAPA_6.c">
+      <Filter>Source Files\mapas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -243,6 +249,12 @@
     </ClInclude>
     <ClInclude Include="DESENHA_PAUSA.h">
       <Filter>Header Files\desenho</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPA_5.h">
+      <Filter>Header Files\mapas</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPA_6.h">
+      <Filter>Header Files\mapas</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

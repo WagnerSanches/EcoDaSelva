@@ -1,3 +1,3 @@
 
-void carregar_mapa_centro(struct al_mapa* mapa);
+void carregar_mapa_vila(struct al_mapa* mapa);
 

@@ -5,7 +5,7 @@
 #include <allegro5/allegro_font.h>
 #include <AJUDANTE.h>
 
-void carregar_mapa_centro(struct al_mapa *mapa) {
+void carregar_mapa_vila(struct al_mapa *mapa) {
 
 	mapa->quantidade_npc = 5;
 
@@ -354,6 +354,21 @@ void carregar_mapa_centro(struct al_mapa *mapa) {
 	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 1][21] = 3;
 	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 1][22] = 3;
 
+	mapa->matriz[9][WINDOW_SIZE_PIXEL_X - 1] = 3;
+	mapa->matriz[10][WINDOW_SIZE_PIXEL_X - 1] = 3;
+	mapa->matriz[11][WINDOW_SIZE_PIXEL_X - 1] = 3;
+	mapa->matriz[12][WINDOW_SIZE_PIXEL_X - 1] = 3;
+	mapa->matriz[13][WINDOW_SIZE_PIXEL_X - 1] = 3;
+
+	mapa->matriz[9][0] = 3;
+	mapa->matriz[10][0] = 3;
+	mapa->matriz[11][0] = 3;
+	mapa->matriz[12][0] = 3;
+	mapa->matriz[13][0] = 3;
+
+
 	mapa->next_mapa->pra_baixo = 2;
+	mapa->next_mapa->pra_direita = 5;
+	mapa->next_mapa->pra_esquerda = 6;
 }
 
