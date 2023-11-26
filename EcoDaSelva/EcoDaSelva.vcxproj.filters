@@ -143,6 +143,12 @@
     <ClCompile Include="MAPA_6.c">
       <Filter>Source Files\mapas</Filter>
     </ClCompile>
+    <ClCompile Include="MAPA_7.c">
+      <Filter>Source Files\mapas</Filter>
+    </ClCompile>
+    <ClCompile Include="MAPA_8.c">
+      <Filter>Source Files\mapas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -254,6 +260,12 @@
       <Filter>Header Files\mapas</Filter>
     </ClInclude>
     <ClInclude Include="MAPA_6.h">
+      <Filter>Header Files\mapas</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPA_8.h">
+      <Filter>Header Files\mapas</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPA_9.h">
       <Filter>Header Files\mapas</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,7 +4,7 @@
 
 void carregar_mapa_praia_direita(struct al_mapa* mapa) {
 
-	mapa->background = al_load_bitmap("assets/mapa/direita.png");
+	mapa->background = al_load_bitmap("assets/mapa/praia_direita.png");
 
 	mapa->quantidade_npc = 0;
 
@@ -241,5 +241,6 @@ void carregar_mapa_praia_direita(struct al_mapa* mapa) {
 
 
 	mapa->next_mapa->pra_esquerda = 2;
+	mapa->next_mapa->pra_cima = 5;
 
 }

@@ -18,8 +18,17 @@ void carregar_mapa_esquerda_vila(struct al_mapa* mapa)
 	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 1][21] = 3;
 	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 1][22] = 3;
 
-	mapa->next_mapa->pra_baixo = 0;
+	mapa->matriz[0][19] = 3;
+	mapa->matriz[0][20] = 3;
+	mapa->matriz[0][21] = 3;
+	mapa->matriz[0][22] = 3;
+	mapa->matriz[0][23] = 3;
+	mapa->matriz[0][24] = 3;
+	mapa->matriz[0][25] = 3;
+
 	mapa->next_mapa->pra_baixo = 3;
+	mapa->next_mapa->pra_cima = 7;
+
 
 
 }

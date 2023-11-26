@@ -108,12 +108,4 @@ void carregar_mapa_praia(struct al_mapa* mapa) {
 	mapa->matriz[19][5] = 1;
 
 
-
-#pragma endregion
-
-	mapa->next_mapa->pra_direita = 4;
-
-	mapa->matriz[(WINDOW_SIZE_PIXEL_Y - 1) / 2][WINDOW_SIZE_PIXEL_X - 1] = 3;
-	mapa->matriz[(WINDOW_SIZE_PIXEL_Y - 2) / 2][WINDOW_SIZE_PIXEL_X - 1] = 3;
-	mapa->matriz[(WINDOW_SIZE_PIXEL_Y - 3) / 2][WINDOW_SIZE_PIXEL_X - 1] = 3;
 }

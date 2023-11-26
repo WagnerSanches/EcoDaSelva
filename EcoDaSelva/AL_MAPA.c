@@ -7,7 +7,7 @@
 void init_mapa(struct al_mapa* mapa) {
 	mapa->criado = false;
 
-	carregar_mapa(mapa, 3);
+	carregar_mapa(mapa, 8);
 }
 
 void excluir_mapa(struct al_mapa* mapa) {
@@ -171,6 +171,12 @@ void carregar_mapa(struct al_mapa* mapa, int next_mapa) {
 		break;
 	case 6:
 		carregar_mapa_esquerda_vila(mapa);
+		break;
+	case 7:
+		carregar_mapa_cima_esquerda(mapa);
+		break;
+	case 8:
+		carregar_mapa_cima_direita(mapa);
 		break;
 	}
 }
