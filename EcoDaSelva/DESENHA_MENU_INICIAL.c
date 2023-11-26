@@ -6,24 +6,27 @@
 
 void desenhar_menu_inicial(struct Menu* menu) {
 
-	int font_size = 22;
+	int font_size = 20;
 	ALLEGRO_FONT* menu22 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", font_size, 0);
 
 	int meio_tela = (WINDOW_SIZE_PIXEL_X * PIXEL_SIZE) / 2;
-	int menu_size = (WINDOW_SIZE_PIXEL_X * PIXEL_SIZE) - (PIXEL_SIZE * (PIXEL_SIZE / 2));
+	int x_menu_size = (WINDOW_SIZE_PIXEL_X * PIXEL_SIZE) - (PIXEL_SIZE * 24);
+	int y_menu_size = PIXEL_SIZE * 3;
 	int spacing = PIXEL_SIZE;
 
-	int x_menu_initial = meio_tela - (menu_size / 2);
-	int y_menu_initial = spacing;
-	int x_menu_final = x_menu_initial + menu_size;
-	int y_menu_final = (WINDOW_SIZE_PIXEL_Y * PIXEL_SIZE) - PIXEL_SIZE;
+	al_draw_bitmap(menu->background, 0, 0, 0);
+
+	int x_menu_initial = meio_tela - (x_menu_size / 2);
+	int y_menu_initial = y_menu_size;
+	int x_menu_final = x_menu_initial + x_menu_size;
+	int y_menu_final = (WINDOW_SIZE_PIXEL_Y * PIXEL_SIZE) - y_menu_size;
 
 	al_draw_filled_rectangle(
 		x_menu_initial,
 		y_menu_initial,
 		x_menu_final,
 		y_menu_final,
-		al_map_rgb(255, 240, 240)
+		al_map_rgb(255, 255, 170)
 	);
 
 	int x_logo_size = PIXEL_SIZE * 12;
@@ -39,7 +42,7 @@ void desenhar_menu_inicial(struct Menu* menu) {
 		y_logo_initial,
 		x_logo_final,
 		y_logo_final,
-		al_map_rgb(140, 240, 240)
+		al_map_rgb(255, 255, 170)
 	);
 
 	int x_button_size = PIXEL_SIZE * 6;
@@ -48,9 +51,8 @@ void desenhar_menu_inicial(struct Menu* menu) {
 	int x_button_initial = meio_tela - (x_button_size / 2);
 	int y_button_initial = (y_logo_final + spacing * 2);
 
-	char* textos[3] = {
+	char* textos[2] = {
 		"JOGAR",
-		"CREDITO",
 		"SAIR"
 	};
 
@@ -65,11 +67,11 @@ void desenhar_menu_inicial(struct Menu* menu) {
 		y_button_selected_initial,
 		x_button_selected_final,
 		y_button_selected_final,
-		al_map_rgb(0, 0, 0),
+		al_map_rgb(31, 63, 43),
 		thickness
 	);
 
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 2; i++) {
 
 		int y_button = y_button_initial + (i * (y_button_size + spacing / 4));
 		int x_button_final = x_button_initial + x_button_size;
@@ -80,7 +82,7 @@ void desenhar_menu_inicial(struct Menu* menu) {
 			y_button,
 			x_button_final,
 			y_button_final,
-			al_map_rgb(140, 240, 240)
+			al_map_rgb(82, 132, 60)
 		);
 
 		int y_button_text_initial = (font_size / 4) + y_button;
@@ -95,7 +97,5 @@ void desenhar_menu_inicial(struct Menu* menu) {
 		);
 	}
 	
-
-
 	al_destroy_font(menu22);
 }

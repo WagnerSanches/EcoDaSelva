@@ -18,6 +18,7 @@ struct NPC {
 	int dialogo_lido;
 	bool quest_terminada;
 	char* nome_item_quest;
+	char* tag;
 };
 
 #endif

@@ -12,22 +12,35 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
 
 		if (fichario->ajudante->ajudou == false) return;
 
- 		if (fichario->selecao->grupo_selecionado == false) {
+		if (fichario->selecao->grupo_selecionado == false) {
 			fichario->selecao->classe--;
 
-			if (fichario->selecao->classe <= -1)
-				fichario->selecao->classe = NUMBER_OF_CLASSES - 1;
+			if (fichario->todas_respostas_selecionadas) {
+				if (fichario->selecao->classe <= -1) {
+					if (fichario->opcao_finalizar_jogo) {
+						fichario->selecao->classe = NUMBER_OF_CLASSES - 1;
+						fichario->opcao_finalizar_jogo = false;
+					}
+					else {
+						fichario->opcao_finalizar_jogo = true;
+					}
+				}
+			}
+			else {
+				if (fichario->selecao->classe <= -1)
+					fichario->selecao->classe = NUMBER_OF_CLASSES - 1;
+			}
 		}
 		else {
 
 			if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->mostrar_opcoes) {
-				if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada - 1 == 0) 
+				if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada - 1 == 0)
 					fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada--;
 			}
 			else {
 				fichario->selecao->grupo--;
 
-				if (fichario->selecao->grupo <= -1) 
+				if (fichario->selecao->grupo <= -1)
 					fichario->selecao->grupo = NUMBER_OF_GROUP_OF_CLASSES - 1;
 			}
 		}
@@ -40,21 +53,35 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
 		if (fichario->selecao->grupo_selecionado == false) {
 			fichario->selecao->classe++;
 
-			if (fichario->selecao->classe >= NUMBER_OF_CLASSES)
-				fichario->selecao->classe = 0;
+			if (fichario->todas_respostas_selecionadas) {
+				if (fichario->selecao->classe >= NUMBER_OF_CLASSES) {
+					if (fichario->opcao_finalizar_jogo) {
+						fichario->selecao->classe = 0;
+						fichario->opcao_finalizar_jogo = false;
+					}
+					else {
+						fichario->opcao_finalizar_jogo = true;
+					}
+				}
+			}
+			else {
+				if (fichario->selecao->classe >= NUMBER_OF_CLASSES)
+					fichario->selecao->classe = 0;
+			}
+
 
 		}
 		else {
 
 			if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->mostrar_opcoes) {
-				if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada + 1 == 1) 
+				if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada + 1 == 1)
 					fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada++;
 
 			}
 			else {
 				fichario->selecao->grupo++;
 
-				if (fichario->selecao->grupo >= NUMBER_OF_GROUP_OF_CLASSES) 
+				if (fichario->selecao->grupo >= NUMBER_OF_GROUP_OF_CLASSES)
 					fichario->selecao->grupo = NUMBER_OF_GROUP_OF_CLASSES - 1;
 			}
 
@@ -75,7 +102,7 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
 		if (fichario->ajudante->ajudou == false) {
 			fichario->ajudante->ajudou = true;
 			return;
-		} 
+		}
 
 		if (fichario->selecao->grupo_selecionado) {
 
@@ -86,21 +113,37 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
 
 				if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada == 0) {
 					player->respostas[fichario->selecao->classe]->selecionado = true;
+
 					strcpy(
 						player->respostas[fichario->selecao->classe]->grupo,
 						fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->titulo
 					);
+
 					fichario->selecao->grupo_selecionado = false;
 					fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->mostrar_opcoes = false;
+					fichario->selecao->grupo = 0;
+
+					if (strcmp(player->respostas[0]->grupo, "Nao classificado") != 0 &&
+						strcmp(player->respostas[1]->grupo, "Nao classificado") != 0 &&
+						strcmp(player->respostas[2]->grupo, "Nao classificado") != 0 &&
+						strcmp(player->respostas[3]->grupo, "Nao classificado") != 0) {
+						fichario->todas_respostas_selecionadas = true;
+					}
 				}
 				else {
 					fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->mostrar_opcoes = false;
 					fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada = 0;
 				}
 			}
-			
+
 		}
 		else {
+			if (fichario->todas_respostas_selecionadas) {
+				if (fichario->opcao_finalizar_jogo) {
+					player->finalizou_jogo = true;
+					player->status = FINAL;
+				}
+			}
 			fichario->selecao->grupo_selecionado = true;
 		}
 

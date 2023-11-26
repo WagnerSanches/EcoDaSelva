@@ -11,7 +11,7 @@ void evento_menu_key_precionada(struct Player* player, int keycode) {
 		break;
 	case ALLEGRO_KEY_DOWN:
 	case ALLEGRO_KEY_S:
-		if (player->menu->opcao + 1 <= 2) {
+		if (player->menu->opcao + 1 <= 1) {
 			player->menu->opcao++;
 		}
 
@@ -21,8 +21,9 @@ void evento_menu_key_precionada(struct Player* player, int keycode) {
 		if (player->menu->opcao == 0) {
 			player->menu->ativo = false;
 			player->status = PARADO;
+			al_destroy_bitmap(player->menu->background);
 		}
-		else if (player->menu->opcao == 2) {
+		else if (player->menu->opcao == 1) {
 			player->menu->encerrar = true;
 		}
 

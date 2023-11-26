@@ -59,22 +59,10 @@
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MAPA_CENTRO.c">
-      <Filter>Source Files\mapas</Filter>
-    </ClCompile>
     <ClCompile Include="REGRA.c">
       <Filter>Source Files\jogo</Filter>
     </ClCompile>
-    <ClCompile Include="MAPA_4.c">
-      <Filter>Source Files\mapas</Filter>
-    </ClCompile>
-    <ClCompile Include="MAPA_1.c">
-      <Filter>Source Files\mapas</Filter>
-    </ClCompile>
-    <ClCompile Include="MAPA_2.c">
-      <Filter>Source Files\mapas</Filter>
-    </ClCompile>
-    <ClCompile Include="MAPA_3.c">
+    <ClCompile Include="MAPA_DIREITA_PRAIA.c">
       <Filter>Source Files\mapas</Filter>
     </ClCompile>
     <ClCompile Include="ANIMATION.c">
@@ -110,9 +98,6 @@
     <ClCompile Include="DESENHAR_FICHARIO_INFO.c">
       <Filter>Source Files\desenho\fichario</Filter>
     </ClCompile>
-    <ClCompile Include="AL_MAPA.c">
-      <Filter>Source Files\jogo\componentes</Filter>
-    </ClCompile>
     <ClCompile Include="DESENHA_DIALOGO_NPC.c">
       <Filter>Source Files\desenho\dialogo</Filter>
     </ClCompile>
@@ -137,11 +122,38 @@
     <ClCompile Include="DESENHA_PAUSA.c">
       <Filter>Source Files\desenho</Filter>
     </ClCompile>
-    <ClCompile Include="MAPA_5.c">
+    <ClCompile Include="MAPA_DIREITA_FLORESTA_DESMATADA.c">
       <Filter>Source Files\mapas</Filter>
     </ClCompile>
-    <ClCompile Include="MAPA_6.c">
+    <ClCompile Include="MAPA_DIREITA_VILA.c">
       <Filter>Source Files\mapas</Filter>
+    </ClCompile>
+    <ClCompile Include="MAPA_ESQUERDA_FLORESTA_DESMATADA.c">
+      <Filter>Source Files\mapas</Filter>
+    </ClCompile>
+    <ClCompile Include="MAPA_FLORESTA_DESMATADA.c">
+      <Filter>Source Files\mapas</Filter>
+    </ClCompile>
+    <ClCompile Include="MAPA_PRAIA.c">
+      <Filter>Source Files\mapas</Filter>
+    </ClCompile>
+    <ClCompile Include="MAPA_VILA.c">
+      <Filter>Source Files\mapas</Filter>
+    </ClCompile>
+    <ClCompile Include="MAPA_ESQUERDA_VILA.c">
+      <Filter>Source Files\mapas</Filter>
+    </ClCompile>
+    <ClCompile Include="MAPA_ESQUERDA_PRAIA.c">
+      <Filter>Source Files\mapas</Filter>
+    </ClCompile>
+    <ClCompile Include="AL_MAPA.c">
+      <Filter>Source Files\mapas</Filter>
+    </ClCompile>
+    <ClCompile Include="EVENTO_FINAL.c">
+      <Filter>Source Files\jogo\eventos</Filter>
+    </ClCompile>
+    <ClCompile Include="DESENHA_FINAL.c">
+      <Filter>Source Files\desenho</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -151,22 +163,10 @@
     <ClInclude Include="config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MAPA_CENTRO.h">
-      <Filter>Header Files\mapas</Filter>
-    </ClInclude>
     <ClInclude Include="REGRA.h">
       <Filter>Header Files\jogo</Filter>
     </ClInclude>
-    <ClInclude Include="MAPA_4.h">
-      <Filter>Header Files\mapas</Filter>
-    </ClInclude>
-    <ClInclude Include="MAPA_1.h">
-      <Filter>Header Files\mapas</Filter>
-    </ClInclude>
-    <ClInclude Include="MAPA_2.h">
-      <Filter>Header Files\mapas</Filter>
-    </ClInclude>
-    <ClInclude Include="MAPA_3.h">
+    <ClInclude Include="MAPA_DIREITA_PRAIA.h">
       <Filter>Header Files\mapas</Filter>
     </ClInclude>
     <ClInclude Include="ANIMATION.h">
@@ -211,9 +211,6 @@
     <ClInclude Include="DIALOGO.h">
       <Filter>Header Files\jogo\componentes</Filter>
     </ClInclude>
-    <ClInclude Include="AL_MAPA.h">
-      <Filter>Header Files\jogo\componentes</Filter>
-    </ClInclude>
     <ClInclude Include="DESENHA_DIALOGO_NPC.h">
       <Filter>Header Files\desenho\dialogo</Filter>
     </ClInclude>
@@ -250,11 +247,38 @@
     <ClInclude Include="DESENHA_PAUSA.h">
       <Filter>Header Files\desenho</Filter>
     </ClInclude>
-    <ClInclude Include="MAPA_5.h">
+    <ClInclude Include="MAPA_DIREITA_FLORESTA_DESMATADA.h">
       <Filter>Header Files\mapas</Filter>
     </ClInclude>
-    <ClInclude Include="MAPA_6.h">
+    <ClInclude Include="MAPA_DIREITA_VILA.h">
       <Filter>Header Files\mapas</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPA_ESQUERDA_FLORESTA_DESMATADA.h">
+      <Filter>Header Files\mapas</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPA_FLORESTA_DESMATADA.h">
+      <Filter>Header Files\mapas</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPA_PRAIA.h">
+      <Filter>Header Files\mapas</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPA_VILA.h">
+      <Filter>Header Files\mapas</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPA_ESQUERDA_VILA.h">
+      <Filter>Header Files\mapas</Filter>
+    </ClInclude>
+    <ClInclude Include="MAPA_ESQUERDA_PRAIA.h">
+      <Filter>Header Files\mapas</Filter>
+    </ClInclude>
+    <ClInclude Include="AL_MAPA.h">
+      <Filter>Header Files\mapas</Filter>
+    </ClInclude>
+    <ClInclude Include="EVENTO_FINAL.h">
+      <Filter>Header Files\jogo\eventos</Filter>
+    </ClInclude>
+    <ClInclude Include="DESENHA_FINAL.h">
+      <Filter>Header Files\desenho</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

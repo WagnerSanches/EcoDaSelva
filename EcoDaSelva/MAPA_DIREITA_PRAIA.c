@@ -1,19 +1,17 @@
+#include <config.h>
 #include <AL_MAPA.h>
-#include <stdlib.h>
-#include <allegro5/bitmap_draw.h>
-#include <allegro5/allegro.h>
-#include <allegro5/allegro_font.h>
 #include <AJUDANTE.h>
 
-void carregar_mapa_direita_vila(struct al_mapa* mapa)
-{
-	mapa->background = al_load_bitmap("assets/mapa/direita.png");
+void carregar_mapa_direita_praia(struct al_mapa* mapa) {
+
+	mapa->background = al_load_bitmap("assets/mapa/DireitaPraia.png");
 
 	mapa->quantidade_npc = 0;
-
-	mapa->matriz[11][0] = 3;
-	mapa->matriz[12][0] = 3;
-	mapa->matriz[13][0] = 3;
+	
+	mapa->next_mapa->pra_cima = 5;
+	for (int i = 6; i < WINDOW_SIZE_PIXEL_X - 5; i++) {
+		mapa->matriz[0][i] = 3;
+	}
 
 	mapa->NPC_IMAGES[0] = al_load_bitmap("assets/personagem/npc/Character_001.png");
 	mapa->NPC_IMAGES[1] = al_load_bitmap("assets/personagem/npc/Character_002.png");
@@ -34,7 +32,7 @@ void carregar_mapa_direita_vila(struct al_mapa* mapa)
 
 	mapa->npc[3]->matriz_position_y = 3;
 	mapa->npc[3]->matriz_position_x = 22;
-
+		
 	mapa->npc[4]->matriz_position_y = 14;
 	mapa->npc[4]->matriz_position_x = 13;
 
@@ -58,7 +56,7 @@ void carregar_mapa_direita_vila(struct al_mapa* mapa)
 	mapa->quantidade_item = 1;
 
 	strcpy(mapa->item[0]->nome, "AMORA");
-	mapa->item[0]->matriz_position_x = WINDOW_SIZE_PIXEL_X - 5;
+	mapa->item[0]->matriz_position_x =	WINDOW_SIZE_PIXEL_X - 5;
 	mapa->item[0]->matriz_position_y = WINDOW_SIZE_PIXEL_Y - 5;
 	mapa->item[0]->image = al_load_bitmap("assets/objeto/fruta/amora.png");
 	mapa->item[0]->item_missao = true;
@@ -216,7 +214,7 @@ void carregar_mapa_direita_vila(struct al_mapa* mapa)
 			mapa->matriz[i][j] = 1;
 	}
 
-	for (int i = 18; i < 20; i++) {
+	for (int i = 18 ; i < 20; i++) {
 		for (int j = 0; j < 4; j++)
 			mapa->matriz[i][j] = 1;
 	}
@@ -227,7 +225,7 @@ void carregar_mapa_direita_vila(struct al_mapa* mapa)
 	}
 
 	for (int i = 19; i <= 21; i++) {
-		for (int j = 24; j < WINDOW_SIZE_PIXEL_X - 10; j++)
+		for (int j = 24 ; j < WINDOW_SIZE_PIXEL_X - 10; j++)
 			mapa->matriz[i][j] = 1;
 	}
 
@@ -243,5 +241,6 @@ void carregar_mapa_direita_vila(struct al_mapa* mapa)
 	mapa->matriz[(WINDOW_SIZE_PIXEL_Y - 3) / 2][0] = 3;
 
 
-	mapa->next_mapa->pra_esquerda = 0;
+	mapa->next_mapa->pra_esquerda = 2;
+
 }

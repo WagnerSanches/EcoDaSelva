@@ -6,11 +6,7 @@
 #include <allegro5/bitmap_draw.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_font.h>
-#include <MAPA_CENTRO.h>
-#include <MAPA_1.h>
-#include <MAPA_2.h>
-#include <MAPA_3.h>
-#include <MAPA_4.h>
+#include <MAPA_PRAIA.h>
 #include <player.h>
 #include <FICHARIO.h>
 #include <DESENHA_FICHARIO.h>
@@ -22,6 +18,7 @@
 #include <DESENHA_AJUDANTE.H>
 #include <PAUSA.h>
 #include <DESENHA_PAUSA.h>
+#include <DESENHA_FINAL.h>
 
 void desenha_background(struct al_mapa* mapa) {
 	al_draw_bitmap(mapa->background, 0, 0, 0);
@@ -30,6 +27,14 @@ void desenha_background(struct al_mapa* mapa) {
 void desenha_npc(struct al_mapa* mapa, int layer) {
 	for (int i = 0; i < mapa->quantidade_npc; i++) {
 		if (mapa->npc[i]->matriz_position_y == layer) {
+
+			if (mapa->npc[i]->npc_quest == true) {
+				ALLEGRO_BITMAP* b = al_load_bitmap("assets/npc/exclamation.png");
+				if (b == NULL) return;
+				al_draw_bitmap(b, mapa->npc[i]->matriz_position_x * PIXEL_SIZE, (mapa->npc[i]->matriz_position_y - 1) * PIXEL_SIZE, 0);
+				al_destroy_bitmap(b);
+			}
+
 			al_draw_scaled_bitmap(mapa->npc[i]->image[mapa->npc[i]->direcao], 0, 0, 16, 16, mapa->npc[i]->matriz_position_x * PIXEL_SIZE, mapa->npc[i]->matriz_position_y * PIXEL_SIZE, 32, 32, 0);
 			//al_draw_rectangle(mapa->npc[i]->matriz_position_x * PIXEL_SIZE, mapa->npc[i]->matriz_position_y * PIXEL_SIZE, mapa->npc[i]->matriz_position_x * PIXEL_SIZE + PIXEL_SIZE, mapa->npc[i]->matriz_position_y * PIXEL_SIZE + PIXEL_SIZE, al_map_rgb(186, 181, 93),0);
 		}
@@ -85,6 +90,9 @@ void desenhar_jogo(struct Player* player, struct al_mapa* mapa, struct Fichario*
 		if (player->ajudante->ajudou == false) {
 			desenhar_ajudante(player->ajudante);
 		}
+		break;
+	case FINAL:
+		desenhar_final(player);
 		break;
 	}
 

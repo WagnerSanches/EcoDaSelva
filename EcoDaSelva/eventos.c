@@ -7,6 +7,7 @@
 #include <EVENTO_FICHARIO.h>
 #include <EVENTO_CONVERSAR.h>
 #include <EVENTO_INTERAGIR.h>
+#include <EVENTO_FINAL.h>
 #include <EVENTO_MENU.h>
 #include <EVENTO_PAUSA.h>
 #include <AJUDANTE.h>
@@ -17,7 +18,7 @@ void tecla_presionado(struct Player* player, struct al_mapa* mapa, struct Fichar
 	switch (keycode) {
 	case ALLEGRO_KEY_UP:
 	case ALLEGRO_KEY_W:
-
+		
 		if (player->ajudante->ajudou == false && player->menu->ativo == false) 
 			return;
 		
@@ -34,7 +35,8 @@ void tecla_presionado(struct Player* player, struct al_mapa* mapa, struct Fichar
 			evento_interagir_key_precionada(player, mapa, keycode);
 		else if (player->status == MENU)
 			evento_menu_key_precionada(player, keycode);
-		
+		else if (player->status == FINAL)
+			evento_final_key_precionada(player, pausa, keycode);
 		else
 			evento_andar_key_precionada(player, keycode);
 
@@ -59,6 +61,8 @@ void tecla_presionado(struct Player* player, struct al_mapa* mapa, struct Fichar
 			evento_interagir_key_precionada(player, mapa, keycode);
 		else if (player->status == MENU)
 			evento_menu_key_precionada(player, keycode);
+		else if (player->status == FINAL)
+			evento_final_key_precionada(player, pausa, keycode); 
 		else
 			evento_andar_key_precionada(player, keycode);
 
@@ -74,6 +78,7 @@ void tecla_presionado(struct Player* player, struct al_mapa* mapa, struct Fichar
 		else if (player->status != CONVERSANDO 
 			&& player->status != INTERAGINDO
 			&& player->status != MENU
+			&& player->status != FINAL
 			&& pausa->pausado == false)
 			evento_andar_key_precionada(player, keycode);
 
@@ -90,6 +95,7 @@ void tecla_presionado(struct Player* player, struct al_mapa* mapa, struct Fichar
 		else if (player->status != CONVERSANDO
 			&& player->status != INTERAGINDO
 			&& player->status != MENU
+			&& player->status != FINAL
 			&& pausa->pausado == false)
 			evento_andar_key_precionada(player, keycode);
 
@@ -105,6 +111,7 @@ void tecla_presionado(struct Player* player, struct al_mapa* mapa, struct Fichar
 		else if (player->status != CONVERSANDO
 			&& player->status != INTERAGINDO
 			&& player->status != MENU
+			&& player->status != FINAL
 			&& pausa->pausado == false)
 			evento_andar_key_precionada(player, keycode);
 
@@ -127,6 +134,8 @@ void tecla_presionado(struct Player* player, struct al_mapa* mapa, struct Fichar
 			evento_interagir_key_precionada(player, mapa, keycode);
 		else if (player->status == MENU)
 			evento_menu_key_precionada(player, keycode);
+		else if (player->status == FINAL)
+			evento_final_key_precionada(player, pausa, keycode); 
 		else {
 			player->status = INTERAGINDO;
 			player->image = player->animation[player->direcao - 1][0];
@@ -142,6 +151,7 @@ void tecla_presionado(struct Player* player, struct al_mapa* mapa, struct Fichar
 		if (player->status != CONVERSANDO
 			&& player->status != INTERAGINDO
 			&& player->status != MENU
+			&& player->status != FINAL
 			&& pausa->pausado == false)
 			evento_fichario_key_precionada(player, fichario, keycode);
 
@@ -150,7 +160,8 @@ void tecla_presionado(struct Player* player, struct al_mapa* mapa, struct Fichar
 		if (player->ajudante->ajudou == false && player->menu->ativo == false)
 			return;
 
-		evento_pausa_key_precionada(pausa, keycode);
+		if(player->status != FINAL)
+			evento_pausa_key_precionada(pausa, keycode);
 		
 		break;
 	}
@@ -158,6 +169,8 @@ void tecla_presionado(struct Player* player, struct al_mapa* mapa, struct Fichar
 }
 
 void tecla_levantada(struct Player* player, struct al_mapa* mapa, struct Fichario* fichario, struct Pausa* pausa, int keycode) {
+
+	if (player->finalizou_jogo) return;
 
 	switch (keycode) {
 

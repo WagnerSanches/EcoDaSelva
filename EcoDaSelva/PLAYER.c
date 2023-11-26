@@ -88,17 +88,11 @@ void init_player(struct Player* player) {
 		return -1;
 	}
 
-	player->menu->opcao = 0;
-	player->menu->encerrar = false;
-	player->menu->ativo = true;
-
 	player->matriz_position_x = 12;
 	player->matriz_position_y = 7;
 
 	player->map_position_x = player->matriz_position_x * PIXEL_SIZE;
 	player->map_position_y = player->matriz_position_y * PIXEL_SIZE;
-
-	player->status = MENU;
 
 	player->sum_x_pixel = 0;
 	player->sum_y_pixel = 0;
@@ -114,7 +108,7 @@ void init_player(struct Player* player) {
 	player->missao->indice_npc_guest_aceita = 0;
 	player->missao->quantidade_missoes_concluidas = 0;
 
-	player->ajudante->ajudou = false;
+	player->ajudante->ajudou = false;	
 	player->ajudante->quantiade_imagem = 0;
 	player->ajudante->opcao = false;
 	player->ajudante->tipo_pergunta = PERGUNTA_INFORMACAO;
@@ -122,4 +116,14 @@ void init_player(struct Player* player) {
 	
 	player->quantidade_itens_pegados = 0;
 	player->velocidade = WALKING;
+
+	player->menu->opcao = 0;
+	player->menu->encerrar = false;
+	player->menu->ativo = true;			
+	player->menu->background = al_load_bitmap("assets/jogo/TelaInicialBk2.png");
+
+	player->finalizou_jogo = false;		
+	player->status = MENU;				
+
+	player->opcao_final_jogo = 0;
 }

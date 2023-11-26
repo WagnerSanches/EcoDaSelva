@@ -1,15 +1,19 @@
-#include <config.h>
 #include <AL_MAPA.h>
+#include <stdlib.h>
+#include <allegro5/bitmap_draw.h>
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_font.h>
+#include <AJUDANTE.h>
 
-void carregar_mapa_praia(struct al_mapa* mapa) {
-	mapa->background = al_load_bitmap("assets/mapa/centro2.png");
+void carregar_mapa_praia(struct al_mapa *mapa) {
+	mapa->background = al_load_bitmap("assets/mapa/Praia.png");
 
-	mapa->matriz[0][17] = 3;
-	mapa->matriz[0][18] = 3;
-	mapa->matriz[0][19] = 3;
-	mapa->matriz[0][20] = 3;
-	mapa->matriz[0][21] = 3;
-	mapa->matriz[0][22] = 3;
+	mapa->next_mapa->pra_cima = 4;
+
+
+	for (int i = 11; i < 32; i++) {
+		mapa->matriz[0][i] = 3;
+	}
 
 #pragma region Colisoes
 
@@ -111,9 +115,9 @@ void carregar_mapa_praia(struct al_mapa* mapa) {
 
 #pragma endregion
 
-	mapa->next_mapa->pra_direita = 4;
 
 	mapa->matriz[(WINDOW_SIZE_PIXEL_Y - 1) / 2][WINDOW_SIZE_PIXEL_X - 1] = 3;
 	mapa->matriz[(WINDOW_SIZE_PIXEL_Y - 2) / 2][WINDOW_SIZE_PIXEL_X - 1] = 3;
 	mapa->matriz[(WINDOW_SIZE_PIXEL_Y - 3) / 2][WINDOW_SIZE_PIXEL_X - 1] = 3;
 }
+

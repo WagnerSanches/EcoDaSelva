@@ -7,6 +7,7 @@
 #include <allegro5/drawing.h>
 #include <allegro5/bitmap_draw.h>
 #include <allegro5/allegro_font.h>
+#include <allegro5/allegro_ttf.h>
 #include <time.h>
 #include <eventos.h>
 #include <animation.h>
@@ -14,7 +15,7 @@
 #include <config.h>
 #include <string.h>
 #include <AL_MAPA.h>
-#include <MAPA_CENTRO.h>
+#include <MAPA_PRAIA.h>
 #include <DESENHA_JOGO.h>
 #include <stdbool.h>
 #include <ACTION.h>
@@ -143,28 +144,12 @@ int main() {
 			al_wait_for_event(events_queue, &event);
 
 			if (pausa->encerrar) {
-				init_player(player);
-				init_mapa(mapa);
-				init_fichario(fichario);
-
-				player->menu->ativo = true;
-				player->status = MENU;
-				pausa->encerrar = false;
-				pausa->opcao = 0;
-				pausa->pausado = false;
+				encerrar(player, mapa, fichario, pausa);
 				continue;
 			}
 
 			if (pausa->reiniciar) {
-				init_player(player);
-				init_mapa(mapa);
-				init_fichario(fichario);
-
-				player->status = PARADO;
-				pausa->reiniciar = false;
-				pausa->opcao = 0;
-				player->menu->ativo = false;
-				pausa->pausado = false;
+				reiniciar(player, mapa, fichario, pausa);
 				continue;
 			}
 
@@ -191,9 +176,6 @@ int main() {
 				case FICHARIO:
 					acessar(player, fichario);
 					break;
-				//case CONVERSANDO:
-				//	conversar(player, mapa);
-				//	break;
 				case MENU:
 					if(player->menu->encerrar)
 						jogando = false;
@@ -213,7 +195,6 @@ int main() {
 					desenhar_menu_inicial(player->menu);
 				else 
 					desenhar_jogo(player, mapa, fichario, pausa);
-				
 
 				al_flush_event_queue(events_queue);
 				al_flip_display();

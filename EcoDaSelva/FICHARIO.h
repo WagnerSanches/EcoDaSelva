@@ -41,6 +41,9 @@ struct Fichario {
 	enum Fichario_status status;
 	struct Posicoes_fichario_box* posicoes;
 	struct Ajudante* ajudante;
+
+	bool todas_respostas_selecionadas;
+	bool opcao_finalizar_jogo;
 };
 
 void init_fichario(struct Fichario* fichario);

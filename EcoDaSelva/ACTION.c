@@ -5,6 +5,7 @@
 #include <animation.h>
 #include <FICHARIO.h>
 #include <OBJETO.h>
+#include <PAUSA.h>
 
 void interagir(struct Player* player, struct al_mapa* mapa) {
 	
@@ -99,5 +100,29 @@ void acessar(struct Player* player, struct Fichario* fichario) {
 		break;
 	}
 
+}
+
+void reiniciar(struct Player* player, struct al_mapa* mapa, struct Fichario* fichario, struct Pausa* pausa) {
+	init_player(player);
+	init_mapa(mapa);
+	init_fichario(fichario);
+
+	player->status = PARADO;
+	pausa->reiniciar = false;
+	pausa->opcao = 0;
+	player->menu->ativo = false;
+	pausa->pausado = false;
+}
+
+void encerrar(struct Player* player, struct al_mapa* mapa, struct Fichario* fichario, struct Pausa* pausa) {
+	init_player(player);
+	init_mapa(mapa);
+	init_fichario(fichario);
+
+	player->menu->ativo = true;
+	player->status = MENU;
+	pausa->encerrar = false;
+	pausa->opcao = 0;
+	pausa->pausado = false;
 }
 

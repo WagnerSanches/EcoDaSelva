@@ -1,13 +1,22 @@
 #include <allegro5/allegro5.h>
 #include <AL_MAPA.h>
 #include <AJUDANTE.h>
-#include <MAPA_CENTRO.h>
+#include <MAPA_PRAIA.h>
+#include <MAPA_ESQUERDA_PRAIA.h>
+#include <MAPA_DIREITA_PRAIA.h>
+#include <MAPA_VILA.h>
+#include <MAPA_DIREITA_VILA.h>
+#include <MAPA_ESQUERDA_VILA.h>
+#include <MAPA_FLORESTA_DESMATADA.h>
+#include <MAPA_ESQUERDA_FLORESTA_DESMATADA.h>
+#include <MAPA_DIREITA_FLORESTA_DESMATADA.h>
 #include <PLAYER.h>
 
 void init_mapa(struct al_mapa* mapa) {
+	int praia = 4;
 	mapa->criado = false;
 
-	carregar_mapa(mapa, 3);
+	carregar_mapa(mapa, praia);
 }
 
 void excluir_mapa(struct al_mapa* mapa) {
@@ -92,6 +101,12 @@ void criar_mapa(struct al_mapa* mapa) {
 			return -1;
 		}
 
+		mapa->npc[i]->tag = (char*)malloc(sizeof(char) * 15);
+		if (mapa->npc[i]->tag == NULL) {
+			printf("Falha na alocação de memória npc tag.\n");
+			return -1;
+		}
+
 		for (int j = 0; j < 3; j++) {
 			mapa->npc[i]->dialogo[j] = malloc(sizeof(struct Dialogo));
 			if (mapa->npc[i]->dialogo[j] == NULL) {
@@ -107,6 +122,7 @@ void criar_mapa(struct al_mapa* mapa) {
 
 			mapa->npc[i]->quest_terminada = false;
 			mapa->npc[i]->dialogo[j]->opcao_selecionada = 0;
+			mapa->npc[i]->npc_quest = false;
 		}
 
 	}
@@ -152,25 +168,31 @@ void carregar_mapa(struct al_mapa* mapa, int next_mapa) {
 
 	switch (next_mapa) {
 	case 0:
-		carregar_mapa_vila(mapa);
+		carregar_mapa_esquerda_floresta_desmatada(mapa);
 		break;
 	case 1:
-		carregar_mapa_centro_cima(mapa);
+		carregar_mapa_floresta_desmatada(mapa);
 		break;
 	case 2:
-		carregar_mapa_praia(mapa);
+		carregar_mapa_direita_floresta_desmatada(mapa);
 		break;
 	case 3:
-		carregar_mapa_praia_esquerda(mapa);
+		carregar_mapa_esquerda_vila(mapa);
 		break;
 	case 4:
-		carregar_mapa_praia_direita(mapa);
+		carregar_mapa_vila(mapa);
 		break;
 	case 5:
 		carregar_mapa_direita_vila(mapa);
 		break;
 	case 6:
-		carregar_mapa_esquerda_vila(mapa);
+		carregar_mapa_esquerda_praia(mapa); 
+		break;
+	case 7:
+		carregar_mapa_praia(mapa); 
+		break;
+	case 8:
+		carregar_mapa_direita_praia(mapa);
 		break;
 	}
 }

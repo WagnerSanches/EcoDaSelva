@@ -45,7 +45,7 @@ void desenhar_opcoes(struct Fichario* fichario) {
 	/*	CAIXA DE OPCOES	 */
 
 	int espacemento_y_inner_subbox_option = fichario->posicoes->espacamento_fichario_dentro * 4;
-	int espacemento_y_subbox_option_option = fichario->posicoes->espacamento_fichario_dentro;
+	int espacemento_y_subbox_option_option = fichario->posicoes->espacamento_fichario_dentro - PIXEL_SIZE / 2;
 
 	int x_subbox_size_button_option = 384;
 	int y_subbox_size_button_option = fichario->posicoes->size_font_subtitulo + 24;
@@ -59,11 +59,15 @@ void desenhar_opcoes(struct Fichario* fichario) {
 	int x_selected_option_initial = x_subbox_button_option_initial - line_thickness_button_selected;
 
 	int y_selected_option_initial = ((y_subbox_button_option_initial + (fichario->selecao->classe * (y_subbox_size_button_option + espacemento_y_subbox_option_option))) - (line_thickness_button_selected)) + 2;
+	
+	if (fichario->opcao_finalizar_jogo) {
+		y_selected_option_initial = ((y_subbox_button_option_initial + (5 * (y_subbox_size_button_option + espacemento_y_subbox_option_option))) - (line_thickness_button_selected)) + 2;
+	}
+
 	if (fichario->selecao->grupo_selecionado) {
 		y_selected_option_initial = ((y_subbox_button_option_initial +
 			(fichario->selecao->grupo * (y_subbox_size_button_option + espacemento_y_subbox_option_option))) -
 			(line_thickness_button_selected)) + 2 + fichario->posicoes->espacamento_fichario_dentro;
-
 	}
 
 	int x_selected_option_final = x_subbox_button_option_final + line_thickness_button_selected;
@@ -72,6 +76,7 @@ void desenhar_opcoes(struct Fichario* fichario) {
 	/* FINAL - LINHAS BRANCA DE SELECIONAR OPCAO */
 
 	if (fichario->selecao->grupo_selecionado == false) {
+
 		for (int i = 0; i < 4; i++) {
 			int y_subbox_button_option = y_subbox_button_option_initial +
 				((y_subbox_size_button_option + espacemento_y_subbox_option_option) * i);
@@ -82,30 +87,46 @@ void desenhar_opcoes(struct Fichario* fichario) {
 			int y_subbox_option_text = y_subbox_button_option + (y_subbox_size_button_option / 4);
 			al_draw_text(fichario->posicoes->subtitulo, al_map_rgb(255, 255, 255), meio_subbox_options, y_subbox_option_text, ALLEGRO_ALIGN_CENTER, fichario->classe[i]->titulo);
 		}
+
+		if (fichario->todas_respostas_selecionadas) {
+			int y_subbox_button_option = y_subbox_button_option_initial +
+				((y_subbox_size_button_option + espacemento_y_subbox_option_option) * 5);
+
+			int y_subbox_button_option_final = y_subbox_button_option + y_subbox_size_button_option;
+			al_draw_filled_rectangle(x_subbox_button_option_initial, y_subbox_button_option, x_subbox_button_option_final, y_subbox_button_option_final, al_map_rgb(53, 136, 161));
+
+			int y_subbox_option_text = y_subbox_button_option + (y_subbox_size_button_option / 4);
+			al_draw_text(fichario->posicoes->subtitulo, al_map_rgb(255, 255, 255), meio_subbox_options, y_subbox_option_text, ALLEGRO_ALIGN_CENTER, "Finalizar jogo");
+		}
+
+
+
+
 	}
 	else {
 
-			y_subbox_button_option_initial = y_subbox_button_option_initial + fichario->posicoes->espacamento_fichario_dentro;
-			for (int i = 0; i < 3; i++) {
-				int y_subbox_button_option = y_subbox_button_option_initial +
-					((y_subbox_size_button_option + espacemento_y_subbox_option_option) * i);
+		y_subbox_button_option_initial = y_subbox_button_option_initial + fichario->posicoes->espacamento_fichario_dentro;
 
-				int y_subbox_button_option_final = y_subbox_button_option + y_subbox_size_button_option;
-				al_draw_filled_rectangle(x_subbox_button_option_initial, y_subbox_button_option, x_subbox_button_option_final, y_subbox_button_option_final, al_map_rgb(161, 127, 53));
+		for (int i = 0; i < 3; i++) {
+			int y_subbox_button_option = y_subbox_button_option_initial +
+				((y_subbox_size_button_option + espacemento_y_subbox_option_option) * i);
 
-				int y_subbox_option_text = y_subbox_button_option + (y_subbox_size_button_option / 4);
-				al_draw_text(fichario->posicoes->subtitulo,
-					al_map_rgb(255, 255, 255),
-					meio_subbox_options,
-					y_subbox_option_text,
-					ALLEGRO_ALIGN_CENTER,
-					fichario->classe[fichario->selecao->classe]->groupo[i]->titulo);
+			int y_subbox_button_option_final = y_subbox_button_option + y_subbox_size_button_option;
+			al_draw_filled_rectangle(x_subbox_button_option_initial, y_subbox_button_option, x_subbox_button_option_final, y_subbox_button_option_final, al_map_rgb(161, 127, 53));
 
-			}
-			
-			if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->mostrar_opcoes) {
-				desenhar_ajudante(fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante);
-			}
+			int y_subbox_option_text = y_subbox_button_option + (y_subbox_size_button_option / 4);
+			al_draw_text(fichario->posicoes->subtitulo,
+				al_map_rgb(255, 255, 255),
+				meio_subbox_options,
+				y_subbox_option_text,
+				ALLEGRO_ALIGN_CENTER,
+				fichario->classe[fichario->selecao->classe]->groupo[i]->titulo);
+
+		}
+
+		if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->mostrar_opcoes) {
+			desenhar_ajudante(fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante);
+		}
 
 	}
 

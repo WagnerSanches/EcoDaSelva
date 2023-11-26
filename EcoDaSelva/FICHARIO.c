@@ -64,6 +64,9 @@ void init_fichario(struct Fichario* fichario) {
 			fichario->classe[i]->groupo[j]->ajudante->opcao_selecionada = 0;
 		}
 	}
+
+	fichario->todas_respostas_selecionadas = false;
+	fichario->opcao_finalizar_jogo = false;
 }
 
 void criar_fichario(struct Fichario* fichario) {
