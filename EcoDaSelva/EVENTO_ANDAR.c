@@ -87,9 +87,11 @@ void evento_andar_key_levantada(struct Player* player, int keycode) {
 
 		break;
 	case ALLEGRO_KEY_LSHIFT:
+
 		player->status = ANDANDO;
 		player->velocidade = WALKING;
 		player->pressing_multiple_key = false;
+
 		break;
 	}
 

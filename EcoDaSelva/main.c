@@ -136,6 +136,11 @@ int main() {
 	init_mapa(mapa);
 	init_fichario(fichario);
 
+	player->status = PARADO;
+	player->menu->ativo = false;
+	player->ajudante->ajudou = true;
+	fichario->ajudante->ajudou = true;
+
 	while (jogando) {
 
 		while (!al_is_event_queue_empty(events_queue)) {
@@ -143,28 +148,12 @@ int main() {
 			al_wait_for_event(events_queue, &event);
 
 			if (pausa->encerrar) {
-				init_player(player);
-				init_mapa(mapa);
-				init_fichario(fichario);
-
-				player->menu->ativo = true;
-				player->status = MENU;
-				pausa->encerrar = false;
-				pausa->opcao = 0;
-				pausa->pausado = false;
+				encerrar(player, mapa, fichario, pausa); 
 				continue;
 			}
 
 			if (pausa->reiniciar) {
-				init_player(player);
-				init_mapa(mapa);
-				init_fichario(fichario);
-
-				player->status = PARADO;
-				pausa->reiniciar = false;
-				pausa->opcao = 0;
-				player->menu->ativo = false;
-				pausa->pausado = false;
+				reiniciar(player, mapa, fichario, pausa);  
 				continue;
 			}
 
