@@ -31,6 +31,7 @@ void evento_interagir_key_precionada(struct Player* player, struct al_mapa* mapa
 
 			if (mapa->item[player->indice_objeto_interacao]->ajudante->opcao_selecionada == 0) {
 				strcpy(player->itens_pegados[player->quantidade_itens_pegados], mapa->item[player->indice_objeto_interacao]->nome);
+
 				player->status = PARADO;
 				player->quantidade_itens_pegados++;
 				mapa->item[player->indice_objeto_interacao]->ajudante->opcao = false;
