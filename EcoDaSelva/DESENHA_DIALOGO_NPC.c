@@ -5,7 +5,7 @@
 
 void desenhar_caixa_dialogo(struct Player* player, struct al_mapa* mapa) {
 
-	int font_size = 12;
+	int font_size = 18;
 	ALLEGRO_FONT* dialogue_font = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", font_size, 0);
 
 	al_draw_filled_rectangle(
@@ -50,8 +50,13 @@ void desenhar_caixa_dialogo(struct Player* player, struct al_mapa* mapa) {
 		strcpy(texto, "Quando terminar sua tarefa venha falar comigo.");
 	}
 
+	int size_by_text = (strlen(texto) / 40);
+
+	if (size_by_text < 1)
+		size_by_text = 2;
+
 	int y_dialogue_box_final = y_dialogue_box_initial
-		+ spacing_between_text * (strlen(texto) / 50)
+		+ spacing_between_text * size_by_text
 		+ inner_dialogue_spacing * spacing;
 
 	al_draw_filled_rectangle(
@@ -111,8 +116,8 @@ void desenhar_caixa_dialogo(struct Player* player, struct al_mapa* mapa) {
 		mapa->npc[indice_bot]->tag 
 	); 
 
-	int x_dialogue_text = x_dialogue_box_initial + inner_dialogue_spacing ;
-	int y_dialogue_text = y_dialogue_box_initial + inner_dialogue_spacing;
+	int x_dialogue_text = x_dialogue_box_initial + inner_dialogue_spacing * 2;
+	int y_dialogue_text = y_dialogue_box_initial + inner_dialogue_spacing + 16;
 	int x_dialogue_text_final = dialogue_box_size - inner_dialogue_spacing * 4;
 
 	al_draw_multiline_text(

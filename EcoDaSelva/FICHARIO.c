@@ -87,10 +87,10 @@ void criar_fichario(struct Fichario* fichario) {
 
 	fichario->posicoes->espacamento_fichario_fora = (PIXEL_SIZE * 2);
 	fichario->posicoes->espacamento_fichario_dentro = PIXEL_SIZE;
-	fichario->posicoes->size_font_titulo = 18;
-	fichario->posicoes->size_font_subtitulo = 14;
-	fichario->posicoes->size_font_description = 12;
-	fichario->posicoes->size_font_tag = 12;
+	fichario->posicoes->size_font_titulo = 24;
+	fichario->posicoes->size_font_subtitulo = 20;
+	fichario->posicoes->size_font_description = 18;
+	fichario->posicoes->size_font_tag = 16;
 
 	fichario->posicoes->titulo = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", fichario->posicoes->size_font_titulo, 0);
 	fichario->posicoes->subtitulo = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", fichario->posicoes->size_font_subtitulo, 0);

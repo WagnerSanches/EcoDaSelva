@@ -14,11 +14,11 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 		al_map_rgba_f(0, 0, 0, 0.5)
 	);
 
-	ALLEGRO_FONT* dialogue16 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 12, 0);
+	int dialogue_text_size = 18;
+	ALLEGRO_FONT* dialogue16 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", dialogue_text_size, 0);
 	ALLEGRO_BITMAP* imagem_doutura = al_load_bitmap("assets/personagem/ajudante/doutora_resize.jpg");
 
 	int meio_tela = (WINDOW_SIZE_PIXEL_X * PIXEL_SIZE) / 2;
-	int dialogue_text_size = 12;
 	int spacing_between_text = dialogue_text_size + 10;
 
 	int spacing = 4;
@@ -33,7 +33,7 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 	int x_dialogue_box_final = x_dialogue_box_initial + dialogue_box_size;
 
 	int y_dialogue_box_final = y_dialogue_box_initial
-		+ spacing_between_text * (strlen(ajudante->texto) / 50)
+		+ spacing_between_text * (strlen(ajudante->texto) / 40)
 		+ inner_dialogue_spacing * spacing;
 
 	al_draw_filled_rectangle(
@@ -45,7 +45,7 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 	);
 
 	char* nome = "Dr. Mary Anning";
-	int size_dialogue_box_name = 12 * strlen(nome);
+	int size_dialogue_box_name = 15 * strlen(nome);
 
 	int x_dialogue_box_name_initial = x_dialogue_box_initial + inner_dialogue_spacing - PIXEL_SIZE / 2;
 	int y_dialogue_box_name_initial = y_dialogue_box_initial - PIXEL_SIZE / 4;
@@ -73,7 +73,7 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 	);
 
 	int x_dialogue_text = x_dialogue_box_initial + inner_dialogue_spacing * 2;
-	int y_dialogue_text = y_dialogue_box_initial + inner_dialogue_spacing;
+	int y_dialogue_text = y_dialogue_box_initial + inner_dialogue_spacing + 16;
 	int x_dialogue_text_final = dialogue_box_size - inner_dialogue_spacing * 5;
 
 	al_draw_multiline_text(
@@ -153,14 +153,14 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 			x_press_key_circle,
 			y_press_key_circle + 1,
 			raio,
-			selecionado == 0 ? al_map_rgb(255, 161, 0) : al_map_rgb(220, 220, 220)
+			selecionado == 0 ? al_map_rgb(255, 161, 0) : al_map_rgb(180, 180, 180)
 		);
 
 		int x_press_key_text = x_press_key_circle + dialogue_text_size;
 		int y_press_key_text = y_press_key_circle - raio;
 		al_draw_text(
 			dialogue16,
-			selecionado == 0 ? al_map_rgb(255, 161, 0) : al_map_rgb(220, 220, 220),
+			selecionado == 0 ? al_map_rgb(255, 161, 0) : al_map_rgb(180, 180, 180),
 			x_press_key_text,
 			y_press_key_text,
 			0,
@@ -172,13 +172,13 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 			x_press_key_circle,
 			y_press_key_circle_2,
 			raio,
-			selecionado == 1 ? al_map_rgb(255, 161, 0) : al_map_rgb(220, 220, 220)
+			selecionado == 1 ? al_map_rgb(255, 161, 0) : al_map_rgb(180, 180, 180)
 		);
 
 		int y_press_key_text_2 = y_press_key_circle_2 - raio;
 		al_draw_text(
 			dialogue16,
-			selecionado == 1 ? al_map_rgb(255, 161, 0) : al_map_rgb(220, 220, 220),
+			selecionado == 1 ? al_map_rgb(255, 161, 0) : al_map_rgb(180, 180, 180),
 			x_press_key_text,
 			y_press_key_text_2,
 			0,
