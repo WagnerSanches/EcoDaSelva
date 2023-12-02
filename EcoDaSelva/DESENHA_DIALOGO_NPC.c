@@ -38,7 +38,9 @@ void desenhar_caixa_dialogo(struct Player* player, struct al_mapa* mapa) {
 	if (caixa_opcoes)
 		spacing = 6;
 
-	char* texto = mapa->npc[indice_bot]->dialogo[mapa->npc[indice_bot]->dialogo_lido]->texto;
+	char* texto = mapa->npc[indice_bot]->
+				dialogo[mapa->npc[indice_bot]->dialogo_lido]->texto;
+	
 	if (player->missao->indice_npc_guest_aceita == player->indice_objeto_interacao
 		&& mapa->npc[player->indice_objeto_interacao]->npc_quest
 		&& mapa->npc[player->indice_objeto_interacao]->quest_terminada == false) {

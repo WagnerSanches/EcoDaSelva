@@ -13,7 +13,7 @@
 #include <PLAYER.h>
 
 void init_mapa(struct al_mapa* mapa) {
-	int praia = 2;
+	int praia = 4;
 	mapa->criado = false;
 
 	carregar_mapa(mapa, praia);
@@ -38,7 +38,6 @@ void excluir_mapa(struct al_mapa* mapa) {
 			if (mapa->npc[i]->npc_quest == false) {
 				free(mapa->npc[i]->dialogo[0]->texto);
 				free(mapa->npc[i]->nome);
-				free(mapa->npc[i]);
 			}
 
 		}

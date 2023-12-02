@@ -88,7 +88,7 @@ void init_player(struct Player* player) {
 		return -1;
 	}
 
-	player->matriz_position_x = 12;
+	player->matriz_position_x = 15;
 	player->matriz_position_y = 7;
 
 	player->map_position_x = player->matriz_position_x * PIXEL_SIZE;
@@ -105,7 +105,7 @@ void init_player(struct Player* player) {
 	player->pressing_multiple_key = false;
 
 	player->missao->quest_aceita = false;
-	player->missao->indice_npc_guest_aceita = 0;
+	player->missao->indice_npc_guest_aceita = -1;
 	player->missao->quantidade_missoes_concluidas = 0;
 
 	player->ajudante->ajudou = false;	

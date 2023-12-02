@@ -33,13 +33,13 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 	mapa->NPC_IMAGES[1] = al_load_bitmap("assets/personagem/npc/Character_002.png");
 	mapa->NPC_IMAGES[2] = al_load_bitmap("assets/personagem/npc/Character_003.png");
 
-	mapa->quantidade_npc = 3;
+	mapa->quantidade_npc = 2;
 
 	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
 	strcpy(mapa->npc[0]->nome, "Apoena");
-	strcpy(mapa->npc[0]->nome_item_quest, "Latex");
+	strcpy(mapa->npc[0]->nome_item_quest, "Fruta");
 	mapa->npc[0]->npc_quest = true;
-	strcpy(mapa->npc[0]->tag, "Familia");
+	strcpy(mapa->npc[0]->tag, "Genero");
 	strcpy(mapa->npc[0]->dialogo[0]->texto, "Bem vindo");
 	strcpy(mapa->npc[0]->dialogo[1]->texto, "Gosta de banana");
 	strcpy(mapa->npc[0]->dialogo[2]->texto, "Muito Obrigado");
@@ -51,7 +51,7 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 	// Exemplo NPC de quest
 	mapa->npc[1]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
 	strcpy(mapa->npc[1]->nome, "Anajé"); 
-	strcpy(mapa->npc[1]->nome_item_quest, "Fruta");
+	strcpy(mapa->npc[1]->nome_item_quest, "Latex");
 	mapa->npc[1]->npc_quest = true;
 	strcpy(mapa->npc[1]->tag, "Familia");
 	strcpy(mapa->npc[1]->dialogo[0]->texto, "Ola aventureiro, voce veio conhecer nosso vilarejo no momento certo, nesse final de semana planejamos um jogo de Jikunahaty(Futebol de cabeca) entre nossa vila mas infelizmente nos nao temos mais latex para fazer a bola.");
@@ -61,9 +61,6 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 
 	mapa->npc[1]->matriz_position_y = 8; 
 	mapa->npc[1]->matriz_position_x = 12;
-
-	mapa->npc[2]->matriz_position_y = 5;
-	mapa->npc[2]->matriz_position_x = 11;
 
 	for (int i = 0; i < mapa->quantidade_npc; i++) {
 		mapa->matriz[mapa->npc[i]->matriz_position_y][mapa->npc[i]->matriz_position_x] = 2;
