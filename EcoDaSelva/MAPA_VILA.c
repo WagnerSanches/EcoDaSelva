@@ -33,13 +33,13 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 	mapa->NPC_IMAGES[1] = al_load_bitmap("assets/personagem/npc/Character_002.png");
 	mapa->NPC_IMAGES[2] = al_load_bitmap("assets/personagem/npc/Character_003.png");
 
-	mapa->quantidade_npc = 3;
+	mapa->quantidade_npc = 2;
 
 	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
 	strcpy(mapa->npc[0]->nome, "Apoena");
 	strcpy(mapa->npc[0]->nome_item_quest, "Latex");
 	mapa->npc[0]->npc_quest = true;
-	strcpy(mapa->npc[0]->tag, "Familia");
+	strcpy(mapa->npc[0]->tag, "Ordem");
 	strcpy(mapa->npc[0]->dialogo[0]->texto, "Bem vindo");
 	strcpy(mapa->npc[0]->dialogo[1]->texto, "Gosta de banana");
 	strcpy(mapa->npc[0]->dialogo[2]->texto, "Muito Obrigado");
@@ -50,7 +50,7 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 
 	// Exemplo NPC de quest
 	mapa->npc[1]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
-	strcpy(mapa->npc[1]->nome, "Anajé"); 
+	strcpy(mapa->npc[1]->nome, "Anajé");
 	strcpy(mapa->npc[1]->nome_item_quest, "Fruta");
 	mapa->npc[1]->npc_quest = true;
 	strcpy(mapa->npc[1]->tag, "Familia");
@@ -76,9 +76,6 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 		mapa->npc[i]->image[3] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24 * 2, 16, 16);
 	}
 
-
-	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
-	mapa->npc[1]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
 	mapa->npc[2]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
 
 #pragma region Colisoes
@@ -332,4 +329,6 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 
 	mapa->matriz[WINDOW_SIZE_PIXEL_Y / 2][23] = 1;
 	mapa->matriz[(WINDOW_SIZE_PIXEL_Y / 2) - 1][23] = 1;
+
+	//subindo
 }
