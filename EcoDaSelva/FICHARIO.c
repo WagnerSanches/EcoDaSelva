@@ -108,10 +108,10 @@ void criar_fichario(struct Fichario* fichario) {
 		fichario->classe[0]->groupo[0]->ajudante->texto, 
 		"Rodentia e a ordem de mamiferos caracterizada por animais com incisivos afiados em constante crescimento, incluindo ratos, esquilos e porquinhos-da-india. Eles sao encontrados em todo o mundo e tem um papel ecologico significativo."
 	);
-	strcpy(fichario->classe[0]->groupo[1]->titulo, "Carnivora");
+	strcpy(fichario->classe[0]->groupo[1]->titulo, "Anura");
 	strcpy(
 		fichario->classe[0]->groupo[1]->ajudante->texto,
-		"Carnivora e a ordem de mamiferos que inclui uma variedade de animais carnivoros, como leoes, tigres, lobos e ursos. Eles sao conhecidos por seus dentes afiados e adaptacoes para a caca. Os carnivoros sao encontrados em varias partes do mundo e desempenham papeis importantes nos ecossistemas como predadores."
+		"A ordem Anura e representada pelos anfibios sem cauda: sapos, ras e pererecas. Apresentam o corpo adaptado para saltar.O corpo e compacto, com coluna vertebral curta e rigida; as vertebras estao ligadas de modo a restringir movimentos laterais."
 	);
 	strcpy(fichario->classe[0]->groupo[2]->titulo, "Lepidoptera");
 	strcpy(
@@ -123,28 +123,56 @@ void criar_fichario(struct Fichario* fichario) {
 	strcpy(fichario->classe[1]->groupo[0]->titulo, "Dendrobatidae");
 	strcpy(
 		fichario->classe[1]->groupo[0]->ajudante->texto,
-		"Rodentia e a ordem de mamiferos caracterizada por animais com incisivos afiados em constante crescimento, incluindo ratos, esquilos e porquinhos-da-india. Eles sao encontrados em todo o mundo e tem um papel ecologico significativo."
+		"Os membros deste grupo tem a particularidade de produzirem toxinas potentes que se encontram na sua pele, mais de 100 toxinas foram ja identificadas nas secrecoes cutaneas de membros deste grupo."
 	);
 	strcpy(fichario->classe[1]->groupo[1]->titulo, "Carcharhinidae");
 	strcpy(
 		fichario->classe[1]->groupo[1]->ajudante->texto,
-		"Rodentia e a ordem de mamiferos caracterizada por animais com incisivos afiados em constante crescimento, incluindo ratos, esquilos e porquinhos-da-india. Eles sao encontrados em todo o mundo e tem um papel ecologico significativo."
+		"Carcharhinidae e uma familia de tubaroes da ordem Carcharhiniformes, Os membros desta familia possuem as caracteristicas usuais dos carcariniformes. Os olhos sao redondos, as barbatanas peitorais localizam-se totalmente atras das cinco fendas branquiais."
 	);
 	strcpy(fichario->classe[1]->groupo[2]->titulo, "Labridae");
 	strcpy(
 		fichario->classe[1]->groupo[2]->ajudante->texto,
-		"Rodentia e a ordem de mamiferos caracterizada por animais com incisivos afiados em constante crescimento, incluindo ratos, esquilos e porquinhos-da-india. Eles sao encontrados em todo o mundo e tem um papel ecologico significativo."
+		"A familia Labridae e marinha e ocorre nos oceanos Atlantico, Indico e Pacifico. E dominante na ictiofauna que vive associada a corais e comunidades de gramas marinhas, em regioes tropicais."
 	);
 
 	strcpy(fichario->classe[2]->titulo, "Genero");
 	strcpy(fichario->classe[2]->groupo[0]->titulo, "Phyllobates");
+	strcpy(
+		fichario->classe[2]->groupo[0]->ajudante->texto,
+		"Phyllobates e uma especie de anfibio da familia Dendrobatidae.Em relacao ao peso e ao tamanho, este e o animal consagrado como sendo o vertebrado mais venenoso do planeta, com veneno suficiente para matar varias pessoas."
+	);
+	
 	strcpy(fichario->classe[2]->groupo[1]->titulo, "Rana");
+	strcpy(
+		fichario->classe[2]->groupo[1]->ajudante->texto,
+		"Rana e um genero de anfibio anuro pertencente a familia Ranidae. Os representantes desta especie sao popularmente chamados ras,o genero Rana contem 239 especies."
+	);
+
 	strcpy(fichario->classe[2]->groupo[2]->titulo, "Bufo");
+	strcpy(
+		fichario->classe[2]->groupo[2]->ajudante->texto,
+		"Bufo e um genero de sapos da familia Bufonidae, o abocanhamento ou ingestao de sapos pode causar problemas brandos a graves em caes e gatos."
+	);
 
 	strcpy(fichario->classe[3]->titulo, "Especie");
 	strcpy(fichario->classe[3]->groupo[0]->titulo, "Phyllobates terribilis");
+	strcpy(
+		fichario->classe[3]->groupo[0]->ajudante->texto,
+		"O sapo Phyllobates terribilis e considerado um dos animais mais toxicos da Terra. Um unico especime de cinco centimetros tem veneno suficiente para matar dez pessoas em idade adulta. O povo indigena embera, da Colombia, ha seculos utiliza o poderoso veneno em suas zarabatanas durante a caca."
+	);
+
 	strcpy(fichario->classe[3]->groupo[1]->titulo, "Phyllobates bicolor");
+	strcpy(
+		fichario->classe[3]->groupo[1]->ajudante->texto,
+		"Phyllobates bicolor, ou mais comumente referido como sapo dardo venenoso de pernas pretas, e o segundo sapo dardo mais toxico do mundo. Sob o genero Phyllobates, este organismo e frequentemente confundido com Phyllobates terribilis, a ra venenosa dourada, pois ambos sao morfologicamente semelhantes."
+	);
+
 	strcpy(fichario->classe[3]->groupo[2]->titulo, "Ranitomeya variabilis");
+	strcpy(
+		fichario->classe[3]->groupo[2]->ajudante->texto,
+		"Ranitomeya variabilis, anteriormente conhecido como Dendrodates variabilis, e uma especie de pequeno sapo venenoso distribuido no norte do Peru, ao longo da encosta leste dos Andes, na bacia de drenagem do alto Rio Huallaga. Seu nome comum e sapo venenoso de Zimmerman"
+	);
 
 	fichario->selecao->classe = 0;
 	fichario->selecao->grupo = 0;

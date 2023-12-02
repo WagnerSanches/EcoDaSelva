@@ -116,10 +116,10 @@ void desenhar_final(struct Player* player) {
 		);
 	}
 
-	int sum_pontos = strcmp(player->respostas[0]->grupo, "Arcnidio") == 0 ? 1 : 0; // Coloque a classe certa na ordem certa
-	sum_pontos += strcmp(player->respostas[1]->grupo, "Arcnidio") == 0 ? 1 : 0; // Coloque a classe certa na ordem certa
-	sum_pontos += strcmp(player->respostas[2]->grupo, "Arcnidio") == 0 ? 1 : 0; // Coloque a classe certa na ordem certa
-	sum_pontos += strcmp(player->respostas[3]->grupo, "Arcnidio") == 0 ? 1 : 0; // Coloque a classe certa na ordem certa
+	int sum_pontos = strcmp(player->respostas[0]->grupo, "Anura") == 0 ? 1 : 0; // Coloque a classe certa na ordem certa
+	sum_pontos += strcmp(player->respostas[1]->grupo, "Dendrobatidae") == 0 ? 1 : 0; // Coloque a classe certa na ordem certa
+	sum_pontos += strcmp(player->respostas[2]->grupo, "Phyllobates") == 0 ? 1 : 0; // Coloque a classe certa na ordem certa
+	sum_pontos += strcmp(player->respostas[3]->grupo, "Phyllobates terribilis") == 0 ? 1 : 0; // Coloque a classe certa na ordem certa
 
 	int y_final_score = y_tittle_animal + font_size_tittle_animal + spacing_categoria + (spacing_categoria * 4) + PIXEL_SIZE;
 	al_draw_text(

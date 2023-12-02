@@ -55,7 +55,7 @@ void carregar_mapa_direita_praia(struct al_mapa* mapa) {
 
 	mapa->quantidade_item = 1;
 
-	strcpy(mapa->item[0]->nome, "AMORA");
+	strcpy(mapa->item[0]->nome, "Fruta");
 	mapa->item[0]->matriz_position_x =	WINDOW_SIZE_PIXEL_X - 5;
 	mapa->item[0]->matriz_position_y = WINDOW_SIZE_PIXEL_Y - 5;
 	mapa->item[0]->image = al_load_bitmap("assets/objeto/fruta/amora.png");
