@@ -330,5 +330,5 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 	mapa->matriz[WINDOW_SIZE_PIXEL_Y / 2][23] = 1;
 	mapa->matriz[(WINDOW_SIZE_PIXEL_Y / 2) - 1][23] = 1;
 
-	//subindo
+	//teste
 }
