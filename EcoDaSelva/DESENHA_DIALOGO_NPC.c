@@ -113,7 +113,7 @@ void desenhar_caixa_dialogo(struct Player* player, struct al_mapa* mapa) {
 		x_dialogue_tag,
 		y_dialogue_name, 
 		ALLEGRO_ALIGN_CENTER, 
-		mapa->npc[indice_bot]->tag 
+		mapa->npc[indice_bot]->tag
 	); 
 
 	int x_dialogue_text = x_dialogue_box_initial + inner_dialogue_spacing * 2;

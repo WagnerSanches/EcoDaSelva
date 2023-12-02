@@ -22,12 +22,15 @@
 #include <FICHARIO.h>
 #include <DESENHA_MENU_INICIAL.h>
 #include <PAUSA.h>
+#include <allegro5/allegro_audio.h>
+#include <allegro5/allegro_acodec.h>
 
 int main() {
 
 #pragma region "inicializacao allegro"
 	ALLEGRO_DISPLAY* window = NULL;
 	ALLEGRO_EVENT_QUEUE* events_queue = NULL;
+	ALLEGRO_AUDIO_STREAM* audio = NULL;
 	bool jogando = true;
 	bool redraw = false;
 
@@ -37,12 +40,16 @@ int main() {
 	}
 
 	al_init_image_addon();
+	al_install_audio();
+	al_init_acodec_addon();
 	al_init_primitives_addon();
 	al_install_keyboard();
 	al_install_mouse();	
 	al_init_font_addon();
 	al_init_ttf_addon();
 	
+	al_reserve_samples(10);
+
 	bool fullscreen = true;
 
 	if (fullscreen) {
@@ -131,6 +138,12 @@ int main() {
 	pausa->reiniciar = false;
 	pausa->encerrar = false;
 
+	audio = al_load_audio_stream("assets/music/background.mp3", 2, 2048);
+	al_set_audio_stream_playmode(audio, ALLEGRO_PLAYMODE_LOOP);
+	al_set_audio_stream_playing(audio, true);
+
+	al_attach_audio_stream_to_mixer(audio, al_get_default_mixer());
+
 #pragma endregion 
 
 	init_player(player);
@@ -207,5 +220,6 @@ int main() {
 
 	al_destroy_timer(timer);
 	al_destroy_event_queue(events_queue);
+	al_destroy_audio_stream(audio);
 	return 0;
 }
