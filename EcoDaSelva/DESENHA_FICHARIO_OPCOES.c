@@ -99,9 +99,6 @@ void desenhar_opcoes(struct Fichario* fichario) {
 			al_draw_text(fichario->posicoes->subtitulo, al_map_rgb(255, 255, 255), meio_subbox_options, y_subbox_option_text, ALLEGRO_ALIGN_CENTER, "Finalizar jogo");
 		}
 
-
-
-
 	}
 	else {
 

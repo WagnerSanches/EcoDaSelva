@@ -58,15 +58,16 @@ void desenha_items(struct al_mapa* mapa, int layer) {
 
 void desenha_fichario(struct Player* player, struct Fichario* fichario) {
 
-	desenhar_box(fichario);
+	desenhar_box(fichario, player);
 
 	/*
 	desenhar_informacoes(fichario, player);
 	desenhar_opcoes(fichario);
+	*/
 
 	if (fichario->ajudante->ajudou == false) {
 		desenhar_ajudante(fichario->ajudante);
-	}*/
+	}
 }
 
 void desenhar_jogo(struct Player* player, struct al_mapa* mapa, struct Fichario* fichario, struct Pausa* pausa) {

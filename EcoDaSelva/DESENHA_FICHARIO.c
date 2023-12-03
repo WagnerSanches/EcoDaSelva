@@ -7,10 +7,11 @@
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_font.h>
 #include <FICHARIO.h>
+#include <PLAYER.h>
 #include <DESENHA_FICHARIO.h>
 
 
-void desenhar_box(struct Fichario* fichario) {
+void desenhar_box(struct Fichario* fichario, struct Player* player) {
 
 	al_draw_filled_rectangle(
 		0,
@@ -174,6 +175,145 @@ void desenhar_box(struct Fichario* fichario) {
 		al_map_rgb(201, 136, 60)
 	);
 
+	ALLEGRO_COLOR cores[7] = {
+			al_map_rgb(191, 0, 0),
+			al_map_rgb(191, 0, 108),
+			al_map_rgb(105, 0, 191),
+			al_map_rgb(0, 156, 191),
+			al_map_rgb(0, 191, 70),
+			al_map_rgb(191, 121, 0),
+			al_map_rgb(188, 191, 0)
+	};
+
+	if (fichario->selecao->grupo_selecionado) {
+
+		int x_category = middle_pgtwo;
+		int y_category = y_paper_i + (PIXEL_SIZE * 7) + (PIXEL_SIZE * 2) + 10;
+
+		for (int i = 0; i < 3; i++) {
+
+
+			int x_circle = x_pgtwo_line_i + PIXEL_SIZE * 4; 
+			if (fichario->selecao->classe == 3) {
+				x_circle -= PIXEL_SIZE * 1.5;
+			}
+
+			int y_circle = y_paper_i + (PIXEL_SIZE * 7) + (PIXEL_SIZE * 2) + 18 + (PIXEL_SIZE * fichario->selecao->grupo); 
+			al_draw_filled_circle(  
+				x_circle, 
+				y_circle, 
+				5,
+				cores[fichario->selecao->classe + 3]
+			);
+
+			al_draw_text(fichario->posicoes->subtitulo,
+				cores[fichario->selecao->classe + 3],
+				x_category,
+				y_category,
+				ALLEGRO_ALIGN_CENTER,
+				fichario->classe[fichario->selecao->classe]->groupo[i]->titulo);
+
+			y_category += PIXEL_SIZE;
+		}
+
+		if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->mostrar_opcoes) {
+			desenhar_ajudante(fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante);
+		}
+	
+	}
+	else {
+		int x_category = x_pgtwo_line_i + (PIXEL_SIZE * 2);
+		int y_category = y_paper_i + (PIXEL_SIZE * 7) + (PIXEL_SIZE * 2) + 10;
+
+		char* categoria[7] = {
+			"Reino:",
+			"Filo:",
+			"Classe:",
+			"Ordem:",
+			"Familia:",
+			"Genero:",
+			"Especie:"
+		};
+
+		for (int i = 0; i < 7; i++) {
+			al_draw_text(
+				font,
+				al_map_rgb(50, 62, 168),
+				x_category,
+				y_category,
+				ALLEGRO_ALIGN_LEFT,
+				categoria[i]
+			);
+
+			y_category += PIXEL_SIZE;
+		}
+
+		char* respostas[3] = {
+			"Animalia",
+			"Chordata",
+			"Amphibia "
+		};
+
+		x_category += PIXEL_SIZE * 4;
+		y_category = y_paper_i + (PIXEL_SIZE * 7) + (PIXEL_SIZE * 2) + 10;
+		for (int i = 0; i < 3; i++) {
+			al_draw_text(
+				font,
+				cores[i],
+				x_category,
+				y_category,
+				ALLEGRO_ALIGN_LEFT,
+				respostas[i]
+			);
+
+			y_category += PIXEL_SIZE;
+		}
+
+		y_category = y_paper_i + (PIXEL_SIZE * 10) + (PIXEL_SIZE * 2) + 10;
+		for (int i = 0; i < 4; i++) {
+			al_draw_text(
+				font,
+				strcmp(player->respostas[i]->grupo, "Nao classificado") == 0 ? al_map_rgb(0, 0, 0) : cores[i + 3],
+				x_category,
+				y_category,
+				ALLEGRO_ALIGN_LEFT,
+				player->respostas[i]->grupo
+			);
+
+			y_category += PIXEL_SIZE;
+		}
+
+		printf("%d\n", fichario->selecao->classe);
+		int x_circle = x_pgtwo_line_i + PIXEL_SIZE * 1.5;
+		int y_circle = y_paper_i + (PIXEL_SIZE * 10) + (PIXEL_SIZE * 2) + 18 + (PIXEL_SIZE * fichario->selecao->classe);
+
+		if (fichario->selecao->classe == 4) {
+			y_circle += PIXEL_SIZE;
+			x_circle += PIXEL_SIZE * 3.5;
+		}
+
+		if (fichario->todas_respostas_selecionadas) {
+			int x_final = x_pgtwo_line_i + PIXEL_SIZE * 6 - (PIXEL_SIZE/2);
+			int y_final = y_paper_i + (PIXEL_SIZE * 15) + (PIXEL_SIZE * 2) + 8;
+
+			al_draw_text(
+				font,
+				al_map_rgb(50, 62, 168),
+				x_final,
+				y_final,
+				ALLEGRO_ALIGN_LEFT,
+				"FINALIZAR"
+			);
+		}
+
+		al_draw_filled_circle(
+			x_circle,
+			y_circle,
+			5,
+			al_map_rgb(50, 62, 168)
+		);
+	}
+	 
 
 	//int x_box_title = (x_box_final / 2) + fichario->posicoes->espacamento_fichario_dentro;
 	//int y_box_title = fichario->posicoes->espacamento_fichario_fora + fichario->posicoes->espacamento_fichario_dentro;

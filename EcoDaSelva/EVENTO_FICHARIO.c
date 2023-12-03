@@ -2,6 +2,7 @@
 #include <PLAYER.h>
 #include <allegro5/allegro5.h>
 #include <allegro5/allegro_font.h>
+#include <stdio.h>
 #include "EVENTO_FICHARIO.h"
 
 
@@ -17,13 +18,9 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
 
 			if (fichario->todas_respostas_selecionadas) {
 				if (fichario->selecao->classe <= -1) {
-					if (fichario->opcao_finalizar_jogo) {
-						fichario->selecao->classe = NUMBER_OF_CLASSES - 1;
-						fichario->opcao_finalizar_jogo = false;
-					}
-					else {
-						fichario->opcao_finalizar_jogo = true;
-					}
+					
+					fichario->selecao->classe = NUMBER_OF_CLASSES;
+				
 				}
 			}
 			else {
@@ -54,22 +51,14 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
 			fichario->selecao->classe++;
 
 			if (fichario->todas_respostas_selecionadas) {
-				if (fichario->selecao->classe >= NUMBER_OF_CLASSES) {
-					if (fichario->opcao_finalizar_jogo) {
-						fichario->selecao->classe = 0;
-						fichario->opcao_finalizar_jogo = false;
-					}
-					else {
-						fichario->opcao_finalizar_jogo = true;
-					}
+				if (fichario->selecao->classe >= NUMBER_OF_CLASSES + 1) {
+					fichario->selecao->classe = 0;
 				}
 			}
 			else {
 				if (fichario->selecao->classe >= NUMBER_OF_CLASSES)
 					fichario->selecao->classe = 0;
 			}
-
-
 		}
 		else {
 
@@ -139,7 +128,7 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
 		}
 		else {
 			if (fichario->todas_respostas_selecionadas) {
-				if (fichario->opcao_finalizar_jogo) {
+				if (fichario->selecao->classe == 4) {
 					player->finalizou_jogo = true;
 					player->status = FINAL;
 				}

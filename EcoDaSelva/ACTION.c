@@ -8,13 +8,12 @@
 #include <PAUSA.h>
 
 void interagir(struct Player* player, struct al_mapa* mapa) {
-	
-     	if (interagiu(player, mapa, NPC)) {
+
+	if (interagiu(player, mapa, NPC)) {
 
 		virar_npc(player, mapa);
 		mapa->objeto_interacao->matriz_position_x = -1;
 		mapa->objeto_interacao->matriz_position_y = -1;
-
 
 		printf("Interangiu com o npc = %d\t", player->indice_objeto_interacao);
 		printf("Dialogo = %d\n\n", mapa->npc[player->indice_objeto_interacao]->dialogo_lido);
