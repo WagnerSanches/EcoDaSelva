@@ -187,15 +187,20 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 
 	}
 	else {
+
+		ALLEGRO_FONT* dialogue15 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 15, 0);
+
 		int y_press_key = y_dialogue_box_final - spacing_between_text - PIXEL_SIZE / 2;
 		al_draw_text(
-			dialogue16,
-			al_map_rgb(200, 200, 200),
+			dialogue15,
+			al_map_rgb(190, 190, 190),
 			meio_tela,
 			y_press_key,
 			ALLEGRO_ALIGN_CENTER,
 			"Aperte 'espaco' para continuar"
 		);
+
+		al_destroy_font(dialogue15);
 	}
 
 

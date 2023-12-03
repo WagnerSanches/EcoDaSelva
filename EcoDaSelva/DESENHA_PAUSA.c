@@ -47,17 +47,19 @@ void desenhar_pausa(struct Pausa* pausa) {
 		"SAIR"
 	};
 
-	int thickness = 2;
+	int thickness = 4;
 	int x_selected_button_initial = x_button - thickness + 1;
-	int y_selected_button_initial = (y_button - thickness) + (pausa->opcao * (y_button_size + spacing)) + 1;
-	int x_selected_button_final = x_selected_button_initial + x_button_size + thickness;
-	int y_selected_button_final = y_selected_button_initial + y_button_size + thickness;
+	int y_selected_button_initial = (y_button) + (pausa->opcao * (y_button_size + spacing)) + 1;
+	int x_selected_button_final = x_selected_button_initial + x_button_size;
+	int y_selected_button_final = y_selected_button_initial + y_button_size;
 
-	al_draw_rectangle(
-		x_selected_button_initial,
-		y_selected_button_initial,
+	al_draw_rounded_rectangle(
+		x_selected_button_initial + 1,
+		y_selected_button_initial + 2,
 		x_selected_button_final,
 		y_selected_button_final,
+		3,
+		3,
 		al_map_rgb(31, 63, 43),
 		thickness
 	);
@@ -68,12 +70,14 @@ void desenhar_pausa(struct Pausa* pausa) {
 		int x_button_final = x_button + x_button_size;
 		int y_button_final = y_button_initial + y_button_size;
 
-		al_draw_filled_rectangle(
+		al_draw_filled_rounded_rectangle(
 			x_button,
 			y_button_initial,
 			x_button_final,
 			y_button_final,
-			al_map_rgb(82, 132, 60)
+			3,
+			3,
+			al_map_rgb(118, 197, 100)
 		);
 
 		int y_button_text = y_button_initial + (font_size / 4);

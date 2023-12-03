@@ -65,7 +65,6 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
 			if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->mostrar_opcoes) {
 				if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada + 1 == 1)
 					fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada++;
-
 			}
 			else {
 				fichario->selecao->grupo++;
@@ -73,7 +72,6 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
 				if (fichario->selecao->grupo >= NUMBER_OF_GROUP_OF_CLASSES)
 					fichario->selecao->grupo = NUMBER_OF_GROUP_OF_CLASSES - 1;
 			}
-
 		}
 
 		break;
