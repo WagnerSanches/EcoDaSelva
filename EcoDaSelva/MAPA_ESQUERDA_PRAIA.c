@@ -8,7 +8,7 @@ void carregar_mapa_esquerda_praia(struct al_mapa* mapa) {
 	mapa->background = al_load_bitmap("assets/mapa/EsquerdaPraia.png");
 
 	mapa->next_mapa->pra_cima = 3;
-	for (int i = 7; i < WINDOW_SIZE_PIXEL_X - 5; i++) {
+	for (int i = 20; i < 27; i++) {
 		mapa->matriz[0][i] = 3;
 	}
 
