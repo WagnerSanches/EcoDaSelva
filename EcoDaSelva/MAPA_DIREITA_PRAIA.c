@@ -9,7 +9,7 @@ void carregar_mapa_direita_praia(struct al_mapa* mapa) {
 	mapa->quantidade_npc = 0;
 	
 	mapa->next_mapa->pra_cima = 5;
-	for (int i = 6; i < WINDOW_SIZE_PIXEL_X - 5; i++) {
+	for (int i = 20; i < 27; i++) {
 		mapa->matriz[0][i] = 3;
 	}
 
@@ -73,9 +73,7 @@ void carregar_mapa_direita_praia(struct al_mapa* mapa) {
 	mapa->matriz[12][WINDOW_SIZE_PIXEL_X - 1] = 3;
 	mapa->matriz[13][WINDOW_SIZE_PIXEL_X - 1] = 3;
 
-	for (int i = 12; i < WINDOW_SIZE_PIXEL_X - 6; i++) {
-		mapa->matriz[0][i] = 3;
-	}
+	
 
 #pragma region colisões 
 

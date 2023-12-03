@@ -94,7 +94,7 @@ void carregar_mapa_direita_vila(struct al_mapa* mapa)
 	}
 
 	for (int i = 2; i < 3; i++) {
-		for (int j = 2; j < 3; j++)
+		for (int j = 2; j < 4; j++)
 			mapa->matriz[i][j] = 1;
 	}
 
@@ -159,21 +159,22 @@ void carregar_mapa_direita_vila(struct al_mapa* mapa)
 
 	mapa->matriz[22][28] = 1;
 	mapa->matriz[1][25] = 1;
+	mapa->matriz[8][2] = 1;
 
 #pragma endregion
 
 	mapa->next_mapa->pra_esquerda = 4;
-	for (int i = 7; i < WINDOW_SIZE_PIXEL_Y - 6; i++) {
+	for (int i = 8; i < 14; i++) {
 		mapa->matriz[i][0] = 3;
 	}
 
 	mapa->next_mapa->pra_baixo = 8;
-	for (int i = 6; i < WINDOW_SIZE_PIXEL_X - 5; i++) {
+	for (int i = 20; i < 27; i++) {
 		mapa->matriz[WINDOW_SIZE_PIXEL_Y - 1][i] = 3;
 	}
 
 	mapa->next_mapa->pra_cima = 2;
-	for (int i = 0; i < WINDOW_SIZE_PIXEL_X - 5; i++) {
+	for (int i = 16; i < 24; i++) {
 		mapa->matriz[0][i] = 3;
 	}
 }

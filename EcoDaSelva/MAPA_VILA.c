@@ -13,19 +13,19 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 	mapa->next_mapa->pra_direita = 5;
 	mapa->next_mapa->pra_esquerda = 3;
 
-	for (int i = 11; i < 32; i++) {
+	for (int i = 18; i < 24; i++) {
 		mapa->matriz[WINDOW_SIZE_PIXEL_Y - 1][i] = 3;
 	}
 
-	for (int i = 8; i < 37; i++) {
+	for (int i = 16; i < 23; i++) {
 		mapa->matriz[0][i] = 3;
 	}
 
-	for (int i = 7; i < WINDOW_SIZE_PIXEL_Y - 6; i++) {
+	for (int i = 8; i < 14; i++) {
 		mapa->matriz[i][WINDOW_SIZE_PIXEL_X - 1] = 3;
 	}
 
-	for (int i = 7; i < WINDOW_SIZE_PIXEL_Y - 3; i++) {
+	for (int i = 8; i < 14; i++) {
 		mapa->matriz[i][0] = 3;
 	}
 
@@ -317,10 +317,10 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 
 	//placa
 
-	mapa->matriz[0][23] = 1;
-	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 1][23] = 1;
-	mapa->matriz[8][0] = 1;
-	mapa->matriz[8][WINDOW_SIZE_PIXEL_X - 1] = 1;
+	mapa->matriz[1][23] = 1;
+	mapa->matriz[WINDOW_SIZE_PIXEL_Y - 2][17] = 1;
+	mapa->matriz[8][2] = 1;
+	mapa->matriz[8][WINDOW_SIZE_PIXEL_X - 3] = 1;
 
 	//Estatua
 

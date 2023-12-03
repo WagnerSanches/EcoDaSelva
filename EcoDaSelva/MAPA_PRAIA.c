@@ -11,7 +11,7 @@ void carregar_mapa_praia(struct al_mapa *mapa) {
 	mapa->next_mapa->pra_cima = 4;
 
 
-	for (int i = 11; i < 32; i++) {
+	for (int i = 18; i < 24; i++) {
 		mapa->matriz[0][i] = 3;
 	}
 
