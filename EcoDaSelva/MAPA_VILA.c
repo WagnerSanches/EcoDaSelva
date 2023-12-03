@@ -1,3 +1,4 @@
+#include <config.h>
 #include <AL_MAPA.h>
 #include <stdlib.h>
 #include <allegro5/bitmap_draw.h>
@@ -29,38 +30,39 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 		mapa->matriz[i][0] = 3;
 	}
 
-	mapa->NPC_IMAGES[0] = al_load_bitmap("assets/personagem/npc/Character_001.png");
-	mapa->NPC_IMAGES[1] = al_load_bitmap("assets/personagem/npc/Character_002.png");
-	mapa->NPC_IMAGES[2] = al_load_bitmap("assets/personagem/npc/Character_003.png");
+	mapa->NPC_IMAGES[0] = al_load_bitmap("assets/personagem/npc/Character_002.png");
+	mapa->NPC_IMAGES[1] = al_load_bitmap("assets/personagem/npc/Character_003.png");
 
 	mapa->quantidade_npc = 2;
 
+	// Quest latex
 	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
-	strcpy(mapa->npc[0]->nome, "Apoena");
-	strcpy(mapa->npc[0]->nome_item_quest, "Fruta");
+	strcpy(mapa->npc[0]->nome, "Anajé"); 
+	strcpy(mapa->npc[0]->nome_item_quest, "Latex");
 	mapa->npc[0]->npc_quest = true;
-	strcpy(mapa->npc[0]->tag, "Ordem");
-	strcpy(mapa->npc[0]->dialogo[0]->texto, "Bem vindo");
-	strcpy(mapa->npc[0]->dialogo[1]->texto, "Gosta de banana");
-	strcpy(mapa->npc[0]->dialogo[2]->texto, "Muito Obrigado");
+	strcpy(mapa->npc[0]->tag, "Familia");
+	strcpy(mapa->npc[0]->dialogo[0]->texto, "Ola aventureiro, voce veio conhecer nosso vilarejo no momento certo, nesse final de semana planejamos um jogo de Jikunahaty(Futebol de cabeca) entre nossa vila mas infelizmente nos nao temos mais latex para fazer a bola.");
+	strcpy(mapa->npc[0]->dialogo[1]->texto, "sera que voce conseguiria um pouco de latex para a bola ? ha algumas seringueiras no norte a direita da vila voce pode extrair elas de la.");
+	strcpy(mapa->npc[0]->dialogo[2]->texto, "Hmmmmm");
 	mapa->npc[0]->dialogo_lido = 0;
 
-	mapa->npc[0]->matriz_position_y = 19;
-	mapa->npc[0]->matriz_position_x = 3;
+	mapa->npc[0]->matriz_position_y = 8; 
+	mapa->npc[0]->matriz_position_x = 12;
 
-	// Exemplo NPC de quest
+	// Quest arara
+
 	mapa->npc[1]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
-	strcpy(mapa->npc[1]->nome, "Anajé"); 
-	strcpy(mapa->npc[1]->nome_item_quest, "Latex");
+	strcpy(mapa->npc[1]->nome, "Aimoré");
+	strcpy(mapa->npc[1]->nome_item_quest, "Buriti");
 	mapa->npc[1]->npc_quest = true;
-	strcpy(mapa->npc[1]->tag, "Familia");
+	strcpy(mapa->npc[1]->tag, "Genero");
 	strcpy(mapa->npc[1]->dialogo[0]->texto, "Ola aventureiro, voce veio conhecer nosso vilarejo no momento certo, nesse final de semana planejamos um jogo de Jikunahaty(Futebol de cabeca) entre nossa vila mas infelizmente nos nao temos mais latex para fazer a bola.");
 	strcpy(mapa->npc[1]->dialogo[1]->texto, "sera que voce conseguiria um pouco de latex para a bola ? ha algumas seringueiras no norte a direita da vila voce pode extrair elas de la.");
 	strcpy(mapa->npc[1]->dialogo[2]->texto, "Hmmmmm");
 	mapa->npc[1]->dialogo_lido = 0;
 
-	mapa->npc[1]->matriz_position_y = 8; 
-	mapa->npc[1]->matriz_position_x = 12;
+	mapa->npc[1]->matriz_position_y = 12;
+	mapa->npc[1]->matriz_position_x = 24;
 
 	for (int i = 0; i < mapa->quantidade_npc; i++) {
 		mapa->matriz[mapa->npc[i]->matriz_position_y][mapa->npc[i]->matriz_position_x] = 2;
@@ -72,8 +74,6 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 		mapa->npc[i]->image[2] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24, 16, 16);
 		mapa->npc[i]->image[3] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24 * 2, 16, 16);
 	}
-
-	mapa->npc[2]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
 
 #pragma region Colisoes
 

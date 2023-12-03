@@ -1,5 +1,6 @@
 #include <AL_MAPA.h>
 #include <stdlib.h>
+#include <AJUDANTE.h>
 #include <allegro5/bitmap_draw.h>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_font.h>
@@ -11,6 +12,54 @@ void carregar_mapa_esquerda_praia(struct al_mapa* mapa) {
 	for (int i = 20; i < 27; i++) {
 		mapa->matriz[0][i] = 3;
 	}
+
+	mapa->NPC_IMAGES[0] = al_load_bitmap("assets/personagem/npc/Character_004.png");
+
+	mapa->quantidade_npc = 1;
+
+	// Quest Andiroba
+
+	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	strcpy(mapa->npc[0]->nome, "Aimberê");
+	strcpy(mapa->npc[0]->nome_item_quest, "Andiroba");
+	mapa->npc[0]->npc_quest = true;
+	strcpy(mapa->npc[0]->tag, "Especie");
+	strcpy(mapa->npc[0]->dialogo[0]->texto, "Ola aventureiro, voce veio conhecer nosso vilarejo no momento certo, nesse final de semana planejamos um jogo de Jikunahaty(Futebol de cabeca) entre nossa vila mas infelizmente nos nao temos mais latex para fazer a bola.");
+	strcpy(mapa->npc[0]->dialogo[1]->texto, "sera que voce conseguiria um pouco de latex para a bola ? ha algumas seringueiras no norte a direita da vila voce pode extrair elas de la.");
+	strcpy(mapa->npc[0]->dialogo[2]->texto, "Hmmmmm");
+	mapa->npc[0]->dialogo_lido = 0;
+
+	mapa->npc[0]->matriz_position_y = 7;
+	mapa->npc[0]->matriz_position_x = 10;
+
+	for (int i = 0; i < mapa->quantidade_npc; i++) {
+		mapa->matriz[mapa->npc[i]->matriz_position_y][mapa->npc[i]->matriz_position_x] = 2;
+
+		mapa->npc[i]->direcao = 1;
+
+		mapa->npc[i]->image[0] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24 * 3, 16, 16);
+		mapa->npc[i]->image[1] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7, 16, 16);
+		mapa->npc[i]->image[2] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24, 16, 16);
+		mapa->npc[i]->image[3] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24 * 2, 16, 16);
+	}
+
+	// item (Buruti)
+
+	mapa->quantidade_item = 1;
+
+	strcpy(mapa->item[0]->nome, "Buriti");
+	mapa->item[0]->matriz_position_x = 36;
+	mapa->item[0]->matriz_position_y = 10;
+	mapa->item[0]->image = al_load_bitmap("assets/objeto/fruta/Buriti.png");
+	mapa->item[0]->item_missao = true;
+	mapa->item[0]->ajudante->quantiade_imagem = 0;
+	mapa->item[0]->ajudante->opcao = true;
+	mapa->item[0]->ajudante->opcao_selecionada = 0;
+	mapa->item[0]->ajudante->tipo_pergunta = PERGUNTA_ITEM;
+	strcpy(mapa->item[0]->ajudante->texto, "Voce encontrou uma carnauba! A carnauba, ou Copernicia prunifera, e uma palmeira do Cerrado cujas folhas sao essenciais para a sobrevivencia de animais como o soldadinho-do-araripe, que constroi ninhos com elas. Alem disso, a cera de carnauba e usada em diversos produtos.");
+
+	for (int i = 0; i < mapa->quantidade_item; i++)
+		mapa->matriz[mapa->item[i]->matriz_position_y][mapa->item[i]->matriz_position_x] = 5;
 
 #pragma region colision
 

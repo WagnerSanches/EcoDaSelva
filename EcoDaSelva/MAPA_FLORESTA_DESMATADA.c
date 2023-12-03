@@ -8,6 +8,39 @@ void carregar_mapa_floresta_desmatada(struct al_mapa* mapa) {
 	mapa->next_mapa->pra_esquerda = 0;
 	mapa->next_mapa->pra_direita = 2;
 
+	//npc
+
+	mapa->quantidade_npc = 1;
+
+	mapa->NPC_IMAGES[0] = al_load_bitmap("assets/personagem/npc/Character_001.png");
+
+	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	strcpy(mapa->npc[0]->nome, "Apoena");
+	strcpy(mapa->npc[0]->nome_item_quest, "Fruta");
+	mapa->npc[0]->npc_quest = true;
+	strcpy(mapa->npc[0]->tag, "Ordem");
+	strcpy(mapa->npc[0]->dialogo[0]->texto, "Bem vindo");
+	strcpy(mapa->npc[0]->dialogo[1]->texto, "Gosta de banana");
+	strcpy(mapa->npc[0]->dialogo[2]->texto, "Muito Obrigado");
+	mapa->npc[0]->dialogo_lido = 0;
+
+	mapa->npc[0]->matriz_position_y = 9;
+	mapa->npc[0]->matriz_position_x = 35;
+
+
+	for (int i = 0; i < mapa->quantidade_npc; i++) {
+		mapa->matriz[mapa->npc[i]->matriz_position_y][mapa->npc[i]->matriz_position_x] = 2;
+
+		mapa->npc[i]->direcao = 1;
+
+		mapa->npc[i]->image[0] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24 * 3, 16, 16);
+		mapa->npc[i]->image[1] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7, 16, 16);
+		mapa->npc[i]->image[2] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24, 16, 16);
+		mapa->npc[i]->image[3] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24 * 2, 16, 16);
+	}
+
+#pragma region Colisoes
+
 	// baixo
 	for (int i = 16; i < 23; i++) {
 		mapa->matriz[WINDOW_SIZE_PIXEL_Y - 1][i] = 3;
@@ -107,3 +140,5 @@ void carregar_mapa_floresta_desmatada(struct al_mapa* mapa) {
 		}
 	}
 }
+
+#pragma endregion
