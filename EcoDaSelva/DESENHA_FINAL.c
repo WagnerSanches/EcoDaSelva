@@ -110,7 +110,7 @@ void desenhar_final(struct Player* player) {
 		"Phyllobates terribilis"
 	};
 
-	int font_size_categoria = 18;
+	int font_size_categoria = 16;
 	int spacing_categoria = font_size_categoria + font_size_categoria / 2;
 	ALLEGRO_FONT* font_categoria = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", font_size_categoria, 0);
 
