@@ -144,6 +144,22 @@ void carregar_mapa_direita_vila(struct al_mapa* mapa)
 	mapa->matriz[20][3] = 1;
 	mapa->matriz[6][5] = 1;
 
+	//pedra
+
+	mapa->matriz[18][32] = 1;
+	mapa->matriz[22][29] = 1;
+	mapa->matriz[5][32] = 1;
+	mapa->matriz[5][10] = 1;
+	mapa->matriz[8][10] = 1;
+	mapa->matriz[18][12] = 1;
+	mapa->matriz[19][15] = 1;
+	mapa->matriz[19][5] = 1;
+
+	//placa
+
+	mapa->matriz[22][28] = 1;
+	mapa->matriz[1][25] = 1;
+
 #pragma endregion
 
 	mapa->next_mapa->pra_esquerda = 4;
