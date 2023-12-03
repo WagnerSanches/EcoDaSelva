@@ -18,7 +18,7 @@ void desenhar_pausa(struct Pausa* pausa) {
 	);
 
 	int meio_tela = (WINDOW_SIZE_PIXEL_X * PIXEL_SIZE) / 2;
-	int size_pause = PIXEL_SIZE * 14;
+	int size_pause = PIXEL_SIZE * 10;
 
 	int valor_teste = PIXEL_SIZE * 7;
 
@@ -32,7 +32,7 @@ void desenhar_pausa(struct Pausa* pausa) {
 		y_pause_initial, 
 		x_pause_final, 
 		y_pause_final, 
-		al_map_rgb(255, 255, 255)
+		al_map_rgb(246, 238, 227)
 	);
 
 	int x_button_size = PIXEL_SIZE * 5;
@@ -58,7 +58,7 @@ void desenhar_pausa(struct Pausa* pausa) {
 		y_selected_button_initial,
 		x_selected_button_final,
 		y_selected_button_final,
-		al_map_rgb(0,0,0),
+		al_map_rgb(31, 63, 43),
 		thickness
 	);
 
@@ -73,13 +73,13 @@ void desenhar_pausa(struct Pausa* pausa) {
 			y_button_initial,
 			x_button_final,
 			y_button_final,
-			al_map_rgb(235, 204, 52)
+			al_map_rgb(82, 132, 60)
 		);
 
 		int y_button_text = y_button_initial + (font_size / 4);
 		al_draw_text(
 			font18,
-			al_map_rgb(0, 0, 0),
+			al_map_rgb(255, 255, 255),
 			meio_tela,
 			y_button_text,
 			ALLEGRO_ALIGN_CENTER,

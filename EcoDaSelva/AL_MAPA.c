@@ -38,7 +38,6 @@ void excluir_mapa(struct al_mapa* mapa) {
 			if (mapa->npc[i]->npc_quest == false) {
 				free(mapa->npc[i]->dialogo[0]->texto);
 				free(mapa->npc[i]->nome);
-				free(mapa->npc[i]);
 			}
 
 		}

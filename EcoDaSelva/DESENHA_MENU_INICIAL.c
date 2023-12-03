@@ -26,7 +26,7 @@ void desenhar_menu_inicial(struct Menu* menu) {
 		y_menu_initial,
 		x_menu_final,
 		y_menu_final,
-		al_map_rgb(255, 255, 170)
+		al_map_rgb(246, 238, 227)
 	);
 
 	int x_logo_size = PIXEL_SIZE * 12;
