@@ -44,6 +44,8 @@ void carregar_mapa_esquerda_vila(struct al_mapa* mapa) {
 			mapa->matriz[i][j] = 1;
 	}
 
+	//arvore
+
 	for (int i = 0; i <= 0; i++) {
 		for (int j = 9; j <= 13; j++)
 			mapa->matriz[i][j] = 1;
@@ -58,6 +60,70 @@ void carregar_mapa_esquerda_vila(struct al_mapa* mapa) {
 		for (int j = 12; j <= 13; j++)
 			mapa->matriz[i][j] = 1;
 	}
+
+	for (int i = 6; i <= 6; i++) {
+		for (int j = 17; j <= 18; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+
+	for (int i = 9; i <= 9; i++) {
+		for (int j = 15; j <= 16; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 4; i <= 4; i++) {
+		for (int j = 32; j <= 33; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 16; i <= 16; i++) {
+		for (int j = 34; j <= 35; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 21; i <= 21; i++) {
+		for (int j = 36; j <= 37; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 18; i <= 20; i++) {
+		for (int j = 15; j <= 19; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 14; i <= 16; i++) {
+		for (int j = 13; j <= 17; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	for (int i = 19; i <= 21; i++) {
+		for (int j = 10; j <= 14; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
+	//moita
+
+	mapa->matriz[19][23] = 1;
+	mapa->matriz[19][36] = 1;
+	mapa->matriz[22][34] = 1;
+	mapa->matriz[22][40] = 1;
+	mapa->matriz[14][20] = 1;
+	mapa->matriz[16][21] = 1;
+	mapa->matriz[11][12] = 1;
+
+	//pedra
+
+	mapa->matriz[19][32] = 1;
+	mapa->matriz[5][36] = 1;
+	mapa->matriz[2][35] = 1;
+	mapa->matriz[2][37] = 1;
+	mapa->matriz[2][39] = 1;
+	mapa->matriz[1][41] = 1;
+	mapa->matriz[4][41] = 1;
+	mapa->matriz[5][15] = 1;
+	mapa->matriz[10][18] = 1;
+
 
 #pragma endregion
 
