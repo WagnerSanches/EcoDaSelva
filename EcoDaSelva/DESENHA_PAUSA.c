@@ -73,7 +73,7 @@ void desenhar_pausa(struct Pausa* pausa) {
 			y_button_initial,
 			x_button_final,
 			y_button_final,
-			al_map_rgb(82, 132, 60)
+			al_map_rgb(118, 197, 100)
 		);
 
 		int y_button_text = y_button_initial + (font_size / 4);

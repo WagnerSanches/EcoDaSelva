@@ -21,11 +21,13 @@ void desenhar_menu_inicial(struct Menu* menu) {
 	int x_menu_final = x_menu_initial + x_menu_size;
 	int y_menu_final = (WINDOW_SIZE_PIXEL_Y * PIXEL_SIZE) - y_menu_size;
 
-	al_draw_filled_rectangle(
+	al_draw_filled_rounded_rectangle(
 		x_menu_initial,
 		y_menu_initial,
 		x_menu_final,
 		y_menu_final,
+		7,
+		7,
 		al_map_rgb(246, 238, 227)
 	);
 
@@ -37,19 +39,22 @@ void desenhar_menu_inicial(struct Menu* menu) {
 	int x_logo_final = x_logo_initial + x_logo_size;
 	int y_logo_final = y_logo_initial + y_logo_size;
 
-	al_draw_filled_rectangle(
-		x_logo_initial,
-		y_logo_initial,
-		x_logo_final,
-		y_logo_final,
-		al_map_rgb(255, 255, 170)
-	);
+	ALLEGRO_BITMAP* logo = al_load_bitmap("assets/jogo/logo.png");
+	al_draw_bitmap(logo, x_logo_initial - 14, y_logo_initial, 0);
+
+	//al_draw_filled_rectangle(
+	//	x_logo_initial,
+	//	y_logo_initial,
+	//	x_logo_final,
+	//	y_logo_final,
+	//	al_map_rgb(255, 255, 170)
+	//);
 
 	int x_button_size = PIXEL_SIZE * 6;
 	int y_button_size = font_size + font_size / 2;
 
 	int x_button_initial = meio_tela - (x_button_size / 2);
-	int y_button_initial = (y_logo_final + spacing * 2);
+	int y_button_initial = (y_logo_final + spacing / 2);
 
 	char* textos[2] = {
 		"JOGAR",
@@ -62,11 +67,13 @@ void desenhar_menu_inicial(struct Menu* menu) {
 	int x_button_selected_final = x_button_selected_initial + x_button_size + thickness ;
 	int y_button_selected_final = y_button_selected_initial + y_button_size + thickness ;
 
-	al_draw_rectangle(
+	al_draw_rounded_rectangle(
 		x_button_selected_initial,
-		y_button_selected_initial,
+		y_button_selected_initial + 1,
 		x_button_selected_final,
-		y_button_selected_final,
+		y_button_selected_final - 1,
+		3,
+		3,
 		al_map_rgb(31, 63, 43),
 		thickness
 	);
@@ -77,12 +84,14 @@ void desenhar_menu_inicial(struct Menu* menu) {
 		int x_button_final = x_button_initial + x_button_size;
 		int y_button_final = y_button + y_button_size;
 
-		al_draw_filled_rectangle(
+		al_draw_filled_rounded_rectangle(
 			x_button_initial,
 			y_button,
 			x_button_final,
 			y_button_final,
-			al_map_rgb(82, 132, 60)
+			3,
+			3,
+			al_map_rgb(118, 197, 100)
 		);
 
 		int y_button_text_initial = (font_size / 4) + y_button;
@@ -96,6 +105,17 @@ void desenhar_menu_inicial(struct Menu* menu) {
 			textos[i]
 		);
 	}
-	
+
+	int x_size_information = PIXEL_SIZE * 16;
+	int y_size_information = PIXEL_SIZE * 8;
+
+	int x_information_i = meio_tela - (x_size_information / 2);
+	int y_information_i = PIXEL_SIZE * 13.5;
+
+	ALLEGRO_BITMAP* information = al_load_bitmap("assets/jogo/information.png");
+	al_draw_bitmap(information, x_information_i, y_information_i, 0);
+
+	al_destroy_bitmap(information);
+	al_destroy_bitmap(logo);
 	al_destroy_font(menu22);
 }

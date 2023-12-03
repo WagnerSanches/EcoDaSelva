@@ -114,7 +114,7 @@ void desenhar_box(struct Fichario* fichario, struct Player* player) {
 	}
 
 	ALLEGRO_FONT* font = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 18, 0);
-	char* text = "voce precisa coletar informacoes sobre um animal desconhecido para sua producao cientifica, atualmente este animal nao possui classificacoes sobre sua natureza feitas por voce,  interaja com os nativos e os ajudem em suas tarefas diarias para obter as informacoes necessarias para sua pesquisa.\n\nDica: Os nativos que possuem informacoes uteis sao marcados por um ponto de exclamacao";
+	char* text = "voce precisa coletar informacoes sobre um animal desconhecido para sua producao cientifica, atualmente este animal nao possui classificacoes sobre sua natureza feitas por voce,  interaja com os nativos e os ajudem em suas tarefas diarias para obter as informacoes necessarias para sua pesquisa.";
 	int x_text = x_pgone_line_i + (PIXEL_SIZE / 2);
 	int y_text = y_paper_i + (PIXEL_SIZE ) + (PIXEL_SIZE * 2) + 10;
 	int size_text = PIXEL_SIZE * 13;
@@ -128,11 +128,47 @@ void desenhar_box(struct Fichario* fichario, struct Player* player) {
 		ALLEGRO_ALIGN_LEFT,
 		text
 	);
+	al_draw_multiline_text(
+		font,
+		al_map_rgb(191, 122, 33),
+		x_text,
+		y_text + PIXEL_SIZE * 10,
+		size_text,
+		space_line,
+		ALLEGRO_ALIGN_LEFT,
+		"Dica: Os nativos que possuem informacoes uteis sao marcados por um ponto de exclamacao."
+	);
+
 
 	int middle_pgtwo = (x_pgtwo_i + x_pgtwo_f) / 2;
 	int size_image = PIXEL_SIZE * 5;
 
-	int x_image_i = middle_pgtwo - (size_image / 2);
+
+	ALLEGRO_BITMAP* arrow = al_load_bitmap("assets/jogo/arrow.png");
+	int x_photo_arrow = x_pgtwo_line_i + (PIXEL_SIZE / 2);
+	int y_photo_arrow = y_paper_i + (PIXEL_SIZE * 2) + 10;;
+
+	al_draw_text( 
+		font, 
+		al_map_rgb(50, 62, 168), 
+		x_photo_arrow, 
+		y_photo_arrow,
+		ALLEGRO_ALIGN_LEFT, 
+		"Uma \"quase\" foto"
+	); 
+
+	al_draw_text( 
+		font, 
+		al_map_rgb(50, 62, 168), 
+		x_photo_arrow,
+		y_photo_arrow + PIXEL_SIZE, 
+		ALLEGRO_ALIGN_LEFT,
+		" do animal"
+	);
+
+	al_draw_bitmap(arrow, x_photo_arrow + PIXEL_SIZE * 2, y_photo_arrow + PIXEL_SIZE + 10 , 0);
+
+	int x_image_i = PIXEL_SIZE * 3 + middle_pgtwo - (size_image / 2);
 	int y_image_i = y_paper_i + (PIXEL_SIZE * 2) + 10;
 	int x_image_f = x_image_i + size_image;
 	int y_image_f = y_image_i + size_image;
@@ -147,7 +183,7 @@ void desenhar_box(struct Fichario* fichario, struct Player* player) {
 
 	int space_image = PIXEL_SIZE / 4;
 	int size_image_in = PIXEL_SIZE * 4;
-	int x_image_in_i = middle_pgtwo - (size_image_in / 2) - space_image;
+	int x_image_in_i = PIXEL_SIZE * 3 + middle_pgtwo - (size_image_in / 2) - space_image;
 	int y_image_in_i = y_paper_i + (PIXEL_SIZE * 2) + 10 + space_image;
 	int x_image_in_f = x_image_in_i + size_image_in + space_image * 2;
 	int y_image_in_f = y_image_in_i + size_image_in;
@@ -160,10 +196,15 @@ void desenhar_box(struct Fichario* fichario, struct Player* player) {
 		al_map_rgb(0, 0, 0)
 	);
 
+	ALLEGRO_BITMAP* animal = al_load_bitmap("assets/jogo/animal.jpg");
+	ALLEGRO_BITMAP* resize = al_create_sub_bitmap(animal, PIXEL_SIZE * 8.5, PIXEL_SIZE * 4, size_image_in + PIXEL_SIZE / 2, size_image_in);
+	al_draw_bitmap(resize, x_image_in_i, y_image_in_i, 0);
+
+
 	int x_size_tape = PIXEL_SIZE / 2;
 	int y_size_tape = 20;
 
-	int x_tape_i = middle_pgtwo - (x_size_tape / 2);
+	int x_tape_i = PIXEL_SIZE * 3 + middle_pgtwo - (x_size_tape / 2);
 	int y_tape_i = y_image_i - 6;
 	int x_tape_f = x_tape_i + x_size_tape;
 	int y_tape_f = y_tape_i + y_size_tape;
@@ -283,7 +324,6 @@ void desenhar_box(struct Fichario* fichario, struct Player* player) {
 			y_category += PIXEL_SIZE;
 		}
 
-		printf("%d\n", fichario->selecao->classe);
 		int x_circle = x_pgtwo_line_i + PIXEL_SIZE * 1.5;
 		int y_circle = y_paper_i + (PIXEL_SIZE * 10) + (PIXEL_SIZE * 2) + 18 + (PIXEL_SIZE * fichario->selecao->classe);
 
@@ -336,4 +376,7 @@ void desenhar_box(struct Fichario* fichario, struct Player* player) {
 	////al_draw_filled_rectangle(x_subbox_initial, y_subbox_initial, x_subbox_final, y_subbox_final, al_map_rgb(67, 161, 53));
 
 	al_destroy_font(font);
+	al_destroy_bitmap(arrow);
+	al_destroy_bitmap(animal);
+	al_destroy_bitmap(resize);
 }
