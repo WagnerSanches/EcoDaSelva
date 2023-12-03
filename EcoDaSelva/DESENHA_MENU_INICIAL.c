@@ -68,9 +68,9 @@ void desenhar_menu_inicial(struct Menu* menu) {
 	int y_button_selected_final = y_button_selected_initial + y_button_size + thickness ;
 
 	al_draw_rounded_rectangle(
-		x_button_selected_initial,
-		y_button_selected_initial + 1,
-		x_button_selected_final,
+		x_button_selected_initial ,
+		y_button_selected_initial + 6,
+		x_button_selected_final - 5,
 		y_button_selected_final - 1,
 		3,
 		3,

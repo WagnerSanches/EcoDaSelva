@@ -110,7 +110,7 @@ void desenhar_final(struct Player* player) {
 		"Phyllobates terribilis"
 	};
 
-	int font_size_categoria = 16;
+	int font_size_categoria = 18;
 	int spacing_categoria = font_size_categoria + font_size_categoria / 2;
 	ALLEGRO_FONT* font_categoria = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", font_size_categoria, 0);
 
@@ -191,17 +191,17 @@ void desenhar_final(struct Player* player) {
 	int x_botao_reiniciar_i = meio_box_score - (x_butao_size / 2);
 	int x_botao_reiniciar_f = x_botao_reiniciar_i + x_butao_size;
 
-	int thickness = 6;
+	int thickness = 8;
 	int y_sellect_i = (y_score + PIXEL_SIZE * 2) + (player->opcao_final_jogo * PIXEL_SIZE);
 	int y_sellect_f = y_sellect_i + y_botao_size;
 	al_draw_rounded_rectangle( 
 		x_botao_reiniciar_i - 1,
-		y_sellect_i - 1,
-		x_botao_reiniciar_f + 1,
+		y_sellect_i + 2,
+		x_botao_reiniciar_f - 3,
 		y_sellect_f + 1,
 		5,
 		5,
-		al_map_rgb(10, 0, 138),
+		al_map_rgb(31, 63, 43),
 		thickness / 2
 	);
 
@@ -215,7 +215,7 @@ void desenhar_final(struct Player* player) {
 			y_botao_reiniciar_f,
 			5,
 			5,
-			al_map_rgb(92, 161, 255)
+			al_map_rgb(118, 197, 100)
 		);
 
 		int x_botao_text = x_botao_reiniciar_f - (x_butao_size / 2);
