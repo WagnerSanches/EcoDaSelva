@@ -13,7 +13,7 @@
 #include <PLAYER.h>
 
 void init_mapa(struct al_mapa* mapa) {
-	int praia = 3;
+	int praia = 2;
 	mapa->criado = false;
 
 	carregar_mapa(mapa, praia);
