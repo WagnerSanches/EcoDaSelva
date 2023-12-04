@@ -24,7 +24,7 @@ void carregar_mapa_esquerda_praia(struct al_mapa* mapa) {
 	strcpy(mapa->npc[0]->nome_item_quest, "Andiroba");
 	mapa->npc[0]->npc_quest = true;
 	strcpy(mapa->npc[0]->tag, "Especie");
-	strcpy(mapa->npc[0]->dialogo[0]->texto, "Oi aventureiro, nossa ainda bem que voce esta aqui. Minha filha se cortou com um galho e infelizmente acabou o nosso remedio.");
+	strcpy(mapa->npc[0]->dialogo[0]->texto, "Oi explorador, nossa ainda bem que voce esta aqui. Minha filha se cortou com um galho e infelizmente acabou o nosso remedio.");
 	strcpy(mapa->npc[0]->dialogo[1]->texto, "Sera que voce poderia pegar sementes da arvore Andiroba ? Elas sao laranjas e normalmente ficam norte a esquerda da vila. Rapido! Ela esta com dor.");
 	strcpy(mapa->npc[0]->dialogo[2]->texto, "Enquanto estava na Colombia conversei com um povo indegena e eles falaram que cacava esse animal por la.");
 	mapa->npc[0]->dialogo_lido = 0;

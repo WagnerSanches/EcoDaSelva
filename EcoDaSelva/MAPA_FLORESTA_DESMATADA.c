@@ -19,9 +19,9 @@ void carregar_mapa_floresta_desmatada(struct al_mapa* mapa) {
 	strcpy(mapa->npc[0]->nome_item_quest, "Fruta");
 	mapa->npc[0]->npc_quest = true;
 	strcpy(mapa->npc[0]->tag, "Ordem");
-	strcpy(mapa->npc[0]->dialogo[0]->texto, "Oi aventureiro, Eu acho que vc ja percebeu que essa area esta desmatada, mas estou fazendo um projeto de reflorenstamento desse local e preciso da sua ajuda. ");
+	strcpy(mapa->npc[0]->dialogo[0]->texto, "Oi explorador, Eu acho que vc ja percebeu que essa area esta desmatada, mas estou fazendo um projeto de reflorenstamento desse local e preciso da sua ajuda. ");
 	strcpy(mapa->npc[0]->dialogo[1]->texto, "Preciso de sementes de acai para plantar aqui. Elas sao roxas e ficam no sul a direita da vila, ao lado da palmeira.");
-	strcpy(mapa->npc[0]->dialogo[2]->texto, "Me falaram que ja viram algo paracido aqui por perto. Ele era pequeno tinha um corpo solio e estava na margem da agua.");
+	strcpy(mapa->npc[0]->dialogo[2]->texto, "Me falaram que ja viram algo paracido aqui por perto. Ele era pequeno tinha um corpo solido e estava na margem da mar.");
 	mapa->npc[0]->dialogo_lido = 0;
 
 	mapa->npc[0]->matriz_position_y = 9;
