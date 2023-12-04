@@ -24,9 +24,9 @@ void carregar_mapa_esquerda_praia(struct al_mapa* mapa) {
 	strcpy(mapa->npc[0]->nome_item_quest, "Andiroba");
 	mapa->npc[0]->npc_quest = true;
 	strcpy(mapa->npc[0]->tag, "Especie");
-	strcpy(mapa->npc[0]->dialogo[0]->texto, "Oi aventureiro, nossa ainda bem que voce esta aqui. Minha filha se cortou com um galho e infelizmente acabou o nosso remedio.");
-	strcpy(mapa->npc[0]->dialogo[1]->texto, "Sera que voce poderia pegar sementes da arvore Andiroba ? Elas sao laranjas e normalmente ficam norte a esquerda da vila. Rapido! Ela esta com dor.");
-	strcpy(mapa->npc[0]->dialogo[2]->texto, "Enquanto estava na Colombia conversei com um povo indegena e eles falaram que cacava esse animal por la.");
+	strcpy(mapa->npc[0]->dialogo[0]->texto, "Ola aventureiro, voce veio conhecer nosso vilarejo no momento certo, nesse final de semana planejamos um jogo de Jikunahaty(Futebol de cabeca) entre nossa vila mas infelizmente nos nao temos mais latex para fazer a bola.");
+	strcpy(mapa->npc[0]->dialogo[1]->texto, "sera que voce conseguiria um pouco de latex para a bola ? ha algumas seringueiras no norte a direita da vila voce pode extrair elas de la.");
+	strcpy(mapa->npc[0]->dialogo[2]->texto, "Hmmmmm");
 	mapa->npc[0]->dialogo_lido = 0;
 
 	mapa->npc[0]->matriz_position_y = 7;
@@ -56,7 +56,7 @@ void carregar_mapa_esquerda_praia(struct al_mapa* mapa) {
 	mapa->item[0]->ajudante->opcao = true;
 	mapa->item[0]->ajudante->opcao_selecionada = 0;
 	mapa->item[0]->ajudante->tipo_pergunta = PERGUNTA_ITEM;
-	strcpy(mapa->item[0]->ajudante->texto, "Voce encontrou uma A carnauba, ou Copernicia prunifera, e uma palmeira do Cerrado cujas folhas sao essenciais para a sobrevivencia de animais como o soldadinho-do-araripe, que constroi ninhos com elas. Alem disso, a cera de carnauba e usada em diversos produtos.");
+	strcpy(mapa->item[0]->ajudante->texto, "Voce encontrou uma carnauba! A carnauba, ou Copernicia prunifera, e uma palmeira do Cerrado cujas folhas sao essenciais para a sobrevivencia de animais como o soldadinho-do-araripe, que constroi ninhos com elas. Alem disso, a cera de carnauba e usada em diversos produtos.");
 
 	for (int i = 0; i < mapa->quantidade_item; i++)
 		mapa->matriz[mapa->item[i]->matriz_position_y][mapa->item[i]->matriz_position_x] = 5;
