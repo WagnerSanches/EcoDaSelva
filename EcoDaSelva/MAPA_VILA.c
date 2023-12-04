@@ -42,8 +42,8 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 	mapa->npc[0]->npc_quest = true;
 	strcpy(mapa->npc[0]->tag, "Familia");
 	strcpy(mapa->npc[0]->dialogo[0]->texto, "Ola aventureiro, voce veio conhecer nosso vilarejo no momento certo, nesse final de semana planejamos um jogo de Jikunahaty(Futebol de cabeca) entre nossa vila mas infelizmente nos nao temos mais latex para fazer a bola.");
-	strcpy(mapa->npc[0]->dialogo[1]->texto, "sera que voce conseguiria um pouco de latex para a bola ? ha algumas seringueiras no norte a direita da vila voce pode extrair elas de la.");
-	strcpy(mapa->npc[0]->dialogo[2]->texto, "Hmmmmm");
+	strcpy(mapa->npc[0]->dialogo[1]->texto, "sera que voce conseguiria um pouco de latex para a bola ? ha algumas seringueiras no norte a direita da vila, elas ja estao no barril.");
+	strcpy(mapa->npc[0]->dialogo[2]->texto, "Quando eu era crianca minha mae me pediu para se afastar dele, pois ele era venenso.");
 	mapa->npc[0]->dialogo_lido = 0;
 
 	mapa->npc[0]->matriz_position_y = 8; 
@@ -56,9 +56,9 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 	strcpy(mapa->npc[1]->nome_item_quest, "Buriti");
 	mapa->npc[1]->npc_quest = true;
 	strcpy(mapa->npc[1]->tag, "Genero");
-	strcpy(mapa->npc[1]->dialogo[0]->texto, "Ola aventureiro, voce veio conhecer nosso vilarejo no momento certo, nesse final de semana planejamos um jogo de Jikunahaty(Futebol de cabeca) entre nossa vila mas infelizmente nos nao temos mais latex para fazer a bola.");
-	strcpy(mapa->npc[1]->dialogo[1]->texto, "sera que voce conseguiria um pouco de latex para a bola ? ha algumas seringueiras no norte a direita da vila voce pode extrair elas de la.");
-	strcpy(mapa->npc[1]->dialogo[2]->texto, "Hmmmmm");
+	strcpy(mapa->npc[1]->dialogo[0]->texto, "Ola aventureiro, preciso muito da sua ajuda com a minha arara. Ela nao come sua fruta favorita (Buriti) a muito tempo, entao ela anda muito agitada.");
+	strcpy(mapa->npc[1]->dialogo[1]->texto, "Preciso que voce encontre alguns buritis. Geralmente os buritis sao vermelehos e ficam no sul a esquerda da vila, perto das palmerias. Eu nao tive muita sorte, tomara que voce tenha.");
+	strcpy(mapa->npc[1]->dialogo[2]->texto, "Meu pai conseguiu ve-lo de longe. Ele me disse que o animal era muito bonito e tinha uma coloracao viva, porem ele tinha medo de se aproximar.");
 	mapa->npc[1]->dialogo_lido = 0;
 
 	mapa->npc[1]->matriz_position_y = 12;
