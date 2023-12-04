@@ -28,7 +28,7 @@ void desenha_npc(struct al_mapa* mapa, int layer) {
 	for (int i = 0; i < mapa->quantidade_npc; i++) {
 		if (mapa->npc[i]->matriz_position_y == layer) {
 
-			if (mapa->npc[i]->npc_quest == true) {
+			if (mapa->npc[i]->npc_quest == true && mapa->npc[i]->quest_terminada == false) {
 				ALLEGRO_BITMAP* b = al_load_bitmap("assets/npc/exclamation.png");
 				if (b == NULL) return;
 				al_draw_bitmap(b, mapa->npc[i]->matriz_position_x * PIXEL_SIZE, (mapa->npc[i]->matriz_position_y - 1) * PIXEL_SIZE, 0);

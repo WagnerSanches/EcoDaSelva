@@ -11,8 +11,8 @@ void carregar_mapa_esquerda_floresta_desmatada(struct al_mapa* mapa) {
 	mapa->quantidade_item = 1;
 
 	strcpy(mapa->item[0]->nome, "Andiroba");
-	mapa->item[0]->matriz_position_x = 19;
-	mapa->item[0]->matriz_position_y = 10;
+	mapa->item[0]->matriz_position_x = 25;
+	mapa->item[0]->matriz_position_y = 5;
 	mapa->item[0]->image = al_load_bitmap("assets/objeto/fruta/andiroba.png");
 	mapa->item[0]->item_missao = true;
 	mapa->item[0]->ajudante->quantiade_imagem = 0;
