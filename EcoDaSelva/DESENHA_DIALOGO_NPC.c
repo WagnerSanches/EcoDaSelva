@@ -120,7 +120,7 @@ void desenhar_caixa_dialogo(struct Player* player, struct al_mapa* mapa) {
 
 	int x_dialogue_text = x_dialogue_box_initial + inner_dialogue_spacing * 2;
 	int y_dialogue_text = y_dialogue_box_initial + inner_dialogue_spacing + 16;
-	int x_dialogue_text_final = dialogue_box_size - inner_dialogue_spacing * 4;
+	int x_dialogue_text_final = dialogue_box_size - inner_dialogue_spacing * 4.5;
 
 	al_draw_multiline_text(
 		dialogue_font,
@@ -188,15 +188,20 @@ void desenhar_caixa_dialogo(struct Player* player, struct al_mapa* mapa) {
 			"No momento eu nao consigo."
 		);
 	} else {
+		ALLEGRO_FONT* dialogue15 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 15, 0);
+
+
 		int y_press_key = y_dialogue_box_final - spacing_between_text - PIXEL_SIZE / 2;
 		al_draw_text(
-			dialogue_font,
+			dialogue15,
 			al_map_rgb(200, 200, 200),
 			meio_tela,
 			y_press_key,
 			ALLEGRO_ALIGN_CENTER,
 			"Aperte 'espaco' para continuar"
 		);
+
+		al_destroy_font(dialogue15); 
 
 	}
 

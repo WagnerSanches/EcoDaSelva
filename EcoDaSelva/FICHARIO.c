@@ -140,7 +140,7 @@ void criar_fichario(struct Fichario* fichario) {
 	strcpy(fichario->classe[2]->groupo[0]->titulo, "Phyllobates");
 	strcpy(
 		fichario->classe[2]->groupo[0]->ajudante->texto,
-		"Phyllobates e uma especie de anfibio da familia Dendrobatidae.Em relacao ao peso e ao tamanho, este e o animal consagrado como sendo o vertebrado mais venenoso do planeta, com veneno suficiente para matar varias pessoas."
+		"Phyllobates tem uma coloracao marcante e intensa, exibindo tons vibrantes de amarelo ou laranja brilhante. Essa coloracao extraordinaria atua como um aviso visual para possiveis predadores, sinalizando que e um animal venenoso e perigoso. Eles sao um dos animais mais venenoso do planeta, possuindo toxinas suficientemente letais para ameacar varias vidas humanas."
 	);
 	
 	strcpy(fichario->classe[2]->groupo[1]->titulo, "Rana");

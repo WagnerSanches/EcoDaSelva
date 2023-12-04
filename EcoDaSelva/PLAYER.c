@@ -127,4 +127,5 @@ void init_player(struct Player* player) {
 
 	player->opcao_final_jogo = 0;
 	player->indice_objeto_interacao = 0;
+
 }

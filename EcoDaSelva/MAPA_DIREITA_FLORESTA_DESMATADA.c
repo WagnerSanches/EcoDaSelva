@@ -160,7 +160,7 @@ void carregar_mapa_direita_floresta_desmatada(struct al_mapa* mapa)
 	mapa->item[0]->ajudante->opcao = true;
 	mapa->item[0]->ajudante->opcao_selecionada = 0;
 	mapa->item[0]->ajudante->tipo_pergunta = PERGUNTA_ITEM;
-	strcpy(mapa->item[0]->ajudante->texto, "Voce encontrou uma carnauba! A carnauba, ou Copernicia prunifera, e uma palmeira do Cerrado cujas folhas sao essenciais para a sobrevivencia de animais como o soldadinho-do-araripe, que constroi ninhos com elas. Alem disso, a cera de carnauba e usada em diversos produtos.");
+	strcpy(mapa->item[0]->ajudante->texto, "Voce encontrou  Latex. O latex e uma seiva leitosa que e usada para porducao de borracha, e utilizada na frabricacao de luva e artigs medicos, bolas e brinquedos, produtos elasticos e muito mais. Ela normalmente e encontrada nas seringueiras que sao muito comuns na regiao do Amazonas.");
 
 	for (int i = 0; i < mapa->quantidade_item; i++)
 		mapa->matriz[mapa->item[i]->matriz_position_y][mapa->item[i]->matriz_position_x] = 5;

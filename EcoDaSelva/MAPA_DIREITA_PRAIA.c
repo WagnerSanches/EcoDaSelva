@@ -64,7 +64,7 @@ void carregar_mapa_direita_praia(struct al_mapa* mapa) {
 	mapa->item[0]->ajudante->opcao = true;
 	mapa->item[0]->ajudante->opcao_selecionada = 0;
 	mapa->item[0]->ajudante->tipo_pergunta = PERGUNTA_ITEM;
-	strcpy(mapa->item[0]->ajudante->texto, "Voce encontrou uma carnauba! A carnauba, ou Copernicia prunifera, e uma palmeira do Cerrado cujas folhas sao essenciais para a sobrevivencia de animais como o soldadinho-do-araripe, que constroi ninhos com elas. Alem disso, a cera de carnauba e usada em diversos produtos.");
+	strcpy(mapa->item[0]->ajudante->texto, "Voce encontrou Acai. O acai e uma fruta nativa da regiao amazonica e uma das frutas mais usadas no reflorestamento de algumas areas do Amazonas. Geralmente crescem em cachos nas palmeiras de acai. Ela contem vitaminas essenciais, como vitamina C e vitamina E.");
 
 	for (int i = 0; i < mapa->quantidade_item; i++)
 		mapa->matriz[mapa->item[i]->matriz_position_y][mapa->item[i]->matriz_position_x] = 5;

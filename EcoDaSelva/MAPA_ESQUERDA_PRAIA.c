@@ -48,15 +48,15 @@ void carregar_mapa_esquerda_praia(struct al_mapa* mapa) {
 	mapa->quantidade_item = 1;
 
 	strcpy(mapa->item[0]->nome, "Buriti");
-	mapa->item[0]->matriz_position_x = 36;
-	mapa->item[0]->matriz_position_y = 10;
+	mapa->item[0]->matriz_position_x = 9;
+	mapa->item[0]->matriz_position_y = 17;
 	mapa->item[0]->image = al_load_bitmap("assets/objeto/fruta/Buriti.png");
 	mapa->item[0]->item_missao = true;
 	mapa->item[0]->ajudante->quantiade_imagem = 0;
 	mapa->item[0]->ajudante->opcao = true;
 	mapa->item[0]->ajudante->opcao_selecionada = 0;
 	mapa->item[0]->ajudante->tipo_pergunta = PERGUNTA_ITEM;
-	strcpy(mapa->item[0]->ajudante->texto, "Voce encontrou uma carnauba! A carnauba, ou Copernicia prunifera, e uma palmeira do Cerrado cujas folhas sao essenciais para a sobrevivencia de animais como o soldadinho-do-araripe, que constroi ninhos com elas. Alem disso, a cera de carnauba e usada em diversos produtos.");
+	strcpy(mapa->item[0]->ajudante->texto, "Voce encontrou Buriti. Nativa da regiao amazonica, o buriti, tambem conhecido como o fruto da palmeira de buriti, alem de ser rica em vitamina A e vitamina C, ele e utilizado nos tratamento de problemas respiratorios e gastrointestinais.");
 
 	for (int i = 0; i < mapa->quantidade_item; i++)
 		mapa->matriz[mapa->item[i]->matriz_position_y][mapa->item[i]->matriz_position_x] = 5;
