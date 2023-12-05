@@ -14,8 +14,10 @@ void carregar_mapa_esquerda_praia(struct al_mapa* mapa) {
 	}
 
 	mapa->NPC_IMAGES[0] = al_load_bitmap("assets/personagem/npc/Character_004.png");
+	mapa->NPC_IMAGES[1] = al_load_bitmap("assets/personagem/npc/Character_001.png");
 
-	mapa->quantidade_npc = 1;
+
+	mapa->quantidade_npc = 2;
 
 	// Quest Andiroba
 
@@ -31,6 +33,22 @@ void carregar_mapa_esquerda_praia(struct al_mapa* mapa) {
 
 	mapa->npc[0]->matriz_position_y = 7;
 	mapa->npc[0]->matriz_position_x = 10;
+
+
+	//NPCS (sem quest)
+
+	mapa->npc[1]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	strcpy(mapa->npc[1]->nome, "Araxá");
+	strcpy(mapa->npc[1]->nome_item_quest, "None");
+	mapa->npc[1]->npc_quest = false;
+	strcpy(mapa->npc[1]->tag, "Nativo");
+	strcpy(mapa->npc[1]->dialogo[0]->texto, "os peixes tem cada historia! Sabia que os pirarucus, gigantes das aguas, guardam um segredo? Eles tem uma mania de subir a superficie pra respirar, como se fossem uns gigantes gentis dando um oi. Dizem que quem ve um pirarucu respirando leva um pedacinho da magia dos rios consigo");
+	mapa->npc[1]->dialogo_lido = 0;
+
+	mapa->npc[1]->matriz_position_y = 19;
+	mapa->npc[1]->matriz_position_x = 30;
+
+
 
 	for (int i = 0; i < mapa->quantidade_npc; i++) {
 		mapa->matriz[mapa->npc[i]->matriz_position_y][mapa->npc[i]->matriz_position_x] = 2;

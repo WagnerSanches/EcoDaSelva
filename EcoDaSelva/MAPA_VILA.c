@@ -32,8 +32,12 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 
 	mapa->NPC_IMAGES[0] = al_load_bitmap("assets/personagem/npc/Character_002.png");
 	mapa->NPC_IMAGES[1] = al_load_bitmap("assets/personagem/npc/Character_003.png");
+	mapa->NPC_IMAGES[2] = al_load_bitmap("assets/personagem/npc/Character_006.png");
+	mapa->NPC_IMAGES[3] = al_load_bitmap("assets/personagem/npc/Character_005.png");
+	mapa->NPC_IMAGES[4] = al_load_bitmap("assets/personagem/npc/Character_001.png");
 
-	mapa->quantidade_npc = 2;
+
+	mapa->quantidade_npc = 5;
 
 	// Quest latex
 	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
@@ -54,7 +58,7 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 	mapa->npc[1]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
 	strcpy(mapa->npc[1]->nome, "Aimoré");
 	strcpy(mapa->npc[1]->nome_item_quest, "Buriti");
-	mapa->npc[1]->npc_quest = true;
+	mapa->npc[1]->npc_quest = true; 
 	strcpy(mapa->npc[1]->tag, "Genero");
 	strcpy(mapa->npc[1]->dialogo[0]->texto, "Ola aventureiro, preciso muito da sua ajuda com a minha arara. Ela nao come sua fruta favorita (Buriti) a muito tempo, entao ela anda muito agitada.");
 	strcpy(mapa->npc[1]->dialogo[1]->texto, "Preciso que voce encontre alguns buritis. Geralmente os buritis sao vermelehos e ficam no sul a esquerda da vila, perto das palmerias. Eu nao tive muita sorte, tomara que voce tenha.");
@@ -63,6 +67,44 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 
 	mapa->npc[1]->matriz_position_y = 12;
 	mapa->npc[1]->matriz_position_x = 24;
+
+	//Npcs (sem quest)
+
+	mapa->npc[2]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	strcpy(mapa->npc[2]->nome, "Araxá");
+	strcpy(mapa->npc[2]->nome_item_quest, "None");
+	mapa->npc[2]->npc_quest = false;
+	strcpy(mapa->npc[2]->tag, "Nativo");
+	strcpy(mapa->npc[2]->dialogo[0]->texto, "Na aldeia dos Guajajara, os bichos - preguica sao tipo os reis da soneca.Eles penduram nas arvores numa boa, trocando segredos preguicosos e ensinando que as vezes, e bacana tirar um cochilo e curtir a brisa da floresta.");
+	mapa->npc[2]->dialogo_lido = 0;
+
+	mapa->npc[2]->matriz_position_y = 8;
+	mapa->npc[2]->matriz_position_x = 30;
+
+
+	mapa->npc[3]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	strcpy(mapa->npc[3]->nome, "Anhanguera");
+	strcpy(mapa->npc[3]->nome_item_quest, "None");
+	mapa->npc[3]->npc_quest = false;
+	strcpy(mapa->npc[3]->tag, "Nativo");
+	strcpy(mapa->npc[3]->dialogo[0]->texto, "Na vastidao da Amazonia, os botos-cor-de-rosa sao os encantadores do rio. Conta-se que, ao entardecer, esses cetaceos magicos se transformam em belos jovens para dancar nas margens, revelando o elo sagrado entre a agua e o misterioso reino das lendas fluviais.");
+	mapa->npc[3]->dialogo_lido = 0;
+
+	mapa->npc[3]->matriz_position_y = 8;
+	mapa->npc[3]->matriz_position_x = 4;
+
+
+	mapa->npc[4]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	strcpy(mapa->npc[4]->nome, "Amary");
+	strcpy(mapa->npc[4]->nome_item_quest, "None");
+	mapa->npc[4]->npc_quest = false;
+	strcpy(mapa->npc[4]->tag, "Nativo");
+	strcpy(mapa->npc[4]->dialogo[0]->texto, "Nas terras dos Yawanawa, o murmur do vento revela segredos. Dizem que as borboletas, dancando entre as flores, sao espiritos ancestrais que nos visitam, trazendo bencaos aqueles que as observam com o coracao aberto.");
+	mapa->npc[4]->dialogo_lido = 0;
+
+	mapa->npc[4]->matriz_position_y = 20;
+	mapa->npc[4]->matriz_position_x = 29;
+
 
 	for (int i = 0; i < mapa->quantidade_npc; i++) {
 		mapa->matriz[mapa->npc[i]->matriz_position_y][mapa->npc[i]->matriz_position_x] = 2;

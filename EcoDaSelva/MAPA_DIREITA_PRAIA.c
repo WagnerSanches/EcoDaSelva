@@ -6,35 +6,38 @@ void carregar_mapa_direita_praia(struct al_mapa* mapa) {
 
 	mapa->background = al_load_bitmap("assets/mapa/DireitaPraia.png");
 
-	mapa->quantidade_npc = 0;
-	
-	mapa->next_mapa->pra_cima = 5;
-	for (int i = 20; i < 27; i++) {
-		mapa->matriz[0][i] = 3;
-	}
 
-	mapa->NPC_IMAGES[0] = al_load_bitmap("assets/personagem/npc/Character_001.png");
-	mapa->NPC_IMAGES[1] = al_load_bitmap("assets/personagem/npc/Character_002.png");
-	mapa->NPC_IMAGES[2] = al_load_bitmap("assets/personagem/npc/Character_003.png");
-	mapa->NPC_IMAGES[3] = al_load_bitmap("assets/personagem/npc/Character_004.png");
-	mapa->NPC_IMAGES[4] = al_load_bitmap("assets/personagem/npc/Character_005.png");
+	mapa->NPC_IMAGES[0] = al_load_bitmap("assets/personagem/npc/Character_001.png");	
+	mapa->NPC_IMAGES[1] = al_load_bitmap("assets/personagem/npc/Character_003.png");
 
-	mapa->quantidade_npc = 5;
+	mapa->quantidade_npc = 2;
 
-	mapa->npc[0]->matriz_position_y = 17;
-	mapa->npc[0]->matriz_position_x = 3;
+	//NPCS (sem quests)
 
-	mapa->npc[1]->matriz_position_y = 1;
-	mapa->npc[1]->matriz_position_x = 12;
+	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	strcpy(mapa->npc[0]->nome, "Ibotira");
+	strcpy(mapa->npc[0]->nome_item_quest, "None");
+	mapa->npc[0]->npc_quest = false;
+	strcpy(mapa->npc[0]->tag, "Nativo");
+	strcpy(mapa->npc[0]->dialogo[0]->texto, "O Rio Amazonas, gigante das aguas, esconde misterios fascinantes. Nos indigenas dizemos que suas aguas carregam nao apenas nutrientes, mas tambem historias ancestrais");
+	mapa->npc[0]->dialogo_lido = 0;
 
-	mapa->npc[2]->matriz_position_y = 5;
-	mapa->npc[2]->matriz_position_x = 11;
+	mapa->npc[0]->matriz_position_y = 22;
+	mapa->npc[0]->matriz_position_x = 35;
 
-	mapa->npc[3]->matriz_position_y = 3;
-	mapa->npc[3]->matriz_position_x = 22;
-		
-	mapa->npc[4]->matriz_position_y = 14;
-	mapa->npc[4]->matriz_position_x = 13;
+
+	mapa->npc[1]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	strcpy(mapa->npc[1]->nome, "Nina");
+	strcpy(mapa->npc[1]->nome_item_quest, "None");
+	mapa->npc[1]->npc_quest = false;
+	strcpy(mapa->npc[1]->tag, "Nativo");
+	strcpy(mapa->npc[1]->dialogo[0]->texto, "Na minha tribo, o Tacaca e um espetaculo de sabores. Originado da amazonia, essa sopa quente, feita com tucupi, goma de tapioca e camaroes, e um verdadeiro banquete.");
+	mapa->npc[1]->dialogo_lido = 0;
+
+	mapa->npc[1]->matriz_position_y = 16;
+	mapa->npc[1]->matriz_position_x = 10;
+
+
 
 	for (int i = 0; i < mapa->quantidade_npc; i++) {
 		mapa->matriz[mapa->npc[i]->matriz_position_y][mapa->npc[i]->matriz_position_x] = 2;
@@ -47,11 +50,12 @@ void carregar_mapa_direita_praia(struct al_mapa* mapa) {
 		mapa->npc[i]->image[3] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24 * 2, 16, 16);
 	}
 
-	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
-	mapa->npc[1]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
-	mapa->npc[2]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
-	mapa->npc[3]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
-	mapa->npc[4]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+
+
+	mapa->next_mapa->pra_cima = 5;
+	for (int i = 20; i < 27; i++) {
+		mapa->matriz[0][i] = 3;
+	}
 
 	mapa->quantidade_item = 1;
 

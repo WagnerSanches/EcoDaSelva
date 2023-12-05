@@ -6,6 +6,51 @@ void carregar_mapa_esquerda_floresta_desmatada(struct al_mapa* mapa) {
 
 	mapa->background = al_load_bitmap("assets/mapa/EsquerdaFlorestaDesmatada.png");
 
+
+	mapa->NPC_IMAGES[0] = al_load_bitmap("assets/personagem/npc/Character_004.png");
+	mapa->NPC_IMAGES[1] = al_load_bitmap("assets/personagem/npc/Character_006.png");
+
+	mapa->quantidade_npc = 2;
+
+	//NPCS (sem quests)
+
+	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	strcpy(mapa->npc[0]->nome, "Taina");
+	strcpy(mapa->npc[0]->nome_item_quest, "None");
+	mapa->npc[0]->npc_quest = false;
+	strcpy(mapa->npc[0]->tag, "Nativo");
+	strcpy(mapa->npc[0]->dialogo[0]->texto, "Nas entranhas da Amazonia, as arvores contam historias antigas. A Paxiuba, uma gigante da floresta, e conhecida por suas fibras resistentes. Os locais usam essas fibras para criar artesanatos e construir suas casas, mostrando que, nas maos da natureza, ate mesmo as arvores tem o poder de unir comunidades.");
+	mapa->npc[0]->dialogo_lido = 0;
+
+	mapa->npc[0]->matriz_position_y = 5;
+	mapa->npc[0]->matriz_position_x = 30;
+
+
+	mapa->npc[1]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	strcpy(mapa->npc[1]->nome, "Ecoema");
+	strcpy(mapa->npc[1]->nome_item_quest, "None");
+	mapa->npc[1]->npc_quest = false;
+	strcpy(mapa->npc[1]->tag, "Nativo");
+	strcpy(mapa->npc[1]->dialogo[0]->texto, "o Cupuacu e a estrela das frutas, uma mistura de chocolate com tropicalidade. Alem do sabor, a semente e usada para criar um oleo especial, e o nosso querido elixir da floresta.");
+	mapa->npc[1]->dialogo_lido = 0;
+
+	mapa->npc[1]->matriz_position_y = 15;
+	mapa->npc[1]->matriz_position_x = 22;
+
+
+
+	for (int i = 0; i < mapa->quantidade_npc; i++) {
+		mapa->matriz[mapa->npc[i]->matriz_position_y][mapa->npc[i]->matriz_position_x] = 2;
+
+		mapa->npc[i]->direcao = 1;
+
+		mapa->npc[i]->image[0] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24 * 3, 16, 16);
+		mapa->npc[i]->image[1] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7, 16, 16);
+		mapa->npc[i]->image[2] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24, 16, 16);
+		mapa->npc[i]->image[3] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24 * 2, 16, 16);
+	}
+
+
 	//item (Andiroba)
 
 	mapa->quantidade_item = 1;

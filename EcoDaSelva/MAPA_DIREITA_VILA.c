@@ -9,6 +9,52 @@ void carregar_mapa_direita_vila(struct al_mapa* mapa)
 {
 	mapa->background = al_load_bitmap("assets/mapa/DireitaVila.png");
 
+
+	mapa->NPC_IMAGES[0] = al_load_bitmap("assets/personagem/npc/Character_001.png");
+	mapa->NPC_IMAGES[1] = al_load_bitmap("assets/personagem/npc/Character_005.png");
+
+	mapa->quantidade_npc = 2;
+
+	//NPCS (sem quests)
+
+	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	strcpy(mapa->npc[0]->nome, "Yara");
+	strcpy(mapa->npc[0]->nome_item_quest, "None");
+	mapa->npc[0]->npc_quest = false;
+	strcpy(mapa->npc[0]->tag, "Nativo");
+	strcpy(mapa->npc[0]->dialogo[0]->texto, "as Pedras de Piata tem um misterio so delas. Me contaram que essas rochas guardam uma energia ancestral, O xama da aldeia usa ela em alguns rituais sagrados.");
+	mapa->npc[0]->dialogo_lido = 0;
+
+	mapa->npc[0]->matriz_position_y = 8;
+	mapa->npc[0]->matriz_position_x = 9;
+
+
+	mapa->npc[1]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	strcpy(mapa->npc[1]->nome, "Ubiratan");
+	strcpy(mapa->npc[1]->nome_item_quest, "None");
+	mapa->npc[1]->npc_quest = false;
+	strcpy(mapa->npc[1]->tag, "Nativo");
+	strcpy(mapa->npc[1]->dialogo[0]->texto, "Na minha tribo, os deuses sao como guias invisiveis da vida.Para nos, Jurupari e o criador que moldou o universo. Sinto essa presenca sagrada na brisa da floresta e nos murmuros do rio.");
+	mapa->npc[1]->dialogo_lido = 0;
+
+	mapa->npc[1]->matriz_position_y = 16;
+	mapa->npc[1]->matriz_position_x = 30;
+
+
+
+	for (int i = 0; i < mapa->quantidade_npc; i++) {
+		mapa->matriz[mapa->npc[i]->matriz_position_y][mapa->npc[i]->matriz_position_x] = 2;
+
+		mapa->npc[i]->direcao = 1;
+
+		mapa->npc[i]->image[0] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24 * 3, 16, 16);
+		mapa->npc[i]->image[1] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7, 16, 16);
+		mapa->npc[i]->image[2] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24, 16, 16);
+		mapa->npc[i]->image[3] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24 * 2, 16, 16);
+	}
+
+
+
 #pragma region Colisoes
 
 	//arvores

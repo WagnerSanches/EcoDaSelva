@@ -10,6 +10,50 @@ void carregar_mapa_direita_floresta_desmatada(struct al_mapa* mapa)
 {
 	mapa->background = al_load_bitmap("assets/mapa/DiretaFlorestaDesmatada.png");
 
+	mapa->NPC_IMAGES[0] = al_load_bitmap("assets/personagem/npc/Character_004.png");
+	mapa->NPC_IMAGES[1] = al_load_bitmap("assets/personagem/npc/Character_005.png");
+
+	mapa->quantidade_npc = 2;
+
+	//NPCS (sem quests)
+
+	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	strcpy(mapa->npc[0]->nome, "Japira");
+	strcpy(mapa->npc[0]->nome_item_quest, "None");
+	mapa->npc[0]->npc_quest = false;
+	strcpy(mapa->npc[0]->tag, "Nativo");
+	strcpy(mapa->npc[0]->dialogo[0]->texto, "Ayahuasca e uma ponte entre o terreno e o espiritual. Nas cerimonias, o xamam nos guia em uma jornada dos buscadores, explorando as profundezas da nossa vasta consciencia.");
+	mapa->npc[0]->dialogo_lido = 0;
+
+	mapa->npc[0]->matriz_position_y = 4;
+	mapa->npc[0]->matriz_position_x = 15;
+
+
+	mapa->npc[1]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	strcpy(mapa->npc[1]->nome, "Itagiba");
+	strcpy(mapa->npc[1]->nome_item_quest, "None");
+	mapa->npc[1]->npc_quest = false;
+	strcpy(mapa->npc[1]->tag, "Nativo");
+	strcpy(mapa->npc[1]->dialogo[0]->texto, "me perdi na selva, sou da tribo, sabe? As arvores ficaram tudo igual, o som ta diferente. To rastreando o caminho mas ta dificil.");
+	mapa->npc[1]->dialogo_lido = 0;
+
+	mapa->npc[1]->matriz_position_y = 17;
+	mapa->npc[1]->matriz_position_x = 21;
+
+
+
+	for (int i = 0; i < mapa->quantidade_npc; i++) {
+		mapa->matriz[mapa->npc[i]->matriz_position_y][mapa->npc[i]->matriz_position_x] = 2;
+
+		mapa->npc[i]->direcao = 1;
+
+		mapa->npc[i]->image[0] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24 * 3, 16, 16);
+		mapa->npc[i]->image[1] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7, 16, 16);
+		mapa->npc[i]->image[2] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24, 16, 16);
+		mapa->npc[i]->image[3] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24 * 2, 16, 16);
+	}
+
+
 	mapa->next_mapa->pra_esquerda = 1;
 	for (int i = 9; i < 15; i++) {
 		mapa->matriz[i][0] = 3;
