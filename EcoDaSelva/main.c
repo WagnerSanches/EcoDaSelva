@@ -50,7 +50,7 @@ int main() {
 	
 	al_reserve_samples(10);
 
-	bool fullscreen = false;
+	bool fullscreen = true;
 
 	if (fullscreen) {
 

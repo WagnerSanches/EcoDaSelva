@@ -14,7 +14,7 @@ void carregar_mapa_esquerda_vila(struct al_mapa* mapa) {
 
 	//NPCS (sem quests)
 
-	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/indio2.jpg");
+	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/indio9.jpg");
 	strcpy(mapa->npc[0]->nome, "Taina");
 	strcpy(mapa->npc[0]->nome_item_quest, "None");
 	mapa->npc[0]->npc_quest = false;

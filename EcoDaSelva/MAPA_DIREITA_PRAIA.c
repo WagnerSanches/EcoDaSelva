@@ -14,7 +14,7 @@ void carregar_mapa_direita_praia(struct al_mapa* mapa) {
 
 	//NPCS (sem quests)
 
-	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/indio8.jpg");
+	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/indio9.jpg");
 	strcpy(mapa->npc[0]->nome, "Ibotira");
 	strcpy(mapa->npc[0]->nome_item_quest, "None");
 	mapa->npc[0]->npc_quest = false;

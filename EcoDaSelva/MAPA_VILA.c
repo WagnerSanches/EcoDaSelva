@@ -40,8 +40,8 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 	mapa->quantidade_npc = 5;
 
 	// Quest latex
-	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
-	strcpy(mapa->npc[0]->nome, "Anajé"); 
+	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/indio10.jpg");
+	strcpy(mapa->npc[0]->nome, "Anaje"); 
 	strcpy(mapa->npc[0]->nome_item_quest, "Latex");
 	mapa->npc[0]->npc_quest = true;
 	strcpy(mapa->npc[0]->tag, "Familia");
@@ -50,13 +50,13 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 	strcpy(mapa->npc[0]->dialogo[2]->texto, "Quando eu era crianca minha mae me pediu para se afastar dele, pois ele era venenso.");
 	mapa->npc[0]->dialogo_lido = 0;
 
-	mapa->npc[0]->matriz_position_y = 8; 
-	mapa->npc[0]->matriz_position_x = 12;
+	mapa->npc[0]->matriz_position_y = 7; 
+	mapa->npc[0]->matriz_position_x = 11;
 
 	// Quest arara
 
 	mapa->npc[1]->foto = al_load_bitmap("assets/personagem/npc/foto/indio1.jpg");
-	strcpy(mapa->npc[1]->nome, "Aimoré");
+	strcpy(mapa->npc[1]->nome, "Aimore");
 	strcpy(mapa->npc[1]->nome_item_quest, "Buriti");
 	mapa->npc[1]->npc_quest = true; 
 	strcpy(mapa->npc[1]->tag, "Genero");
@@ -71,10 +71,9 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 	//Npcs (sem quest)
 
 	mapa->npc[2]->foto = al_load_bitmap("assets/personagem/npc/foto/indio3.jpg");
-	strcpy(mapa->npc[2]->nome, "Araxá");
+	strcpy(mapa->npc[2]->nome, "Araxa");
 	strcpy(mapa->npc[2]->nome_item_quest, "None");
 	mapa->npc[2]->npc_quest = false;
-	strcpy(mapa->npc[2]->tag, "Nativo");
 	strcpy(mapa->npc[2]->dialogo[0]->texto, "Na aldeia dos Guajajara, os bichos - preguica sao tipo os reis da soneca.Eles penduram nas arvores numa boa, trocando segredos preguicosos e ensinando que as vezes, e bacana tirar um cochilo e curtir a brisa da floresta.");
 	mapa->npc[2]->dialogo_lido = 0;
 
@@ -82,7 +81,7 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 	mapa->npc[2]->matriz_position_x = 30;
 
 
-	mapa->npc[3]->foto = al_load_bitmap("assets/personagem/npc/foto/indio5.jpg");
+	mapa->npc[3]->foto = al_load_bitmap("assets/personagem/npc/foto/Indio17.jpg");
 	strcpy(mapa->npc[3]->nome, "Anhanguera");
 	strcpy(mapa->npc[3]->nome_item_quest, "None");
 	mapa->npc[3]->npc_quest = false;
@@ -370,4 +369,7 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 	mapa->matriz[(WINDOW_SIZE_PIXEL_Y / 2) - 1][23] = 1;
 
 	//teste
+
+	mapa->matriz[17][3] = 1;
+
 }
