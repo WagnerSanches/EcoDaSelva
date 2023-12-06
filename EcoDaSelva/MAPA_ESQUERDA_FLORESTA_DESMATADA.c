@@ -14,7 +14,7 @@ void carregar_mapa_esquerda_floresta_desmatada(struct al_mapa* mapa) {
 
 	//NPCS (sem quests)
 
-	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/indio3.jpg");
 	strcpy(mapa->npc[0]->nome, "Taina");
 	strcpy(mapa->npc[0]->nome_item_quest, "None");
 	mapa->npc[0]->npc_quest = false;
@@ -26,7 +26,7 @@ void carregar_mapa_esquerda_floresta_desmatada(struct al_mapa* mapa) {
 	mapa->npc[0]->matriz_position_x = 30;
 
 
-	mapa->npc[1]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	mapa->npc[1]->foto = al_load_bitmap("assets/personagem/npc/foto/indio9.jpg");
 	strcpy(mapa->npc[1]->nome, "Ecoema");
 	strcpy(mapa->npc[1]->nome_item_quest, "None");
 	mapa->npc[1]->npc_quest = false;
