@@ -7,7 +7,6 @@
 void desenhar_pausa(struct Pausa* pausa) {
 
 	int font_size = 18;
-	ALLEGRO_BITMAP* font18 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", font_size, 0);
 
 	al_draw_filled_rectangle(
 		0,
@@ -82,7 +81,7 @@ void desenhar_pausa(struct Pausa* pausa) {
 
 		int y_button_text = y_button_initial + (font_size / 4);
 		al_draw_text(
-			font18,
+			pausa->font18,
 			al_map_rgb(255, 255, 255),
 			meio_tela,
 			y_button_text,
@@ -92,5 +91,4 @@ void desenhar_pausa(struct Pausa* pausa) {
 
 	}
 
-	al_destroy_font(font18);
 }

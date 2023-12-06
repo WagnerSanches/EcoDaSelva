@@ -113,13 +113,12 @@ void desenhar_box(struct Fichario* fichario, struct Player* player) {
 		y_pgone_line += space_line;
 	}
 
-	ALLEGRO_FONT* font = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 18, 0);
 	char* text = "voce precisa coletar informacoes sobre um animal desconhecido para sua producao cientifica, atualmente este animal nao possui classificacoes sobre sua natureza feitas por voce,  interaja com os nativos e os ajudem em suas tarefas diarias para obter as informacoes necessarias para sua pesquisa.";
 	int x_text = x_pgone_line_i + (PIXEL_SIZE / 2);
 	int y_text = y_paper_i + (PIXEL_SIZE ) + (PIXEL_SIZE * 2) + 10;
 	int size_text = PIXEL_SIZE * 13;
 	al_draw_multiline_text(
-		font,
+		fichario->posicoes->font,
 		al_map_rgb(50, 62, 168),
 		x_text,
 		y_text,
@@ -129,7 +128,7 @@ void desenhar_box(struct Fichario* fichario, struct Player* player) {
 		text
 	);
 	al_draw_multiline_text(
-		font,
+		fichario->posicoes->font,
 		al_map_rgb(191, 122, 33),
 		x_text,
 		y_text + PIXEL_SIZE * 10,
@@ -143,13 +142,11 @@ void desenhar_box(struct Fichario* fichario, struct Player* player) {
 	int middle_pgtwo = (x_pgtwo_i + x_pgtwo_f) / 2;
 	int size_image = PIXEL_SIZE * 5;
 
-
-	ALLEGRO_BITMAP* arrow = al_load_bitmap("assets/jogo/arrow.png");
 	int x_photo_arrow = x_pgtwo_line_i + (PIXEL_SIZE / 2);
 	int y_photo_arrow = y_paper_i + (PIXEL_SIZE * 2) + 10;;
 
 	al_draw_text( 
-		font, 
+		fichario->posicoes->font,
 		al_map_rgb(50, 62, 168), 
 		x_photo_arrow, 
 		y_photo_arrow,
@@ -158,7 +155,7 @@ void desenhar_box(struct Fichario* fichario, struct Player* player) {
 	); 
 
 	al_draw_text( 
-		font, 
+		fichario->posicoes->font,
 		al_map_rgb(50, 62, 168), 
 		x_photo_arrow,
 		y_photo_arrow + PIXEL_SIZE, 
@@ -166,7 +163,7 @@ void desenhar_box(struct Fichario* fichario, struct Player* player) {
 		" do animal"
 	);
 
-	al_draw_bitmap(arrow, x_photo_arrow + PIXEL_SIZE * 2, y_photo_arrow + PIXEL_SIZE + 10 , 0);
+	al_draw_bitmap(fichario->posicoes->arrow, x_photo_arrow + PIXEL_SIZE * 2, y_photo_arrow + PIXEL_SIZE + 10 , 0);
 
 	int x_image_i = PIXEL_SIZE * 3 + middle_pgtwo - (size_image / 2);
 	int y_image_i = y_paper_i + (PIXEL_SIZE * 2) + 10;
@@ -196,9 +193,7 @@ void desenhar_box(struct Fichario* fichario, struct Player* player) {
 		al_map_rgb(0, 0, 0)
 	);
 
-	ALLEGRO_BITMAP* animal = al_load_bitmap("assets/jogo/animal.jpg");
-	ALLEGRO_BITMAP* resize = al_create_sub_bitmap(animal, PIXEL_SIZE * 8.5, PIXEL_SIZE * 4, size_image_in + PIXEL_SIZE / 2, size_image_in);
-	al_draw_bitmap(resize, x_image_in_i, y_image_in_i, 0);
+	al_draw_bitmap(fichario->posicoes->resize, x_image_in_i, y_image_in_i, 0);
 
 
 	int x_size_tape = PIXEL_SIZE / 2;
@@ -278,7 +273,7 @@ void desenhar_box(struct Fichario* fichario, struct Player* player) {
 
 		for (int i = 0; i < 7; i++) {
 			al_draw_text(
-				font,
+				fichario->posicoes->font,
 				al_map_rgb(50, 62, 168),
 				x_category,
 				y_category,
@@ -299,7 +294,7 @@ void desenhar_box(struct Fichario* fichario, struct Player* player) {
 		y_category = y_paper_i + (PIXEL_SIZE * 7) + (PIXEL_SIZE * 2) + 10;
 		for (int i = 0; i < 3; i++) {
 			al_draw_text(
-				font,
+				fichario->posicoes->font,
 				cores[i],
 				x_category,
 				y_category,
@@ -313,7 +308,7 @@ void desenhar_box(struct Fichario* fichario, struct Player* player) {
 		y_category = y_paper_i + (PIXEL_SIZE * 10) + (PIXEL_SIZE * 2) + 10;
 		for (int i = 0; i < 4; i++) {
 			al_draw_text(
-				font,
+				fichario->posicoes->font,
 				strcmp(player->respostas[i]->grupo, "Nao classificado") == 0 ? al_map_rgb(0, 0, 0) : cores[i + 3],
 				x_category,
 				y_category,
@@ -337,7 +332,7 @@ void desenhar_box(struct Fichario* fichario, struct Player* player) {
 			int y_final = y_paper_i + (PIXEL_SIZE * 15) + (PIXEL_SIZE * 2) + 8;
 
 			al_draw_text(
-				font,
+				fichario->posicoes->font,
 				al_map_rgb(50, 62, 168),
 				x_final,
 				y_final,
@@ -374,9 +369,4 @@ void desenhar_box(struct Fichario* fichario, struct Player* player) {
 	//fichario->posicoes->x_subbox_final = x_box_line_final;
 	//fichario->posicoes->y_subbox_final = y_box_final - fichario->posicoes->espacamento_fichario_dentro;
 	////al_draw_filled_rectangle(x_subbox_initial, y_subbox_initial, x_subbox_final, y_subbox_final, al_map_rgb(67, 161, 53));
-
-	al_destroy_font(font);
-	al_destroy_bitmap(arrow);
-	al_destroy_bitmap(animal);
-	al_destroy_bitmap(resize);
 }

@@ -1,3 +1,7 @@
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_color.h>
+#include <allegro5/allegro_font.h>
+
 #ifndef POSICOES_BOX_H
 #define POSICOES_BOX_H
 
@@ -21,6 +25,13 @@ struct Posicoes_fichario_box {
 	int y_subbox_final;
 
 	int x_subbox_info_final;
+
+	ALLEGRO_FONT* font;
+	ALLEGRO_BITMAP* arrow;
+
+	ALLEGRO_BITMAP* animal;
+	ALLEGRO_BITMAP* resize;
+
 };
 
 #endif

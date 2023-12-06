@@ -29,6 +29,16 @@ void evento_final_key_precionada(struct Player* player, struct Pausa* pausa, int
 			pausa->encerrar = true;
 		}
 
+		al_destroy_bitmap(player->finalItems->background);
+		al_destroy_bitmap(player->finalItems->animal);
+		al_destroy_bitmap(player->finalItems->resize);
+		al_destroy_font(player->finalItems->font_points);
+		al_destroy_font(player->finalItems->font_categoria);
+		al_destroy_font(player->finalItems->sub_tittle_animal);
+		al_destroy_font(player->finalItems->tittle_animal);
+
+		free(player->finalItems);
+		
 		break;
 	}
 }

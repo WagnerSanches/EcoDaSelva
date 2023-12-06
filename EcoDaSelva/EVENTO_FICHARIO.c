@@ -18,9 +18,7 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
 
 			if (fichario->todas_respostas_selecionadas) {
 				if (fichario->selecao->classe <= -1) {
-					
 					fichario->selecao->classe = NUMBER_OF_CLASSES;
-				
 				}
 			}
 			else {
@@ -108,6 +106,7 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
 
 					fichario->selecao->grupo_selecionado = false;
 					fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->mostrar_opcoes = false;
+					fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada = 0;
 					fichario->selecao->grupo = 0;
 
 					if (strcmp(player->respostas[0]->grupo, "Nao classificado") != 0 &&
@@ -129,6 +128,19 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
 				if (fichario->selecao->classe == 4) {
 					player->finalizou_jogo = true;
 					player->status = FINAL;
+
+					player->finalItems = malloc(sizeof(struct Final));
+
+					if (player->finalItems == NULL) return;
+
+					player->finalItems->background = al_load_bitmap("assets/jogo/FinalBackground.jpg");
+					player->finalItems->sub_tittle_animal = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 16, 0);
+					player->finalItems->animal = al_load_bitmap("assets/jogo/animal.jpg");
+					player->finalItems->resize = al_create_sub_bitmap(player->finalItems->animal, PIXEL_SIZE * 6.5, PIXEL_SIZE * 5, PIXEL_SIZE * 5, PIXEL_SIZE * 5);
+					player->finalItems->tittle_animal = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 22, 0);
+					player->finalItems->font_categoria = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 16, 0);
+					player->finalItems->font_points = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 30, 0);
+
 				}
 			}
 			fichario->selecao->grupo_selecionado = true;
@@ -152,6 +164,8 @@ void evento_fichario_key_precionada(struct Player* player, struct Fichario* fich
 			if (fichario->ajudante->ajudou == true) {
 				if (fichario->selecao->grupo_selecionado) {
 					fichario->selecao->grupo_selecionado = false;
+					fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante->opcao_selecionada = 0;
+					fichario->selecao->grupo = 0;
 				}
 				else {
 					fichario->status = FECHAR_FICHARIO;

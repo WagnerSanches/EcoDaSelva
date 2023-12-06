@@ -1,6 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include <allegro5/allegro5.h>
+#include <allegro5/allegro_font.h>
 #include <FICHARIO.h>
 
 enum Status {
@@ -20,6 +21,23 @@ struct Menu {
 	bool encerrar;
 	int opcao;
 	ALLEGRO_BITMAP* background;
+
+	int font_size;
+	ALLEGRO_FONT* menu22;
+
+	ALLEGRO_BITMAP* logo;
+	ALLEGRO_BITMAP* information;
+
+};
+
+struct Final {
+	ALLEGRO_BITMAP* background;// = al_load_bitmap("assets/jogo/FinalBackground.jpg");
+	ALLEGRO_FONT* sub_tittle_animal; // = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 16, 0);
+	ALLEGRO_BITMAP* animal;// = al_load_bitmap("assets/jogo/animal.jpg");
+	ALLEGRO_BITMAP* resize;// = al_create_sub_bitmap(animal, PIXEL_SIZE * 6.5, PIXEL_SIZE * 5, img_animal_size, img_animal_size);
+	ALLEGRO_FONT* tittle_animal;// = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", font_size_tittle_animal, 0);
+	ALLEGRO_FONT* font_categoria;// = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", font_size_categoria, 0);
+	ALLEGRO_FONT* font_points;// = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", font_size_points, 0);
 };
 
 struct Resposta {
@@ -73,6 +91,9 @@ struct Player {
 
 	bool finalizou_jogo;
 	int opcao_final_jogo;
+
+	struct Final* finalItems;
+
 };
 
 void init_player(struct Player* player);

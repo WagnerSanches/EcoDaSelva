@@ -1,3 +1,5 @@
+#include <allegro5/allegro5.h>
+
 #ifndef PAUSA_H
 #define PAUSA_H
 
@@ -8,6 +10,7 @@ struct Pausa {
 	bool pausado;
 	bool encerrar;
 	bool reiniciar;
+	ALLEGRO_BITMAP* font18;
 };
 
 #endif
