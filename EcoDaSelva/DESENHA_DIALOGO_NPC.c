@@ -96,27 +96,29 @@ void desenhar_caixa_dialogo(struct Player* player, struct al_mapa* mapa) {
 		mapa->npc[indice_bot]->nome
 	);
 
-	int x_dialogue_box_tag_initial = x_dialogue_box_name_final + PIXEL_SIZE;
-	int x_dialogue_box_tag_final = x_dialogue_box_tag_initial + (size_dialogue_box_name / 2);
+	if (mapa->npc[indice_bot]->tag != NULL && strlen(mapa->npc[indice_bot]->tag) != 0) {
+		int x_dialogue_box_tag_initial = x_dialogue_box_name_final + PIXEL_SIZE;
+		int x_dialogue_box_tag_final = x_dialogue_box_tag_initial + (size_dialogue_box_name / 2);
 
-	al_draw_filled_rectangle( 
-		x_dialogue_box_tag_initial, 
-		y_dialogue_box_name_initial, 
-		x_dialogue_box_tag_final, 
-		y_dialogue_box_name_final, 
-		al_map_rgb(109, 50, 168)
-	);
+		al_draw_filled_rectangle( 
+			x_dialogue_box_tag_initial, 
+			y_dialogue_box_name_initial, 
+			x_dialogue_box_tag_final, 
+			y_dialogue_box_name_final, 
+			al_map_rgb(109, 50, 168)
+		);
 
-	int x_dialogue_tag = x_dialogue_box_tag_initial + (size_dialogue_box_name / 2) / 2;
+		int x_dialogue_tag = x_dialogue_box_tag_initial + (size_dialogue_box_name / 2) / 2;
 
-	al_draw_text(
-		dialogue_font,
-		al_map_rgb(255, 255, 255), 
-		x_dialogue_tag,
-		y_dialogue_name, 
-		ALLEGRO_ALIGN_CENTER, 
-		mapa->npc[indice_bot]->tag
-	); 
+		al_draw_text(
+			dialogue_font,
+			al_map_rgb(255, 255, 255), 
+			x_dialogue_tag,
+			y_dialogue_name, 
+			ALLEGRO_ALIGN_CENTER, 
+			mapa->npc[indice_bot]->tag
+		); 
+	}
 
 	int x_dialogue_text = x_dialogue_box_initial + inner_dialogue_spacing * 2;
 	int y_dialogue_text = y_dialogue_box_initial + inner_dialogue_spacing + 16;
