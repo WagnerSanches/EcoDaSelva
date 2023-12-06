@@ -21,7 +21,7 @@ void carregar_mapa_direita_floresta_desmatada(struct al_mapa* mapa)
 	strcpy(mapa->npc[0]->nome, "Japira");
 	strcpy(mapa->npc[0]->nome_item_quest, "None");
 	mapa->npc[0]->npc_quest = false;
-	strcpy(mapa->npc[0]->tag, "Nativo");
+	strcpy(mapa->npc[0]->tag, "");
 	strcpy(mapa->npc[0]->dialogo[0]->texto, "Ayahuasca e uma ponte entre o terreno e o espiritual. Nas cerimonias, o xamam nos guia em uma jornada dos buscadores, explorando as profundezas da nossa vasta consciencia.");
 	mapa->npc[0]->dialogo_lido = 0;
 
@@ -33,7 +33,7 @@ void carregar_mapa_direita_floresta_desmatada(struct al_mapa* mapa)
 	strcpy(mapa->npc[1]->nome, "Itagiba");
 	strcpy(mapa->npc[1]->nome_item_quest, "None");
 	mapa->npc[1]->npc_quest = false;
-	strcpy(mapa->npc[1]->tag, "Nativo");
+	strcpy(mapa->npc[1]->tag, "");
 	strcpy(mapa->npc[1]->dialogo[0]->texto, "me perdi na selva, sou da tribo, sabe? As arvores ficaram tudo igual, o som ta diferente. To rastreando o caminho mas ta dificil.");
 	mapa->npc[1]->dialogo_lido = 0;
 

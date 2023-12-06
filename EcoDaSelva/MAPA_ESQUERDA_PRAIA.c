@@ -22,7 +22,7 @@ void carregar_mapa_esquerda_praia(struct al_mapa* mapa) {
 	// Quest Andiroba
 
 	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/indio2.jpg");
-	strcpy(mapa->npc[0]->nome, "Aimberê");
+	strcpy(mapa->npc[0]->nome, "Aimbere");
 	strcpy(mapa->npc[0]->nome_item_quest, "Andiroba");
 	mapa->npc[0]->npc_quest = true;
 	strcpy(mapa->npc[0]->tag, "Especie");
@@ -38,7 +38,7 @@ void carregar_mapa_esquerda_praia(struct al_mapa* mapa) {
 	//NPCS (sem quest)
 
 	mapa->npc[1]->foto = al_load_bitmap("assets/personagem/npc/foto/Indio17.jpg");
-	strcpy(mapa->npc[1]->nome, "Araxá");
+	strcpy(mapa->npc[1]->nome, "Araxa");
 	strcpy(mapa->npc[1]->nome_item_quest, "None");
 	mapa->npc[1]->npc_quest = false;
 	strcpy(mapa->npc[1]->tag, "Nativo");

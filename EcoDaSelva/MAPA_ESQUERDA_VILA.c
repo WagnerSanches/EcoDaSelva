@@ -18,7 +18,7 @@ void carregar_mapa_esquerda_vila(struct al_mapa* mapa) {
 	strcpy(mapa->npc[0]->nome, "Taina");
 	strcpy(mapa->npc[0]->nome_item_quest, "None");
 	mapa->npc[0]->npc_quest = false;
-	strcpy(mapa->npc[0]->tag, "Nativo");
+	strcpy(mapa->npc[0]->tag, "");
 	strcpy(mapa->npc[0]->dialogo[0]->texto, "o Cogumelo Maraca, e como descobrir um tesouro luminescente. Respeito esses presentes da floresta, sabendo que cada cogumelo traz consigo a magia dos espiritos da natureza.");
 	mapa->npc[0]->dialogo_lido = 0;
 

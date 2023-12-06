@@ -18,7 +18,7 @@ void carregar_mapa_esquerda_floresta_desmatada(struct al_mapa* mapa) {
 	strcpy(mapa->npc[0]->nome, "Taina");
 	strcpy(mapa->npc[0]->nome_item_quest, "None");
 	mapa->npc[0]->npc_quest = false;
-	strcpy(mapa->npc[0]->tag, "Nativo");
+	strcpy(mapa->npc[0]->tag, "");
 	strcpy(mapa->npc[0]->dialogo[0]->texto, "Nas entranhas da Amazonia, as arvores contam historias antigas. A Paxiuba, uma gigante da floresta, e conhecida por suas fibras resistentes. Os locais usam essas fibras para criar artesanatos e construir suas casas, mostrando que, nas maos da natureza, ate mesmo as arvores tem o poder de unir comunidades.");
 	mapa->npc[0]->dialogo_lido = 0;
 
@@ -30,7 +30,7 @@ void carregar_mapa_esquerda_floresta_desmatada(struct al_mapa* mapa) {
 	strcpy(mapa->npc[1]->nome, "Ecoema");
 	strcpy(mapa->npc[1]->nome_item_quest, "None");
 	mapa->npc[1]->npc_quest = false;
-	strcpy(mapa->npc[1]->tag, "Nativo");
+	strcpy(mapa->npc[1]->tag, "");
 	strcpy(mapa->npc[1]->dialogo[0]->texto, "o Cupuacu e a estrela das frutas, uma mistura de chocolate com tropicalidade. Alem do sabor, a semente e usada para criar um oleo especial, e o nosso querido elixir da floresta.");
 	mapa->npc[1]->dialogo_lido = 0;
 

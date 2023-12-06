@@ -21,7 +21,7 @@ void carregar_mapa_direita_vila(struct al_mapa* mapa)
 	strcpy(mapa->npc[0]->nome, "Yara");
 	strcpy(mapa->npc[0]->nome_item_quest, "None");
 	mapa->npc[0]->npc_quest = false;
-	strcpy(mapa->npc[0]->tag, "Nativo");
+	strcpy(mapa->npc[0]->tag, "");
 	strcpy(mapa->npc[0]->dialogo[0]->texto, "as Pedras de Piata tem um misterio so delas. Me contaram que essas rochas guardam uma energia ancestral, O xama da aldeia usa ela em alguns rituais sagrados.");
 	mapa->npc[0]->dialogo_lido = 0;
 
@@ -33,7 +33,7 @@ void carregar_mapa_direita_vila(struct al_mapa* mapa)
 	strcpy(mapa->npc[1]->nome, "Ubiratan");
 	strcpy(mapa->npc[1]->nome_item_quest, "None");
 	mapa->npc[1]->npc_quest = false;
-	strcpy(mapa->npc[1]->tag, "Nativo");
+	strcpy(mapa->npc[1]->tag, "");
 	strcpy(mapa->npc[1]->dialogo[0]->texto, "Na minha tribo, os deuses sao como guias invisiveis da vida.Para nos, Jurupari e o criador que moldou o universo. Sinto essa presenca sagrada na brisa da floresta e nos murmuros do rio.");
 	mapa->npc[1]->dialogo_lido = 0;
 

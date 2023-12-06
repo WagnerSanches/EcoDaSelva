@@ -18,7 +18,7 @@ void carregar_mapa_direita_praia(struct al_mapa* mapa) {
 	strcpy(mapa->npc[0]->nome, "Ibotira");
 	strcpy(mapa->npc[0]->nome_item_quest, "None");
 	mapa->npc[0]->npc_quest = false;
-	strcpy(mapa->npc[0]->tag, "Nativo");
+	strcpy(mapa->npc[0]->tag, "");
 	strcpy(mapa->npc[0]->dialogo[0]->texto, "O Rio Amazonas, gigante das aguas, esconde misterios fascinantes. Nos indigenas dizemos que suas aguas carregam nao apenas nutrientes, mas tambem historias ancestrais");
 	mapa->npc[0]->dialogo_lido = 0;
 
@@ -30,7 +30,7 @@ void carregar_mapa_direita_praia(struct al_mapa* mapa) {
 	strcpy(mapa->npc[1]->nome, "Nina");
 	strcpy(mapa->npc[1]->nome_item_quest, "None");
 	mapa->npc[1]->npc_quest = false;
-	strcpy(mapa->npc[1]->tag, "Nativo");
+	strcpy(mapa->npc[1]->tag, "");
 	strcpy(mapa->npc[1]->dialogo[0]->texto, "Na minha tribo, o Tacaca e um espetaculo de sabores. Originado da amazonia, essa sopa quente, feita com tucupi, goma de tapioca e camaroes, e um verdadeiro banquete.");
 	mapa->npc[1]->dialogo_lido = 0;
 
