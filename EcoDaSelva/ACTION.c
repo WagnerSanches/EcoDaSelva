@@ -48,6 +48,9 @@ void interagir(struct Player* player, struct al_mapa* mapa) {
 				player->status = PARADO;
 			}
 		}
+		else {
+			player->indice_objeto_interacao = 0;
+		}
 
 		player->status = CONVERSANDO;
 	}

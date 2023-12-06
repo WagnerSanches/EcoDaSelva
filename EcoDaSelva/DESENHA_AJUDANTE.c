@@ -3,8 +3,9 @@
 #include <allegro5/allegro5.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_font.h>
+#include <DIALOGO_CONFIG.h>
 
-void desenhar_ajudante(struct Ajudante* ajudante) {
+void desenhar_ajudante(struct Ajudante* ajudante, struct DialogoConfig* dialogoConfig) {
 
 	al_draw_filled_rectangle(
 		0,
@@ -14,12 +15,8 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 		al_map_rgba_f(0, 0, 0, 0.5)
 	);
 
-	int dialogue_text_size = 18;
-	ALLEGRO_FONT* dialogue16 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", dialogue_text_size, 0);
-	ALLEGRO_BITMAP* imagem_doutura = al_load_bitmap("assets/personagem/ajudante/doutora_resize.jpg");
-
 	int meio_tela = (WINDOW_SIZE_PIXEL_X * PIXEL_SIZE) / 2;
-	int spacing_between_text = dialogue_text_size + 10;
+	int spacing_between_text = dialogoConfig->dialogue_text_size + 10;
 
 	int spacing = 4;
 	if (ajudante->opcao)
@@ -50,7 +47,7 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 	int x_dialogue_box_name_initial = x_dialogue_box_initial + inner_dialogue_spacing - PIXEL_SIZE / 2;
 	int y_dialogue_box_name_initial = y_dialogue_box_initial - PIXEL_SIZE / 4;
 	int x_dialogue_box_name_final = x_dialogue_box_name_initial + size_dialogue_box_name;
-	int y_dialogue_box_name_final = y_dialogue_box_name_initial + 8 + dialogue_text_size;
+	int y_dialogue_box_name_final = y_dialogue_box_name_initial + 8 + dialogoConfig->dialogue_text_size;
 
 	al_draw_filled_rectangle(
 		x_dialogue_box_name_initial,
@@ -64,7 +61,7 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 	int y_dialogue_name = y_dialogue_box_name_initial + 4;
 
 	al_draw_text(
-		dialogue16,
+		dialogoConfig->dialogue16,
 		al_map_rgb(255, 255, 255),
 		x_dialogue_name,
 		y_dialogue_name,
@@ -77,7 +74,7 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 	int x_dialogue_text_final = dialogue_box_size - inner_dialogue_spacing * 5;
 
 	al_draw_multiline_text(
-		dialogue16,
+		dialogoConfig->dialogue16,
 		al_map_rgb(0, 0, 0),
 		x_dialogue_text,
 		y_dialogue_text,
@@ -93,7 +90,7 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 	int y_image_dialogue_initial = y_dialogue_box_initial + PIXEL_SIZE / 2;
 
 	al_draw_bitmap(
-		imagem_doutura,
+		dialogoConfig->imagem_doutura,
 		x_image_dialogue_initial,
 		y_image_dialogue_initial,
 		0
@@ -122,14 +119,14 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 
 
 		int selecionado = ajudante->opcao_selecionada;
-		int raio = dialogue_text_size / 2;
+		int raio = dialogoConfig->dialogue_text_size / 2;
 		int x_press_key_circle = x_dialogue_box_initial + inner_dialogue_spacing * 3;
 		int y_press_key_circle = y_dialogue_box_final + raio - (inner_dialogue_spacing * 3);
 
 		if (ajudante->tipo_pergunta == PERGUNTA_INFORMACAO) {
 			int y_press_key_question = y_press_key_circle - PIXEL_SIZE - PIXEL_SIZE / 4;
 			al_draw_text(
-				dialogue16,
+				dialogoConfig->dialogue16,
 				al_map_rgb(0, 0, 0),
 				x_press_key_circle - raio * 2,
 				y_press_key_question,
@@ -140,7 +137,7 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 		else {
 			int y_press_key_question = y_press_key_circle - PIXEL_SIZE - PIXEL_SIZE / 4;
 			al_draw_text(
-				dialogue16,
+				dialogoConfig->dialogue16,
 				al_map_rgb(0, 0, 0),
 				x_press_key_circle - raio * 2,
 				y_press_key_question,
@@ -156,10 +153,10 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 			selecionado == 0 ? al_map_rgb(255, 161, 0) : al_map_rgb(180, 180, 180)
 		);
 
-		int x_press_key_text = x_press_key_circle + dialogue_text_size;
+		int x_press_key_text = x_press_key_circle + dialogoConfig->dialogue_text_size;
 		int y_press_key_text = y_press_key_circle - raio;
 		al_draw_text(
-			dialogue16,
+			dialogoConfig->dialogue16,
 			selecionado == 0 ? al_map_rgb(255, 161, 0) : al_map_rgb(180, 180, 180),
 			x_press_key_text,
 			y_press_key_text,
@@ -167,7 +164,7 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 			"Sim."
 		);
 
-		int y_press_key_circle_2 = y_press_key_circle + dialogue_text_size * 2;
+		int y_press_key_circle_2 = y_press_key_circle + dialogoConfig->dialogue_text_size * 2;
 		al_draw_filled_circle(
 			x_press_key_circle,
 			y_press_key_circle_2,
@@ -177,7 +174,7 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 
 		int y_press_key_text_2 = y_press_key_circle_2 - raio;
 		al_draw_text(
-			dialogue16,
+			dialogoConfig->dialogue16,
 			selecionado == 1 ? al_map_rgb(255, 161, 0) : al_map_rgb(180, 180, 180),
 			x_press_key_text,
 			y_press_key_text_2,
@@ -203,7 +200,4 @@ void desenhar_ajudante(struct Ajudante* ajudante) {
 		al_destroy_font(dialogue15);
 	}
 
-
-	al_destroy_bitmap(imagem_doutura);
-	al_destroy_font(dialogue16);
 }

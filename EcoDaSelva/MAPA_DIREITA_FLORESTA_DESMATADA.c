@@ -195,9 +195,6 @@ void carregar_mapa_direita_floresta_desmatada(struct al_mapa* mapa)
 	mapa->matriz[21][24] = 1;
 	mapa->matriz[9][2] = 1;
 
-
-
-
 	mapa->quantidade_item = 1;
 
 	strcpy(mapa->item[0]->nome, "Latex");

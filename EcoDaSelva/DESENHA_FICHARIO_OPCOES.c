@@ -10,8 +10,9 @@
 #include <FICHARIO.h>
 #include <AJUDANTE.h>
 #include <DESENHA_AJUDANTE.H>
+#include <DIALOGO_CONFIG.h>
 
-void desenhar_opcoes(struct Fichario* fichario) {
+void desenhar_opcoes(struct Fichario* fichario, struct DialogoConfig* dialogoConfig) {
 	/* INICIO OPCOES */
 
 	int x_subbox_options_initial = fichario->posicoes->x_subbox_info_final;
@@ -122,7 +123,7 @@ void desenhar_opcoes(struct Fichario* fichario) {
 		}
 
 		if (fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->mostrar_opcoes) {
-			desenhar_ajudante(fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante);
+			desenhar_ajudante(fichario->classe[fichario->selecao->classe]->groupo[fichario->selecao->grupo]->ajudante, dialogoConfig);
 		}
 
 	}

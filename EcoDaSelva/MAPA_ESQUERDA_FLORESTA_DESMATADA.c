@@ -71,7 +71,7 @@ void carregar_mapa_esquerda_floresta_desmatada(struct al_mapa* mapa) {
 
 
 
-#pragma region Colis�es
+#pragma region Colisoes
 
 	//arvores
 

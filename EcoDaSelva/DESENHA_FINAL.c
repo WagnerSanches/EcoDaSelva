@@ -21,7 +21,6 @@
 #include <DESENHA_PAUSA.h>
 
 void desenhar_final(struct Player* player) {
-
 	
 	al_draw_bitmap(player->finalItems->background, 0, 0, 0);
 
