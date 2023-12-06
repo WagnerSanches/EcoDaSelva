@@ -163,6 +163,11 @@ void carregar_mapa_direita_floresta_desmatada(struct al_mapa* mapa)
 			mapa->matriz[i][j] = 1;
 	}
 
+	for (int i = 5; i < 6; i++) {
+		for (int j = 31; j < 33; j++)
+			mapa->matriz[i][j] = 1;
+	}
+
 
 	//moita
 	mapa->matriz[4][WINDOW_SIZE_PIXEL_X - 10] = 1;
@@ -196,9 +201,9 @@ void carregar_mapa_direita_floresta_desmatada(struct al_mapa* mapa)
 	mapa->quantidade_item = 1;
 
 	strcpy(mapa->item[0]->nome, "Latex");
-	mapa->item[0]->matriz_position_x = 25;
-	mapa->item[0]->matriz_position_y = 6;
-	mapa->item[0]->image = al_load_bitmap("assets/objeto/arvore/seringueira.png");
+	mapa->item[0]->matriz_position_x = 32;
+	mapa->item[0]->matriz_position_y = 7;
+	mapa->item[0]->image = al_load_bitmap("assets/objeto/barril/Barril.png");
 	mapa->item[0]->item_missao = true;
 	mapa->item[0]->ajudante->quantiade_imagem = 0;
 	mapa->item[0]->ajudante->opcao = true;
@@ -207,6 +212,6 @@ void carregar_mapa_direita_floresta_desmatada(struct al_mapa* mapa)
 	strcpy(mapa->item[0]->ajudante->texto, "Voce encontrou  Latex. O latex e uma seiva leitosa que e usada para porducao de borracha, e utilizada na frabricacao de luva e artigs medicos, bolas e brinquedos, produtos elasticos e muito mais. Ela normalmente e encontrada nas seringueiras que sao muito comuns na regiao do Amazonas.");
 
 	for (int i = 0; i < mapa->quantidade_item; i++)
-		mapa->matriz[mapa->item[i]->matriz_position_y][mapa->item[i]->matriz_position_x] = 5;
+		mapa->matriz[mapa->item[i]->matriz_position_y - 1][mapa->item[i]->matriz_position_x - 1] = 5;
 
 }
