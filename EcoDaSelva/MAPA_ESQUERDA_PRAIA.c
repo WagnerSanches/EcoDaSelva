@@ -27,7 +27,7 @@ void carregar_mapa_esquerda_praia(struct al_mapa* mapa) {
 	mapa->npc[0]->npc_quest = true;
 	strcpy(mapa->npc[0]->tag, "Especie");
 	strcpy(mapa->npc[0]->dialogo[0]->texto, "Oi explorador, nossa ainda bem que voce esta aqui. Minha filha se cortou com um galho e infelizmente acabou o nosso remedio.");
-	strcpy(mapa->npc[0]->dialogo[1]->texto, "Sera que voce poderia pegar sementes da arvore Andiroba ? Elas sao laranjas e normalmente ficam norte a esquerda da vila. Rapido! Ela esta com dor.");
+	strcpy(mapa->npc[0]->dialogo[1]->texto, "Sera que voce poderia pegar sementes da arvore Andiroba ? Elas sao laranjas e normalmente ficam ao norte a esquerda da vila. Rapido! Ela esta com dor.");
 	strcpy(mapa->npc[0]->dialogo[2]->texto, "Enquanto estava na Colombia conversei com um povo indegena e eles falaram que cacava esse animal por la.");
 	mapa->npc[0]->dialogo_lido = 0;
 
@@ -61,7 +61,7 @@ void carregar_mapa_esquerda_praia(struct al_mapa* mapa) {
 		mapa->npc[i]->image[3] = al_create_sub_bitmap(mapa->NPC_IMAGES[i], 4, 7 + 24 * 2, 16, 16);
 	}
 
-	// item (Buruti)
+	// item (Buriti)
 
 	mapa->quantidade_item = 1;
 
@@ -74,7 +74,7 @@ void carregar_mapa_esquerda_praia(struct al_mapa* mapa) {
 	mapa->item[0]->ajudante->opcao = true;
 	mapa->item[0]->ajudante->opcao_selecionada = 0;
 	mapa->item[0]->ajudante->tipo_pergunta = PERGUNTA_ITEM;
-	strcpy(mapa->item[0]->ajudante->texto, "Voce encontrou Buriti. Nativa da regiao amazonica, o buriti, tambem conhecido como o fruto da palmeira de buriti, alem de ser rica em vitamina A e vitamina C, ele e utilizado nos tratamento de problemas respiratorios e gastrointestinais.");
+	strcpy(mapa->item[0]->ajudante->texto, "Voce encontrou Buriti. Nativa da regiao amazonica, o buriti, tambem conhecido como o fruto da palmeira de buriti, alem de ser rica em vitamina A e vitamina C, ele e utilizado nos tratamentos de problemas respiratorios e gastrointestinais.");
 
 	for (int i = 0; i < mapa->quantidade_item; i++)
 		mapa->matriz[mapa->item[i]->matriz_position_y][mapa->item[i]->matriz_position_x] = 5;

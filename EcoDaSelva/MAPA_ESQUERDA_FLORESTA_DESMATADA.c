@@ -64,14 +64,14 @@ void carregar_mapa_esquerda_floresta_desmatada(struct al_mapa* mapa) {
 	mapa->item[0]->ajudante->opcao = true;
 	mapa->item[0]->ajudante->opcao_selecionada = 0;
 	mapa->item[0]->ajudante->tipo_pergunta = PERGUNTA_ITEM;
-	strcpy(mapa->item[0]->ajudante->texto, "Voce encotrou Sementes de Andiroba. As sementes de Andiroba sao extraidas da arvore de andiroba. Essa semente apresenta muitos beneficios, como ser um repelente natural, usado tambem para produtos cosmeticos e seu oleo medicinal e usado em casos de inflamacoes, picadas, problemas de pele e feridas.");
+	strcpy(mapa->item[0]->ajudante->texto, "Voce encotrou Sementes de Andiroba. As sementes de Andiroba sao extraidas da arvore de andiroba. Essas sementes apresentam muitos beneficios, como ser um repelente natural, usado tambem para produtos cosmeticos e seu oleo medicinal e usado em casos de inflamacoes, picadas, problemas de pele e feridas.");
 
 	for (int i = 0; i < mapa->quantidade_item; i++)
 		mapa->matriz[mapa->item[i]->matriz_position_y][mapa->item[i]->matriz_position_x] = 5;
 
 
 
-#pragma region Colisões
+#pragma region Colisï¿½es
 
 	//arvores
 

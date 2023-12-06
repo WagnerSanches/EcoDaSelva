@@ -96,7 +96,7 @@ void carregar_mapa_direita_floresta_desmatada(struct al_mapa* mapa)
 	}
 	mapa->matriz[1][WINDOW_SIZE_PIXEL_X - 10] = 1;
 	
-	//árvores
+	//ï¿½rvores
 	for (int j = 0; j < 5; j++) {
 		mapa->matriz[0][j] = 1;
 	}
@@ -209,7 +209,7 @@ void carregar_mapa_direita_floresta_desmatada(struct al_mapa* mapa)
 	mapa->item[0]->ajudante->opcao = true;
 	mapa->item[0]->ajudante->opcao_selecionada = 0;
 	mapa->item[0]->ajudante->tipo_pergunta = PERGUNTA_ITEM;
-	strcpy(mapa->item[0]->ajudante->texto, "Voce encontrou  Latex. O latex e uma seiva leitosa que e usada para porducao de borracha, e utilizada na frabricacao de luva e artigs medicos, bolas e brinquedos, produtos elasticos e muito mais. Ela normalmente e encontrada nas seringueiras que sao muito comuns na regiao do Amazonas.");
+	strcpy(mapa->item[0]->ajudante->texto, "Voce encontrou  Latex. O latex e uma seiva leitosa que e usada para producao de borracha, e utilizada na fabricacao de luvas e artigos medicos, bolas e brinquedos, produtos elasticos e muito mais. Ela normalmente e encontrada nas seringueiras que sao muito comuns na regiao do Amazonas.");
 
 	for (int i = 0; i < mapa->quantidade_item; i++)
 		mapa->matriz[mapa->item[i]->matriz_position_y - 1][mapa->item[i]->matriz_position_x - 1] = 5;
