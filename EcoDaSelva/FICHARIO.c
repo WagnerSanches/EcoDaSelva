@@ -111,7 +111,7 @@ void criar_fichario(struct Fichario* fichario) {
 	strcpy(fichario->classe[0]->groupo[1]->titulo, "Anura");
 	strcpy(
 		fichario->classe[0]->groupo[1]->ajudante->texto,
-		"A ordem Anura e representada pelos anfibios sem cauda: sapos, ras e pererecas. Apresentam o corpo adaptado para saltar.O corpo e compacto, com coluna vertebral curta e rigida; as vertebras estao ligadas de modo a restringir movimentos laterais."
+		"A ordem Anura e representada pelos anfibios sem cauda: sapos, ras e pererecas. Apresentam o corpo adaptado para saltar. O corpo e compacto, com coluna vertebral curta e rigida. Eles passam por uma etapa inicial de vida na agua."
 	);
 	strcpy(fichario->classe[0]->groupo[2]->titulo, "Lepidoptera");
 	strcpy(
