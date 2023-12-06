@@ -42,12 +42,7 @@ void desenhar_caixa_dialogo(struct Player* player, struct al_mapa* mapa, struct 
 	if (player->missao->indice_npc_guest_aceita == player->indice_objeto_interacao
 		&& mapa->npc[player->indice_objeto_interacao]->npc_quest
 		&& mapa->npc[player->indice_objeto_interacao]->quest_terminada == false) {
-		strcpy(texto, "Obrigado por estar me ajudando, termine minha tarefa que te darei uma informacao.");
-	}
-	else if (mapa->npc[player->indice_objeto_interacao]->npc_quest
-		&& player->missao->quest_aceita
-		&& mapa->npc[player->indice_objeto_interacao]->quest_terminada == false) {
-		strcpy(texto, "Quando terminar sua tarefa venha falar comigo.");
+			strcpy(texto, "Quando terminar sua tarefa venha falar comigo.");
 	}
 
 	int size_by_text = (strlen(texto) / 40);

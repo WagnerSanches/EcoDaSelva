@@ -38,6 +38,7 @@ void evento_conversar_key_precionada(struct Player* player, struct al_mapa* mapa
 				&& player->missao->quest_aceita == false) {
 				mapa->npc[player->indice_objeto_interacao]->dialogo_lido++;
 				printf("Dialogo incial\n");
+
 			}
 			else if (mapa->npc[player->indice_objeto_interacao]->dialogo_lido == 1
 						&& player->missao->quest_aceita == false) {

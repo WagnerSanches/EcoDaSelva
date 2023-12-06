@@ -70,7 +70,8 @@ void carregar_mapa_esquerda_praia(struct al_mapa* mapa) {
 	mapa->item[0]->matriz_position_y = 17;
 	mapa->item[0]->image = al_load_bitmap("assets/objeto/fruta/Buriti.png");
 	mapa->item[0]->item_missao = true;
-	mapa->item[0]->ajudante->quantiade_imagem = 0;
+	mapa->item[0]->ajudante->quantiade_imagem = 1;
+	mapa->item[0]->ajudante->image[0] = al_load_bitmap("assets/objeto/itens/buriti.jpg");
 	mapa->item[0]->ajudante->opcao = true;
 	mapa->item[0]->ajudante->opcao_selecionada = 0;
 	mapa->item[0]->ajudante->tipo_pergunta = PERGUNTA_ITEM;
