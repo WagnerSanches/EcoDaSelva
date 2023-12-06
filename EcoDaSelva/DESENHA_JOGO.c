@@ -19,6 +19,8 @@
 #include <PAUSA.h>
 #include <DESENHA_PAUSA.h>
 #include <DESENHA_FINAL.h>
+#include <DIALOGO_CONFIG.h>
+
 
 void desenha_background(struct al_mapa* mapa) {
 	al_draw_bitmap(mapa->background, 0, 0, 0);
@@ -56,9 +58,9 @@ void desenha_items(struct al_mapa* mapa, int layer) {
 	}
 }
 
-void desenha_fichario(struct Player* player, struct Fichario* fichario) {
+void desenha_fichario(struct Player* player, struct Fichario* fichario, struct DialogoConfig* dialogoConfig) {
 
-	desenhar_box(fichario, player);
+	desenhar_box(fichario, player, dialogoConfig);
 
 	/*
 	desenhar_informacoes(fichario, player);
@@ -66,11 +68,11 @@ void desenha_fichario(struct Player* player, struct Fichario* fichario) {
 	*/
 
 	if (fichario->ajudante->ajudou == false) {
-		desenhar_ajudante(fichario->ajudante);
+		desenhar_ajudante(fichario->ajudante, dialogoConfig);
 	}
 }
 
-void desenhar_jogo(struct Player* player, struct al_mapa* mapa, struct Fichario* fichario, struct Pausa* pausa) {
+void desenhar_jogo(struct Player* player, struct al_mapa* mapa, struct Fichario* fichario, struct Pausa* pausa, struct DialogoConfig* dialogoConfig) {
 	desenha_background(mapa);
 
 	// layers
@@ -82,17 +84,17 @@ void desenhar_jogo(struct Player* player, struct al_mapa* mapa, struct Fichario*
 
 	switch(player->status){
 	case FICHARIO:
-		desenha_fichario(player, fichario);
+		desenha_fichario(player, fichario, dialogoConfig);
 		break;
 	case CONVERSANDO:
-		desenhar_caixa_dialogo(player, mapa);
+		desenhar_caixa_dialogo(player, mapa, dialogoConfig);
 		break;
 	case INTERAGINDO:
-		desenhar_ajudante(mapa->item[player->indice_objeto_interacao]->ajudante);
+		desenhar_ajudante(mapa->item[player->indice_objeto_interacao]->ajudante, dialogoConfig);
 		break;
 	case PARADO:
 		if (player->ajudante->ajudou == false) {
-			desenhar_ajudante(player->ajudante);
+			desenhar_ajudante(player->ajudante, dialogoConfig);
 		}
 		break;
 	case FINAL:

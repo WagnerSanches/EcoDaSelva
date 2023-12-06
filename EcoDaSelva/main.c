@@ -24,6 +24,7 @@
 #include <PAUSA.h>
 #include <allegro5/allegro_audio.h>
 #include <allegro5/allegro_acodec.h>
+#include <DIALOGO_CONFIG.h>
 
 int main() {
 
@@ -128,6 +129,19 @@ int main() {
 		return -1;
 	}
 
+	struct DialogoConfig* dialogoConfig = malloc(sizeof(struct DialogoConfig));
+	if (dialogoConfig == NULL) {
+		printf("Falha na alocação de dialogoConfig.\n");
+		return -1;
+	}
+	dialogoConfig->font_size = 18;
+	dialogoConfig->dialogue_font = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", dialogoConfig->font_size, 0);
+	dialogoConfig->dialogue15 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 15, 0);
+	dialogoConfig->dialogue_text_size = 18;
+	dialogoConfig->dialogue16 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", dialogoConfig->dialogue_text_size, 0);
+	dialogoConfig->imagem_doutura = al_load_bitmap("assets/personagem/ajudante/doutora_resize.jpg");
+
+
 	struct Pausa* pausa = malloc(sizeof(struct Pausa));
 	if (pausa == NULL) {
 		printf("Falha na alocação de pausa.\n");
@@ -208,7 +222,7 @@ int main() {
 				if (player->menu->ativo)
 					desenhar_menu_inicial(player->menu);
 				else 
-					desenhar_jogo(player, mapa, fichario, pausa);
+					desenhar_jogo(player, mapa, fichario, pausa, dialogoConfig);
 
 				al_flush_event_queue(events_queue);
 				al_flip_display();

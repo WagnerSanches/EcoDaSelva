@@ -184,6 +184,7 @@
     <ClInclude Include="AL_MAPA.h" />
     <ClInclude Include="ANIMATION.h" />
     <ClInclude Include="DESENHA_FINAL.h" />
+    <ClInclude Include="DIALOGO_CONFIG.h" />
     <ClInclude Include="EVENTO_FINAL.h" />
     <ClInclude Include="MAPA_DIREITA_VILA.h" />
     <ClInclude Include="config.h" />

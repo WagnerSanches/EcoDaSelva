@@ -60,7 +60,8 @@ void carregar_mapa_esquerda_floresta_desmatada(struct al_mapa* mapa) {
 	mapa->item[0]->matriz_position_y = 9;
 	mapa->item[0]->image = al_load_bitmap("assets/objeto/fruta/andiroba.png");
 	mapa->item[0]->item_missao = true;
-	mapa->item[0]->ajudante->quantiade_imagem = 0;
+	mapa->item[0]->ajudante->quantiade_imagem = 1;
+	mapa->item[0]->ajudante->image[0] = al_load_bitmap("assets/objeto/itens/andiroba.jpg");
 	mapa->item[0]->ajudante->opcao = true;
 	mapa->item[0]->ajudante->opcao_selecionada = 0;
 	mapa->item[0]->ajudante->tipo_pergunta = PERGUNTA_ITEM;
@@ -71,7 +72,7 @@ void carregar_mapa_esquerda_floresta_desmatada(struct al_mapa* mapa) {
 
 
 
-#pragma region Colis�es
+#pragma region Colisoes
 
 	//arvores
 

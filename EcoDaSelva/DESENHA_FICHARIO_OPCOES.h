@@ -1,6 +1,6 @@
 #ifndef DESENHA_FICHARIO_OPCOES_H
 #define DESENHA_FICHARIO_OPCOES_H
 
-void desenhar_opcoes(struct Fichario* fichario);
+void desenhar_opcoes(struct Fichario* fichario, struct DialogoConfig* dialogoConfig);
 
 #endif
