@@ -55,7 +55,7 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 
 	// Quest arara
 
-	mapa->npc[1]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	mapa->npc[1]->foto = al_load_bitmap("assets/personagem/npc/foto/indio1.jpg");
 	strcpy(mapa->npc[1]->nome, "Aimoré");
 	strcpy(mapa->npc[1]->nome_item_quest, "Buriti");
 	mapa->npc[1]->npc_quest = true; 
@@ -70,7 +70,7 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 
 	//Npcs (sem quest)
 
-	mapa->npc[2]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	mapa->npc[2]->foto = al_load_bitmap("assets/personagem/npc/foto/indio3.jpg");
 	strcpy(mapa->npc[2]->nome, "Araxá");
 	strcpy(mapa->npc[2]->nome_item_quest, "None");
 	mapa->npc[2]->npc_quest = false;
@@ -82,7 +82,7 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 	mapa->npc[2]->matriz_position_x = 30;
 
 
-	mapa->npc[3]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	mapa->npc[3]->foto = al_load_bitmap("assets/personagem/npc/foto/indio5.jpg");
 	strcpy(mapa->npc[3]->nome, "Anhanguera");
 	strcpy(mapa->npc[3]->nome_item_quest, "None");
 	mapa->npc[3]->npc_quest = false;
@@ -94,7 +94,7 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 	mapa->npc[3]->matriz_position_x = 4;
 
 
-	mapa->npc[4]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	mapa->npc[4]->foto = al_load_bitmap("assets/personagem/npc/foto/Indio9.jpg");
 	strcpy(mapa->npc[4]->nome, "Amary");
 	strcpy(mapa->npc[4]->nome_item_quest, "None");
 	mapa->npc[4]->npc_quest = false;

@@ -14,7 +14,7 @@ void carregar_mapa_floresta_desmatada(struct al_mapa* mapa) {
 
 	mapa->NPC_IMAGES[0] = al_load_bitmap("assets/personagem/npc/Character_001.png");
 
-	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/indio8.jpg");
 	strcpy(mapa->npc[0]->nome, "Apoena");
 	strcpy(mapa->npc[0]->nome_item_quest, "Fruta");
 	mapa->npc[0]->npc_quest = true;

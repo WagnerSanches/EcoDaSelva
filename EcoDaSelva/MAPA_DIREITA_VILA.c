@@ -17,7 +17,7 @@ void carregar_mapa_direita_vila(struct al_mapa* mapa)
 
 	//NPCS (sem quests)
 
-	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	mapa->npc[0]->foto = al_load_bitmap("assets/personagem/npc/foto/indio2.jpg");
 	strcpy(mapa->npc[0]->nome, "Yara");
 	strcpy(mapa->npc[0]->nome_item_quest, "None");
 	mapa->npc[0]->npc_quest = false;
@@ -29,7 +29,7 @@ void carregar_mapa_direita_vila(struct al_mapa* mapa)
 	mapa->npc[0]->matriz_position_x = 9;
 
 
-	mapa->npc[1]->foto = al_load_bitmap("assets/personagem/npc/foto/npc_um_resize.jpg");
+	mapa->npc[1]->foto = al_load_bitmap("assets/personagem/npc/foto/indio5.jpg");
 	strcpy(mapa->npc[1]->nome, "Ubiratan");
 	strcpy(mapa->npc[1]->nome_item_quest, "None");
 	mapa->npc[1]->npc_quest = false;
