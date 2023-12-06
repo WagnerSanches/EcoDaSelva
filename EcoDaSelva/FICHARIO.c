@@ -67,6 +67,7 @@ void init_fichario(struct Fichario* fichario) {
 
 	fichario->todas_respostas_selecionadas = false;
 	fichario->opcao_finalizar_jogo = false;
+
 }
 
 void criar_fichario(struct Fichario* fichario) {
@@ -96,6 +97,11 @@ void criar_fichario(struct Fichario* fichario) {
 	fichario->posicoes->subtitulo = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", fichario->posicoes->size_font_subtitulo, 0);
 	fichario->posicoes->descricao = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", fichario->posicoes->size_font_description, 0);
 	fichario->posicoes->tag = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", fichario->posicoes->size_font_tag, 0);
+
+	fichario->posicoes->font = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 18, 0); 
+	fichario->posicoes->arrow = al_load_bitmap("assets/jogo/arrow.png"); 
+	fichario->posicoes->animal = al_load_bitmap("assets/jogo/animal.jpg"); 
+	fichario->posicoes->resize = al_create_sub_bitmap(fichario->posicoes->animal, PIXEL_SIZE * 8.5, PIXEL_SIZE * 4, PIXEL_SIZE * 4 + PIXEL_SIZE / 2, PIXEL_SIZE * 4); 
 
 	strcpy(
 		fichario->ajudante->texto,
@@ -181,6 +187,7 @@ void criar_fichario(struct Fichario* fichario) {
 	fichario->selecao->grupo_selecionado = false;
 	fichario->ajudante->opcao = false;
 	fichario->ajudante->opcao_selecionada = 0;
+
 }
 
 void destruir_fichario(struct Fichario* fichario) {
@@ -190,6 +197,12 @@ void destruir_fichario(struct Fichario* fichario) {
 	al_destroy_font(fichario->posicoes->subtitulo);
 	al_destroy_font(fichario->posicoes->descricao);
 	al_destroy_font(fichario->posicoes->tag);
+	
+	al_destroy_font(fichario->posicoes->font);
+	al_destroy_bitmap(fichario->posicoes->arrow);
+	al_destroy_bitmap(fichario->posicoes->animal); 
+	al_destroy_bitmap(fichario->posicoes->resize); 
+
 	free(fichario->posicoes);
 
 }

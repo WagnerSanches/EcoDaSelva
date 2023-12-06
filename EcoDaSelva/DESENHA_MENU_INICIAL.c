@@ -6,9 +6,6 @@
 
 void desenhar_menu_inicial(struct Menu* menu) {
 
-	int font_size = 20;
-	ALLEGRO_FONT* menu22 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", font_size, 0);
-
 	int meio_tela = (WINDOW_SIZE_PIXEL_X * PIXEL_SIZE) / 2;
 	int x_menu_size = (WINDOW_SIZE_PIXEL_X * PIXEL_SIZE) - (PIXEL_SIZE * 24);
 	int y_menu_size = PIXEL_SIZE * 3;
@@ -39,19 +36,10 @@ void desenhar_menu_inicial(struct Menu* menu) {
 	int x_logo_final = x_logo_initial + x_logo_size;
 	int y_logo_final = y_logo_initial + y_logo_size;
 
-	ALLEGRO_BITMAP* logo = al_load_bitmap("assets/jogo/logo.png");
-	al_draw_bitmap(logo, x_logo_initial - 14, y_logo_initial, 0);
-
-	//al_draw_filled_rectangle(
-	//	x_logo_initial,
-	//	y_logo_initial,
-	//	x_logo_final,
-	//	y_logo_final,
-	//	al_map_rgb(255, 255, 170)
-	//);
+	al_draw_bitmap(menu->logo, x_logo_initial - 14, y_logo_initial, 0);
 
 	int x_button_size = PIXEL_SIZE * 6;
-	int y_button_size = font_size + font_size / 2;
+	int y_button_size = menu->font_size + menu->font_size / 2;
 
 	int x_button_initial = meio_tela - (x_button_size / 2);
 	int y_button_initial = (y_logo_final + spacing / 2);
@@ -94,10 +82,10 @@ void desenhar_menu_inicial(struct Menu* menu) {
 			al_map_rgb(118, 197, 100)
 		);
 
-		int y_button_text_initial = (font_size / 4) + y_button;
+		int y_button_text_initial = (menu->font_size / 4) + y_button;
 
 		al_draw_text(
-			menu22,
+			menu->menu22,
 			al_map_rgb(255, 255, 255),
 			meio_tela,
 			y_button_text_initial,
@@ -112,10 +100,10 @@ void desenhar_menu_inicial(struct Menu* menu) {
 	int x_information_i = meio_tela - (x_size_information / 2);
 	int y_information_i = PIXEL_SIZE * 13.5;
 
-	ALLEGRO_BITMAP* information = al_load_bitmap("assets/jogo/information.png");
-	al_draw_bitmap(information, x_information_i, y_information_i, 0);
+	
+	al_draw_bitmap(menu->information, x_information_i, y_information_i, 0);
 
-	al_destroy_bitmap(information);
-	al_destroy_bitmap(logo);
-	al_destroy_font(menu22);
+	//al_destroy_bitmap(information);
+	//al_destroy_bitmap(logo);
+	//al_destroy_font(menu22);
 }

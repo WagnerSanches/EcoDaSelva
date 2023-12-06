@@ -137,6 +137,7 @@ int main() {
 	pausa->pausado = false;
 	pausa->reiniciar = false;
 	pausa->encerrar = false;
+	pausa->font18 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 18, 0);
 
 	audio = al_load_audio_stream("assets/music/background.mp3", 2, 2048);
 	al_set_audio_stream_playmode(audio, ALLEGRO_PLAYMODE_LOOP);

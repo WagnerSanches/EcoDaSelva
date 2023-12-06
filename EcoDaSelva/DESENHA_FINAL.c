@@ -22,10 +22,8 @@
 
 void desenhar_final(struct Player* player) {
 
-	ALLEGRO_BITMAP* background = al_load_bitmap("assets/jogo/FinalBackground.jpg");
-	al_draw_bitmap(background, 0, 0, 0);
-	ALLEGRO_FONT* sub_tittle_animal = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", 16, 0);
-
+	
+	al_draw_bitmap(player->finalItems->background, 0, 0, 0);
 
 	al_draw_scaled_bitmap(player->animation[1][0], 0, 0, 16, 16, PIXEL_SIZE * 11, PIXEL_SIZE * 11, 32, 32, 0);
 
@@ -55,26 +53,22 @@ void desenhar_final(struct Player* player) {
 
 	int tittle_score = y_score_box_i + spacing;
 	al_draw_text(
-		sub_tittle_animal,
+		player->finalItems->sub_tittle_animal,
 		al_map_rgb(0, 0, 0),
 		meio_box_score, 
 		tittle_score, 
 		ALLEGRO_ALIGN_CENTER,
 		"O animal procurado era o..."
 	);
-
-
-	ALLEGRO_BITMAP* animal = al_load_bitmap("assets/jogo/animal.jpg");
-	ALLEGRO_BITMAP* resize = al_create_sub_bitmap(animal, PIXEL_SIZE * 6.5, PIXEL_SIZE * 5, img_animal_size, img_animal_size);
-	al_draw_bitmap(resize, x_img_animal_i, y_img_animal_i, 0);
+	al_draw_bitmap(player->finalItems->resize, x_img_animal_i, y_img_animal_i, 0);
 
 	int font_size_tittle_animal = 22;
 
-	ALLEGRO_FONT* tittle_animal = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", font_size_tittle_animal, 0);
+	
 	int x_tittle_animal = x_score_box_i + spacing * 2;
 	int y_tittle_animal = y_score_box_i + spacing * 3.5;
 	al_draw_text(
-		tittle_animal,
+		player->finalItems->tittle_animal,
 		al_map_rgb(0, 0, 0),
 		x_tittle_animal,
 		y_tittle_animal,
@@ -85,7 +79,7 @@ void desenhar_final(struct Player* player) {
 	int x_sub_tittle_animal = x_score_box_i + spacing * 2;
 	int y_sub_tittle_animal = y_score_box_i + spacing * 5;
 	al_draw_text( 
-		sub_tittle_animal, 
+		player->finalItems->sub_tittle_animal,
 		al_map_rgba_f(0, 0, 0, 0.5), 
 		x_sub_tittle_animal,
 		y_sub_tittle_animal,
@@ -112,7 +106,6 @@ void desenhar_final(struct Player* player) {
 
 	int font_size_categoria = 16;
 	int spacing_categoria = font_size_categoria + font_size_categoria / 2;
-	ALLEGRO_FONT* font_categoria = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", font_size_categoria, 0);
 
 	int x_categoria = x_tittle_animal + spacing_categoria / 2;
 
@@ -127,7 +120,7 @@ void desenhar_final(struct Player* player) {
 
 		int y_categoria = y_tittle_animal + font_size_tittle_animal + spacing_categoria + (spacing_categoria * i);
 		al_draw_text(
-			font_categoria,
+			player->finalItems->font_categoria,
 			al_map_rgb(0, 0, 0),
 			x_categoria,
 			y_categoria,
@@ -146,7 +139,7 @@ void desenhar_final(struct Player* player) {
 
 		int x_categoria_res = x_categoria_res_i + (categoria_box_size / 2);
 		al_draw_text( 
-			font_categoria, 
+			player->finalItems->font_categoria,
 			resposta ? al_map_rgb(0, 97, 45) : al_map_rgb(97, 0, 0),
 			x_categoria_res,
 			y_categoria,
@@ -159,7 +152,7 @@ void desenhar_final(struct Player* player) {
 
 	int y_final_score = y_tittle_animal + font_size_tittle_animal + spacing_categoria + (spacing_categoria * 4) + PIXEL_SIZE;
 	al_draw_text(
-		font_categoria,
+		player->finalItems->font_categoria,
 		al_map_rgb(0, 0, 0),
 		meio_box_score,
 		y_final_score,
@@ -171,10 +164,10 @@ void desenhar_final(struct Player* player) {
 	char pontos[4];
 	sprintf(pontos, "%d/4", sum_pontos);
 
-	ALLEGRO_FONT* font_points = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", font_size_points, 0);
+	
 	int y_score = y_final_score + 20;
 	al_draw_text(
-		font_points,
+		player->finalItems->font_points,
 		al_map_rgb(0, 0, 0),
 		meio_box_score,
 		y_score,
@@ -220,7 +213,7 @@ void desenhar_final(struct Player* player) {
 
 		int x_botao_text = x_botao_reiniciar_f - (x_butao_size / 2);
 		al_draw_text(
-			font_categoria,
+			player->finalItems->font_categoria,
 			al_map_rgb(255, 255, 255),
 			x_botao_text,
 			y_botao_reiniciar_i + 4,
@@ -229,11 +222,4 @@ void desenhar_final(struct Player* player) {
 		);
 	}
 
-	al_destroy_bitmap(background); 
-	al_destroy_bitmap(animal); 
-	al_destroy_bitmap(resize); 
-	al_destroy_font(font_points); 
-	al_destroy_font(font_categoria);
-	al_destroy_font(sub_tittle_animal); 
-	al_destroy_font(tittle_animal);
 }

@@ -128,4 +128,10 @@ void init_player(struct Player* player) {
 	player->opcao_final_jogo = 0;
 	player->indice_objeto_interacao = 0;
 
+	player->menu->font_size = 20;
+	player->menu->menu22 = al_load_font("assets/font/VCR_OSD_MONO_1.001.ttf", player->menu->font_size, 0);
+
+	player->menu->logo = al_load_bitmap("assets/jogo/logo.png");
+	player->menu->information = al_load_bitmap("assets/jogo/information.png");
+
 }
