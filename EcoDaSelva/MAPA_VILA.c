@@ -61,7 +61,7 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 	mapa->npc[1]->npc_quest = true; 
 	strcpy(mapa->npc[1]->tag, "Genero");
 	strcpy(mapa->npc[1]->dialogo[0]->texto, "Ola aventureiro, preciso muito da sua ajuda com a minha arara. Ela nao come sua fruta favorita (Buriti) a muito tempo, entao ela anda muito agitada.");
-	strcpy(mapa->npc[1]->dialogo[1]->texto, "Preciso que voce encontre alguns buritis. Geralmente os buritis sao vermelehos e ficam no sul a esquerda da vila, perto das palmerias. Eu nao tive muita sorte, tomara que voce tenha.");
+	strcpy(mapa->npc[1]->dialogo[1]->texto, "Sera que voce consegue encontrar alguns buritis ? Geralmente os buritis sao vermelehos e ficam no sul a esquerda da vila, perto das palmerias. Eu nao tive muita sorte, tomara que voce tenha.");
 	strcpy(mapa->npc[1]->dialogo[2]->texto, "Meu pai conseguiu ve-lo de longe. Ele me disse que o animal era muito bonito e tinha uma coloracao viva, porem ele tinha medo de se aproximar.");
 	mapa->npc[1]->dialogo_lido = 0;
 
