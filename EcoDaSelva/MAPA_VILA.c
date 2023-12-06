@@ -74,7 +74,7 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 	strcpy(mapa->npc[2]->nome, "Araxá");
 	strcpy(mapa->npc[2]->nome_item_quest, "None");
 	mapa->npc[2]->npc_quest = false;
-	strcpy(mapa->npc[2]->tag, "Nativo");
+	strcpy(mapa->npc[2]->tag, "");
 	strcpy(mapa->npc[2]->dialogo[0]->texto, "Na aldeia dos Guajajara, os bichos - preguica sao tipo os reis da soneca.Eles penduram nas arvores numa boa, trocando segredos preguicosos e ensinando que as vezes, e bacana tirar um cochilo e curtir a brisa da floresta.");
 	mapa->npc[2]->dialogo_lido = 0;
 
@@ -86,7 +86,7 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 	strcpy(mapa->npc[3]->nome, "Anhanguera");
 	strcpy(mapa->npc[3]->nome_item_quest, "None");
 	mapa->npc[3]->npc_quest = false;
-	strcpy(mapa->npc[3]->tag, "Nativo");
+	strcpy(mapa->npc[3]->tag, "");
 	strcpy(mapa->npc[3]->dialogo[0]->texto, "Na vastidao da Amazonia, os botos-cor-de-rosa sao os encantadores do rio. Conta-se que, ao entardecer, esses cetaceos magicos se transformam em belos jovens para dancar nas margens, revelando o elo sagrado entre a agua e o misterioso reino das lendas fluviais.");
 	mapa->npc[3]->dialogo_lido = 0;
 
@@ -98,7 +98,7 @@ void carregar_mapa_vila(struct al_mapa* mapa) {
 	strcpy(mapa->npc[4]->nome, "Amary");
 	strcpy(mapa->npc[4]->nome_item_quest, "None");
 	mapa->npc[4]->npc_quest = false;
-	strcpy(mapa->npc[4]->tag, "Nativo");
+	strcpy(mapa->npc[4]->tag, "");
 	strcpy(mapa->npc[4]->dialogo[0]->texto, "Nas terras dos Yawanawa, o murmur do vento revela segredos. Dizem que as borboletas, dancando entre as flores, sao espiritos ancestrais que nos visitam, trazendo bencaos aqueles que as observam com o coracao aberto.");
 	mapa->npc[4]->dialogo_lido = 0;
 
